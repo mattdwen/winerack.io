@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (Request.IsAuthenticated) {
+    <a class="btn btn-primary btn-lg" href="/Wines/Create">Add new wine</a>
+} else { 
+    <div class="jumbotron">
+        <h1>winerack.io</h1>
+        <p class="lead">Track your wine collection.</p>
+        <p><a href="/Account/Login" class="btn btn-primary btn-lg">Get started &raquo;</a></p>
+    </div>
+}
