@@ -20,6 +20,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="http://www.winerack.io">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Regions">Regions</a></li>
+                            <li><a href="/Vineyards">Vineyards</a></li>
+                            <li><a href="/Wines">Wines</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

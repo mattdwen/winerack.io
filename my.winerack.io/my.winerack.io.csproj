@@ -174,10 +174,19 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\WinesController.cs" />
+    <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405182339480_InitialCreate.cs" />
+    <Compile Include="Migrations\201405182339480_InitialCreate.Designer.cs">
+      <DependentUpon>201405182339480_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405190034113_Test.cs" />
+    <Compile Include="Migrations\201405190034113_Test.Designer.cs">
+      <DependentUpon>201405190034113_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\WineRackDbContext.cs" />
@@ -251,6 +260,11 @@
     <Content Include="Views\Wines\Details.cshtml" />
     <Content Include="Views\Wines\Edit.cshtml" />
     <Content Include="Views\Wines\Index.cshtml" />
+    <Content Include="Views\Regions\Create.cshtml" />
+    <Content Include="Views\Regions\Delete.cshtml" />
+    <Content Include="Views\Regions\Details.cshtml" />
+    <Content Include="Views\Regions\Edit.cshtml" />
+    <Content Include="Views\Regions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -261,6 +275,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201405182339480_InitialCreate.resx">
+      <DependentUpon>201405182339480_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405190034113_Test.resx">
+      <DependentUpon>201405190034113_Test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
