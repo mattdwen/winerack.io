@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 
 namespace my.winerack.io.Models {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
+	public class ApplicationDbContext : IdentityDbContext<User> {
 		public ApplicationDbContext()
 			: base("DefaultConnection", throwIfV1Schema: false) {
 		}
