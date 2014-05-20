@@ -12,7 +12,7 @@ namespace my.winerack.io.Controllers
 {
     public class RegionsController : Controller
     {
-        private WineRackDbContext db = new WineRackDbContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Regions
         public ActionResult Index()
