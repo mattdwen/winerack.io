@@ -15,7 +15,6 @@ namespace my.winerack.io.Models {
 			return new ApplicationDbContext();
 		}
 
-		public DbSet<Rack> Racks { get; set; }
 		public DbSet<Region> Regions { get; set; }
 		public DbSet<Vineyard> Vineyards { get; set; }
 		public DbSet<Wine> Wines { get; set; }
