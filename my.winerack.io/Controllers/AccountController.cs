@@ -10,7 +10,8 @@ namespace my.winerack.io.Controllers {
 
 	[Authorize]
 	public class AccountController : Controller {
-		private ApplicationUserManager _userManager;
+
+		#region Constructor
 
 		public AccountController() {
 		}
@@ -18,6 +19,16 @@ namespace my.winerack.io.Controllers {
 		public AccountController(ApplicationUserManager userManager) {
 			UserManager = userManager;
 		}
+
+		#endregion Constructor
+
+		#region Declarations
+
+		private ApplicationUserManager _userManager;
+
+		#endregion Declarations
+
+		#region Properties
 
 		public ApplicationUserManager UserManager {
 			get {
@@ -28,7 +39,12 @@ namespace my.winerack.io.Controllers {
 			}
 		}
 
-		//
+		#endregion Properties
+
+		#region Actions
+
+		#region Login
+
 		// GET: /Account/Login
 		[AllowAnonymous]
 		public ActionResult Login(string returnUrl) {
@@ -36,7 +52,6 @@ namespace my.winerack.io.Controllers {
 			return View();
 		}
 
-		//
 		// POST: /Account/Login
 		[HttpPost]
 		[AllowAnonymous]
@@ -56,14 +71,16 @@ namespace my.winerack.io.Controllers {
 			return View(model);
 		}
 
-		//
+		#endregion Login
+
+		#region Register
+
 		// GET: /Account/Register
 		[AllowAnonymous]
 		public ActionResult Register() {
 			return View();
 		}
 
-		//
 		// POST: /Account/Register
 		[HttpPost]
 		[AllowAnonymous]
@@ -74,12 +91,13 @@ namespace my.winerack.io.Controllers {
 				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded) {
 					await SignInAsync(user, isPersistent: false);
-
 					// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
 					// Send an email with this link
-					// string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-					// var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-					// await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+					//string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+					//var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+					//await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
 					return RedirectToAction("Index", "Home");
 				} else {
@@ -91,7 +109,10 @@ namespace my.winerack.io.Controllers {
 			return View(model);
 		}
 
-		//
+		#endregion Register
+
+		#region Confirm Email
+
 		// GET: /Account/ConfirmEmail
 		[AllowAnonymous]
 		public async Task<ActionResult> ConfirmEmail(string userId, string code) {
@@ -108,14 +129,16 @@ namespace my.winerack.io.Controllers {
 			}
 		}
 
-		//
+		#endregion Confirm Email
+
+		#region Forgot Password
+
 		// GET: /Account/ForgotPassword
 		[AllowAnonymous]
 		public ActionResult ForgotPassword() {
 			return View();
 		}
 
-		//
 		// POST: /Account/ForgotPassword
 		[HttpPost]
 		[AllowAnonymous]
@@ -140,12 +163,15 @@ namespace my.winerack.io.Controllers {
 			return View(model);
 		}
 
-		//
 		// GET: /Account/ForgotPasswordConfirmation
 		[AllowAnonymous]
 		public ActionResult ForgotPasswordConfirmation() {
 			return View();
 		}
+
+		#endregion Forgot Password
+
+		#region Reset Password
 
 		//
 		// GET: /Account/ResetPassword
@@ -189,6 +215,10 @@ namespace my.winerack.io.Controllers {
 			return View();
 		}
 
+		#endregion Reset Password
+
+		#region Disassociate
+
 		//
 		// POST: /Account/Disassociate
 		[HttpPost]
@@ -205,6 +235,10 @@ namespace my.winerack.io.Controllers {
 			}
 			return RedirectToAction("Manage", new { Message = message });
 		}
+
+		#endregion Disassociate
+
+		#region Manage
 
 		//
 		// GET: /Account/Manage
@@ -259,6 +293,10 @@ namespace my.winerack.io.Controllers {
 			// If we got this far, something failed, redisplay form
 			return View(model);
 		}
+
+		#endregion Manage
+
+		#region External Login
 
 		//
 		// POST: /Account/ExternalLogin
@@ -370,12 +408,22 @@ namespace my.winerack.io.Controllers {
 			return View();
 		}
 
+		#endregion External Login
+
+		#region Remove Account List
+
 		[ChildActionOnly]
 		public ActionResult RemoveAccountList() {
 			var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
 			ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
 			return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
 		}
+
+		#endregion Remove Account List
+
+		#endregion Actions
+
+		#region Public Methods
 
 		protected override void Dispose(bool disposing) {
 			if (disposing && UserManager != null) {
@@ -384,6 +432,8 @@ namespace my.winerack.io.Controllers {
 			}
 			base.Dispose(disposing);
 		}
+
+		#endregion Public Methods
 
 		#region Helpers
 

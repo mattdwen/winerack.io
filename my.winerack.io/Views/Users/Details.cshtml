@@ -1,4 +1,4 @@
-﻿@model my.winerack.io.Models.User
+﻿@model my.winerack.io.Models.UserDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -13,24 +13,18 @@
         <dt>@Html.DisplayNameFor(model => model.Id)</dt>
         <dd>@Html.DisplayFor(model => model.Id)</dd>
 
+        <dt>Administrator</dt>
+        <dd>
+            @if (Model.Administrator) {
+                <i class="fa fa-check"></i>
+            } else {
+                <i class="fa fa-times"></i>
+            }
+            @Html.ActionLink("change", "Administrator", new { id = Model.Id })
+        </dd>
+
         <dt>@Html.DisplayNameFor(model => model.Email)</dt>
         <dd>@Html.DisplayFor(model => model.Email)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.EmailConfirmed)</dt>
-        <dd>@Html.DisplayFor(model => model.EmailConfirmed)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.TwoFactorEnabled)</dt>
-        <dd>@Html.DisplayFor(model => model.TwoFactorEnabled)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.LockoutEnabled)</dt>
-        <dd>@Html.DisplayFor(model => model.LockoutEnabled)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.LockoutEndDateUtc)</dt>
-        <dd>@Html.DisplayFor(model => model.LockoutEndDateUtc)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.AccessFailedCount)</dt>
-        <dd>@Html.DisplayFor(model => model.AccessFailedCount)</dd>
-
     </dl>
 </div>
 <p>

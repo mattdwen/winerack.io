@@ -181,6 +181,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="Migrations\201405200751360_Init.cs" />
     <Compile Include="Migrations\201405200751360_Init.Designer.cs">
       <DependentUpon>201405200751360_Init.cs</DependentUpon>
@@ -191,6 +192,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Models\Vineyard.cs" />
     <Compile Include="Models\Wine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -268,11 +270,9 @@
     <Content Include="Views\Wines\Edit.cshtml" />
     <Content Include="Views\Wines\Index.cshtml" />
     <Content Include="Views\Shared\Wines\Editor.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Account\RegisterSent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

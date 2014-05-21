@@ -48,6 +48,24 @@ namespace my.winerack.io {
 		}
 	}
 
+	public class ApplicationRoleManager : RoleManager<IdentityRole> {
+		#region Constructor
+		public ApplicationRoleManager(RoleStore<IdentityRole> store)
+			: base(store) {
+
+		}
+		#endregion
+
+		#region Public Methods
+		public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context) {
+			var store = new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>());
+			var manager = new ApplicationRoleManager(store);
+
+			return manager;
+		}
+		#endregion
+	}
+
 	public class EmailService : IIdentityMessageService {
 
 		public Task SendAsync(IdentityMessage message) {
