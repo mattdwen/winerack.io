@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace my.winerack.io.Controllers {
 
+	[Authorize(Roles = "Administrators")]
 	public class UsersController : Controller {
 
 		#region Constructor

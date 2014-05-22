@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace my.winerack.io.Controllers {
 
+	[Authorize(Roles = "Administrators")]
 	public class WinesController : Controller {
 
 		#region Declarations
