@@ -35,6 +35,7 @@
                     <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasedOn)</th>
                     <th>@Html.DisplayNameFor(m => m.Purchases.First().Quantity)</th>
                     <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasePrice)</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,9 @@
                         <td>@purchase.PurchasedOn.ToLongDateString()</td>
                         <td>@Html.DisplayFor(p => purchase.Quantity)</td>
                         <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { controller = "Purchases", id = purchase.ID})
+                        </td>
                     </tr>
                 }
             </tbody>

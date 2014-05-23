@@ -20,7 +20,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated) {
-                        <li>@Html.ActionLink("My Collection", "", "Rack")</li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown">My Collection <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Purchase History", "", "Purchases")</li>
+                            </ul>
+                        </li>
                     }
                     @if (User.IsInRole(Helpers.ADMINISTRATOR_GROUP)) {
                         <li class="dropdown">

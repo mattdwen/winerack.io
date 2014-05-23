@@ -1,0 +1,35 @@
+﻿@model my.winerack.io.Models.Purchase
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Purchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.PurchasedOn)</dt>
+        <dd>@Model.PurchasedOn.ToLongDateString()</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Bottle.Wine)</dt>
+        <dd>@Model.Bottle.Wine.Description</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Quantity)</dt>
+        <dd>@Model.Quantity</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.PurchasePrice)</dt>
+        <dd>@Html.DisplayFor(m => m.PurchasePrice)</dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-link" })
+        </div>
+    }
+</div>
