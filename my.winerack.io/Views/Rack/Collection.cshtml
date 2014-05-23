@@ -8,9 +8,8 @@
             <th>@Html.DisplayNameFor(model => model.Vineyard)</th>
             <th>@Html.DisplayNameFor(model => model.Wine.Varietal)</th>
             <th>@Html.DisplayNameFor(model => model.Wine.Vintage)</th>
-            <th>@Html.DisplayNameFor(model => model.Purchased)</th>
-            <th>@Html.DisplayNameFor(model => model.Drunk)</th>
-            <th>@Html.DisplayNameFor(model => model.Remaining)</th>
+            <th>Bottles</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +18,20 @@
                 <td>@bottle.Vineyard.Name</td>
                 <td>@bottle.Wine.Varietal</td>
                 <td>@bottle.Wine.Vintage</td>
-                <td>@bottle.Purchased</td>
-                <td>@bottle.Drunk</td>
-                <td>@bottle.Remaining</td>
+                <td>
+                    <div class="btn-group btn-group-sm">
+                        <div class="btn btn-info" title="Purchased">@bottle.Purchased</div>
+                        <div class="btn btn-danger" title="Drunk">@bottle.Drunk</div>
+                        <div class="btn btn-success" title="Remaining">@bottle.Remaining</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-default" href="#" title="View"><i class="fa fa-search"></i></a>
+                        <a class="btn btn-primary" href="#" title="Purchase More"><i class="fa fa-plus"></i></a>
+                        <a class="btn btn-success" href="#" title="Drink"><i class="fa fa-glass"></i></a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
