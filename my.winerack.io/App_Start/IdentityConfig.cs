@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using my.winerack.io.Models;
 using System.Threading.Tasks;
 
@@ -10,12 +11,14 @@ namespace my.winerack.io {
 
 	public class ApplicationUserManager : UserManager<User> {
 
+		#region Constructor
 		public ApplicationUserManager(IUserStore<User> store)
 			: base(store) {
 		}
+		#endregion
 
-		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) {
-			var manager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
+		#region Private Methods
+		private static ApplicationUserManager ConfigureManager(ApplicationUserManager manager, IDataProtectionProvider dataProtectionProvider = null) {
 			// Configure validation logic for usernames
 			manager.UserValidator = new UserValidator<User>(manager) {
 				AllowOnlyAlphanumericUserNames = false,
@@ -40,12 +43,27 @@ namespace my.winerack.io {
 			});
 			manager.EmailService = new EmailService();
 			manager.SmsService = new SmsService();
-			var dataProtectionProvider = options.DataProtectionProvider;
 			if (dataProtectionProvider != null) {
 				manager.UserTokenProvider = new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
 			}
 			return manager;
 		}
+		#endregion
+
+		#region Public Methods
+		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) {
+			var manager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
+			var dataProtectionProvider = options.DataProtectionProvider;
+
+			return ConfigureManager(manager, dataProtectionProvider);
+		}
+
+		public static ApplicationUserManager Create(ApplicationDbContext context) {
+			var manager = new ApplicationUserManager(new UserStore<User>(context));
+
+			return ConfigureManager(manager);
+		}
+		#endregion
 	}
 
 	public class ApplicationRoleManager : RoleManager<IdentityRole> {
