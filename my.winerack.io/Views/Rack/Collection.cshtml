@@ -1,0 +1,28 @@
+﻿@model IEnumerable<my.winerack.io.Models.RackIndexBottleViewModel>
+
+@Html.ActionLink("Add wine", "AddWine", "Rack", new { @class = "btn btn-primary" })
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Vineyard)</th>
+            <th>@Html.DisplayNameFor(model => model.Wine.Varietal)</th>
+            <th>@Html.DisplayNameFor(model => model.Wine.Vintage)</th>
+            <th>@Html.DisplayNameFor(model => model.Purchased)</th>
+            <th>@Html.DisplayNameFor(model => model.Drunk)</th>
+            <th>@Html.DisplayNameFor(model => model.Remaining)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bottle in Model) {
+            <tr>
+                <td>@bottle.Vineyard.Name</td>
+                <td>@bottle.Wine.Varietal</td>
+                <td>@bottle.Wine.Vintage</td>
+                <td>@bottle.Purchased</td>
+                <td>@bottle.Drunk</td>
+                <td>@bottle.Remaining</td>
+            </tr>
+        }
+    </tbody>
+</table>

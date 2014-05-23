@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -29,6 +30,8 @@ namespace my.winerack.io.Models {
 		public virtual Wine Wine { get; set; }
 
 		public virtual User Owner { get; set; }
+
+		public virtual ICollection<Purchase> Purchases { get; set; }
 
 		#endregion Relationships
 	}

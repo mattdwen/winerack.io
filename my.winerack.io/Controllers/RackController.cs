@@ -86,5 +86,23 @@ namespace my.winerack.io.Controllers {
 		}
 		#endregion
 		#endregion
+
+		#region Partials
+		#region Collection
+		public PartialViewResult Collection() {
+			var userId = User.Identity.GetUserId();
+
+			var bottles = db.Bottles
+				.Where(b => b.OwnerID == userId)
+				.Select(x => new RackIndexBottleViewModel {
+					Vineyard = x.Wine.Vineyard,
+					Wine = x.Wine,
+					Purchased = x.Purchases.Sum(p => p.Quantity)
+				});
+
+			return PartialView(bottles);
+		}
+		#endregion
+		#endregion
 	}
 }

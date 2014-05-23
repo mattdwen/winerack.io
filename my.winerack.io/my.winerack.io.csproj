@@ -282,6 +282,8 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Account\RegisterSent.cshtml" />
     <Content Include="Views\Rack\AddWine.cshtml" />
+    <Content Include="Views\Rack\Index.cshtml" />
+    <Content Include="Views\Rack\Collection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

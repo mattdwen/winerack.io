@@ -5,6 +5,20 @@ using System.Linq;
 using System.Web;
 
 namespace my.winerack.io.Models {
+	public class RackIndexViewModel {
+		//public IEnumerable<RackIndexWineViewModel> Wines { get; set; }
+	}
+
+	public class RackIndexBottleViewModel {
+		public Vineyard Vineyard { get; set; }
+		public Wine Wine { get; set; }
+		public int Purchased { get; set; }
+		public int Drunk { get; set; }
+		public int Remaining {
+			get { return Purchased - Drunk; }
+		}
+	}
+
 	public class AddWineViewModel {
 		[Required]
 		[Display(Name = "Wine")]

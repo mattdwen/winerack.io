@@ -15,12 +15,12 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                @Html.ActionLink("winerack.io", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("winerack.io", "", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated) {
-                        <li><a href="/">My Collection</a></li>
+                        <li>@Html.ActionLink("My Collection", "", "Rack")</li>
                     }
                     @if (User.IsInRole(Helpers.ADMINISTRATOR_GROUP)) {
                         <li class="dropdown">
