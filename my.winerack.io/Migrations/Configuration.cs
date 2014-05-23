@@ -54,6 +54,8 @@ namespace my.winerack.io.Migrations {
 				new Vineyard { Name = "Askerne Estate" }
 			);
 
+			context.SaveChanges();
+
 			// Wines
 			context.Wines.AddOrUpdate(
 				w => new { w.Varietal, w.RegionID, w.VineyardID },
