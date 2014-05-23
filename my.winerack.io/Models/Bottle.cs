@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace my.winerack.io.Models {
 
@@ -21,7 +22,24 @@ namespace my.winerack.io.Models {
 		[ForeignKey("Owner")]
 		public string OwnerID { get; set; }
 
+		[Required]
+		[Display(Name = "Added")]
 		public DateTime CreatedOn { get; set; }
+
+		[NotMapped]
+		[Display(Name = "Average Price")]
+		[DisplayFormat(NullDisplayText = "N/A")]
+		public decimal? AveragePrice {
+			get {
+				var purchased = this.Purchases.Where(p => p.PurchasePrice > 0).Sum(p => p.Quantity);
+				var total = this.Purchases.Where(p => p.PurchasePrice > 0).Sum(p => p.PurchasePrice);
+				if (purchased > 0 && total > 0) {
+					return total / purchased;
+				}
+
+				return null;
+			}
+		}
 
 		#endregion Properties
 
@@ -31,6 +49,7 @@ namespace my.winerack.io.Models {
 
 		public virtual User Owner { get; set; }
 
+		[Display(Name = "Purchased")]
 		public virtual ICollection<Purchase> Purchases { get; set; }
 
 		#endregion Relationships

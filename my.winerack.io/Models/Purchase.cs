@@ -16,9 +16,12 @@ namespace my.winerack.io.Models {
 
 		public int Quantity { get; set; }
 
+		[Display(Name="Date")]
 		public DateTime PurchasedOn { get; set; }
 
 		[Column(TypeName="Money")]
+		[Display(Name = "$ per bottle")]
+		[DisplayFormat(DataFormatString="{0:C}")]
 		public decimal PurchasePrice { get; set; }
 
 		#endregion Properties

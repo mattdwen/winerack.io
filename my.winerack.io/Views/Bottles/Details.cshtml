@@ -1,0 +1,55 @@
+﻿@model my.winerack.io.Models.Bottle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+    <li><a href="#purchases" data-toggle="tab">Purchases</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="details">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(m => m.Wine)</dt>
+            <dd>@Model.Wine.Description</dd>
+
+            <dt>First Purchased</dt>
+            <dd>@Model.Purchases.First().PurchasedOn.ToLongDateString()</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.Purchases)</dt>
+            <dd>@Model.Purchases.Count</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.AveragePrice)</dt>
+            <dd>@Html.DisplayFor(m => m.AveragePrice)</dd>
+        </dl>
+    </div>
+
+    <div class="tab-pane" id="purchases">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasedOn)</th>
+                    <th>@Html.DisplayNameFor(m => m.Purchases.First().Quantity)</th>
+                    <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasePrice)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var purchase in Model.Purchases) {
+                    <tr>
+                        <td>@purchase.PurchasedOn.ToLongDateString()</td>
+                        <td>@Html.DisplayFor(p => purchase.Quantity)</td>
+                        <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

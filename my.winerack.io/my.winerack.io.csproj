@@ -173,6 +173,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BottlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RackController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
@@ -284,6 +285,11 @@
     <Content Include="Views\Rack\AddWine.cshtml" />
     <Content Include="Views\Rack\Index.cshtml" />
     <Content Include="Views\Rack\Collection.cshtml" />
+    <Content Include="Views\Bottles\Create.cshtml" />
+    <Content Include="Views\Bottles\Delete.cshtml" />
+    <Content Include="Views\Bottles\Details.cshtml" />
+    <Content Include="Views\Bottles\Edit.cshtml" />
+    <Content Include="Views\Bottles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

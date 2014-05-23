@@ -95,6 +95,7 @@ namespace my.winerack.io.Controllers {
 			var bottles = db.Bottles
 				.Where(b => b.OwnerID == userId)
 				.Select(x => new RackIndexBottleViewModel {
+					Id = x.ID,
 					Vineyard = x.Wine.Vineyard,
 					Wine = x.Wine,
 					Purchased = x.Purchases.Sum(p => p.Quantity)

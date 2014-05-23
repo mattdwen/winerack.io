@@ -10,6 +10,7 @@ namespace my.winerack.io.Models {
 	}
 
 	public class RackIndexBottleViewModel {
+		public int Id { get; set; }
 		public Vineyard Vineyard { get; set; }
 		public Wine Wine { get; set; }
 		public int Purchased { get; set; }
