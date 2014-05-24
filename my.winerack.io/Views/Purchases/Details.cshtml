@@ -1,0 +1,29 @@
+﻿@model my.winerack.io.Models.Purchase
+
+@{
+    ViewBag.Title = "Purchase Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Purchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.Bottle.Wine)</dt>
+        <dd>@Model.Bottle.Wine.Description</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.PurchasedOn)</dt>
+        <dd>@Model.PurchasedOn.ToLongDateString()</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Quantity)</dt>
+        <dd>@Html.DisplayFor(m => m.Quantity)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.PurchasePrice)</dt>
+        <dd>@Html.DisplayFor(m => m.PurchasePrice)</dd>
+    </dl>
+</div>
+
+@Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger" })
+@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })

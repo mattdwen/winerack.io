@@ -31,6 +31,23 @@ namespace my.winerack.io.Controllers {
 
 		#endregion Index
 
+		#region Details
+		// GET: Purchases/Details/5
+		public ActionResult Details(int? id) {
+			if (id == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			Purchase purchase = db.Purchases.Find(id);
+
+			if (purchase == null) {
+				return HttpNotFound();
+			}
+
+			return View(purchase);
+		}
+		#endregion
+
 		#region Create
 		// GET: Purchases/Create
 		public ActionResult Create(int? BottleId = null) {
