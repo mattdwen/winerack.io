@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System;
 
 namespace my.winerack.io.Controllers {
 
@@ -29,6 +30,39 @@ namespace my.winerack.io.Controllers {
 		}
 
 		#endregion Index
+
+		#region Create
+		// GET: Purchases/Create
+		public ActionResult Create(int? BottleId = null) {
+			if (BottleId == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var purchase = new Purchase {
+				BottleID = BottleId.Value,
+				Bottle = db.Bottles.Find(BottleId),
+				PurchasedOn = DateTime.Now,
+				Quantity = 1
+			};
+
+			return View(purchase);
+		}
+
+		// POST: Purchases/Create
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice")] Purchase purchase) {
+			if (ModelState.IsValid) {
+				db.Purchases.Add(purchase);
+				db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+
+			purchase.Bottle = db.Bottles.Find(purchase.BottleID);
+
+			return View(purchase);
+		}
+		#endregion
 
 		#region Edit
 

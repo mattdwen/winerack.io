@@ -4,55 +4,66 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.Wine.Description</h2>
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-    @if (Model.Purchases.Count > 0) {
-        <li><a href="#purchases" data-toggle="tab">Purchases</a></li>
-    }
+    <li><a href="#purchases" data-toggle="tab">Purchases</a></li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane active" id="details">
         <dl class="dl-horizontal">
-            <dt>@Html.DisplayNameFor(m => m.Wine)</dt>
-            <dd>@Model.Wine.Description</dd>
+            <dt>@Html.DisplayNameFor(m => m.Wine.Vineyard)</dt>
+            <dd>@Html.DisplayFor(m => m.Wine.Vineyard.Name)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.Wine.Varietal)</dt>
+            <dd>@Html.DisplayFor(m => m.Wine.Varietal)</dd>
+
+            <dt>@Html.DisplayNameFor(m => m.Wine.Vintage)</dt>
+            <dd>@Html.DisplayFor(m => m.Wine.Vintage)</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Purchases)</dt>
             <dd>@Model.Purchases.Count</dd>
-
-            <dt>@Html.DisplayNameFor(m => m.AveragePrice)</dt>
-            <dd>@Html.DisplayFor(m => m.AveragePrice)</dd>
         </dl>
+
+        <a class="btn btn-link" href="/Bottles">Back to collection</a>
     </div>
 
     <div class="tab-pane" id="purchases">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasedOn)</th>
-                    <th>@Html.DisplayNameFor(m => m.Purchases.First().Quantity)</th>
-                    <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasePrice)</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var purchase in Model.Purchases) {
+        @if (Model.Purchases.Count > 0) {  
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>@purchase.PurchasedOn.ToLongDateString()</td>
-                        <td>@Html.DisplayFor(p => purchase.Quantity)</td>
-                        <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { controller = "Purchases", id = purchase.ID})
-                        </td>
+                        <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasedOn)</th>
+                        <th>@Html.DisplayNameFor(m => m.Purchases.First().Quantity)</th>
+                        <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasePrice)</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var purchase in Model.Purchases) {
+                        <tr>
+                            <td>@purchase.PurchasedOn.ToLongDateString()</td>
+                            <td>@Html.DisplayFor(p => purchase.Quantity)</td>
+                            <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { controller = "Purchases", id = purchase.ID }) | 
+                                @Html.ActionLink("Edit", "Edit", new { controller = "Purchases", id = purchase.ID})
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+            <p>
+                <a class="btn btn-primary" href="/Purchases/Create/?BottleId=@Model.ID"><i class="fa fa-plus"></i> Purchase More</a>
+            </p>
+        } else {
+            <div class="jumbotron">
+                <p>You haven't purchased this wine yet.</p>
+                <a class="btn btn-primary" href="/Purchases/Create/?BottleId=@Model.ID"><i class="fa fa-plus"></i> Purchase now</a>
+            </div>
+        }
     </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -26,21 +26,6 @@ namespace my.winerack.io.Models {
 		[Display(Name = "Added")]
 		public DateTime CreatedOn { get; set; }
 
-		[NotMapped]
-		[Display(Name = "Average Price")]
-		[DisplayFormat(NullDisplayText = "N/A")]
-		public decimal? AveragePrice {
-			get {
-				var purchased = this.Purchases.Where(p => p.PurchasePrice > 0).Sum(p => p.Quantity);
-				var total = this.Purchases.Where(p => p.PurchasePrice > 0).Sum(p => p.PurchasePrice);
-				if (purchased > 0 && total > 0) {
-					return total / purchased;
-				}
-
-				return null;
-			}
-		}
-
 		#endregion Properties
 
 		#region Relationships

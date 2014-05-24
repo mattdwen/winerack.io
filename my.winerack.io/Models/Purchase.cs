@@ -18,14 +18,14 @@ namespace my.winerack.io.Models {
 		public int Quantity { get; set; }
 
 		[Display(Name="Date")]
-		[DataType("date")]
+		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime PurchasedOn { get; set; }
 
 		[Column(TypeName="Money")]
 		[Display(Name = "$ per bottle")]
 		[DisplayFormat(DataFormatString="{0:C}")]
-		[DataType("number")]
+		[DataType(DataType.Currency)]
 		public decimal PurchasePrice { get; set; }
 
 		#endregion Properties
