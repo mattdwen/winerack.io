@@ -291,11 +291,10 @@
     <Content Include="Views\Bottles\Details.cshtml" />
     <Content Include="Views\Bottles\Edit.cshtml" />
     <Content Include="Views\Bottles\Index.cshtml" />
-    <Content Include="Views\Purchases\Create.cshtml" />
     <Content Include="Views\Purchases\Delete.cshtml" />
-    <Content Include="Views\Purchases\Details.cshtml" />
     <Content Include="Views\Purchases\Edit.cshtml" />
     <Content Include="Views\Purchases\Index.cshtml" />
+    <Content Include="Views\Bottles\Rack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

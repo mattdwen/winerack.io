@@ -8,7 +8,9 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
-    <li><a href="#purchases" data-toggle="tab">Purchases</a></li>
+    @if (Model.Purchases.Count > 0) {
+        <li><a href="#purchases" data-toggle="tab">Purchases</a></li>
+    }
 </ul>
 
 <div class="tab-content">
@@ -16,9 +18,6 @@
         <dl class="dl-horizontal">
             <dt>@Html.DisplayNameFor(m => m.Wine)</dt>
             <dd>@Model.Wine.Description</dd>
-
-            <dt>First Purchased</dt>
-            <dd>@Model.Purchases.First().PurchasedOn.ToLongDateString()</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Purchases)</dt>
             <dd>@Model.Purchases.Count</dd>

@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace my.winerack.io.Controllers {
 
@@ -13,6 +14,17 @@ namespace my.winerack.io.Controllers {
 		private ApplicationDbContext db = new ApplicationDbContext();
 
 		#endregion Declarations
+
+		#region Protected Methods
+
+		protected override void Dispose(bool disposing) {
+			if (disposing) {
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		#endregion Protected Methods
 
 		#region Actions
 
@@ -128,15 +140,22 @@ namespace my.winerack.io.Controllers {
 
 		#endregion Actions
 
-		#region Protected Methods
+		#region Partial Views
 
-		protected override void Dispose(bool disposing) {
-			if (disposing) {
-				db.Dispose();
-			}
-			base.Dispose(disposing);
+		public PartialViewResult Rack() {
+			var userId = User.Identity.GetUserId();
+
+			var bottles = db.Bottles
+				.Where(b => b.OwnerID == userId);
+
+			var purchases = db.Purchases
+				.Include(p => p.Bottle)
+				.Where(p => p.Bottle.OwnerID == userId);
+
+			return PartialView(bottles.ToList());
 		}
 
-		#endregion Protected Methods
+		#endregion
+
 	}
 }

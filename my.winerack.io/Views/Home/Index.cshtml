@@ -3,7 +3,7 @@
 }
 
 @if (Request.IsAuthenticated) {
-    Html.RenderAction("Collection", "Rack");
+    Html.RenderAction("Rack", "Bottles");
 } else { 
     <div class="jumbotron">
         <h1>winerack.io</h1>

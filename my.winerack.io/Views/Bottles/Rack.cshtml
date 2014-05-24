@@ -1,0 +1,41 @@
+﻿@model IEnumerable<my.winerack.io.Models.Bottle>
+
+@if (Model.Count() > 0) {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Wine.Vineyard)</th>
+                <th>@Html.DisplayNameFor(m => m.Wine.Varietal)</th>
+                <th>@Html.DisplayNameFor(m => m.Wine.Vintage)</th>
+                <th>Bottles</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bottle in Model) {
+                <tr>
+                    <td>@Html.DisplayFor(b => bottle.Wine.Vineyard.Name)</td>
+                    <td>@Html.DisplayFor(b => bottle.Wine.Varietal)</td>
+                    <td>@Html.DisplayFor(b => bottle.Wine.Vintage)</td>
+                    <td>
+                        <span class="label label-info" title="Purchased">@bottle.Purchases.Sum(p => p.Quantity)</span>
+                        <span class="label label-danger" title="Drunk">0</span>
+                        <span class="label label-success" title="Remaining">0</span>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-xs">
+                            <a class="btn btn-default" href="/Bottles/Details/@bottle.ID" title="Details">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else {
+    <div class="jumbotron">
+        <p>You're out of wine!</p>
+        @Html.ActionLink("Add a bottle", "Create", new { controller = "Bottles" }, new { @class = "btn btn-lg btn-primary" })
+    </div>
+}
