@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -14,12 +17,20 @@ namespace my.winerack.io.Models {
 		[Required]
 		public string Country { get; set; }
 
+		[NotMapped]
+		public string CountryName {
+			get {
+				return new RegionInfo(Country).DisplayName;
+			}
+		}
+
 		[Required]
 		public string Name { get; set; }
 
+		[NotMapped]
 		public string Label {
 			get {
-				return Name + ", " + Country;
+				return Name + ", " + CountryName;
 			}
 		}
 
@@ -27,6 +38,7 @@ namespace my.winerack.io.Models {
 
 		#region Relationshsips
 
+		[JsonIgnore]
 		public virtual ICollection<Wine> Wines { get; set; }
 
 		#endregion Relationships

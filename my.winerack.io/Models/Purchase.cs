@@ -14,9 +14,10 @@ namespace my.winerack.io.Models {
 		[ForeignKey("Bottle")]
 		public int BottleID { get; set; }
 
-		[Range(0,int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
+		[Range(1,int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
 		public int Quantity { get; set; }
 
+		[Required]
 		[Display(Name="Date")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
@@ -26,7 +27,7 @@ namespace my.winerack.io.Models {
 		[Display(Name = "$ per bottle")]
 		[DisplayFormat(DataFormatString="{0:C}")]
 		[DataType(DataType.Currency)]
-		public decimal PurchasePrice { get; set; }
+		public decimal? PurchasePrice { get; set; }
 
 		#endregion Properties
 

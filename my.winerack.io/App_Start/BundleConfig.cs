@@ -25,7 +25,16 @@ namespace my.winerack.io {
 					  "~/Content/bootstrap.css",
 					  "~/Content/font-awesome.css",
 					  "~/Content/icomoon-wines.css",
+					  "~/Content/typeahead.css",
 					  "~/Content/site.css"));
+
+			bundles.Add(new ScriptBundle("~/bundles/bottlecreate").Include(
+					  "~/Scripts/bloodhound.js",
+					  "~/Scripts/typeahead.jquery.js",
+					  "~/Scripts/bloodhound/vineyards.js",
+					  "~/Scripts/bloodhound/regions.js",
+					  "~/Scripts/bloodhound/varietals.js",
+					  "~/Scripts/bottles/create.js"));
 
 			// Set EnableOptimizations to false for debugging. For more information,
 			// visit http://go.microsoft.com/fwlink/?LinkId=301862

@@ -24,7 +24,7 @@
             <dd>@Html.DisplayFor(m => m.Wine.Vintage)</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Purchases)</dt>
-            <dd>@Model.Purchases.Count</dd>
+            <dd>@Model.Purchases.Sum(p => p.Quantity)</dd>
         </dl>
 
         <a class="btn btn-link" href="/Bottles">Back to collection</a>

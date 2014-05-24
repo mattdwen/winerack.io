@@ -1,4 +1,4 @@
-﻿@model my.winerack.io.Models.Bottle
+﻿@model my.winerack.io.Models.CreateBottleViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -9,38 +9,102 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.VineyardID)
+    @Html.HiddenFor(m => m.RegionID)
     
     <div class="form-horizontal">
         <h4>Bottle</h4>
         <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.WineID, "WineID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("WineID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.WineID, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.OwnerID, "OwnerID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("OwnerID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <fieldset>
+            <legend>Vineyard &amp; Location</legend>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Vineyard, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Vineyard, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.Vineyard, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Region, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Region, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.Region, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Country, null, "", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Wine</legend>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.WineName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.WineName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.WineName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Varietal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Varietal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.Varietal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Vintage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Vintage, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                    @Html.ValidationMessageFor(m => m.Vintage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Purchase</legend>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PurchaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.PurchaseDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.PurchaseDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PurchaseQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.PurchaseQuantity, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                    @Html.ValidationMessageFor(m => m.PurchaseQuantity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PurchaseValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.PurchaseValue, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01" } })
+                    @Html.ValidationMessageFor(m => m.PurchaseValue, "", new { @class = "text-danger"})
+                </div>
+            </div>
+        </fieldset>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add Wine" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -49,3 +113,8 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bottlecreate")
+}

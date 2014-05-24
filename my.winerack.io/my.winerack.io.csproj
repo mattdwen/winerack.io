@@ -97,6 +97,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.4\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -173,6 +176,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\RegionsController.cs" />
+    <Compile Include="Controllers\API\VarietalsController.cs" />
+    <Compile Include="Controllers\API\VineyardsController.cs" />
     <Compile Include="Controllers\BottlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
@@ -193,10 +199,15 @@
     <Compile Include="Migrations\201405230420504_Bottle.Designer.cs">
       <DependentUpon>201405230420504_Bottle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405240628200_purchase-nullable-price.cs" />
+    <Compile Include="Migrations\201405240628200_purchase-nullable-price.Designer.cs">
+      <DependentUpon>201405240628200_purchase-nullable-price.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Bottle.cs" />
+    <Compile Include="Models\BottleViewModels.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Purchase.cs" />
@@ -214,12 +225,18 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\icomoon-wines.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icomoon-wines.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
+    <Content Include="Scripts\bloodhound\regions.js" />
+    <Content Include="Scripts\bloodhound\varietals.js" />
+    <Content Include="Scripts\bloodhound\vineyards.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -230,6 +247,7 @@
     <Content Include="fonts\icomoon-wines.ttf" />
     <Content Include="fonts\icomoon-wines.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -240,6 +258,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -319,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405230420504_Bottle.resx">
       <DependentUpon>201405230420504_Bottle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405240628200_purchase-nullable-price.resx">
+      <DependentUpon>201405240628200_purchase-nullable-price.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,8 +19,8 @@
                     <td>@Html.DisplayFor(b => bottle.Wine.Vintage)</td>
                     <td>
                         <span class="label label-info" title="Purchased">@bottle.Purchases.Sum(p => p.Quantity)</span>
-                        <span class="label label-danger" title="Drunk">0</span>
-                        <span class="label label-success" title="Remaining">0</span>
+                        <span class="label label-danger" title="Drunk"></span>
+                        <span class="label label-success" title="Remaining">@bottle.Purchases.Sum(p => p.Quantity)</span>
                     </td>
                     <td>
                         <div class="btn-group btn-group-xs">
