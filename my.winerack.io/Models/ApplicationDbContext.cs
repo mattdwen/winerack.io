@@ -3,7 +3,7 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 
 	public class ApplicationDbContext : IdentityDbContext<User> {
 

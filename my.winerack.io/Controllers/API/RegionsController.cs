@@ -1,8 +1,8 @@
-﻿using my.winerack.io.Models;
+﻿using winerack.Models;
 using System.Linq;
 using System.Web.Http;
 
-namespace my.winerack.io.Controllers.API {
+namespace winerack.Controllers.API {
 
 	public class RegionsController : ApiController {
 

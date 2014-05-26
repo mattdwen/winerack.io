@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace my.winerack.io {
+namespace winerack {
 
 	public class BundleConfig {
 

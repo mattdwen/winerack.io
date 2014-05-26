@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using my.winerack.io.Models;
+using winerack.Models;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace my.winerack.io.Controllers {
+namespace winerack.Controllers {
 
 	[Authorize]
 	public class AccountController : Controller {

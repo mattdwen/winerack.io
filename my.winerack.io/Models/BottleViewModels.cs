@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 	public class CreateBottleViewModel {
 		[Required]
 		public string Vineyard { get; set; }

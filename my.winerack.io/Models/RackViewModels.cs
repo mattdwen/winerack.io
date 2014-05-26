@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 	public class RackIndexViewModel {
 		//public IEnumerable<RackIndexWineViewModel> Wines { get; set; }
 	}

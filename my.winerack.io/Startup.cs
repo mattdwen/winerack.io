@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(my.winerack.io.Startup))]
+[assembly: OwinStartupAttribute(typeof(winerack.Startup))]
 
-namespace my.winerack.io {
+namespace winerack {
 
 	public partial class Startup {
 

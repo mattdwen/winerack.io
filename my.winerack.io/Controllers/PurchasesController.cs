@@ -1,4 +1,4 @@
-﻿using my.winerack.io.Models;
+﻿using winerack.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System;
 
-namespace my.winerack.io.Controllers {
+namespace winerack.Controllers {
 
 	public class PurchasesController : Controller {
 

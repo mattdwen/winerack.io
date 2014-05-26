@@ -2,11 +2,11 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using my.winerack.io.Models;
+using winerack.Models;
 using Owin;
 using System;
 
-namespace my.winerack.io {
+namespace winerack {
 
 	public partial class Startup {
 

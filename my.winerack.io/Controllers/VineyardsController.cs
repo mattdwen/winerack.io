@@ -1,10 +1,10 @@
-﻿using my.winerack.io.Models;
+﻿using winerack.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 
-namespace my.winerack.io.Controllers {
+namespace winerack.Controllers {
 
 	[Authorize(Roles = "Administrators")]
 	public class VineyardsController : Controller {

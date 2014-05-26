@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 
 	public class Vineyard {
 

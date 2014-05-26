@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace my.winerack.io {
+namespace winerack {
 
 	public class MvcApplication : System.Web.HttpApplication {
 

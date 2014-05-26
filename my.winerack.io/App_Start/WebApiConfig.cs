@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace my.winerack.io {
+namespace winerack {
 
 	public static class WebApiConfig {
 

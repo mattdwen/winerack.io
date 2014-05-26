@@ -1,4 +1,4 @@
-﻿using my.winerack.io.Models;
+﻿using winerack.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 
-namespace my.winerack.io.Controllers {
+namespace winerack.Controllers {
 
 	[Authorize]
 	public class RackController : Controller {

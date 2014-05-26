@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 
 	public class Purchase {
 

@@ -1,4 +1,4 @@
-﻿using my.winerack.io.Models;
+﻿using winerack.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
-namespace my.winerack.io.Controllers.API {
+namespace winerack.Controllers.API {
 
 	public class VineyardsController : ApiController {
 		private ApplicationDbContext db = new ApplicationDbContext();

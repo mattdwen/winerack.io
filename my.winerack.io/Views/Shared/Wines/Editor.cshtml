@@ -1,9 +1,9 @@
-﻿@model my.winerack.io.Models.Wine
+﻿@model winerack.Models.Wine
 
 <div class="form-group">
     @Html.LabelFor(model => model.Vineyard, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(m => m.VineyardID, new SelectList(my.winerack.io.Models.Vineyard.GetVineyards(), "ID", "Name"), "", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.VineyardID, new SelectList(winerack.Models.Vineyard.GetVineyards(), "ID", "Name"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.VineyardID, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -11,7 +11,7 @@
 <div class="form-group">
     @Html.LabelFor(model => model.Region, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(m => m.RegionID, new SelectList(my.winerack.io.Models.Region.GetRegions(), "ID", "Label"), "", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.RegionID, new SelectList(winerack.Models.Region.GetRegions(), "ID", "Label"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.RegionID, "", new { @class = "text-danger" })
     </div>
 </div>

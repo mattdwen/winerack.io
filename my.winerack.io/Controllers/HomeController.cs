@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace my.winerack.io.Controllers {
+namespace winerack.Controllers {
 	public class HomeController : Controller {
 		#region Actions
 

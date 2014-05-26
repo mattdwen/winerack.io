@@ -1,12 +1,12 @@
-namespace my.winerack.io.Migrations {
+namespace winerack.Migrations {
 
 	using Microsoft.AspNet.Identity.EntityFramework;
-	using my.winerack.io.Models;
+	using winerack.Models;
 	using System.Data.Entity.Migrations;
 	using System.Linq;
 	using System.Threading.Tasks;
 
-	internal sealed class Configuration : DbMigrationsConfiguration<my.winerack.io.Models.ApplicationDbContext> {
+	internal sealed class Configuration : DbMigrationsConfiguration<winerack.Models.ApplicationDbContext> {
 
 		public Configuration() {
 			AutomaticMigrationsEnabled = false;
@@ -37,7 +37,7 @@ namespace my.winerack.io.Migrations {
 
 		#endregion Private Methods
 
-		protected override void Seed(my.winerack.io.Models.ApplicationDbContext context) {
+		protected override void Seed(winerack.Models.ApplicationDbContext context) {
 			// Identity
 			var identityTask = SeedIdentity(context);
 			var identityResult = identityTask.Result;

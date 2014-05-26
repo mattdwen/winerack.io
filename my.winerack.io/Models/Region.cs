@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 	public class Region {
 
 		#region Properties

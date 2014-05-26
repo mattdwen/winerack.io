@@ -1,4 +1,4 @@
-﻿namespace my.winerack.io.Models {
+﻿namespace winerack.Models {
 
 	public class UserDetailsViewModel {
 

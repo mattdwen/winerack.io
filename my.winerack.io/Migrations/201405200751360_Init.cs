@@ -1,4 +1,4 @@
-namespace my.winerack.io.Migrations
+namespace winerack.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace my.winerack.io.Models {
+namespace winerack.Models {
 
 	public class ExternalLoginConfirmationViewModel {
 

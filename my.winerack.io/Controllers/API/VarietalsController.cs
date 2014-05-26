@@ -1,9 +1,9 @@
-﻿using my.winerack.io.Models;
+﻿using winerack.Models;
 using System.Collections.Generic;
 using System.Web.Http;
 using System.Linq;
 
-namespace my.winerack.io.Controllers.API {
+namespace winerack.Controllers.API {
 
 	public class VarietalsController : ApiController {
 		#region Declarations

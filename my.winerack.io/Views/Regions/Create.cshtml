@@ -1,4 +1,4 @@
-﻿@model my.winerack.io.Models.Region
+﻿@model winerack.Models.Region
 
 @{
     ViewBag.Title = "Create";
@@ -28,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Country, new SelectList(my.winerack.io.Models.Country.GetCountries(), "ID", "Name"), "", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Country, new SelectList(winerack.Models.Country.GetCountries(), "ID", "Name"), "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
             </div>
         </div>
