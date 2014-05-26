@@ -1,0 +1,7 @@
+﻿@model System.DateTime?
+
+@if (Model == null) {
+    <em>Unknown</em>
+} else {
+    @Model.Value.ToLongDateString();
+}

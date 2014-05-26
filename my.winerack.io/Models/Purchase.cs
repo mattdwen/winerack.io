@@ -18,11 +18,10 @@ namespace winerack.Models {
 		[Range(1,int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
 		public int Quantity { get; set; }
 
-		[Required]
 		[Display(Name="Date")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-		public DateTime PurchasedOn { get; set; }
+		public DateTime? PurchasedOn { get; set; }
 
 		[Column(TypeName="Money")]
 		[Display(Name = "$ per bottle")]

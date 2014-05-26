@@ -14,7 +14,7 @@
         <dd>@Model.Bottle.Wine.Description</dd>
 
         <dt>@Html.DisplayNameFor(m => m.PurchasedOn)</dt>
-        <dd>@Model.PurchasedOn.ToLongDateString()</dd>
+        <dd>@Html.DisplayFor(m => m.PurchasedOn)</dd>
 
         <dt>@Html.DisplayNameFor(m => m.Quantity)</dt>
         <dd>@Html.DisplayFor(m => m.Quantity)</dd>

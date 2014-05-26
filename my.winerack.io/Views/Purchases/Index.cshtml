@@ -18,7 +18,7 @@
 
     @foreach (var item in Model) {
         <tr>
-            <td>@item.PurchasedOn.ToLongDateString()</td>
+            <td>@Html.DisplayFor(modelItem => item.PurchasedOn)</td>
             <td>@Html.DisplayFor(modelItem => item.Bottle.Wine.Description)</td>
             <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
             <td>@Html.DisplayFor(modelItem => item.PurchasePrice)</td>

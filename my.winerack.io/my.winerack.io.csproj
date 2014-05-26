@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201405260530441_stored-bottle.Designer.cs">
       <DependentUpon>201405260530441_stored-bottle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405260553356_null-purchase-date.cs" />
+    <Compile Include="Migrations\201405260553356_null-purchase-date.Designer.cs">
+      <DependentUpon>201405260553356_null-purchase-date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -258,6 +262,7 @@
     <Content Include="fonts\icomoon-wines.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
+    <Content Include="Scripts\bottles\details.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -334,10 +339,10 @@
     <Content Include="Views\Bottles\Rack.cshtml" />
     <Content Include="Views\Purchases\Create.cshtml" />
     <Content Include="Views\Purchases\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\StoredBottles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -361,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405260530441_stored-bottle.resx">
       <DependentUpon>201405260530441_stored-bottle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405260553356_null-purchase-date.resx">
+      <DependentUpon>201405260553356_null-purchase-date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

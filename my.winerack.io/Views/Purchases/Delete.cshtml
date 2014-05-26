@@ -11,11 +11,11 @@
     <h4>Purchase</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(m => m.PurchasedOn)</dt>
-        <dd>@Model.PurchasedOn.ToLongDateString()</dd>
-
         <dt>@Html.DisplayNameFor(m => m.Bottle.Wine)</dt>
         <dd>@Model.Bottle.Wine.Description</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.PurchasedOn)</dt>
+        <dd>@Html.DisplayFor(m => m.PurchasedOn)</dd>
 
         <dt>@Html.DisplayNameFor(m => m.Quantity)</dt>
         <dd>@Model.Quantity</dd>
