@@ -203,6 +203,10 @@
     <Compile Include="Migrations\201405240628200_purchase-nullable-price.Designer.cs">
       <DependentUpon>201405240628200_purchase-nullable-price.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405260438496_purchase-notes.cs" />
+    <Compile Include="Migrations\201405260438496_purchase-notes.Designer.cs">
+      <DependentUpon>201405260438496_purchase-notes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -344,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405240628200_purchase-nullable-price.resx">
       <DependentUpon>201405240628200_purchase-nullable-price.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405260438496_purchase-notes.resx">
+      <DependentUpon>201405260438496_purchase-notes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -68,7 +68,7 @@ namespace winerack.Controllers {
 		// POST: Purchases/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice")] Purchase purchase) {
+		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice,Notes")] Purchase purchase) {
 			if (ModelState.IsValid) {
 				db.Purchases.Add(purchase);
 				db.SaveChanges();
@@ -99,7 +99,7 @@ namespace winerack.Controllers {
 		// POST: Purchases/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit([Bind(Include = "ID,BottleID,Quantity,PurchasedOn,PurchasePrice")] Purchase purchase) {
+		public ActionResult Edit([Bind(Include = "ID,BottleID,Quantity,PurchasedOn,PurchasePrice,Notes")] Purchase purchase) {
 			if (ModelState.IsValid) {
 				db.Entry(purchase).State = EntityState.Modified;
 				db.SaveChanges();

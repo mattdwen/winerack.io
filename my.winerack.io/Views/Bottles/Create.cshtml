@@ -100,6 +100,14 @@
                     @Html.ValidationMessageFor(m => m.PurchaseValue, "", new { @class = "text-danger"})
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.PurchaseNotes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.PurchaseNotes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.PurchaseNotes, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </fieldset>
 
         <div class="form-group">

@@ -29,6 +29,8 @@ namespace winerack.Models {
 		[DataType(DataType.Currency)]
 		public decimal? PurchasePrice { get; set; }
 
+		public string Notes { get; set; }
+
 		#endregion Properties
 
 		#region Relationships

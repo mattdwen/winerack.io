@@ -41,5 +41,9 @@ namespace winerack.Models {
 		[DisplayFormat(DataFormatString = "{0:C}")]
 		[DataType(DataType.Currency)]
 		public decimal? PurchaseValue { get; set; }
+
+		[Display(Name = "Notes")]
+		[DataType(DataType.MultilineText)]
+		public string PurchaseNotes { get; set; }
 	}
 }

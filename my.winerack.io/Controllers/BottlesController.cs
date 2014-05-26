@@ -170,7 +170,8 @@ namespace winerack.Controllers {
 					BottleID = bottle.ID,
 					PurchasedOn = model.PurchaseDate,
 					PurchasePrice = model.PurchaseValue,
-					Quantity = model.PurchaseQuantity
+					Quantity = model.PurchaseQuantity,
+					Notes = model.PurchaseNotes
 				};
 
 				db.Purchases.Add(purchase);
