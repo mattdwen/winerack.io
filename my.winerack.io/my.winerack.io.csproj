@@ -184,6 +184,7 @@
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\RackController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\StoredBottlesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VineyardsController.cs" />
     <Compile Include="Controllers\WinesController.cs" />
@@ -207,6 +208,10 @@
     <Compile Include="Migrations\201405260438496_purchase-notes.Designer.cs">
       <DependentUpon>201405260438496_purchase-notes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405260530441_stored-bottle.cs" />
+    <Compile Include="Migrations\201405260530441_stored-bottle.Designer.cs">
+      <DependentUpon>201405260530441_stored-bottle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -217,6 +222,7 @@
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\StoredBottle.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Models\Vineyard.cs" />
     <Compile Include="Models\Wine.cs" />
@@ -331,6 +337,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\StoredBottles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -351,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405260438496_purchase-notes.resx">
       <DependentUpon>201405260438496_purchase-notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405260530441_stored-bottle.resx">
+      <DependentUpon>201405260530441_stored-bottle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

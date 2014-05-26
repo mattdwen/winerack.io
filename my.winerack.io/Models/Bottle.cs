@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 
 namespace winerack.Models {
 
 	public class Bottle {
+
+		#region Constructor
+
+		public Bottle() {
+			StoredBottles = new List<StoredBottle>();
+		}
+
+		#endregion Constructor
 
 		#region Properties
 
@@ -36,6 +43,8 @@ namespace winerack.Models {
 
 		[Display(Name = "Purchased")]
 		public virtual ICollection<Purchase> Purchases { get; set; }
+
+		public virtual ICollection<StoredBottle> StoredBottles { get; set; }
 
 		#endregion Relationships
 	}

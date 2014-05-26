@@ -173,8 +173,16 @@ namespace winerack.Controllers {
 					Quantity = model.PurchaseQuantity,
 					Notes = model.PurchaseNotes
 				};
-
 				db.Purchases.Add(purchase);
+
+				// Add a stored bottle per quantity
+				for (int i = 0; i < purchase.Quantity; i++) {
+					db.StoredBottles.Add(new StoredBottle {
+						BottleID = purchase.BottleID
+					});
+				}
+
+				
 				db.SaveChanges();
 				return RedirectToAction("Details", new { id = bottle.ID });
 			}

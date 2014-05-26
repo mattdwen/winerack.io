@@ -70,8 +70,20 @@ namespace winerack.Controllers {
 		[ValidateAntiForgeryToken]
 		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice,Notes")] Purchase purchase) {
 			if (ModelState.IsValid) {
+				// Add the purchase
 				db.Purchases.Add(purchase);
+
+				// Add a stored bottle per quantity
+				for (int i = 0; i < purchase.Quantity; i++) {
+					db.StoredBottles.Add(new StoredBottle {
+						BottleID = purchase.BottleID
+					});
+				}
+
+				// Commit
 				db.SaveChanges();
+
+				// Redirect
 				return RedirectToAction("Index");
 			}
 
