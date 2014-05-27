@@ -5,6 +5,7 @@ using winerack.Models;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace winerack.Controllers {
 
@@ -78,6 +79,8 @@ namespace winerack.Controllers {
 		// GET: /Account/Register
 		[AllowAnonymous]
 		public ActionResult Register() {
+			return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
 			return View();
 		}
 
@@ -86,6 +89,8 @@ namespace winerack.Controllers {
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Register(RegisterViewModel model) {
+			return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
 			if (ModelState.IsValid) {
 				var user = new User() { UserName = model.Email, Email = model.Email };
 				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
