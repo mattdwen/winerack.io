@@ -8,6 +8,7 @@ using System;
 
 namespace winerack.Controllers {
 
+	[Authorize]
 	public class BottlesController : Controller {
 
 		#region Declarations
