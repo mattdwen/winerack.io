@@ -3,6 +3,14 @@ my.winerack.io
 
 Track your wine collection
 
+Configuration
+-------------
+
+ASP.Net Identity is configured to send account emails with SMTP via mailgun.org. The following `appSettings` are required for authentication:
+
+ - `smtp:user`
+ - `smtp:password`
+
 Database Seed
 -------------
 

@@ -5,6 +5,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.DataProtection;
 using winerack.Models;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net.Mime;
+using System;
+using System.Configuration;
 
 namespace winerack {
 	// Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
@@ -87,7 +91,23 @@ namespace winerack {
 	public class EmailService : IIdentityMessageService {
 
 		public Task SendAsync(IdentityMessage message) {
-			// Plug in your email service here to send an email.
+			string text = message.Body;
+			string html = message.Body;
+			//do whatever you want to the message        
+			MailMessage msg = new MailMessage();
+			msg.From = new MailAddress("hello@winerack.io", "winerack.io");
+			msg.To.Add(new MailAddress(message.Destination));
+			msg.Subject = message.Subject;
+			msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
+			msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
+
+			SmtpClient smtpClient = new SmtpClient("smtp.mailgun.org");
+			string emailUser = ConfigurationManager.AppSettings["smtp:user"];
+			string emailPassword = ConfigurationManager.AppSettings["smtp:password"];
+			System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(emailUser, emailPassword);
+			smtpClient.Credentials = credentials;
+			smtpClient.Send(msg);
+
 			return Task.FromResult(0);
 		}
 	}

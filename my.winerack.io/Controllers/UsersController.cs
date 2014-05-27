@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using winerack.Models;
+using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using winerack.Models;
 
 namespace winerack.Controllers {
 
@@ -20,9 +20,8 @@ namespace winerack.Controllers {
 			RoleManager = new ApplicationRoleManager(new RoleStore<IdentityRole>(db));
 		}
 
-		public UsersController(ApplicationUserManager userManager, ApplicationRoleManager roleManager) {
+		public UsersController(ApplicationUserManager userManager) {
 			UserManager = userManager;
-			RoleManager = roleManager;
 		}
 
 		#endregion Constructor
@@ -61,6 +60,25 @@ namespace winerack.Controllers {
 
 		#endregion Properties
 
+		#region Private Methods
+
+		private void AddErrors(IdentityResult result) {
+			foreach (var error in result.Errors) {
+				ModelState.AddModelError("", error);
+			}
+		}
+
+		private async Task SendInvite(string userId) {
+			string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+			var callbackUrl = Url.Action("AcceptInvite", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
+			await UserManager.SendEmailAsync(
+				userId,
+				"winerack.io invitation",
+				"Please create your account by clicking <a href=\"" + callbackUrl + "\">here</a>. When prompted to reset your password, enter your email address and desired password.");
+		}
+
+		#endregion Private Methods
+
 		#region Actions
 
 		#region Index
@@ -89,7 +107,9 @@ namespace winerack.Controllers {
 			var model = new UserDetailsViewModel {
 				Id = id,
 				Administrator = UserManager.IsInRole(id, Helpers.ADMINISTRATOR_GROUP),
-				Email = user.Email
+				Email = user.Email,
+				Name = user.FirstName + " " + user.LastName,
+				Verified = user.EmailConfirmed
 			};
 
 			return View(model);
@@ -98,6 +118,7 @@ namespace winerack.Controllers {
 		#endregion Details
 
 		#region Administrator
+
 		public async Task<ActionResult> Administrator(string id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -123,7 +144,57 @@ namespace winerack.Controllers {
 
 			return RedirectToAction("Details", new { id = id });
 		}
-		#endregion
+
+		#endregion Administrator
+
+		#region Invite
+
+		// GET: Users/invite
+		public ActionResult Invite() {
+			return View();
+		}
+
+		// POST: Users/invite
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> Invite(InviteUserViewModel model) {
+			if (ModelState.IsValid) {
+				var user = new User {
+					Email = model.Email,
+					UserName = model.Email,
+					FirstName = model.FirstName,
+					LastName = model.LastName
+				};
+
+				IdentityResult result = await UserManager.CreateAsync(user);
+
+				if (result.Succeeded) {
+					await SendInvite(user.Id);
+					return RedirectToAction("Index");
+				}
+
+				AddErrors(result);
+			}
+
+			return View(model);
+		}
+
+		// Get: Users/ReInvite/5
+		public async Task<ActionResult> ReInvite(string id) {
+			if (id == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var user = db.Users.Find(id);
+			if (user == null) {
+				return HttpNotFound();
+			}
+
+			await SendInvite(user.Id);
+			return RedirectToAction("Details", new { id = user.Id });
+		}
+
+		#endregion Invite
 
 		#endregion Actions
 

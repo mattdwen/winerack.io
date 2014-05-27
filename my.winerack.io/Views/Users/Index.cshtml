@@ -6,17 +6,33 @@
 
 <h2>Users</h2>
 
+<p>
+    @Html.ActionLink("Invite", "Invite", null, new { @class = "btn btn-default" })
+</p>
+
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayNameFor(m => m.Email)</th>
+        <th>@Html.DisplayNameFor(m => m.FirstName)</th>
+        <th>@Html.DisplayNameFor(m => m.LastName)</th>
+        <th>Verified</th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var user in Model) {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(m => user.Email)</td>
+            <td>@Html.DisplayFor(m => user.FirstName)</td>
+            <td>@Html.DisplayFor(m => user.LastName)</td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @if (user.EmailConfirmed) {
+                    <i class="fa fa-check"></i>
+                } else {
+                    <i class="fa fa-times"></i>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = user.Id })
             </td>
         </tr>
     }

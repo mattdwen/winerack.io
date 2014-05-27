@@ -10,8 +10,14 @@
     <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(model => model.Id)</dt>
-        <dd>@Html.DisplayFor(model => model.Id)</dd>
+        <dt>@Html.DisplayNameFor(m => m.Id)</dt>
+        <dd>@Html.DisplayFor(m => m.Id)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Name)</dt>
+        <dd>@Html.DisplayFor(m => m.Name)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Email)</dt>
+        <dd>@Html.DisplayFor(m => m.Email)</dd>
 
         <dt>Administrator</dt>
         <dd>
@@ -23,8 +29,14 @@
             @Html.ActionLink("change", "Administrator", new { id = Model.Id })
         </dd>
 
-        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
-        <dd>@Html.DisplayFor(model => model.Email)</dd>
+        <dt>Verified</dt>
+        <dd>
+            @if (Model.Verified) {
+                <i class="fa fa-check"></i>
+            } else {
+                <i class="fa fa-times"></i> @Html.ActionLink("resend", "ReInvite", new { id = Model.Id })
+            }
+        </dd>
     </dl>
 </div>
 <p>
