@@ -192,33 +192,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers.cs" />
-    <Compile Include="Migrations\201405200751360_Init.cs" />
-    <Compile Include="Migrations\201405200751360_Init.Designer.cs">
-      <DependentUpon>201405200751360_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405230420504_Bottle.cs" />
-    <Compile Include="Migrations\201405230420504_Bottle.Designer.cs">
-      <DependentUpon>201405230420504_Bottle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405240628200_purchase-nullable-price.cs" />
-    <Compile Include="Migrations\201405240628200_purchase-nullable-price.Designer.cs">
-      <DependentUpon>201405240628200_purchase-nullable-price.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405260438496_purchase-notes.cs" />
-    <Compile Include="Migrations\201405260438496_purchase-notes.Designer.cs">
-      <DependentUpon>201405260438496_purchase-notes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405260530441_stored-bottle.cs" />
-    <Compile Include="Migrations\201405260530441_stored-bottle.Designer.cs">
-      <DependentUpon>201405260530441_stored-bottle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405260553356_null-purchase-date.cs" />
-    <Compile Include="Migrations\201405260553356_null-purchase-date.Designer.cs">
-      <DependentUpon>201405260553356_null-purchase-date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405270315568_user-names.cs" />
-    <Compile Include="Migrations\201405270315568_user-names.Designer.cs">
-      <DependentUpon>201405270315568_user-names.cs</DependentUpon>
+    <Compile Include="Migrations\201405280844439_init.cs" />
+    <Compile Include="Migrations\201405280844439_init.Designer.cs">
+      <DependentUpon>201405280844439_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -357,26 +333,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405200751360_Init.resx">
-      <DependentUpon>201405200751360_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405230420504_Bottle.resx">
-      <DependentUpon>201405230420504_Bottle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405240628200_purchase-nullable-price.resx">
-      <DependentUpon>201405240628200_purchase-nullable-price.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405260438496_purchase-notes.resx">
-      <DependentUpon>201405260438496_purchase-notes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405260530441_stored-bottle.resx">
-      <DependentUpon>201405260530441_stored-bottle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405260553356_null-purchase-date.resx">
-      <DependentUpon>201405260553356_null-purchase-date.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405270315568_user-names.resx">
-      <DependentUpon>201405270315568_user-names.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405280844439_init.resx">
+      <DependentUpon>201405280844439_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
