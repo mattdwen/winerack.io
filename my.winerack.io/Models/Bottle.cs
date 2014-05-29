@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace winerack.Models {
 
@@ -10,7 +11,6 @@ namespace winerack.Models {
 		#region Constructor
 
 		public Bottle() {
-			StoredBottles = new List<StoredBottle>();
 		}
 
 		#endregion Constructor
@@ -33,6 +33,13 @@ namespace winerack.Models {
 		[Display(Name = "Added")]
 		public DateTime CreatedOn { get; set; }
 
+		[NotMapped]
+		public int NumberOfBottles {
+			get {
+				return Purchases.Sum(p => p.StoredBottles.Count);
+			}
+		}
+
 		#endregion Properties
 
 		#region Relationships
@@ -43,8 +50,6 @@ namespace winerack.Models {
 
 		[Display(Name = "Purchased")]
 		public virtual ICollection<Purchase> Purchases { get; set; }
-
-		public virtual ICollection<StoredBottle> StoredBottles { get; set; }
 
 		#endregion Relationships
 	}

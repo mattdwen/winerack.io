@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using winerack.Models;
 using System;
 using System.Data.Entity;
+using System.Linq;
 
 namespace winerack.Controllers {
 
@@ -29,14 +30,15 @@ namespace winerack.Controllers {
 				return HttpNotFound();
 			}
 
-			foreach (var stored in bottle.StoredBottles) {
+			var storedBottles = bottle.Purchases.SelectMany(p => p.StoredBottles);
+			foreach (var stored in storedBottles) {
 				stored.Location = form["bottle_" + stored.ID];
 				db.Entry(stored).State = EntityState.Modified;
 			}
 
 			db.SaveChanges();
 
-			return Redirect(Url.RouteUrl(new { controller = "Bottles", action = "Details", id = BottleID }) + "#storage");
+			return Redirect(Url.RouteUrl(new { controller = "Bottles", action = "Details", id = BottleID }) + "#bottles");
 		}
 		#endregion
 		#endregion

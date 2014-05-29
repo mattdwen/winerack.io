@@ -10,7 +10,7 @@
     <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
     <li><a href="#purchases" data-toggle="tab">Purchases</a></li>
     @if (Model.Purchases.Count > 0) {
-        <li><a href="#storage" data-toggle="tab">Storage</a></li>
+        <li><a href="#bottles" data-toggle="tab">Bottles</a></li>
     }
 </ul>
 
@@ -27,7 +27,7 @@
             <dd>@Html.DisplayFor(m => m.Wine.Vintage)</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Purchases)</dt>
-            <dd>@Model.Purchases.Sum(p => p.Quantity)</dd>
+            <dd>@Model.NumberOfBottles</dd>
         </dl>
 
         <a class="btn btn-link" href="/Bottles">Back to collection</a>
@@ -48,7 +48,7 @@
                     @foreach (var purchase in Model.Purchases) {
                         <tr>
                             <td>@Html.DisplayFor(p => purchase.PurchasedOn)</td>
-                            <td>@Html.DisplayFor(p => purchase.Quantity)</td>
+                            <td>@purchase.StoredBottles.Count</td>
                             <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
                             <td>
                                 @Html.ActionLink("Details", "Details", new { controller = "Purchases", id = purchase.ID }) | 
@@ -71,34 +71,45 @@
     </div>
 
     @if (Model.Purchases.Count > 0) {
-        <div class="tab-pane" id="storage">
+        <div class="tab-pane" id="bottles">
             @using (Html.BeginForm("Update", "StoredBottles")) {
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="BottleID" value="@Model.ID" />
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Bottle</th>
+                            <th>Stored</th>
+                            <th>Purchased</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ var i = 1; }
+                        @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles)) {
+                            <tr>
+                                <td>#@i</td>
+                                <td>
+                                    <input class="form-control"
+                                           id="bottle_@stored.ID"
+                                           name="bottle_@stored.ID"
+                                           type="text"
+                                           value="@stored.Location"
+                                           placeholder="Location" />
+                                </td>
+                                <td>@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
+                                <td>
 
-                <div class="form-horizontal">
-                    @{ var i = 1; }
-                    @foreach (var stored in Model.StoredBottles) {
-                        <div class="form-group">
-                            <label class="control-label col-md-2" for="bottle_@stored.ID">Bottle #@i</label>
-                            <div class="col-md-10">
-                                <input class="form-control"
-                                       id="bottle_@stored.ID"
-                                       name="bottle_@stored.ID"
-                                       type="text"
-                                       value="@stored.Location"
-                                       placeholder="Location" />
-                            </div>
-                        </div>
-                        i++;
-                    }
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+                
+                <button class="btn btn-success" type="submit">Save storage details</button>
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-2">
-                            <button class="btn btn-success" type="submit">Save storage details</button>
-                        </div>
-                    </div>
-                </div>
             }
         </div>
     }

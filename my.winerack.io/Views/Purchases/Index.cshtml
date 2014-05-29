@@ -20,7 +20,7 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => item.PurchasedOn)</td>
             <td>@Html.DisplayFor(modelItem => item.Bottle.Wine.Description)</td>
-            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+            <td>@item.StoredBottles.Count</td>
             <td>@Html.DisplayFor(modelItem => item.PurchasePrice)</td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |

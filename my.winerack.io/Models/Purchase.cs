@@ -7,6 +7,12 @@ namespace winerack.Models {
 
 	public class Purchase {
 
+		#region Constructor
+		public Purchase() {
+			StoredBottles = new List<StoredBottle>();
+		}
+		#endregion
+
 		#region Properties
 
 		public int ID { get; set; }
@@ -15,6 +21,7 @@ namespace winerack.Models {
 		[ForeignKey("Bottle")]
 		public int BottleID { get; set; }
 
+		[NotMapped]
 		[Range(1,int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
 		public int Quantity { get; set; }
 
@@ -36,6 +43,8 @@ namespace winerack.Models {
 		#region Relationships
 
 		public virtual Bottle Bottle { get; set; }
+
+		public virtual ICollection<StoredBottle> StoredBottles { get; set; }
 
 		#endregion Relationships
 	}

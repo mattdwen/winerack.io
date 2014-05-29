@@ -8,8 +8,8 @@ namespace winerack.Models {
 
 		public int ID { get; set; }
 
-		[ForeignKey("Bottle")]
-		public int BottleID { get; set; }
+		[ForeignKey("Purchase")]
+		public int PurchaseID { get; set; }
 
 		public string Location { get; set; }
 
@@ -17,7 +17,7 @@ namespace winerack.Models {
 
 		#region Relationships
 
-		public virtual Bottle Bottle { get; set; }
+		public virtual Purchase Purchase { get; set; }
 
 		#endregion Relationships
 	}
