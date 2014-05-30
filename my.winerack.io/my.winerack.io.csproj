@@ -182,7 +182,6 @@
     <Compile Include="Controllers\BottlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
-    <Compile Include="Controllers\RackController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StoredBottlesController.cs" />
     <Compile Include="Controllers\TastingsController.cs" />
@@ -327,9 +326,6 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Account\RegisterSent.cshtml" />
-    <Content Include="Views\Rack\AddWine.cshtml" />
-    <Content Include="Views\Rack\Index.cshtml" />
-    <Content Include="Views\Rack\Collection.cshtml" />
     <Content Include="Views\Bottles\Create.cshtml" />
     <Content Include="Views\Bottles\Delete.cshtml" />
     <Content Include="Views\Bottles\Details.cshtml" />
