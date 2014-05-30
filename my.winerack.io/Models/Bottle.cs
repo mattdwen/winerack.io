@@ -34,9 +34,26 @@ namespace winerack.Models {
 		public DateTime CreatedOn { get; set; }
 
 		[NotMapped]
+		[Display(Name = "Purchased")]
 		public int NumberOfBottles {
 			get {
 				return Purchases.Sum(p => p.StoredBottles.Count);
+			}
+		}
+
+		[NotMapped]
+		[Display(Name = "Drunk")]
+		public int NumberDrunk {
+			get {
+				return Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Tasting != null).Count();
+			}
+		}
+
+		[NotMapped]
+		[Display(Name = "Remaining")]
+		public int NumberRemaining {
+			get {
+				return NumberOfBottles - NumberDrunk;
 			}
 		}
 

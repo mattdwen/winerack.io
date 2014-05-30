@@ -26,8 +26,14 @@
             <dt>@Html.DisplayNameFor(m => m.Wine.Vintage)</dt>
             <dd>@Html.DisplayFor(m => m.Wine.Vintage)</dd>
 
-            <dt>@Html.DisplayNameFor(m => m.Purchases)</dt>
-            <dd>@Model.NumberOfBottles</dd>
+            <dt>@Html.DisplayNameFor(m => m.NumberOfBottles)</dt>
+            <dd><span class="label label-info">@Model.NumberOfBottles</span></dd>
+
+            <dt>@Html.DisplayNameFor(m => m.NumberDrunk)</dt>
+            <dd><span class="label label-danger">@Model.NumberDrunk</span></dd>
+
+            <dt>@Html.DisplayNameFor(m => m.NumberRemaining)</dt>
+            <dd><span class="label label-success">@Model.NumberRemaining</span></dd>
         </dl>
 
         <a class="btn btn-link" href="/Bottles">Back to collection</a>
