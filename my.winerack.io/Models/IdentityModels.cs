@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace winerack.Models {
 	public class User : IdentityUser {
 
 		#region Properties
+
+		public DateTime CreatedOn { get; set; }
 
 		[MaxLength(255)]
 		public string FirstName { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace winerack.Models {
 
@@ -7,6 +8,10 @@ namespace winerack.Models {
 		#region Properties
 
 		public string Id { get; set; }
+
+		[Display(Name = "Joined")]
+		[DataType(DataType.Date)]
+		public DateTime CreatedOn { get; set; }
 
 		public bool Administrator { get; set; }
 

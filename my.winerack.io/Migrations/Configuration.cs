@@ -5,6 +5,7 @@ namespace winerack.Migrations {
 	using System.Data.Entity.Migrations;
 	using System.Linq;
 	using System.Threading.Tasks;
+	using System;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<winerack.Models.ApplicationDbContext> {
 
@@ -27,8 +28,11 @@ namespace winerack.Migrations {
 			if (!context.Users.Any(u => u.Email == adminEmail)) {
 				var manager = ApplicationUserManager.Create(context);
 				var user = new User {
+					CreatedOn = DateTime.Now,
 					Email = adminEmail,
 					UserName = adminEmail,
+					FirstName = "Winerack",
+					LastName = "Admin",
 					EmailConfirmed = true
 				};
 

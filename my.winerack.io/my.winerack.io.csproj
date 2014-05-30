@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201405290532462_remove-bottle-stored.Designer.cs">
       <DependentUpon>201405290532462_remove-bottle-stored.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405300402302_user-created-date.cs" />
+    <Compile Include="Migrations\201405300402302_user-created-date.Designer.cs">
+      <DependentUpon>201405300402302_user-created-date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405290532462_remove-bottle-stored.resx">
       <DependentUpon>201405290532462_remove-bottle-stored.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405300402302_user-created-date.resx">
+      <DependentUpon>201405300402302_user-created-date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

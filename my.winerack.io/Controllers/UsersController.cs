@@ -106,6 +106,7 @@ namespace winerack.Controllers {
 
 			var model = new UserDetailsViewModel {
 				Id = id,
+				CreatedOn = user.CreatedOn,
 				Administrator = UserManager.IsInRole(id, MvcApplication.ADMINISTRATOR_GROUP),
 				Email = user.Email,
 				Name = user.FirstName + " " + user.LastName,
@@ -160,6 +161,7 @@ namespace winerack.Controllers {
 		public async Task<ActionResult> Invite(InviteUserViewModel model) {
 			if (ModelState.IsValid) {
 				var user = new User {
+					CreatedOn = DateTime.Now,
 					Email = model.Email,
 					UserName = model.Email,
 					FirstName = model.FirstName,
