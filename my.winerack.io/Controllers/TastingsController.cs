@@ -39,7 +39,22 @@ namespace winerack.Controllers {
 
 		#region Create
 
-		// GET: Tastings/Create
+		// GET: /Tastings/CreateFromBottle?bottleId=5
+		[BottleAuthentication(IdParameter="bottleId")]
+		public ActionResult CreateFromBottle(int? bottleId) {
+			if (bottleId == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var bottle = db.Bottles.Find(bottleId);
+			if (bottle == null) {
+				return HttpNotFound();
+			}
+
+			return View(bottle);
+		}
+
+		// GET: Tastings/Create/?storedBottleId=5
 		[StoredBottleAuthenticationAttribute(IdParameter = "storedBottleId")]
 		public ActionResult Create(int? storedBottleId) {
 			if (storedBottleId == null) {

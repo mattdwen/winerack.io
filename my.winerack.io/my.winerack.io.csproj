@@ -344,6 +344,7 @@
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Tastings\Create.cshtml" />
     <Content Include="Views\Tastings\Details.cshtml" />
+    <Content Include="Views\Tastings\CreateFromBottle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
