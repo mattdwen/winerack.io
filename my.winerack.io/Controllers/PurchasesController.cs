@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System;
+using winerack.Helpers.Authentication;
 
 namespace winerack.Controllers {
 
@@ -34,6 +35,7 @@ namespace winerack.Controllers {
 
 		#region Details
 		// GET: Purchases/Details/5
+		[PurchaseAuthenticationAttribute]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -95,6 +97,7 @@ namespace winerack.Controllers {
 		#region Edit
 
 		// GET: Purchases/Edit/5
+		[PurchaseAuthenticationAttribute]
 		public ActionResult Edit(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,6 +113,7 @@ namespace winerack.Controllers {
 		// POST: Purchases/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[PurchaseAuthenticationAttribute]
 		public ActionResult Edit([Bind(Include = "ID,BottleID,PurchasedOn,PurchasePrice,Notes")] Purchase purchase) {
 			if (ModelState.IsValid) {
 				db.Entry(purchase).State = EntityState.Modified;
@@ -125,6 +129,7 @@ namespace winerack.Controllers {
 		#region Delete
 
 		// GET: Purchases/Delete/5
+		[PurchaseAuthenticationAttribute]
 		public ActionResult Delete(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -139,6 +144,7 @@ namespace winerack.Controllers {
 		// POST: Purchases/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
+		[PurchaseAuthenticationAttribute]
 		public ActionResult DeleteConfirmed(int id) {
 			Purchase purchase = db.Purchases.Find(id);
 			db.Purchases.Remove(purchase);

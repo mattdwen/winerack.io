@@ -15,10 +15,10 @@ namespace winerack.Migrations {
 		#region Private Methods
 
 		private async Task<bool> SeedIdentity(ApplicationDbContext context) {
-			if (!context.Roles.Any(r => r.Name == Helpers.ADMINISTRATOR_GROUP)) {
+			if (!context.Roles.Any(r => r.Name == MvcApplication.ADMINISTRATOR_GROUP)) {
 				var store = new RoleStore<IdentityRole>(context);
 				var manager = new ApplicationRoleManager(store);
-				var role = new IdentityRole { Name = Helpers.ADMINISTRATOR_GROUP };
+				var role = new IdentityRole { Name = MvcApplication.ADMINISTRATOR_GROUP };
 
 				await manager.CreateAsync(role);
 			}
@@ -33,7 +33,7 @@ namespace winerack.Migrations {
 				};
 
 				var result = await manager.CreateAsync(user, "P@ssw0rd");
-				await manager.AddToRoleAsync(user.Id, Helpers.ADMINISTRATOR_GROUP);
+				await manager.AddToRoleAsync(user.Id, MvcApplication.ADMINISTRATOR_GROUP);
 			}
 
 			return true;

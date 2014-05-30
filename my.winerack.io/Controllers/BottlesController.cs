@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System;
+using winerack.Helpers.Authentication;
 
 namespace winerack.Controllers {
 
@@ -131,6 +132,7 @@ namespace winerack.Controllers {
 		#region Details
 
 		// GET: Bottles/Details/5
+		[BottleAuthenticationAttribute]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -195,6 +197,7 @@ namespace winerack.Controllers {
 		#region Edit
 
 		// GET: Bottles/Edit/5
+		[BottleAuthenticationAttribute]
 		public ActionResult Edit(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -211,6 +214,7 @@ namespace winerack.Controllers {
 		// POST: Bottles/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[BottleAuthenticationAttribute]
 		public ActionResult Edit([Bind(Include = "ID,WineID,OwnerID,CreatedOn")] Bottle bottle) {
 			if (ModelState.IsValid) {
 				db.Entry(bottle).State = EntityState.Modified;
@@ -227,6 +231,7 @@ namespace winerack.Controllers {
 		#region Delete
 
 		// GET: Bottles/Delete/5
+		[BottleAuthenticationAttribute]
 		public ActionResult Delete(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -241,6 +246,7 @@ namespace winerack.Controllers {
 		// POST: Bottles/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
+		[BottleAuthenticationAttribute]
 		public ActionResult DeleteConfirmed(int id) {
 			Bottle bottle = db.Bottles.Find(id);
 			db.Bottles.Remove(bottle);

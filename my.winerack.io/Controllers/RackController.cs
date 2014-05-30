@@ -1,10 +1,10 @@
-﻿using winerack.Models;
+﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+using winerack.Models;
 
 namespace winerack.Controllers {
 
@@ -15,23 +15,29 @@ namespace winerack.Controllers {
 
 		private ApplicationDbContext db = new ApplicationDbContext();
 
-		#endregion
+		#endregion Declarations
 
 		#region Private Methods
+
 		private IEnumerable<Wine> WinesForSelectList() {
 			return db.Wines.Include("Vineyard");
 		}
-		#endregion
+
+		#endregion Private Methods
 
 		#region Actions
+
 		#region Index
+
 		// GET: Rack
 		public ActionResult Index() {
 			return View();
 		}
-		#endregion
+
+		#endregion Index
 
 		#region Add Wine
+
 		// GET: AddWine
 		public ActionResult AddWine() {
 			var model = new AddWineViewModel {
@@ -84,11 +90,15 @@ namespace winerack.Controllers {
 
 			return View(model);
 		}
-		#endregion
-		#endregion
+
+		#endregion Add Wine
+
+		#endregion Actions
 
 		#region Partials
+
 		#region Collection
+
 		public PartialViewResult Collection() {
 			var userId = User.Identity.GetUserId();
 
@@ -103,7 +113,9 @@ namespace winerack.Controllers {
 
 			return PartialView(bottles);
 		}
-		#endregion
-		#endregion
+
+		#endregion Collection
+
+		#endregion Partials
 	}
 }

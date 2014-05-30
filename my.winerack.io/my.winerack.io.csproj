@@ -191,7 +191,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers.cs" />
+    <Compile Include="Helpers\Authentication\BottleAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\PurchaseAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\StoreBottleAuthenticationAttribute.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>
@@ -332,6 +334,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
     <Content Include="Views\Users\Invite.cshtml" />
     <Content Include="Views\StoredBottles\Delete.cshtml" />
+    <Content Include="Views\Home\AccessDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

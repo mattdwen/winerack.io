@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using winerack.Helpers.Authentication;
 using winerack.Models;
 
 namespace winerack.Controllers {
@@ -22,6 +23,7 @@ namespace winerack.Controllers {
 		// POST: storedbottles/update
 		[HttpPost]
 		[ValidateAntiForgeryToken]
+		[BottleAuthenticationAttribute(IdParameter = "BottleId")]
 		public ActionResult Update(int? BottleID, FormCollection form) {
 			if (BottleID == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -49,6 +51,7 @@ namespace winerack.Controllers {
 		#region Delete
 
 		// GET: StoredBottles/Delete/5
+		[StoredBottleAuthentication]
 		public ActionResult Delete(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -63,8 +66,10 @@ namespace winerack.Controllers {
 			return View(bottle);
 		}
 
+		// POST: StoredBottles/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
+		[StoredBottleAuthentication]
 		public ActionResult DeleteConfirmed(int id) {
 			var stored = db.StoredBottles.Find(id);
 			var bottleId = stored.Purchase.BottleID;

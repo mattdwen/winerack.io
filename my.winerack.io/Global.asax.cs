@@ -9,6 +9,8 @@ namespace winerack {
 
 	public class MvcApplication : System.Web.HttpApplication {
 
+		public const string ADMINISTRATOR_GROUP = "Administrators";
+
 		protected void Application_Start() {
 			if (bool.Parse(ConfigurationManager.AppSettings["MigrateDatabaseToLatestVersion"])) {
 				var configuration = new winerack.Migrations.Configuration();

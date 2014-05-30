@@ -106,7 +106,7 @@ namespace winerack.Controllers {
 
 			var model = new UserDetailsViewModel {
 				Id = id,
-				Administrator = UserManager.IsInRole(id, Helpers.ADMINISTRATOR_GROUP),
+				Administrator = UserManager.IsInRole(id, MvcApplication.ADMINISTRATOR_GROUP),
 				Email = user.Email,
 				Name = user.FirstName + " " + user.LastName,
 				Verified = user.EmailConfirmed
@@ -125,8 +125,8 @@ namespace winerack.Controllers {
 			}
 
 			// Check Administrators role exists
-			if (!RoleManager.RoleExists(Helpers.ADMINISTRATOR_GROUP)) {
-				RoleManager.Create(new IdentityRole(Helpers.ADMINISTRATOR_GROUP));
+			if (!RoleManager.RoleExists(MvcApplication.ADMINISTRATOR_GROUP)) {
+				RoleManager.Create(new IdentityRole(MvcApplication.ADMINISTRATOR_GROUP));
 			}
 
 			var user = await UserManager.FindByIdAsync(id);
@@ -135,11 +135,11 @@ namespace winerack.Controllers {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var inRole = await UserManager.IsInRoleAsync(id, Helpers.ADMINISTRATOR_GROUP);
+			var inRole = await UserManager.IsInRoleAsync(id, MvcApplication.ADMINISTRATOR_GROUP);
 			if (inRole) {
-				await UserManager.RemoveFromRoleAsync(id, Helpers.ADMINISTRATOR_GROUP);
+				await UserManager.RemoveFromRoleAsync(id, MvcApplication.ADMINISTRATOR_GROUP);
 			} else {
-				await UserManager.AddToRoleAsync(id, Helpers.ADMINISTRATOR_GROUP);
+				await UserManager.AddToRoleAsync(id, MvcApplication.ADMINISTRATOR_GROUP);
 			}
 
 			return RedirectToAction("Details", new { id = id });
