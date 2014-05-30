@@ -1,9 +1,8 @@
-﻿using System.Net;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using winerack.Models;
-using System;
-using System.Data.Entity;
-using System.Linq;
 
 namespace winerack.Controllers {
 
@@ -11,11 +10,15 @@ namespace winerack.Controllers {
 	public class StoredBottlesController : Controller {
 
 		#region Declarations
+
 		private ApplicationDbContext db = new ApplicationDbContext();
-		#endregion
+
+		#endregion Declarations
 
 		#region Actions
+
 		#region Update
+
 		// POST: storedbottles/update
 		[HttpPost]
 		[ValidateAntiForgeryToken]
@@ -40,7 +43,38 @@ namespace winerack.Controllers {
 
 			return Redirect(Url.RouteUrl(new { controller = "Bottles", action = "Details", id = BottleID }) + "#bottles");
 		}
-		#endregion
-		#endregion
+
+		#endregion Update
+
+		#region Delete
+
+		// GET: StoredBottles/Delete/5
+		public ActionResult Delete(int? id) {
+			if (id == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			StoredBottle bottle = db.StoredBottles.Find(id);
+
+			if (bottle == null) {
+				return HttpNotFound();
+			}
+
+			return View(bottle);
+		}
+
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(int id) {
+			var stored = db.StoredBottles.Find(id);
+			var bottleId = stored.Purchase.BottleID;
+			db.StoredBottles.Remove(stored);
+			db.SaveChanges();
+			return Redirect(Url.RouteUrl(new { controller = "Bottles", action = "Details", id = bottleId }) + "#bottles");
+		}
+
+		#endregion Delete
+
+		#endregion Actions
 	}
 }

@@ -100,7 +100,7 @@
                                 </td>
                                 <td>@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
                                 <td>
-
+                                    @Html.ActionLink("delete", "Delete", new { controller = "StoredBottles", id = stored.ID})
                                 </td>
                             </tr>
                             i++;

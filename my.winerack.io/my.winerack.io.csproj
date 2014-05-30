@@ -331,6 +331,7 @@
     <Content Include="Views\Purchases\Details.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
     <Content Include="Views\Users\Invite.cshtml" />
+    <Content Include="Views\StoredBottles\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
