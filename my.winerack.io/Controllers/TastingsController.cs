@@ -1,9 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Net;
+using System.Web.Mvc;
 using winerack.Helpers.Authentication;
 using winerack.Models;
-using System.Linq;
-using Microsoft.AspNet.Identity;
-using System.Net;
 
 namespace winerack.Controllers {
 
@@ -17,7 +16,11 @@ namespace winerack.Controllers {
 		#endregion Declarations
 
 		#region Actions
+
 		#region Details
+
+		// GET: Tastings/Details/5
+		[TastingAuthentication]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -31,7 +34,8 @@ namespace winerack.Controllers {
 
 			return View(tasting);
 		}
-		#endregion
+
+		#endregion Details
 
 		#region Create
 
@@ -55,7 +59,7 @@ namespace winerack.Controllers {
 		// POST: Tastings/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include="StoredBottleId,TastedOn,Notes")]Tasting tasting) {
+		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Tasting tasting) {
 			if (ModelState.IsValid) {
 				db.Tastings.Add(tasting);
 				db.SaveChanges();
@@ -65,7 +69,7 @@ namespace winerack.Controllers {
 			tasting.StoredBottle = db.StoredBottles
 					.Include("Purchase.Bottle.Wine")
 					.Where(b => b.ID == tasting.StoredBottleID)
-					.FirstOrDefault();;
+					.FirstOrDefault(); ;
 
 			return View(tasting);
 		}

@@ -193,7 +193,8 @@
     </Compile>
     <Compile Include="Helpers\Authentication\BottleAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\PurchaseAuthenticationAttribute.cs" />
-    <Compile Include="Helpers\Authentication\StoreBottleAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\StoredBottleAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\TastingAuthenticationAttribute.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>
