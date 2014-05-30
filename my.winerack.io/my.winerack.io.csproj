@@ -185,6 +185,7 @@
     <Compile Include="Controllers\RackController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StoredBottlesController.cs" />
+    <Compile Include="Controllers\TastingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VineyardsController.cs" />
     <Compile Include="Controllers\WinesController.cs" />
@@ -210,6 +211,10 @@
     <Compile Include="Migrations\201405300402302_user-created-date.Designer.cs">
       <DependentUpon>201405300402302_user-created-date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405300730210_tasting.cs" />
+    <Compile Include="Migrations\201405300730210_tasting.Designer.cs">
+      <DependentUpon>201405300730210_tasting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -221,6 +226,7 @@
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\StoredBottle.cs" />
+    <Compile Include="Models\Tasting.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Models\Vineyard.cs" />
     <Compile Include="Models\Wine.cs" />
@@ -339,6 +345,7 @@
     <Content Include="Views\Users\Invite.cshtml" />
     <Content Include="Views\StoredBottles\Delete.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
+    <Content Include="Views\Tastings\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -362,6 +369,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405300402302_user-created-date.resx">
       <DependentUpon>201405300402302_user-created-date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405300730210_tasting.resx">
+      <DependentUpon>201405300730210_tasting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

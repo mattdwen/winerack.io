@@ -91,16 +91,29 @@
                             <tr>
                                 <td>#@i</td>
                                 <td>
-                                    <input class="form-control"
-                                           id="bottle_@stored.ID"
-                                           name="bottle_@stored.ID"
-                                           type="text"
-                                           value="@stored.Location"
-                                           placeholder="Location" />
+                                    @if (stored.Tasting == null) {
+                                        <input class="form-control"
+                                               id="bottle_@stored.ID"
+                                               name="bottle_@stored.ID"
+                                               type="text"
+                                               value="@stored.Location"
+                                               placeholder="Location" />
+                                    } else {
+                                        <span>Drunk @Html.DisplayFor(s => stored.Tasting.TastedOn)</span>
+                                    }
                                 </td>
                                 <td>@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
                                 <td>
-                                    @Html.ActionLink("delete", "Delete", new { controller = "StoredBottles", id = stored.ID})
+                                    @if (stored.Tasting == null) {
+                                        <div>
+                                            @Html.ActionLink("drink", "Create", new { controller = "Tastings", storedBottleId = stored.ID }) |
+                                            @Html.ActionLink("delete", "Delete", new { controller = "StoredBottles", id = stored.ID })
+                                        </div>
+                                    } else {
+                                        <div>
+                                            @Html.ActionLink("tasting notes", "Details", new { controller = "Tastings", id = stored.ID })
+                                        </div>
+                                    }
                                 </td>
                             </tr>
                             i++;

@@ -29,6 +29,8 @@ namespace winerack.Models {
 
 		public DbSet<StoredBottle> StoredBottles { get; set; }
 
+		public DbSet<Tasting> Tastings { get; set; }
+
 		public DbSet<Vineyard> Vineyards { get; set; }
 
 		public DbSet<Wine> Wines { get; set; }

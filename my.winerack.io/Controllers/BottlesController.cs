@@ -256,6 +256,25 @@ namespace winerack.Controllers {
 
 		#endregion Delete
 
+		#region Drink
+
+		// GET: Bottles/Drink/5
+		[BottleAuthentication]
+		public ActionResult Drink(int? id) {
+			if (id == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var bottle = db.Bottles.Find(id);
+
+			if (bottle == null) {
+				return HttpNotFound();
+			}
+
+			return View(bottle);
+		}
+		#endregion
+
 		#endregion Actions
 
 		#region Partial Views

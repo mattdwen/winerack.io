@@ -1,0 +1,63 @@
+﻿@model winerack.Models.Tasting
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Tasting</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(m => m.StoredBottleID)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.StoredBottle.Purchase.Bottle.Wine, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <span class="form-control">
+                    @Model.StoredBottle.Purchase.Bottle.Wine.Description
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.StoredBottle.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="form-control">@Model.StoredBottle.Location</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.TastedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.TastedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.TastedOn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -19,6 +19,8 @@ namespace winerack.Models {
 
 		public virtual Purchase Purchase { get; set; }
 
+		public virtual Tasting Tasting { get; set; }
+
 		#endregion Relationships
 	}
 }
