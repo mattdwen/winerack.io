@@ -1,0 +1,26 @@
+﻿@model winerack.Models.Tasting
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tasting</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.StoredBottle.Purchase.Bottle.Wine)</dt>
+        <dd>@Model.StoredBottle.Purchase.Bottle.Wine.Description</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.TastedOn)</dt>
+        <dd>@Html.DisplayFor(m => m.TastedOn)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Notes)</dt>
+        <dd>@Html.DisplayFor(m => m.Notes)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StoredBottleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

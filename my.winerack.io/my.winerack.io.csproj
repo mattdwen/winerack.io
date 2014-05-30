@@ -346,6 +346,7 @@
     <Content Include="Views\StoredBottles\Delete.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Tastings\Create.cshtml" />
+    <Content Include="Views\Tastings\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

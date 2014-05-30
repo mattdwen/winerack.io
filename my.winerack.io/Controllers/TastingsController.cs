@@ -3,6 +3,7 @@ using winerack.Helpers.Authentication;
 using winerack.Models;
 using System.Linq;
 using Microsoft.AspNet.Identity;
+using System.Net;
 
 namespace winerack.Controllers {
 
@@ -16,20 +17,37 @@ namespace winerack.Controllers {
 		#endregion Declarations
 
 		#region Actions
+		#region Details
+		public ActionResult Details(int? id) {
+			if (id == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var tasting = db.Tastings.Find(id);
+
+			if (tasting == null) {
+				return HttpNotFound();
+			}
+
+			return View(tasting);
+		}
+		#endregion
 
 		#region Create
 
 		// GET: Tastings/Create
 		[StoredBottleAuthenticationAttribute(IdParameter = "storedBottleId")]
 		public ActionResult Create(int? storedBottleId) {
+			if (storedBottleId == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
 			var tasting = new Tasting();
 
-			if (storedBottleId != null) {
-				tasting.StoredBottle = db.StoredBottles
-					.Include("Purchase.Bottle.Wine")
-					.Where(b => b.ID == storedBottleId)
-					.FirstOrDefault();
-			}
+			tasting.StoredBottle = db.StoredBottles
+				.Include("Purchase.Bottle.Wine")
+				.Where(b => b.ID == storedBottleId)
+				.FirstOrDefault();
 
 			return View(tasting);
 		}
