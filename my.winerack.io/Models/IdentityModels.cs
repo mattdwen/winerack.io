@@ -14,9 +14,11 @@ namespace winerack.Models {
 
 		public DateTime CreatedOn { get; set; }
 
+		[Display(Name="First Name")]
 		[MaxLength(255)]
 		public string FirstName { get; set; }
 
+		[Display(Name = "Last Name")]
 		[MaxLength(255)]
 		public string LastName { get; set; }
 

@@ -92,6 +92,18 @@ namespace winerack.Models {
 		public string Code { get; set; }
 	}
 
+	public class SettingsViewModel {
+		[Display(Name = "First Name")]
+		[MaxLength(255)]
+		[Required]
+		public string FirstName { get; set; }
+
+		[Display(Name = "Last Name")]
+		[MaxLength(255)]
+		[Required]
+		public string LastName { get; set; }
+	}
+
 	public class ForgotPasswordViewModel {
 
 		[Required]

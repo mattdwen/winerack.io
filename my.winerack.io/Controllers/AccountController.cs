@@ -448,6 +448,40 @@ namespace winerack.Controllers {
 		}
 		#endregion
 
+		#region Settings
+
+		// GET: /Account/Settings
+		public ActionResult Settings(SettingsMessageId? message) {
+			var user = UserManager.FindById(User.Identity.GetUserId());
+
+			ViewBag.StatusMessage =
+				message == SettingsMessageId.UpdateProfileSuccess ? "Your profile has been updated."
+				: "";
+
+			return View(user);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Settings(SettingsViewModel model) {
+			var user = UserManager.FindById(User.Identity.GetUserId());
+			if (ModelState.IsValid) {
+				user.FirstName = model.FirstName;
+				user.LastName = model.LastName;
+
+				var result = UserManager.Update(user);
+				if (result.Succeeded) {
+					return RedirectToAction("Settings", new { Message = SettingsMessageId.UpdateProfileSuccess });
+				}
+
+				AddErrors(result);
+			}
+
+			return View(user);
+		}
+
+		#endregion Settings
+
 		#endregion Actions
 
 		#region Public Methods
@@ -502,6 +536,10 @@ namespace winerack.Controllers {
 			RemoveLoginSuccess,
 			Error
 		}
+
+		public enum SettingsMessageId {
+			UpdateProfileSuccess
+		};
 
 		private ActionResult RedirectToLocal(string returnUrl) {
 			if (Url.IsLocalUrl(returnUrl)) {

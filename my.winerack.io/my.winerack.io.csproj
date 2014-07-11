@@ -359,6 +359,7 @@
     <Content Include="Views\Activity\Stream.cshtml" />
     <Content Include="Views\Shared\_ActivityEvent.cshtml" />
     <Content Include="Views\Activity\Opened.cshtml" />
+    <Content Include="Views\Account\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
