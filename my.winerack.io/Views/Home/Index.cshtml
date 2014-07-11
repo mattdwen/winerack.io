@@ -1,14 +1,15 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+@{
     ViewBag.Title = "Home Page";
 }
 
 @if (Request.IsAuthenticated) {
     <div class="row">
         <div class="col-sm-3">
-            @{Html.RenderAction("MiniProfile", "Users");
-}
+            @{Html.RenderAction("MiniProfile", "Users");}
         </div>
         <div class="col-sm-9">
+            @{Html.RenderAction("User", "Activity", new { userId = User.Identity.GetUserId() });}
         </div>
     </div>
 } else { 

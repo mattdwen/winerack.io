@@ -1,0 +1,11 @@
+﻿@model winerack.Models.ActivityEventViewModels.Opened
+@{
+    ViewBag.Title = "Opened";
+    Layout = "~/Views/Shared/_ActivityEvent.cshtml";
+}
+
+<p>@Model.Username opened a bottle of @Model.Bottle by @Model.Winery.</p>
+
+@if (!string.IsNullOrWhiteSpace(Model.Notes)) {
+    <blockquote>@Model.Notes</blockquote>
+}

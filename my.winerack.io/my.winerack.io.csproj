@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\API\RegionsController.cs" />
     <Compile Include="Controllers\API\VarietalsController.cs" />
     <Compile Include="Controllers\API\VineyardsController.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Helpers\Authentication\PurchaseAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\StoredBottleAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\TastingAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\DateHelpers.cs" />
     <Compile Include="Logic\ActivityStream.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
@@ -223,6 +225,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
+    <Compile Include="Models\ActivityEventViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Bottle.cs" />
     <Compile Include="Models\BottleViewModels.cs" />
@@ -353,6 +356,9 @@
     <Content Include="Views\Tastings\CreateFromBottle.cshtml" />
     <Content Include="Views\Users\MiniProfile.cshtml" />
     <Content Include="Views\Tastings\Start.cshtml" />
+    <Content Include="Views\Activity\Stream.cshtml" />
+    <Content Include="Views\Shared\_ActivityEvent.cshtml" />
+    <Content Include="Views\Activity\Opened.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

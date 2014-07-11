@@ -1,0 +1,10 @@
+﻿@model winerack.Models.ActivityEventViewModels.Base
+@using winerack.Helpers
+
+<div class="activity-event panel panel-default">
+    <div class="panel-body">
+        @RenderBody()
+
+        <div class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</div>
+    </div>
+</div>
