@@ -195,6 +195,7 @@
     <Compile Include="Helpers\Authentication\PurchaseAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\StoredBottleAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\TastingAuthenticationAttribute.cs" />
+    <Compile Include="Logic\ActivityStream.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>
@@ -215,8 +216,13 @@
     <Compile Include="Migrations\201405300730210_tasting.Designer.cs">
       <DependentUpon>201405300730210_tasting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407110220072_create_activityevents_table.cs" />
+    <Compile Include="Migrations\201407110220072_create_activityevents_table.Designer.cs">
+      <DependentUpon>201407110220072_create_activityevents_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ActivityEvent.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Bottle.cs" />
     <Compile Include="Models\BottleViewModels.cs" />
@@ -373,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405300730210_tasting.resx">
       <DependentUpon>201405300730210_tasting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407110220072_create_activityevents_table.resx">
+      <DependentUpon>201407110220072_create_activityevents_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

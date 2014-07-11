@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using winerack.Helpers.Authentication;
+using winerack.Logic;
 using winerack.Models;
 
 namespace winerack.Controllers {
@@ -62,7 +64,9 @@ namespace winerack.Controllers {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var tasting = new Tasting();
+			var tasting = new Tasting() {
+				TastedOn = DateTime.Now
+			};
 
 			tasting.StoredBottle = db.StoredBottles
 				.Include("Purchase.Bottle.Wine")
@@ -77,8 +81,15 @@ namespace winerack.Controllers {
 		[ValidateAntiForgeryToken]
 		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Tasting tasting) {
 			if (ModelState.IsValid) {
+				// Add the tasting
 				db.Tastings.Add(tasting);
+
+				// Publish the event
+				ActivityStream.Publish(this.db, User.Identity.GetUserId(), ActivityVerbs.Opened, tasting.StoredBottleID);
+
+				// Save
 				db.SaveChanges();
+				
 				return RedirectToAction("Details", new { id = tasting.StoredBottleID });
 			}
 

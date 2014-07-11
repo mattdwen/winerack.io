@@ -15,7 +15,7 @@ namespace winerack.Models {
 
 		[Display(Name = "Opened On")]
 		[DataType(DataType.Date)]
-		[DisplayFormat(NullDisplayText = "<em>Unknown</em>")]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}", NullDisplayText = "<em>Unknown</em>")]
 		public DateTime? TastedOn { get; set; }
 
 		[Display(Name = "Tasting Notes")]
