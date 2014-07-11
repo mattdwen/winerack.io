@@ -1,0 +1,23 @@
+﻿@model winerack.Models.MiniProfileViewModel
+
+<div id="user-profile">
+    <h4>
+        <i class="fa fa-user"></i>
+        @Model.Username
+    </h4>
+
+    <ul class="list-unstyled">
+        <li>
+            <span class="badge">@Model.BottlesTotal</span> Total
+        </li>
+        <li>
+            <span class="badge">@Model.BottlesUnique</span> Unique
+        </li>
+        <li>
+            <span class="badge">@Model.BottlesDrunk</span> Drunk
+        </li>
+    </ul>
+
+    <a class="btn btn-default btn-block" href="/Tastings/Create">Open a bottle</a>
+    <a class="btn btn-default btn-block" href="/Bottles/Create">Collect a bottle</a>
+</div>

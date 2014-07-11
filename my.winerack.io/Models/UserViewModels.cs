@@ -45,4 +45,19 @@ namespace winerack.Models {
 
 		#endregion Properties
 	}
+
+	public class MiniProfileViewModel {
+
+		#region Properties
+
+		public string Username { get; set; }
+
+		public int BottlesTotal { get; set; }
+
+		public int BottlesUnique { get; set; }
+
+		public int BottlesDrunk { get; set; }
+
+		#endregion Properties
+	}
 }

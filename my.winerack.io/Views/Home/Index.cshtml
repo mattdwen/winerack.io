@@ -3,7 +3,14 @@
 }
 
 @if (Request.IsAuthenticated) {
-    Html.RenderAction("Rack", "Bottles");
+    <div class="row">
+        <div class="col-sm-3">
+            @{Html.RenderAction("MiniProfile", "Users");
+}
+        </div>
+        <div class="col-sm-9">
+        </div>
+    </div>
 } else { 
     <div class="jumbotron">
         <h1>winerack.io</h1>

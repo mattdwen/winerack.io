@@ -200,6 +200,35 @@ namespace winerack.Controllers {
 
 		#endregion Actions
 
+		#region Partials
+
+		#region Profile
+
+		[AllowAnonymous]
+		public PartialViewResult MiniProfile() {
+			var userId = User.Identity.GetUserId();
+			var model = new Models.MiniProfileViewModel();
+			model.Username = User.Identity.Name;
+
+			model.BottlesTotal = db.StoredBottles
+				.Where(sb => sb.Purchase.Bottle.OwnerID == userId)
+				.Count();
+
+			model.BottlesUnique = db.Bottles
+				.Where(b => b.OwnerID == userId)
+				.Count();
+
+			model.BottlesDrunk = db.Tastings
+				.Where(t => t.StoredBottle.Purchase.Bottle.OwnerID == userId)
+				.Count();
+
+			return PartialView(model);
+		}
+
+		#endregion Profile
+
+		#endregion Partials
+
 		#region Public Methods
 
 		protected override void Dispose(bool disposing) {
