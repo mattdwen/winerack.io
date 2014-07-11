@@ -13,11 +13,12 @@ namespace winerack.Models {
 		[Key, ForeignKey("StoredBottle")]
 		public int StoredBottleID { get; set; }
 
-		[Display(Name = "Date")]
+		[Display(Name = "Opened On")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(NullDisplayText = "<em>Unknown</em>")]
 		public DateTime? TastedOn { get; set; }
 
+		[Display(Name = "Tasting Notes")]
 		[DataType(DataType.MultilineText)]
 		public string Notes { get; set; }
 

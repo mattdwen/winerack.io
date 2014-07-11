@@ -1,15 +1,10 @@
 ﻿@model winerack.Models.Bottle
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Locate a Bottle";
 }
 
-<h2>Create</h2>
-
-<h4>Tasting</h4>
-<hr />
-
-<p>Select a bottle to drink:</p>
+<h2>Select a bottle to drink</h2>
 
 <table class="table">
     <thead>
@@ -28,7 +23,9 @@
                 <td>@Html.DisplayFor(m => stored.Location)</td>
                 <td>@Html.DisplayFor(m => stored.Purchase.PurchasedOn)</td>
                 <td>
-                    @Html.ActionLink("drink", "Create", new { storedBottleId = stored.ID})
+                    <a class="btn btn-xs btn-success" href="/Tastings/Create?storedBottleId=@stored.ID">
+                        <i class="fa fa-glass"></i> This one
+                    </a>
                 </td>
             </tr>
             i++;

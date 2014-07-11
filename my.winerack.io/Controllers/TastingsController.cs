@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.AspNet.Identity;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using winerack.Helpers.Authentication;
@@ -91,6 +92,20 @@ namespace winerack.Controllers {
 
 		#endregion Create
 
+		#region Start
+
+		public ActionResult Start() {
+			var userId = User.Identity.GetUserId();
+			var bottles = db.Bottles
+				.Where(b => b.OwnerID == userId)
+				.ToList();
+
+			return View(bottles);
+		}
+
+		#endregion Start
+
 		#endregion Actions
+
 	}
 }

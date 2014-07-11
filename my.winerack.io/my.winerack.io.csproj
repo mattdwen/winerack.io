@@ -346,6 +346,7 @@
     <Content Include="Views\Tastings\Details.cshtml" />
     <Content Include="Views\Tastings\CreateFromBottle.cshtml" />
     <Content Include="Views\Users\MiniProfile.cshtml" />
+    <Content Include="Views\Tastings\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
