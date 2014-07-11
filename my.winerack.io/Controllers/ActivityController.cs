@@ -42,6 +42,22 @@ namespace winerack.Controllers {
 			return PartialView(viewmodel);
 		}
 
+		public PartialViewResult Purchased(ActivityEvent activity) {
+			var user = db.Users.Where(u => u.Id == activity.UserID).FirstOrDefault();
+			var purchase = db.Purchases.Find(activity.Noun);
+
+			var viewmodel = new Models.ActivityEventViewModels.Purchased {
+				OccuredOn = activity.OccuredOn,
+				Username = user.FirstName + " " + user.LastName,
+				Notes = purchase.Notes,
+				Bottle = purchase.Bottle.Wine.Description,
+				Winery = purchase.Bottle.Wine.Vineyard.Name,
+				Quantity = purchase.StoredBottles.Count
+			};
+
+			return PartialView(viewmodel);
+		}
+
 		#endregion Activities
 	}
 }

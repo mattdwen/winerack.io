@@ -29,5 +29,25 @@ namespace winerack.Helpers {
 
 			return MvcHtmlString.Create(val);
 		}
+
+		public static MvcHtmlString BottleQuantity(int quantity) {
+			var text = "";
+
+			if (quantity == 12) {
+				text = "a case";
+			} else if (quantity > 12 && quantity % 12 == 0) {
+				text = (quantity / 12).ToString() + " cases";
+			} else if (quantity == 6) {
+				text = "a half case";
+			} else if (quantity > 6 && quantity % 6 == 0) {
+				text = (quantity / 6).ToString() + " half cases";
+			} else if (quantity == 1) {
+				text = "a bottle";
+			} else {
+				text = quantity.ToString() + " bottles";
+			}
+
+			return MvcHtmlString.Create(text);
+		}
 	}
 }

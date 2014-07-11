@@ -28,4 +28,10 @@ namespace winerack.Models.ActivityEventViewModels {
 		#endregion Properties
 
 	}
+
+	public class Purchased : Opened {
+
+		public int Quantity { get; set; }
+
+	}
 }

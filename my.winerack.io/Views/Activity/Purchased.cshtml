@@ -1,0 +1,11 @@
+﻿@model winerack.Models.ActivityEventViewModels.Purchased
+@using winerack.Helpers
+@{
+    Layout = "~/Views/Shared/_ActivityEvent.cshtml";
+}
+
+<p>@Model.Username purchased @ExtensionMethods.BottleQuantity(Model.Quantity) of @Model.Bottle by @Model.Winery.</p>
+
+@if (!string.IsNullOrWhiteSpace(Model.Notes)) {
+    <blockquote>@Model.Notes</blockquote>
+}

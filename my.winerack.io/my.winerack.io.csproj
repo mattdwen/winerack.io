@@ -196,7 +196,7 @@
     <Compile Include="Helpers\Authentication\PurchaseAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\StoredBottleAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\TastingAuthenticationAttribute.cs" />
-    <Compile Include="Helpers\DateHelpers.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Logic\ActivityStream.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
@@ -360,6 +360,7 @@
     <Content Include="Views\Shared\_ActivityEvent.cshtml" />
     <Content Include="Views\Activity\Opened.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\Activity\Purchased.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

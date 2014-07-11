@@ -80,8 +80,10 @@ namespace winerack.Controllers {
 
 				// Add the purchase
 				db.Purchases.Add(purchase);
+				db.SaveChanges();
 
-				// Commit
+				// Activity feed
+				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID);
 				db.SaveChanges();
 
 				// Redirect
