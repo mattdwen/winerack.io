@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201407120456271_add_imageid_to_purchases.Designer.cs">
       <DependentUpon>201407120456271_add_imageid_to_purchases.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407120925144_add_imageid_to_tastings.cs" />
+    <Compile Include="Migrations\201407120925144_add_imageid_to_tastings.Designer.cs">
+      <DependentUpon>201407120925144_add_imageid_to_tastings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -308,6 +312,7 @@
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\tastings\create.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -419,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407120456271_add_imageid_to_purchases.resx">
       <DependentUpon>201407120456271_add_imageid_to_purchases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407120925144_add_imageid_to_tastings.resx">
+      <DependentUpon>201407120925144_add_imageid_to_tastings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

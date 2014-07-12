@@ -18,6 +18,8 @@ namespace winerack.Models {
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}", NullDisplayText = "<em>Unknown</em>")]
 		public DateTime? TastedOn { get; set; }
 
+		public Guid? ImageID { get; set; }
+
 		[Display(Name = "Tasting Notes")]
 		[DataType(DataType.MultilineText)]
 		public string Notes { get; set; }

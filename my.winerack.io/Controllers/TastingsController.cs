@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using winerack.Helpers.Authentication;
 using winerack.Logic;
@@ -79,8 +80,14 @@ namespace winerack.Controllers {
 		// POST: Tastings/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Tasting tasting) {
+		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Tasting tasting, HttpPostedFileBase photo) {
 			if (ModelState.IsValid) {
+				// Save the photo
+				if (photo != null && photo.ContentLength > 0) {
+					var blobHandler = new Logic.BlobHandler("tastings");
+					tasting.ImageID = blobHandler.Upload(photo);
+				}
+
 				// Add the tasting
 				db.Tastings.Add(tasting);
 
