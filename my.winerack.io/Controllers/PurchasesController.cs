@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System;
 using winerack.Helpers.Authentication;
+using System.Web;
 
 namespace winerack.Controllers {
 
@@ -71,11 +72,17 @@ namespace winerack.Controllers {
 		// POST: Purchases/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice,Notes")] Purchase purchase) {
+		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice,Notes")] Purchase purchase, HttpPostedFileBase photo) {
 			if (ModelState.IsValid) {
 				// Add a stored bottle per quantity
 				for (int i = 0; i < purchase.Quantity; i++) {
 					purchase.StoredBottles.Add(new StoredBottle());
+				}
+
+				// Save the photo
+				if (photo != null && photo.ContentLength > 0) {
+					var blobHandler = new Logic.BlobHandler("purchases");
+					purchase.ImageID = blobHandler.Upload(photo);
 				}
 
 				// Add the purchase
