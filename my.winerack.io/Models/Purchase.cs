@@ -21,6 +21,8 @@ namespace winerack.Models {
 		[ForeignKey("Bottle")]
 		public int BottleID { get; set; }
 
+		public Guid? ImageID { get; set; }
+
 		[NotMapped]
 		[Range(1,int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
 		public int Quantity { get; set; }

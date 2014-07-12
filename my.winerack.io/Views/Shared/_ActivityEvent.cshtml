@@ -5,6 +5,10 @@
     <div class="panel-body">
         @RenderBody()
 
+        @if (!string.IsNullOrWhiteSpace(Model.Image)) {
+            <img src="https://winerack.blob.core.windows.net/@Model.Image" width="300" />
+        }
+
         <div class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</div>
     </div>
 </div>

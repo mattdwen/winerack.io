@@ -6,8 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
+@using (Html.BeginForm("Create", "Bottles", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.VineyardID)
     @Html.HiddenFor(m => m.RegionID)
@@ -72,6 +71,16 @@
                     @Html.ValidationMessageFor(m => m.Vintage, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Photo</label>
+                <div class="col-md-10">
+                    <a id="photoSelect" href="#">
+                        <img id="photoPreview" src="//placehold.it/300x200&text=Photo" width="300" />
+                    </a>
+                    <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" capture="camera" />
+                </div>
+            </div>
         </fieldset>
 
         <fieldset>
@@ -97,7 +106,7 @@
                 @Html.LabelFor(m => m.PurchaseValue, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(m => m.PurchaseValue, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01" } })
-                    @Html.ValidationMessageFor(m => m.PurchaseValue, "", new { @class = "text-danger"})
+                    @Html.ValidationMessageFor(m => m.PurchaseValue, "", new { @class = "text-danger" })
                 </div>
             </div>
 

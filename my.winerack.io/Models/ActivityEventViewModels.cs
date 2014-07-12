@@ -12,6 +12,8 @@ namespace winerack.Models.ActivityEventViewModels {
 
 		public string Username { get; set; }
 
+		public string Image { get; set; }
+
 		#endregion Properties
 	}
 
