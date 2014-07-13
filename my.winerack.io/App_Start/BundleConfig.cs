@@ -35,6 +35,8 @@ namespace winerack {
 					  "~/Scripts/bloodhound/vineyards.js",
 					  "~/Scripts/bloodhound/regions.js",
 					  "~/Scripts/bloodhound/varietals.js",
+					  "~/Scripts/jquery-ui-1.10.4.min.js",
+					  "~/Scripts/vendor/jQRangeSlider/jQEditRangeSlider-min.js",
 					  "~/Scripts/bottles/create.js"));
 
 			// Set EnableOptimizations to false for debugging. For more information,

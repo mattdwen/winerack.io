@@ -44,6 +44,10 @@ namespace winerack.Models {
 		[Display(Name = "Notes")]
 		[DataType(DataType.MultilineText)]
 		public string PurchaseNotes { get; set; }
+
+		public int CellarMin { get; set; }
+
+		public int CellarMax { get; set; }
 	}
 
 	public class CellarBottleViewModel {

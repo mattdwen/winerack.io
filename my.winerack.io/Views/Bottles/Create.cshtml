@@ -84,6 +84,24 @@
         </fieldset>
 
         <fieldset>
+            <legend>Cellaring</legend>
+            <label class="control-label col-md-2">Cellar for</label>
+            <div class="col-md-10">
+                @Html.HiddenFor(m => m.CellarMin)
+                @Html.HiddenFor(m => m.CellarMax)
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div id="cellarSlider"></div>
+                    </div>
+                    <div class="col-sm-2">
+                        years
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
             <legend>Purchase</legend>
 
             <div class="form-group">

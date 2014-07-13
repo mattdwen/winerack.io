@@ -33,7 +33,9 @@ namespace winerack.Controllers {
 				bottle = new Bottle {
 					CreatedOn = DateTime.Now,
 					OwnerID = userId,
-					WineID = wine.ID
+					WineID = wine.ID,
+					CellarMin = model.CellarMin,
+					CellarMax = model.CellarMax
 				};
 				db.Bottles.Add(bottle);
 				db.SaveChanges();
@@ -153,7 +155,9 @@ namespace winerack.Controllers {
 		public ActionResult Create() {
 			var model = new CreateBottleViewModel {
 				PurchaseDate = DateTime.Now,
-				PurchaseQuantity = 1
+				PurchaseQuantity = 1,
+				CellarMin = 1,
+				CellarMax = 3
 			};
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
