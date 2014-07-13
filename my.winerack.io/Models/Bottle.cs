@@ -33,6 +33,10 @@ namespace winerack.Models {
 		[Display(Name = "Added")]
 		public DateTime CreatedOn { get; set; }
 
+		public int CellarMin { get; set; }
+
+		public int CellarMax { get; set; }
+
 		[NotMapped]
 		[Display(Name = "Purchased")]
 		public int NumberOfBottles {
@@ -42,7 +46,7 @@ namespace winerack.Models {
 		}
 
 		[NotMapped]
-		[Display(Name = "Drunk")]
+		[Display(Name = "Opened")]
 		public int NumberDrunk {
 			get {
 				return Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Tasting != null).Count();

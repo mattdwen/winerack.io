@@ -197,6 +197,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\API\BottlesController.cs" />
     <Compile Include="Controllers\API\RegionsController.cs" />
     <Compile Include="Controllers\API\VarietalsController.cs" />
     <Compile Include="Controllers\API\VineyardsController.cs" />
@@ -251,6 +252,10 @@
     <Compile Include="Migrations\201407120925144_add_imageid_to_tastings.Designer.cs">
       <DependentUpon>201407120925144_add_imageid_to_tastings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.cs" />
+    <Compile Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.Designer.cs">
+      <DependentUpon>201407130442121_add_cellar_min_max_to_bottles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -277,6 +282,68 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\icomoon-wines.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -304,6 +371,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -317,6 +386,49 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="Scripts\typeahead.jquery.min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\classic-min.css" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\classic.css" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\icons-classic\label.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\icons-classic\resultset_next.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\icons-classic\resultset_previous.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\iThing-min.css" />
+    <Content Include="Scripts\vendor\jQRangeSlider\css\iThing.css" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\dateSliderDemo.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\demo.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\editSliderDemo.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\img\calendar.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\img\classicTheme.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\img\iThingTheme.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\index.html" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\css\smoothness\jquery-ui-1.8.10.custom.css" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\lib\jquery-ui\js\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\sliderDemo.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\demo\style.css" />
+    <Content Include="Scripts\vendor\jQRangeSlider\GPL-License.txt" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQAllRangeSliders-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQAllRangeSliders-withRuler-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQDateRangeSlider-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQDateRangeSlider-withRuler-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQEditRangeSlider-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQEditRangeSlider-withRuler-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQRangeSlider-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\jQRangeSlider-withRuler-min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\lib\jquery.mousewheel.license.txt" />
+    <Content Include="Scripts\vendor\jQRangeSlider\lib\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\vendor\jQRangeSlider\MIT-License.txt" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -392,6 +504,8 @@
     <Content Include="Views\Activity\Opened.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
     <Content Include="Views\Activity\Purchased.cshtml" />
+    <Content Include="Scripts\vendor\jQRangeSlider\History.md" />
+    <Content Include="Scripts\vendor\jQRangeSlider\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -427,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407120925144_add_imageid_to_tastings.resx">
       <DependentUpon>201407120925144_add_imageid_to_tastings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.resx">
+      <DependentUpon>201407130442121_add_cellar_min_max_to_bottles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
