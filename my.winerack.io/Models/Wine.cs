@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace winerack.Models {
 
@@ -28,7 +29,18 @@ namespace winerack.Models {
 		[NotMapped]
 		public string Description {
 			get {
-				return Vineyard.Name + " " + Varietal + " " + Vintage.ToString();
+				string description = "";
+				if (!string.IsNullOrWhiteSpace(Name)) {
+					description = Name + " ";
+				}
+
+				if (Vintage.HasValue) {
+					description += "'" + Vintage.ToString().Substring(2) + " ";
+				}
+
+				description += Varietal;
+
+				return description;
 			}
 		}
 

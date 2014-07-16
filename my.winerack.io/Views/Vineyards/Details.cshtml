@@ -1,26 +1,25 @@
 ﻿@model winerack.Models.Vineyard
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Vineyard</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+<div class="page-header">
+	<h1>
+		@Model.Name
+		@if(User.IsInRole("Administrators")) {
+			<small>
+				@Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+			</small>
+		}
+	</h1>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@if (Model.Wines.Count() > 0) {
+	<section>
+		<h3>Wines</h3>
+		@foreach (var wine in Model.Wines) {
+			@Html.Partial("Wines/_Preview", wine)
+		}
+	</section>
+}

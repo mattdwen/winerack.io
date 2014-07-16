@@ -29,14 +29,18 @@ namespace winerack.Controllers {
 		#region Details
 
 		// GET: Vineyards/Details/5
+		[AllowAnonymous]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
+
 			Vineyard vineyard = db.Vineyards.Find(id);
+
 			if (vineyard == null) {
 				return HttpNotFound();
 			}
+
 			return View(vineyard);
 		}
 

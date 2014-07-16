@@ -54,7 +54,9 @@ namespace winerack.Controllers {
 				Bottle = purchase.Bottle.Wine.Description,
 				Winery = purchase.Bottle.Wine.Vineyard.Name,
 				Quantity = purchase.StoredBottles.Count,
-				Image = purchase.ImageID.HasValue ? "purchases/" + purchase.ImageID.Value : null
+				Image = purchase.ImageID.HasValue ? "purchases/" + purchase.ImageID.Value : null,
+				WineID = purchase.Bottle.WineID,
+				VineyardID = purchase.Bottle.Wine.VineyardID
 			};
 
 			return PartialView(viewmodel);

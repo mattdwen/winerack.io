@@ -1,42 +1,16 @@
 ﻿@model winerack.Models.Wine
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Model.Description;
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Wine</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Varietal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Varietal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Vintage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Vintage)
-        </dd>
-
-    </dl>
+<div class="page-header">
+	<h1>
+		@Html.Partial("Wines/_Description")
+		@if(User.IsInRole("Administrators")) {
+			<small>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</small>
+		}
+	</h1>
+	<p><a href="/vineyards/@Model.VineyardID">@Model.Vineyard.Name</a></p>
+	<p><a href="/regions/@Model.RegionID">@Model.Region.Label</a></p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

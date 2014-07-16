@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace winerack.Models.ActivityEventViewModels {
 	public class Base {
@@ -26,6 +27,10 @@ namespace winerack.Models.ActivityEventViewModels {
 		public string Winery { get; set; }
 
 		public string Notes { get; set; }
+
+		public int WineID { get; set; }
+
+		public int VineyardID { get; set; }
 
 		#endregion Properties
 

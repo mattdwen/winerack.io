@@ -432,6 +432,7 @@
     <Content Include="Scripts\vendor\jQRangeSlider\lib\jquery.mousewheel.min.js" />
     <Content Include="Scripts\vendor\jQRangeSlider\MIT-License.txt" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -508,6 +509,7 @@
     <Content Include="Views\Activity\Purchased.cshtml" />
     <Content Include="Scripts\vendor\jQRangeSlider\History.md" />
     <Content Include="Scripts\vendor\jQRangeSlider\Readme.md" />
+    <Content Include="Views\Shared\Wines\_Description.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

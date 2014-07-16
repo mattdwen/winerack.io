@@ -1,0 +1,11 @@
+﻿@model winerack.Models.Wine
+
+@if (!string.IsNullOrWhiteSpace(Model.Name)) {
+	<em>@Model.Name</em>
+}
+
+@if (Model.Vintage.HasValue) {
+	<span>'@Model.Vintage.ToString().Substring(2)</span>
+}
+
+@Model.Varietal

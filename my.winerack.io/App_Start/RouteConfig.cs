@@ -17,6 +17,12 @@ namespace winerack {
 			);
 
 			routes.MapRoute(
+				name: "WineDetails",
+				url: "{controller}/{id}",
+				defaults: new { action = "Details" }
+			);
+
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
