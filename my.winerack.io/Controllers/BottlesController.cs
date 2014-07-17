@@ -86,7 +86,7 @@ namespace winerack.Controllers {
 			var wine = db.Wines
 				.Where(w => w.Name == model.WineName
 					&& w.RegionID == region.ID
-					&& w.Varietal == model.Varietal
+					&& w.VarietalID == model.VarietalID
 					&& w.VineyardID == vineyard.ID
 					&& w.Vintage == model.Vintage)
 				.FirstOrDefault();
@@ -95,7 +95,7 @@ namespace winerack.Controllers {
 				wine = new Wine {
 					Name = model.WineName,
 					RegionID = region.ID,
-					Varietal = model.Varietal,
+					VarietalID = model.VarietalID,
 					VineyardID = vineyard.ID,
 					Vintage = model.Vintage
 				};
@@ -161,6 +161,10 @@ namespace winerack.Controllers {
 			};
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
 
 			return View(model);
 		}
@@ -204,6 +208,10 @@ namespace winerack.Controllers {
 			}
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
 
 			return View(model);
 		}

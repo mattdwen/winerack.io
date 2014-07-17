@@ -20,7 +20,8 @@ namespace winerack.Models {
 		public string Country { get; set; }
 
 		[Required]
-		public string Varietal { get; set; }
+		[Display(Name = "Varietal")]
+		public int VarietalID { get; set; }
 
 		public int? Vintage { get; set; }
 

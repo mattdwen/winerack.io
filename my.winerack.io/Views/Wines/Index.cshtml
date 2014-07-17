@@ -22,7 +22,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>@Html.DisplayFor(i => item.Vineyard.Name)</td>
-        <td>@Html.DisplayFor(i => item.Varietal)</td>
+        <td>@Html.DisplayFor(i => item.Varietal.Name)</td>
         <td>@Html.DisplayFor(i => item.Vintage)</td>
         <td>@Html.DisplayFor(i => item.Name)</td>
         <td>@Html.DisplayFor(i => item.Region.Name), @Html.DisplayFor(i => item.Region.Country)</td>

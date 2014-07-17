@@ -6,6 +6,8 @@ namespace winerack.Migrations {
 	using System.Linq;
 	using System.Threading.Tasks;
 	using System;
+	using System.Collections;
+	using System.Collections.Generic;
 
 	internal sealed class Configuration : DbMigrationsConfiguration<winerack.Models.ApplicationDbContext> {
 
@@ -15,7 +17,7 @@ namespace winerack.Migrations {
 
 		#region Private Methods
 
-		private async Task<bool> SeedIdentity(ApplicationDbContext context) {
+		private async Task<bool> Seed_Identity(ApplicationDbContext context) {
 			if (!context.Roles.Any(r => r.Name == MvcApplication.ADMINISTRATOR_GROUP)) {
 				var store = new RoleStore<IdentityRole>(context);
 				var manager = new ApplicationRoleManager(store);
@@ -43,11 +45,25 @@ namespace winerack.Migrations {
 			return true;
 		}
 
+		private void Seed_Varietals(ApplicationDbContext context) {
+			IList<Varietal> varietals = new List<Varietal>();
+
+			varietals.Add(new Varietal { Name = "Merlot", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Syrah", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Pinot Noir", Style = VarietalStyles.Red });
+
+			foreach (var varietal in varietals) {
+				context.Varietals.AddOrUpdate(v => v.Name, varietal);
+			}
+
+			context.SaveChanges();
+		}
+
 		#endregion Private Methods
 
-		protected override void Seed(winerack.Models.ApplicationDbContext context) {
+		protected override void Seed(ApplicationDbContext context) {
 			// Identity
-			var identityTask = SeedIdentity(context);
+			var identityTask = Seed_Identity(context);
 			var identityResult = identityTask.Result;
 
 			// Regions
@@ -64,11 +80,14 @@ namespace winerack.Migrations {
 
 			context.SaveChanges();
 
+			// Varietals
+			Seed_Varietals(context);
+
 			// Wines
 			context.Wines.AddOrUpdate(
-				w => new { w.Varietal, w.RegionID, w.VineyardID },
+				w => new { w.VarietalID, w.RegionID, w.VineyardID },
 				new Wine {
-					Varietal = "Merlot",
+					VarietalID = 1,
 					Vintage = 2008,
 					RegionID = context.Regions.First().ID,
 					VineyardID = context.Vineyards.First().ID

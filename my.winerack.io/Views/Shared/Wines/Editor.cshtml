@@ -17,10 +17,10 @@
 </div>
 
 <div class="form-group">
-    @Html.LabelFor(model => model.Varietal, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.VarietalID, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.EditorFor(model => model.Varietal, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Varietal, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(m => m.VarietalID, null, "", htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.VarietalID, "", new { @class = "text-danger" })
     </div>
 </div>
 

@@ -15,7 +15,12 @@ namespace winerack.Controllers {
 
 		#region Partials
 
-		public PartialViewResult User(string userId) {
+		/// <summary>
+		/// Render the stream which is visible by a given user
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public PartialViewResult VisibleToUser(string userId) {
 			var activity = db.ActivityEvents
 				.Where(e => e.UserID == userId)
 				.OrderByDescending(e => e.OccuredOn)

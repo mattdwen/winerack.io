@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.Designer.cs">
       <DependentUpon>201407130442121_add_cellar_min_max_to_bottles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407170325400_create_varietals_table.cs" />
+    <Compile Include="Migrations\201407170325400_create_varietals_table.Designer.cs">
+      <DependentUpon>201407170325400_create_varietals_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -273,6 +277,7 @@
     <Compile Include="Models\StoredBottle.cs" />
     <Compile Include="Models\Tasting.cs" />
     <Compile Include="Models\UserViewModels.cs" />
+    <Compile Include="Models\Varietal.cs" />
     <Compile Include="Models\Vineyard.cs" />
     <Compile Include="Models\Wine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -548,6 +553,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.resx">
       <DependentUpon>201407130442121_add_cellar_min_max_to_bottles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407170325400_create_varietals_table.resx">
+      <DependentUpon>201407170325400_create_varietals_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

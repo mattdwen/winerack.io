@@ -15,12 +15,8 @@ namespace winerack.Controllers.API {
 		#region Endpoints
 
 		// GET: api/varietals
-		public IList<string> GetVarietals() {
-			return db.Wines
-				.OrderBy(w => w.Varietal)
-				.Select(w => w.Varietal)
-				.Distinct()
-				.ToList();
+		public IList<Varietal> GetVarietals() {
+			return db.Varietals.OrderBy(v => v.Name).ToList();
 		}
 
 		#endregion Endpoints

@@ -9,7 +9,7 @@
             @{Html.RenderAction("MiniProfile", "Users");}
         </div>
         <div class="col-sm-9">
-            @{Html.RenderAction("User", "Activity", new { userId = User.Identity.GetUserId() });}
+            @{Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });}
         </div>
     </div>
 } else { 

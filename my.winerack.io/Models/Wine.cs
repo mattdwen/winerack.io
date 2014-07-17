@@ -13,7 +13,8 @@ namespace winerack.Models {
 		public string Name { get; set; }
 
 		[Required]
-		public string Varietal { get; set; }
+		[ForeignKey("Varietal")]
+		public int VarietalID { get; set; }
 
 		[DisplayFormat(NullDisplayText = "NV")]
 		public int? Vintage { get; set; }
@@ -49,6 +50,8 @@ namespace winerack.Models {
 		#region Relationships
 
 		public virtual Region Region { get; set; }
+
+		public virtual Varietal Varietal { get; set; }
 
 		public virtual Vineyard Vineyard { get; set; }
 
