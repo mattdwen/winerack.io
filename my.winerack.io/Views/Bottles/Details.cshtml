@@ -6,7 +6,9 @@
 
 <input id="Bottle_ID" type="hidden" value="@Model.ID"/>
 
-<h2>@Model.Wine.Vineyard.Name @Model.Wine.Description</h2>
+<div class="page-header">
+    <h1>@Html.Partial("Wines/_Description", Model.Wine)</h1>
+</div>
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
@@ -23,7 +25,7 @@
             <dd>@Html.DisplayFor(m => m.Wine.Vineyard.Name)</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Wine.Varietal)</dt>
-            <dd>@Html.DisplayFor(m => m.Wine.Varietal)</dd>
+            <dd>@Html.DisplayFor(m => m.Wine.Varietal.Name)</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Wine.Vintage)</dt>
             <dd>@Html.DisplayFor(m => m.Wine.Vintage)</dd>

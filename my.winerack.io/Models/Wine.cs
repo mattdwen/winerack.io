@@ -39,7 +39,7 @@ namespace winerack.Models {
 					description += "'" + Vintage.ToString().Substring(2) + " ";
 				}
 
-				description += Varietal;
+				description += Varietal.Name;
 
 				return description;
 			}
