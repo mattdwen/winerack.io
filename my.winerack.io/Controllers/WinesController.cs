@@ -30,6 +30,7 @@ namespace winerack.Controllers {
 
 		// GET: Wines/Details/5
 		[AllowAnonymous]
+		[Route("wines/{id:int}")]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -47,6 +48,11 @@ namespace winerack.Controllers {
 
 		// GET: Wines/Create
 		public ActionResult Create() {
+			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
+
 			return View();
 		}
 
@@ -59,6 +65,11 @@ namespace winerack.Controllers {
 				db.SaveChanges();
 				return RedirectToAction("Index");
 			}
+
+			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
 
 			return View(wine);
 		}
@@ -76,6 +87,12 @@ namespace winerack.Controllers {
 			if (wine == null) {
 				return HttpNotFound();
 			}
+
+			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
+
 			return View(wine);
 		}
 
@@ -88,6 +105,12 @@ namespace winerack.Controllers {
 				db.SaveChanges();
 				return RedirectToAction("Index");
 			}
+
+			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
+
 			return View(wine);
 		}
 

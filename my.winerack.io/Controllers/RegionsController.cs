@@ -30,6 +30,7 @@ namespace winerack.Controllers {
 
 		// GET: Regions/Details/5
 		[AllowAnonymous]
+		[Route("regions/{id:int}")]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

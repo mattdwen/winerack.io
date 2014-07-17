@@ -10,16 +10,12 @@ namespace winerack {
 		public static void RegisterRoutes(RouteCollection routes) {
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			routes.MapMvcAttributeRoutes();
+
 			routes.MapRoute(
 				name: "AccessDenied",
 				url: "AccessDenied",
 				defaults: new { controller = "Home", action = "AccessDenied" }
-			);
-
-			routes.MapRoute(
-				name: "WineDetails",
-				url: "{controller}/{id}",
-				defaults: new { action = "Details" }
 			);
 
 			routes.MapRoute(
