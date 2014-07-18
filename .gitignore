@@ -2,5 +2,7 @@ my.winerack.io/Web.config
 my.winerack.io/App_Data/
 my.winerack.io/bin/
 my.winerack.io/obj/
+my.winerack.io/node_modules/
 packages/
 *.suo
+*.log
