@@ -68,32 +68,32 @@ namespace winerack.Migrations {
 			var identityResult = identityTask.Result;
 
 			// Regions
-			context.Regions.AddOrUpdate(
-				r => new { r.Name, r.Country },
-				new Region { Name = "Hawke's Bay", Country = "NZ" }
-			);
+			//context.Regions.AddOrUpdate(
+			//	r => new { r.Name, r.Country },
+			//	new Region { Name = "Hawke's Bay", Country = "NZ" }
+			//);
 
-			// Vineyards
-			context.Vineyards.AddOrUpdate(
-				v => new { v.Name },
-				new Vineyard { Name = "Askerne Estate" }
-			);
+			//// Vineyards
+			//context.Vineyards.AddOrUpdate(
+			//	v => new { v.Name },
+			//	new Vineyard { Name = "Askerne Estate" }
+			//);
 
-			context.SaveChanges();
+			//context.SaveChanges();
 
 			// Varietals
 			Seed_Varietals(context);
 
 			// Wines
-			context.Wines.AddOrUpdate(
-				w => new { w.VarietalID, w.RegionID, w.VineyardID },
-				new Wine {
-					VarietalID = 1,
-					Vintage = 2008,
-					RegionID = context.Regions.First().ID,
-					VineyardID = context.Vineyards.First().ID
-				}
-			);
+			//context.Wines.AddOrUpdate(
+			//	w => new { w.VarietalID, w.RegionID, w.VineyardID },
+			//	new Wine {
+			//		VarietalID = 1,
+			//		Vintage = 2008,
+			//		RegionID = context.Regions.First().ID,
+			//		VineyardID = context.Vineyards.First().ID
+			//	}
+			//);
 		}
 	}
 }
