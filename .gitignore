@@ -1,5 +1,7 @@
 my.winerack.io/Web.config
+my.winerack.io/.sass-cache/
 my.winerack.io/App_Data/
+my.winerack.io/bower_components/
 my.winerack.io/bin/
 my.winerack.io/obj/
 my.winerack.io/node_modules/

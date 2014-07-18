@@ -6,6 +6,7 @@ namespace winerack {
 
 		// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
 		public static void RegisterBundles(BundleCollection bundles) {
+
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 				"~/Scripts/jquery-{version}.js"));
 
@@ -22,16 +23,11 @@ namespace winerack {
 				"~/Scripts/vendor/angular/angular-*",
 				"~/Scripts/vendor/angular/ui-utils.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-				"~/Scripts/bootstrap.js",
-				"~/Scripts/respond.js"));
-
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/Scripts/vendor/jQRangeSlider/css/classic.css",
-				"~/Content/bootstrap.css",
+				"~/Content/css/main.css",
 				"~/Content/font-awesome.css",
 				"~/Content/icomoon-wines.css",
-				"~/Content/typeahead.css",
 				"~/Content/site.css",
 				"~/Content/select2.css",
 				"~/Content/select2-bootstrap.css"));

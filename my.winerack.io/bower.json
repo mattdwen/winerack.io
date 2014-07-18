@@ -1,0 +1,19 @@
+{
+  "name": "winerack-io",
+  "version": "0.1.0",
+  "homepage": "https://github.com/mattdwen/my.winerack.io",
+  "authors": [
+    "Matt Dwen <matt@group6.co.nz>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.2.0"
+  }
+}

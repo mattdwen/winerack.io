@@ -358,6 +358,7 @@
     <Content Include="fonts\icomoon-wines.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Gruntfile.js" />
     <Content Include="Scripts\angular\controllers\tastings.js" />
     <Content Include="Scripts\angular\services\bottleService.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -374,6 +375,9 @@
     <Content Include="fonts\icomoon-wines.eot" />
     <Content Include="fonts\icomoon-wines.ttf" />
     <Content Include="fonts\icomoon-wines.woff" />
+    <Content Include="package.json" />
+    <Content Include="bower.json" />
+    <Content Include="Content\_scss\main.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\bottles\details.js" />
