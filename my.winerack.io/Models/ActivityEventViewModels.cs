@@ -40,9 +40,5 @@ namespace winerack.Models.ActivityEventViewModels {
 
 		public int Quantity { get; set; }
 
-		public int WineID { get; set; }
-
-		public int VineyardID { get; set; }
-
 	}
 }
