@@ -14,7 +14,7 @@ namespace winerack.Models {
 
 		[Required]
 		[ForeignKey("Varietal")]
-		public int? VarietalID { get; set; }
+		public int VarietalID { get; set; }
 
 		[DisplayFormat(NullDisplayText = "NV")]
 		public int? Vintage { get; set; }
