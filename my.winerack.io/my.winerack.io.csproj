@@ -358,6 +358,8 @@
     <Content Include="fonts\icomoon-wines.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular\controllers\tastings.js" />
+    <Content Include="Scripts\angular\services\bottleService.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bloodhound\regions.js" />
@@ -393,6 +395,9 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="Scripts\typeahead.jquery.min.js" />
+    <Content Include="Scripts\vendor\angular\angular-resource.js" />
+    <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
+    <Content Include="Scripts\vendor\angular\angular.js" />
     <Content Include="Scripts\vendor\jQRangeSlider\css\classic-min.css" />
     <Content Include="Scripts\vendor\jQRangeSlider\css\classic.css" />
     <Content Include="Scripts\vendor\jQRangeSlider\css\icons-classic\label.png" />

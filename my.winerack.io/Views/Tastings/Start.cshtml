@@ -4,47 +4,73 @@
     ViewBag.Title = "Open a Bottle";
 }
 
-<h2>Select a wine from your collection</h2>
+<section ng-app="tastingsApp">
+    <div ng-controller="StartCtrl">
+        <div class="page-header">
+            <h1>Select a wine from your collection</h1>
+        </div>
 
-@if (Model.Count() > 0) {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Wine.Vineyard)</th>
-                <th>@Html.DisplayNameFor(m => m.Wine.Varietal)</th>
-                <th>@Html.DisplayNameFor(m => m.Wine.Vintage)</th>
-                <th>Bottles</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var bottle in Model) {
-                <tr>
-                    <td>@Html.DisplayFor(b => bottle.Wine.Vineyard.Name)</td>
-                    <td>@Html.DisplayFor(b => bottle.Wine.Varietal.Name)</td>
-                    <td>@Html.DisplayFor(b => bottle.Wine.Vintage)</td>
-                    <td>
-                        <span class="label label-info" title="Purchased">@bottle.NumberOfBottles</span>
-                        <span class="label label-danger" title="Opened">@bottle.NumberDrunk</span>
-                        <span class="label label-success" title="Remaining">@bottle.NumberRemaining</span>
-                    </td>
-                    <td>
-                        <div class="btn-group btn-group-xs">
-                            @if (bottle.NumberRemaining > 0) {
-                                <a class="btn btn-success" href="/Tastings/CreateFromBottle/?BottleId=@bottle.ID" title="Select to open now">
-                                    <i class="fa fa-glass"></i>
-                                    Uncork
-                                </a>
-                            }
+        <div class="jumbotron" ng-show="bottles.count < 1">
+            You have no bottles to open!
+        </div>
+
+        <div class="form-inline well well-sm">
+            <div class="form-group">
+                <label class="sr-only" for="tastingStyle">Style</label>
+                <select id="tastingStyle" ui-select2="{ allowClear: true}" data-placeholder="Style" ng-model="filter.style">
+                    <option value=""></option>
+                    <option ng-repeat="bottle in bottles | unique:'VarietalStyle' | orderBy:'VarietalStyle'" value=" {{ bottle.VarietalStyle }}">
+                        {{ bottle.VarietalStyle}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="tastingVarietal">Varietal</label>
+                <select id="tastingVarietal" ui-select2="{ allowClear: true }" data-placeholder="Varietal" ng-model="filter.varietal">
+                    <option value=""></option>
+                    <option ng-repeat="bottle in bottles | unique:'Varietal' | orderBy:'Varietal'" value="{{ bottle.Varietal }}">
+                        {{ bottle.Varietal }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="tastingKeywords">Keywords</label>
+                <input class="form-control" type="text" placeholder="Search"
+                       ng-model="filter.keywords" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="bottle in bottles | filter:search">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="pull-right">
+                            <span class="label label-primary" title="Purchased">{{ bottle.Purchased }}</span>
+                            <span class="label label-danger" title="Opened">{{ bottle.Opened }}</span>
+                            <span class="label label-success" title="Remaining">{{ bottle.Remaining }}</span>
                         </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-} else {
-    <div class="jumbotron">
-        <p>You're out of wine!</p>
-        @Html.ActionLink("Add a bottle", "Create", new { controller = "Bottles" }, new { @class = "btn btn-lg btn-primary" })
+                        <strong>{{ bottle.Description }}</strong>
+                    </div>
+                    <div class="panel-body">
+                        <div><i class="fa fa-map-marker"></i> {{ bottle.Vineyard }}</div>
+                        <div><i class="fa fa-globe"></i> {{ bottle.Region }}</div>
+                        <div><i class="fa fa-clock-o"></i> {{ bottle.CellarMin }} to {{ bottle.CellarMax }} years</div>
+                    </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-primary" href="/Tastings/CreateFromBottle/?BottleId={{ bottle.ID }}">Open</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/vendor/select2.js")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/Scripts/vendor/angular-ui/select2.js")
+    @Scripts.Render("~/Scripts/angular/services/bottleService.js")
+    @Scripts.Render("~/Scripts/angular/controllers/tastings.js")
 }

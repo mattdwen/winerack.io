@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 using winerack.Models;
@@ -16,6 +18,35 @@ namespace winerack.Controllers.API {
 		#endregion Declarations
 
 		#region Endpoints
+
+		// GET: api/bottles
+		public IList<Models.BottleViewModels.ApiBottle> GetBottles() {
+			var result = new List<Models.BottleViewModels.ApiBottle>();
+
+			var userId = User.Identity.GetUserId();
+			var bottles = db.Bottles
+				.Include("Wine")
+				.Where(b => b.OwnerID == userId)
+				.ToList();
+
+			foreach (var bottle in bottles) {
+				result.Add(new Models.BottleViewModels.ApiBottle {
+					ID = bottle.ID,
+					Description = bottle.Wine.Description,
+					Vineyard = bottle.Wine.Vineyard.Name,
+					Region = bottle.Wine.Region.Label,
+					CellarMin = bottle.CellarMin,
+					CellarMax = bottle.CellarMax,
+					Varietal = bottle.Wine.Varietal.Name,
+					VarietalStyle = bottle.Wine.Varietal.Style.ToString(),
+					Purchased = bottle.NumberOfBottles,
+					Opened = bottle.NumberDrunk,
+					Remaining = bottle.NumberRemaining
+				});
+			}
+
+			return result;
+		}
 
 		// POST: /api/Bottles/5/Cellar
 		[HttpPost]

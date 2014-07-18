@@ -56,3 +56,31 @@ namespace winerack.Models {
 		public int Max { get; set; }
 	}
 }
+
+namespace winerack.Models.BottleViewModels {
+
+	public class ApiBottle {
+
+		public int ID { get; set; }
+
+		public string Description { get; set; }
+
+		public string Vineyard { get; set; }
+
+		public string Region { get; set; }
+
+		public int CellarMin { get; set; }
+
+		public int CellarMax { get; set; }
+
+		public string Varietal { get; set; }
+
+		public string VarietalStyle { get; set; }
+
+		public int Purchased { get; set; }
+
+		public int Opened { get; set; }
+
+		public int Remaining { get; set; }
+	}
+}
