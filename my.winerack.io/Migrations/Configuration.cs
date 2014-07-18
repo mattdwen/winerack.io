@@ -51,6 +51,7 @@ namespace winerack.Migrations {
 			varietals.Add(new Varietal { Name = "Merlot", Style = VarietalStyles.Red });
 			varietals.Add(new Varietal { Name = "Syrah", Style = VarietalStyles.Red });
 			varietals.Add(new Varietal { Name = "Pinot Noir", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Noble", Style = VarietalStyles.Dessert });
 
 			foreach (var varietal in varietals) {
 				context.Varietals.AddOrUpdate(v => v.Name, varietal);

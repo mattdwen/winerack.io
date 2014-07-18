@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace winerack.Models {
 
 		#region Relationships
 
+		[JsonIgnore]
 		public virtual ICollection<Wine> Wines { get; set; }
 
 		#endregion Relationships

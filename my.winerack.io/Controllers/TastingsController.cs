@@ -55,6 +55,11 @@ namespace winerack.Controllers {
 				return HttpNotFound();
 			}
 
+			if (bottle.NumberRemaining == 1) {
+				var storedId = bottle.Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Tasting == null).FirstOrDefault().ID;
+				return RedirectToAction("Create", new { storedBottleId = storedId });
+			}
+
 			return View(bottle);
 		}
 

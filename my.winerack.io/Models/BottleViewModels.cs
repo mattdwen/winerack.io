@@ -77,6 +77,8 @@ namespace winerack.Models.BottleViewModels {
 
 		public string VarietalStyle { get; set; }
 
+		public int? Vintage { get; set; }
+
 		public int Purchased { get; set; }
 
 		public int Opened { get; set; }

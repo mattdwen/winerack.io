@@ -8,15 +8,34 @@ tastingsApp.controller('StartCtrl', function ($scope, Bottle) {
     $scope.bottles = Bottle.query();
 
     $scope.filter = {
+        drinking: '',
         keywords: '',
         style: '',
-        varietal: '',
+        varietal: ''
     };
 
     $scope.search = function (bottle) {
-        var keywords = false,
-            style = false,
-            varietal = false;
+        var style = false,
+            varietal = false,
+            keywords = false,
+            drinking = false;
+
+        // Drinking
+        if ($scope.filter.drinking == '') {
+            drinking = true;
+        } else {
+            var yearNow = new Date().getFullYear(),
+                yearStart = bottle.Vintage + bottle.CellarMin,
+                yearEnd = bottle.Vintage + bottle.CellarMax;
+
+            if ($scope.filter.drinking == 'now' && yearStart <= yearNow && yearEnd >= yearNow) {
+                drinking = true;
+            } else if ($scope.filter.drinking == 'over' && bottle.Vintage > 0 && yearEnd < yearNow) {
+                drinking = true;
+            } else if ($scope.filter.drinking == 'now' && bottle.Vintage == undefined) {
+                drinking = true;
+            }
+        }
 
         // Keywords
         if ($scope.filter.keywords == '') {
@@ -35,7 +54,7 @@ tastingsApp.controller('StartCtrl', function ($scope, Bottle) {
         if ($scope.filter.style == '') {
             style = true;
         } else if ($scope.filter.style == bottle.VarietalStyle) {
-            style == true;
+            style = true;
         }
 
         // Varietal
@@ -45,6 +64,6 @@ tastingsApp.controller('StartCtrl', function ($scope, Bottle) {
             varietal = true;
         }
 
-        return (varietal && style && keywords);
+        return (varietal && style && drinking && keywords);
     };
 });

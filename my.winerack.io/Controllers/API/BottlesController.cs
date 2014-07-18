@@ -30,11 +30,16 @@ namespace winerack.Controllers.API {
 				.ToList();
 
 			foreach (var bottle in bottles) {
+				if (bottle.NumberRemaining < 1) {
+					continue;
+				}
+
 				result.Add(new Models.BottleViewModels.ApiBottle {
 					ID = bottle.ID,
 					Description = bottle.Wine.Description,
 					Vineyard = bottle.Wine.Vineyard.Name,
 					Region = bottle.Wine.Region.Label,
+					Vintage = bottle.Wine.Vintage,
 					CellarMin = bottle.CellarMin,
 					CellarMax = bottle.CellarMax,
 					Varietal = bottle.Wine.Varietal.Name,
