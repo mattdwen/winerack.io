@@ -3,7 +3,11 @@
     Layout = "~/Views/Shared/_ActivityEvent.cshtml";
 }
 
-<p>@Model.Username opened a bottle of @Model.Bottle by @Model.Winery.</p>
+<p>
+    @Model.Username opened a bottle
+    of <a href="/wines/@Model.WineID">@Model.Bottle</a>
+    by <a href="/vineyards/@Model.VineyardID">@Model.Winery</a>.
+</p>
 
 @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
     <blockquote>@Model.Notes</blockquote>

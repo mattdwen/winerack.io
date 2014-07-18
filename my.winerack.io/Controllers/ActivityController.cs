@@ -43,7 +43,9 @@ namespace winerack.Controllers {
 				Notes = storedBottle.Tasting.Notes,
 				Bottle = storedBottle.Purchase.Bottle.Wine.Description,
 				Winery = storedBottle.Purchase.Bottle.Wine.Vineyard.Name,
-				Image = storedBottle.Tasting.ImageID.HasValue ? "tastings/" + storedBottle.Tasting.ImageID.Value : null
+				Image = storedBottle.Tasting.ImageID.HasValue ? "tastings/" + storedBottle.Tasting.ImageID.Value : null,
+				WineID = storedBottle.Purchase.Bottle.WineID,
+				VineyardID = storedBottle.Purchase.Bottle.Wine.VineyardID
 			};
 			return PartialView(viewmodel);
 		}
