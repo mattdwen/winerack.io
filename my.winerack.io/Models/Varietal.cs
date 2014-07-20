@@ -32,6 +32,8 @@ namespace winerack.Models {
 		Red = 100,
 		White = 200,
 		Fortified = 300,
-		Dessert = 400
+		Dessert = 400,
+		Sparkling = 500,
+		Other = 1000
 	}
 }

@@ -11,9 +11,13 @@ namespace winerack.Migrations {
 
 	internal sealed class Configuration : DbMigrationsConfiguration<winerack.Models.ApplicationDbContext> {
 
+		#region Properties
+
 		public Configuration() {
 			AutomaticMigrationsEnabled = false;
 		}
+
+		#endregion Properties
 
 		#region Private Methods
 
@@ -48,10 +52,30 @@ namespace winerack.Migrations {
 		private void Seed_Varietals(ApplicationDbContext context) {
 			IList<Varietal> varietals = new List<Varietal>();
 
+			varietals.Add(new Varietal { Name = "Cabernet", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Cabernet Franc", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Cabernet Merlot", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Cabernet Merlot Franc Malbec", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Cabernet Sauvignon", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Chardonnay", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Fiano", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Gewürztraminer", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Malbec", Style = VarietalStyles.Red });
 			varietals.Add(new Varietal { Name = "Merlot", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Syrah", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Pinot Noir", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Merlot Cabernet Franc", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Montepulciano", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Muscato", Style = VarietalStyles.Sparkling });
 			varietals.Add(new Varietal { Name = "Noble", Style = VarietalStyles.Dessert });
+			varietals.Add(new Varietal { Name = "Pinot Gris", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Pinot Noir", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Riesling", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Rosé", Style = VarietalStyles.Other });
+			varietals.Add(new Varietal { Name = "Sangiovese", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Sauvignon Blanc", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Sémillon", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Shiraz", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Syrah", Style = VarietalStyles.Red });
+			varietals.Add(new Varietal { Name = "Viognier", Style = VarietalStyles.White });
 
 			foreach (var varietal in varietals) {
 				context.Varietals.AddOrUpdate(v => v.Name, varietal);
@@ -61,6 +85,8 @@ namespace winerack.Migrations {
 		}
 
 		#endregion Private Methods
+
+		#region Implementation
 
 		protected override void Seed(ApplicationDbContext context) {
 			// Identity
@@ -95,5 +121,7 @@ namespace winerack.Migrations {
 			//	}
 			//);
 		}
+
+		#endregion Implementation
 	}
 }

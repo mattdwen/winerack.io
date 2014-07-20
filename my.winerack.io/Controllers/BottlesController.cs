@@ -161,7 +161,7 @@ namespace winerack.Controllers {
 			};
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();
@@ -208,7 +208,7 @@ namespace winerack.Controllers {
 			}
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();
