@@ -1,12 +1,15 @@
 ﻿@model winerack.Models.ActivityEventViewModels.Base
 @using winerack.Helpers
+@{
+    var imageUrl = "https://winerack.blob.core.windows.net/" + Model.Image + "_s.jpg";
+}
 
 <div class="activity-event panel panel-default">
     <div class="panel-body">
         @RenderBody()
 
         @if (!string.IsNullOrWhiteSpace(Model.Image)) {
-            <img src="https://winerack.blob.core.windows.net/@Model.Image" width="300" />
+            <img src="@imageUrl" width="300" />
         }
 
         <div class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</div>

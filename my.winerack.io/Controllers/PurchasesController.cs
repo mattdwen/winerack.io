@@ -82,7 +82,7 @@ namespace winerack.Controllers {
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
 					var blobHandler = new Logic.BlobHandler("purchases");
-					purchase.ImageID = blobHandler.Upload(photo);
+					purchase.ImageID = blobHandler.UploadImage(photo);
 				}
 
 				// Add the purchase
