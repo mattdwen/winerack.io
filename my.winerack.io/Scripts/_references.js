@@ -35,3 +35,4 @@
 /// <reference path="vendor/jqrangeslider/demo/sliderdemo.js" />
 /// <reference path="vendor/jqrangeslider/lib/jquery.mousewheel.min.js" />
 /// <reference path="vendor/jqrangeslider/demo/lib/jquery-ui/js/jquery-ui-1.8.16.custom.min.js" />
+/// <reference path="account/settings.js" />

@@ -266,6 +266,10 @@
     <Compile Include="Migrations\201407180913232_wine_varitetalid_not_nullable.Designer.cs">
       <DependentUpon>201407180913232_wine_varitetalid_not_nullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407220301466_users_add_imageid.cs" />
+    <Compile Include="Migrations\201407220301466_users_add_imageid.Designer.cs">
+      <DependentUpon>201407220301466_users_add_imageid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -366,6 +370,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Gruntfile.js" />
+    <Content Include="Scripts\account\settings.js" />
     <Content Include="Scripts\angular\controllers\tastings.js" />
     <Content Include="Scripts\angular\services\bottleService.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -569,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407180913232_wine_varitetalid_not_nullable.resx">
       <DependentUpon>201407180913232_wine_varitetalid_not_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407220301466_users_add_imageid.resx">
+      <DependentUpon>201407220301466_users_add_imageid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

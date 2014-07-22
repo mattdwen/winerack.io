@@ -456,6 +456,7 @@ namespace winerack.Controllers {
 
 			ViewBag.StatusMessage =
 				message == SettingsMessageId.UpdateProfileSuccess ? "Your profile has been updated."
+				: message == SettingsMessageId.UpdateProfileSuccess ? "Your profile picture has been updated."
 				: "";
 
 			return View(user);
@@ -481,6 +482,29 @@ namespace winerack.Controllers {
 		}
 
 		#endregion Settings
+
+		#region Profile Picture
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult ProfilePicture(HttpPostedFileBase photo) {
+			// Save the photo
+			if (photo != null && photo.ContentLength > 0) {
+				var user = UserManager.FindById(User.Identity.GetUserId());
+				var blobHandler = new Logic.BlobHandler("profiles");
+
+				user.ImageID = blobHandler.UploadImage(photo);
+
+				var result = UserManager.Update(user);
+				if (result.Succeeded) {
+					return RedirectToAction("Settings", new { Message = SettingsMessageId.UpdatePictureSuccess });
+				}
+			}
+
+			return RedirectToAction("Settings");
+		}
+
+		#endregion Profile Picture
 
 		#endregion Actions
 
@@ -538,7 +562,8 @@ namespace winerack.Controllers {
 		}
 
 		public enum SettingsMessageId {
-			UpdateProfileSuccess
+			UpdateProfileSuccess,
+			UpdatePictureSuccess
 		};
 
 		private ActionResult RedirectToLocal(string returnUrl) {

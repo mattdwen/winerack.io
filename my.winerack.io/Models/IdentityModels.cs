@@ -22,6 +22,8 @@ namespace winerack.Models {
 		[MaxLength(255)]
 		public string LastName { get; set; }
 
+		public Guid? ImageID { get; set; }
+
 		#endregion Properties
 
 		#region Public Methods

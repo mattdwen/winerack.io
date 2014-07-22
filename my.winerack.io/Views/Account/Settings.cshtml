@@ -1,10 +1,27 @@
 ﻿@model winerack.Models.User
 @{
     ViewBag.Title = "Acount Settings";
+    var imageUrl = Model.ImageID.HasValue
+        ? "//winerack.blob.core.windows.net/profiles/" + @Model.ImageID.Value + "_sq.jpg"
+        : "//placehold.it/150x150&text=Photo";
 }
 
 <h4>Profile</h4>
 <hr />
+
+@using (Html.BeginForm("ProfilePicture", "Account", FormMethod.Post, new { @class="form-horizontal", id="formProfilePicture", enctype = "multipart/form-data" })) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Profile Picture</label>
+        <div class="col-md-10">
+            <a id="photoSelect" href="#">
+                <img class="img-circle" id="photoPreview" src="@imageUrl" width="150" />
+            </a>
+            <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
+        </div>
+    </div>
+}
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 
@@ -12,6 +29,8 @@
     @Html.AntiForgeryToken()
 
     @Html.ValidationSummary("", new { @class = "text-danger" })
+    
+    <div class="form-group"></div>
     
     <div class="form-group">
         @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
@@ -33,4 +52,9 @@
             <a class="btn btn-default" href="/Account/Manage">Change password</a>
         </div>
     </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/account/settings.js")
 }
