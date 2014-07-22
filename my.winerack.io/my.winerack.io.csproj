@@ -222,6 +222,7 @@
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Logic\ActivityStream.cs" />
     <Compile Include="Logic\BlobHandler.cs" />
+    <Compile Include="Logic\Images.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>

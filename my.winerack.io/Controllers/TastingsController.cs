@@ -90,7 +90,7 @@ namespace winerack.Controllers {
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
 					var blobHandler = new Logic.BlobHandler("tastings");
-					tasting.ImageID = blobHandler.UploadImage(photo);
+					tasting.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Standard));
 				}
 
 				// Add the tasting

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using winerack.Logic;
 
 namespace winerack.Controllers {
 
@@ -493,7 +494,7 @@ namespace winerack.Controllers {
 				var user = UserManager.FindById(User.Identity.GetUserId());
 				var blobHandler = new Logic.BlobHandler("profiles");
 
-				user.ImageID = blobHandler.UploadImage(photo);
+				user.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Profile));
 
 				var result = UserManager.Update(user);
 				if (result.Succeeded) {

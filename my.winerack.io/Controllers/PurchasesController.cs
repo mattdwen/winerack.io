@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using winerack.Helpers.Authentication;
 using System.Web;
+using winerack.Logic;
 
 namespace winerack.Controllers {
 
@@ -82,7 +83,7 @@ namespace winerack.Controllers {
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
 					var blobHandler = new Logic.BlobHandler("purchases");
-					purchase.ImageID = blobHandler.UploadImage(photo);
+					purchase.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Standard));
 				}
 
 				// Add the purchase
