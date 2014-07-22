@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using winerack.Helpers
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -6,10 +7,19 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Settings", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                @User.Identity.GetUserName()
+                <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl()" width="32" />
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    @Html.ActionLink("Account Settings", "Settings", "Account")
+                </li>
+                <li class="divider"></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        </li>        
     </ul>
     }
 }

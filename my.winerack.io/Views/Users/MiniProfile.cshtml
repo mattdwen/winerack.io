@@ -1,8 +1,9 @@
 ﻿@model winerack.Models.MiniProfileViewModel
+@using winerack.Helpers
 
 <div id="user-profile">
     <h4>
-        <i class="fa fa-user"></i>
+        <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="75" />
         @Model.Username
     </h4>
 

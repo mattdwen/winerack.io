@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using winerack.Models;
 
 namespace winerack.Helpers {
 	public static class ExtensionMethods {
@@ -48,6 +50,19 @@ namespace winerack.Helpers {
 			}
 
 			return MvcHtmlString.Create(text);
+		}
+
+		public static MvcHtmlString ProfileImageUrl(string size = "sq_sm") {
+			var userId = HttpContext.Current.User.Identity.GetUserId();
+			var dbContext = new ApplicationDbContext();
+			var user = dbContext.Users.Find(userId);
+			var url = "/Content/images/profile-picture.png";
+
+			if (user != null && user.ImageID.HasValue) {
+				url = "//winerack.blob.core.windows.net/profiles/" + user.ImageID.Value + "_" + size + ".jpg";
+			}
+
+			return MvcHtmlString.Create(url);
 		}
 	}
 }
