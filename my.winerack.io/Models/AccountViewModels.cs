@@ -109,6 +109,8 @@ namespace winerack.Models {
 		public bool SocialTwitter { get; set; }
 
 		public bool SocialFacebook { get; set; }
+
+		public bool SocialTumblr { get; set; }
 	}
 
 	public class ForgotPasswordViewModel {

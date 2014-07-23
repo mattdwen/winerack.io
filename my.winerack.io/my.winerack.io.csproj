@@ -44,6 +44,15 @@
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="DontPanic.TumblrSharp">
+      <HintPath>..\packages\TumblrSharp.1.0.0\lib\net45\DontPanic.TumblrSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="DontPanic.TumblrSharp.Client">
+      <HintPath>..\packages\TumblrSharp.1.0.0\lib\net45\DontPanic.TumblrSharp.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="DontPanic.TumblrSharp.Net45">
+      <HintPath>..\packages\TumblrSharp.1.0.0\lib\net45\DontPanic.TumblrSharp.Net45.dll</HintPath>
+    </Reference>
     <Reference Include="Facebook">
       <HintPath>..\packages\Facebook.6.7.0\lib\net45\Facebook.dll</HintPath>
     </Reference>

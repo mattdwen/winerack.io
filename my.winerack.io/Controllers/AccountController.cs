@@ -10,6 +10,7 @@ using System.Net;
 using winerack.Logic;
 using Spring.Social.Twitter.Api.Impl;
 using System.Configuration;
+using DontPanic.TumblrSharp.Client;
 
 namespace winerack.Controllers {
 
@@ -61,6 +62,7 @@ namespace winerack.Controllers {
 			model.ImageID = user.ImageID;
 			model.SocialTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
 			model.SocialFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
+			model.SocialTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
 
 			return model;
 		}
@@ -487,11 +489,13 @@ namespace winerack.Controllers {
 				: message == SettingsMessageId.UpdateProfileSuccess ? "Your profile picture has been updated"
 				: authMessage == AuthControllerMessages.TwitterConnected ? "Connected your account with Twitter"
 				: authMessage == AuthControllerMessages.FacebookConnected ? "Connected your account with Facebook"
+				: authMessage == AuthControllerMessages.TumblrConnected ? "Connected your account with Tumblr"
 				: null;
 
 			ViewBag.DangerMessage =
 				authMessage == AuthControllerMessages.TwitterRemoved ? "Disconnected your account from Twitter"
 				: authMessage == AuthControllerMessages.FacebookRemoved ? "Disconnected your account from Facebook"
+				: authMessage == AuthControllerMessages.TumblrRemoved ? "Disconnected your account from Tumblr"
 				: null;
 
 			return View(model);
@@ -568,6 +572,27 @@ namespace winerack.Controllers {
 			var client = new Facebook.FacebookClient(credentials.Secret);
 
 			dynamic result = client.Post("me/feed", new { message = "Test" });
+
+			return RedirectToAction("Settings");
+		}
+
+		public ActionResult TumblrPost() {
+			var user = UserManager.FindById(User.Identity.GetUserId());
+			var credentials = user.Credentials
+				.Where(c => c.CredentialType == CredentialTypes.Tumblr)
+				.FirstOrDefault();
+			var consumerKey = ConfigurationManager.AppSettings["tumblr:consumerKey"];
+			var consumerSecret = ConfigurationManager.AppSettings["tumblr:consumerSecret"];
+
+			var factory = new DontPanic.TumblrSharp.TumblrClientFactory();
+			var token = new DontPanic.TumblrSharp.OAuth.Token(credentials.Key, credentials.Secret);
+			var client = factory.Create<TumblrClient>(consumerKey, consumerSecret, token);
+
+			var title = "Test Title";
+			var body = "Test Body";
+			var tags = new string[] { "wine" };
+			var postData = DontPanic.TumblrSharp.PostData.CreateText(body, title, tags);
+			var result = client.CreatePostAsync("mattdwen.tumblr.com", postData).Result;
 
 			return RedirectToAction("Settings");
 		}

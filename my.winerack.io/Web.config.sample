@@ -24,6 +24,8 @@
     <add key="twitter:consumerSecret" value="API_SECRET" />
     <add key="facebook:appId" value="API_ID" />
     <add key="facebook:appSecret" value="APP_SECRET" />
+    <add key="tumblr:consumerKey" value="CONSUMER_KEY" />
+    <add key="tumblr:consumerSecret" value="CONSUMER_SECRET" />
   </appSettings>
   <system.web>
     <authentication mode="None" />

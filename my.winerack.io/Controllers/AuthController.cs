@@ -24,6 +24,18 @@ namespace winerack.Controllers {
 
 		#region Private Methods
 
+		#region Tumblr
+
+		private DontPanic.TumblrSharp.OAuth.OAuthClient GetTumblrClient() {
+			var consumerKey = ConfigurationManager.AppSettings["tumblr:consumerKey"];
+			var consumerSecret = ConfigurationManager.AppSettings["tumblr:consumerSecret"];
+			var factory = new DontPanic.TumblrSharp.OAuthClientFactory();
+			var oauthClient = factory.Create(consumerKey, consumerSecret);
+			return oauthClient;
+		}
+
+		#endregion Tumblr
+
 		#region Twitter
 
 		private TwitterServiceProvider GetTwitterServiceProvider() {
@@ -177,6 +189,62 @@ namespace winerack.Controllers {
 
 		#endregion Facebook
 
+		#region Tumblr
+
+		public ActionResult Tumblr() {
+			var client = GetTumblrClient();
+			var callbackUrl = "http://localhost:3890/Auth/Tumblr_Callback";
+			var requestToken = client.GetRequestTokenAsync(callbackUrl).Result;
+			Session["TumblrRequestToken"] = requestToken;
+			var authorizeUrl = client.GetAuthorizeUrl(requestToken);
+			return Redirect(authorizeUrl.ToString());
+		}
+
+		public ActionResult Tumblr_Callback(string oauth_token, string oauth_verifier) {
+			var requestToken = Session["TumblrRequestToken"] as DontPanic.TumblrSharp.OAuth.Token;
+			var client = GetTumblrClient();
+			var authToken = client.GetAccessTokenAsync(requestToken, Request.Url.ToString()).Result;
+
+			var userId = User.Identity.GetUserId();
+			var credentials = context.Credentials
+				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Tumblr)
+				.FirstOrDefault();
+
+			if (credentials == null) {
+				credentials = new Credentials {
+					UserID = userId,
+					CredentialType = CredentialTypes.Tumblr
+				};
+			}
+
+			credentials.Key = authToken.Key;
+			credentials.Secret = authToken.Secret;
+
+			if (credentials.ID < 1) {
+				context.Credentials.Add(credentials);
+			}
+
+			context.SaveChanges();
+
+			return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.TumblrConnected });
+		}
+
+		public ActionResult Tumblr_Remove() {
+			var userId = User.Identity.GetUserId();
+			var credentials = context.Credentials
+				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Tumblr)
+				.FirstOrDefault();
+
+			if (credentials != null) {
+				context.Credentials.Remove(credentials);
+				context.SaveChanges();
+			}
+
+			return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.TumblrRemoved });
+		}
+
+		#endregion Tumblr
+
 		#endregion Actions
 	}
 
@@ -184,6 +252,8 @@ namespace winerack.Controllers {
 		TwitterConnected,
 		TwitterRemoved,
 		FacebookConnected,
-		FacebookRemoved
+		FacebookRemoved,
+		TumblrConnected,
+		TumblrRemoved
 	}
 }
