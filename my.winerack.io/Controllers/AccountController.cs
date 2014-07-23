@@ -58,6 +58,7 @@ namespace winerack.Controllers {
 
 			model.ImageID = user.ImageID;
 			model.SocialTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+			model.SocialFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
 
 			return model;
 		}
@@ -483,10 +484,12 @@ namespace winerack.Controllers {
 				message == SettingsMessageId.UpdateProfileSuccess ? "Your profile has been updated"
 				: message == SettingsMessageId.UpdateProfileSuccess ? "Your profile picture has been updated"
 				: authMessage == AuthControllerMessages.TwitterConnected ? "Connected your account with Twitter"
+				: authMessage == AuthControllerMessages.FacebookConnected ? "Connected your account with Facebook"
 				: null;
 
 			ViewBag.DangerMessage =
-				authMessage == AuthControllerMessages.TwitterRemoved ? "Disconnected your account with Twitter"
+				authMessage == AuthControllerMessages.TwitterRemoved ? "Disconnected your account from Twitter"
+				: authMessage == AuthControllerMessages.FacebookRemoved ? "Disconnected your account from Facebook"
 				: null;
 
 			return View(model);

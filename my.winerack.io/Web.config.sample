@@ -22,6 +22,7 @@
     <add key="smtp:password" value="SMTP_PASSWORD" />
     <add key="twitter:consumerKey" value="API_KEY" />
     <add key="twitter:consumerSecret" value="API_SECRET" />
+    <add key="facebook:appId" value="API_ID" />
   </appSettings>
   <system.web>
     <authentication mode="None" />
@@ -64,6 +65,10 @@
       <dependentAssembly>
         <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" />
         <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
       </dependentAssembly>
     </assemblyBinding>
   </runtime>

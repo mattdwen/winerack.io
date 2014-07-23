@@ -32,6 +32,7 @@ namespace winerack.Models {
 	}
 
 	public enum CredentialTypes {
-		Twitter = 100
+		Twitter = 100,
+		Facebook = 200
 	}
 }

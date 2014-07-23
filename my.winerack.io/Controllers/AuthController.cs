@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using winerack.Models;
 using Microsoft.AspNet.Identity;
+using Facebook;
 
 namespace winerack.Controllers {
 
@@ -106,11 +107,71 @@ namespace winerack.Controllers {
 
 		#endregion Twitter
 
+		#region Facebook
+
+		public ActionResult Facebook() {
+			var appId = ConfigurationManager.AppSettings["facebook:appId"];
+			var redirectUrl = "http://localhost:3890/auth/facebook_callback";
+			var scope = "publish_actions";
+
+			var url = "https://www.facebook.com/dialog/oauth?" +
+				"client_id=" + appId +
+				"&redirect_uri=" + redirectUrl +
+				"&scope=" + scope +
+				"&response_type=token";
+
+			return Redirect(url);
+		}
+
+		public ActionResult Facebook_Callback(string access_token) {
+			// Search for an existing credential set
+			var userId = User.Identity.GetUserId();
+			var credentials = context.Credentials
+				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Facebook)
+				.FirstOrDefault();
+
+			if (credentials == null) {
+				credentials = new Credentials {
+					UserID = userId,
+					CredentialType = CredentialTypes.Facebook
+				};
+			}
+
+			credentials.Key = access_token;
+
+			if (credentials.ID < 1) {
+				context.Credentials.Add(credentials);
+			}
+
+			context.SaveChanges();
+
+			return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.FacebookConnected });
+		}
+
+		public ActionResult Facebook_Remove() {
+			// Search for an existing credential set
+			var userId = User.Identity.GetUserId();
+			var credentials = context.Credentials
+				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Facebook)
+				.FirstOrDefault();
+
+			if (credentials != null) {
+				context.Credentials.Remove(credentials);
+				context.SaveChanges();
+			}
+
+			return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.FacebookRemoved });
+		}
+
+		#endregion Facebook
+
 		#endregion Actions
 	}
 
 	public enum AuthControllerMessages {
 		TwitterConnected,
-		TwitterRemoved
+		TwitterRemoved,
+		FacebookConnected,
+		FacebookRemoved
 	}
 }

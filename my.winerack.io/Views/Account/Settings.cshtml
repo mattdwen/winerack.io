@@ -66,11 +66,21 @@
 <div class="form-horizontal">
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @if (Model.SocialTwitter) {
-                <a class="btn btn-danger" href="/Auth/Twitter_Remove"><i class="fa fa-twitter"></i> Disconnect Twitter</a>
-            } else {
-             <a class="btn btn-primary" href="/Auth/Twitter"><i class="fa fa-twitter"></i> Connect to Twitter</a>   
-            }
+            <p>
+                @if (Model.SocialTwitter) {
+                    <a class="btn btn-danger" href="/Auth/Twitter_Remove"><i class="fa fa-twitter"></i> Disconnect Twitter</a>
+                } else {
+                    <a class="btn btn-primary" href="/Auth/Twitter"><i class="fa fa-twitter"></i> Connect to Twitter</a>
+                }
+            </p>
+
+            <p>
+                @if (Model.SocialFacebook) {
+                    <a class="btn btn-danger" href="/Auth/Facebook_Remove"><i class="fa fa-facebook"></i> Disconnect Facebook</a>
+                } else {
+                    <a class="btn btn-primary" href="/Auth/Facebook"><i class="fa fa-facebook"></i> Connect to Facebook</a>
+                }
+            </p>
         </div>
     </div>
 </div>

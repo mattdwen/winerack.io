@@ -107,6 +107,8 @@ namespace winerack.Models {
 		public Guid? ImageID { get; set; }
 
 		public bool SocialTwitter { get; set; }
+
+		public bool SocialFacebook { get; set; }
 	}
 
 	public class ForgotPasswordViewModel {
