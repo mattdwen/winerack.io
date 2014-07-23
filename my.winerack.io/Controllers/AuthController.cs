@@ -111,19 +111,30 @@ namespace winerack.Controllers {
 
 		public ActionResult Facebook() {
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
-			var redirectUrl = "http://localhost:3890/auth/facebook_callback";
+			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
+			var redirectUrl = "http://localhost:3890/auth/facebook_callback/";
 			var scope = "publish_actions";
 
 			var url = "https://www.facebook.com/dialog/oauth?" +
 				"client_id=" + appId +
-				"&redirect_uri=" + redirectUrl +
-				"&scope=" + scope +
-				"&response_type=token";
+				"&redirect_uri=" + redirectUrl;
 
 			return Redirect(url);
 		}
 
-		public ActionResult Facebook_Callback(string access_token) {
+		public ActionResult Facebook_Callback(string code) {
+			// Exchange the code for an access token
+			var client = new Facebook.FacebookClient();
+			var appId = ConfigurationManager.AppSettings["facebook:appId"];
+			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
+			var redirectUri = "http://localhost:3890/auth/facebook_callback/";
+			dynamic result = client.Get("oauth/access_token", new {
+				client_id = appId,
+				redirect_uri = redirectUri,
+				client_secret = appSecret,
+				code = code
+			});
+
 			// Search for an existing credential set
 			var userId = User.Identity.GetUserId();
 			var credentials = context.Credentials
@@ -137,7 +148,8 @@ namespace winerack.Controllers {
 				};
 			}
 
-			credentials.Key = access_token;
+			credentials.Key = code;
+			credentials.Secret = result.access_token;
 
 			if (credentials.ID < 1) {
 				context.Credentials.Add(credentials);

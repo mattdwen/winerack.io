@@ -541,6 +541,27 @@ namespace winerack.Controllers {
 
 		#endregion Profile Picture
 
+		#region Social
+
+		public ActionResult Tweet() {
+			return RedirectToAction("Settings");
+		}
+
+		public ActionResult Post() {
+			var user = UserManager.FindById(User.Identity.GetUserId());
+			var credentials = user.Credentials
+				.Where(c => c.CredentialType == CredentialTypes.Facebook)
+				.FirstOrDefault();
+
+			var client = new Facebook.FacebookClient(credentials.Secret);
+
+			dynamic result = client.Post("me/feed", new { message = "Test" });
+
+			return RedirectToAction("Settings");
+		}
+
+		#endregion Social
+
 		#endregion Actions
 
 		#region Public Methods

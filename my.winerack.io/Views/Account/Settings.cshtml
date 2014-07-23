@@ -1,7 +1,7 @@
 ﻿@model winerack.Models.SettingsViewModel
 @using winerack.Helpers
 @{
-    ViewBag.Title = "Acount Settings";
+    ViewBag.Title = "Account Settings";
 }
 
 <h4>Profile</h4>
@@ -69,6 +69,7 @@
             <p>
                 @if (Model.SocialTwitter) {
                     <a class="btn btn-danger" href="/Auth/Twitter_Remove"><i class="fa fa-twitter"></i> Disconnect Twitter</a>
+                    <a class="btn btn-primary" href="/Account/Tweet"><i class="fa fa-twitter"></i> Test</a>
                 } else {
                     <a class="btn btn-primary" href="/Auth/Twitter"><i class="fa fa-twitter"></i> Connect to Twitter</a>
                 }
@@ -77,6 +78,7 @@
             <p>
                 @if (Model.SocialFacebook) {
                     <a class="btn btn-danger" href="/Auth/Facebook_Remove"><i class="fa fa-facebook"></i> Disconnect Facebook</a>
+                    <a class="btn btn-primary" href="/Account/Post"><i class="fa fa-facebook"></i> Test</a>
                 } else {
                     <a class="btn btn-primary" href="/Auth/Facebook"><i class="fa fa-facebook"></i> Connect to Facebook</a>
                 }
