@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace winerack.Models {
 		public Guid? ImageID { get; set; }
 
 		#endregion Properties
+
+		#region Relationships
+
+		public virtual ICollection<Credentials> Credentials { get; set; }
+
+		#endregion Relationships
 
 		#region Public Methods
 

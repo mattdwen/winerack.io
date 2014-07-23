@@ -25,6 +25,8 @@ namespace winerack.Models {
 
 		public DbSet<Bottle> Bottles { get; set; }
 
+		public DbSet<Credentials> Credentials { get; set; }
+
 		public DbSet<Purchase> Purchases { get; set; }
 
 		public DbSet<Region> Regions { get; set; }

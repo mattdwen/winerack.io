@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using winerack.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -42,6 +43,28 @@ namespace winerack.Controllers {
 		}
 
 		#endregion Properties
+
+		#region Private Methods
+
+		#region Settings
+
+		private SettingsViewModel GetSettingsViewModel(User user, SettingsViewModel model = null) {
+			if (model == null) {
+				model = new SettingsViewModel {
+					FirstName = user.FirstName,
+					LastName = user.LastName
+				};	
+			}
+
+			model.ImageID = user.ImageID;
+			model.SocialTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+
+			return model;
+		}
+
+		#endregion Settings
+
+		#endregion Private Methods
 
 		#region Actions
 
@@ -452,21 +475,29 @@ namespace winerack.Controllers {
 		#region Settings
 
 		// GET: /Account/Settings
-		public ActionResult Settings(SettingsMessageId? message) {
+		public ActionResult Settings(SettingsMessageId? message, AuthControllerMessages? authMessage) {
 			var user = UserManager.FindById(User.Identity.GetUserId());
+			var model = GetSettingsViewModel(user);			
 
-			ViewBag.StatusMessage =
-				message == SettingsMessageId.UpdateProfileSuccess ? "Your profile has been updated."
-				: message == SettingsMessageId.UpdateProfileSuccess ? "Your profile picture has been updated."
-				: "";
+			ViewBag.SuccessMessage =
+				message == SettingsMessageId.UpdateProfileSuccess ? "Your profile has been updated"
+				: message == SettingsMessageId.UpdateProfileSuccess ? "Your profile picture has been updated"
+				: authMessage == AuthControllerMessages.TwitterConnected ? "Connected your account with Twitter"
+				: null;
 
-			return View(user);
+			ViewBag.DangerMessage =
+				authMessage == AuthControllerMessages.TwitterRemoved ? "Disconnected your account with Twitter"
+				: null;
+
+			return View(model);
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Settings(SettingsViewModel model) {
 			var user = UserManager.FindById(User.Identity.GetUserId());
+			model = GetSettingsViewModel(user, model);
+
 			if (ModelState.IsValid) {
 				user.FirstName = model.FirstName;
 				user.LastName = model.LastName;
@@ -479,7 +510,7 @@ namespace winerack.Controllers {
 				AddErrors(result);
 			}
 
-			return View(user);
+			return View(model);
 		}
 
 		#endregion Settings

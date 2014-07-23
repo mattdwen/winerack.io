@@ -103,6 +103,10 @@ namespace winerack.Models {
 		[MaxLength(255)]
 		[Required]
 		public string LastName { get; set; }
+
+		public Guid? ImageID { get; set; }
+
+		public bool SocialTwitter { get; set; }
 	}
 
 	public class ForgotPasswordViewModel {

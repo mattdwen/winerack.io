@@ -1,4 +1,4 @@
-﻿@model winerack.Models.User
+﻿@model winerack.Models.SettingsViewModel
 @using winerack.Helpers
 @{
     ViewBag.Title = "Acount Settings";
@@ -20,8 +20,6 @@
         </div>
     </div>
 }
-
-<p class="text-success">@ViewBag.StatusMessage</p>
 
 @using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
     @Html.AntiForgeryToken()
@@ -47,10 +45,35 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Update profile" class="btn btn-success" />
-            <a class="btn btn-default" href="/Account/Manage">Change password</a>
         </div>
     </div>
 }
+
+<h4>Password</h4>
+<hr />
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-default" href="/Account/Manage">Change password</a>
+        </div>
+    </div>
+</div>
+
+<h4>Social Connections</h4>
+<hr />
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @if (Model.SocialTwitter) {
+                <a class="btn btn-danger" href="/Auth/Twitter_Remove"><i class="fa fa-twitter"></i> Disconnect Twitter</a>
+            } else {
+             <a class="btn btn-primary" href="/Auth/Twitter"><i class="fa fa-twitter"></i> Connect to Twitter</a>   
+            }
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

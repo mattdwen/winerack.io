@@ -28,7 +28,6 @@ namespace winerack {
 				"~/Content/css/main.css",
 				"~/Content/font-awesome.css",
 				"~/Content/icomoon-wines.css",
-				"~/Content/site.css",
 				"~/Content/select2.css",
 				"~/Content/select2-bootstrap.css"));
 

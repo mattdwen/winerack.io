@@ -8034,3 +8034,7 @@ button.close {
     display: none !important;
   }
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Projects\/my\.winerack\.io\/my\.winerack\.io\/Content\/_scss\/main\.scss}line{font-family:\0000312}}
+body {
+  padding-top: 80px;
+}
