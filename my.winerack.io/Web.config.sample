@@ -23,6 +23,7 @@
     <add key="twitter:consumerKey" value="API_KEY" />
     <add key="twitter:consumerSecret" value="API_SECRET" />
     <add key="facebook:appId" value="API_ID" />
+    <add key="facebook:appSecret" value="APP_SECRET" />
   </appSettings>
   <system.web>
     <authentication mode="None" />
