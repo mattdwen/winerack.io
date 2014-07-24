@@ -10,7 +10,7 @@
   </configSections>
   <connectionStrings>
     <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-winerack-20140519102821.mdf;Initial Catalog=aspnet-winerack-20140519102821;Integrated Security=True" providerName="System.Data.SqlClient" />
-    <add name="AzureJobsStorage" connectionString="DefaultEndpointsProtocol=http;ACCOUNT_NAME=winerack;AccountKey=ACCOUNT_KEY;" />
+    <add name="AzureJobsStorage" connectionString="DefaultEndpointsProtocol=http;AccountName=ACCOUNT_NAME;AccountKey=ACCOUNT_KEY;" />
   </connectionStrings>
   <appSettings>
     <add key="webpages:Version" value="3.0.0.0" />

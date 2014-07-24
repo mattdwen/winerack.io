@@ -1,32 +1,53 @@
 ﻿@model winerack.Models.Purchase
+@using winerack.Helpers
+@using Microsoft.AspNet.Identity;
 
 @{
-    ViewBag.Title = "Purchase Details";
+    ViewBag.Title = Model.Bottle.Owner.Name + " purchased a " + Model.Bottle.Wine.Description;
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @Html.Partial("_UserHeader", Model.Bottle.Owner)
 
-<div>
-    <h4>Purchase</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(m => m.Bottle.Wine)</dt>
-        <dd>@Model.Bottle.Wine.Description</dd>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @if (Model.Bottle.OwnerID == User.Identity.GetUserId()) {
+                    <div class="pull-right">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm" })
+                    </div>
+                }
+                
+                <h2>
+                    <small>Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of</small><br />
+                    <a href="/wines/@Model.Bottle.WineID">
+                        @Html.Partial("Wines/_Description", Model.Bottle.Wine)
+                    </a>
+                </h2>
 
-        <dt>@Html.DisplayNameFor(m => m.PurchasedOn)</dt>
-        <dd>@Html.DisplayFor(m => m.PurchasedOn)</dd>
+                <p>
+                    <i class="wine-making-wine"></i>
+                    <a href="/vineyards/@Model.Bottle.Wine.VineyardID">@Model.Bottle.Wine.Vineyard.Name</a>
+                </p>
 
-        <dt>@Html.DisplayNameFor(m => m.Quantity)</dt>
-        <dd>@Model.StoredBottles.Count</dd>
+                <p>
+                    <i class="fa fa-globe"></i>
+                    <a href="/regions/@Model.Bottle.Wine.RegionID">@Model.Bottle.Wine.Region.Label</a>
+                </p>
+            </div>
+            <div class="panel-body">
+                @if ((Model.ImageID.HasValue)) {
+                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/purchases/@{@Model.ImageID.Value}_m.jpg" />
+                }
 
-        <dt>@Html.DisplayNameFor(m => m.PurchasePrice)</dt>
-        <dd>@Html.DisplayFor(m => m.PurchasePrice)</dd>
+                @Model.Notes
 
-        <dt>@Html.DisplayNameFor(m => m.Notes)</dt>
-        <dd>@Html.DisplayFor(m => m.Notes)</dd>
-    </dl>
+                @if (Model.PurchasedOn.HasValue) {
+                    <hr />
+                    <div class="text-muted">@Model.PurchasedOn.Value.ToLongDateString()</div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
-
-@Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger" })
-@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })

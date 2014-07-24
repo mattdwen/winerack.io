@@ -37,7 +37,8 @@ namespace winerack.Controllers {
 
 		#region Details
 		// GET: Purchases/Details/5
-		[PurchaseAuthenticationAttribute]
+		[Route("purchases/{id:int}")]
+		[AllowAnonymous]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
