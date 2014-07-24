@@ -52,8 +52,10 @@ namespace winerack.Helpers {
 			return MvcHtmlString.Create(text);
 		}
 
-		public static MvcHtmlString ProfileImageUrl(string size = "sq_sm") {
-			var userId = HttpContext.Current.User.Identity.GetUserId();
+		public static MvcHtmlString ProfileImageUrl(string size = "sq_sm", string userId = null) {
+			if (string.IsNullOrWhiteSpace(userId)) {
+				userId = HttpContext.Current.User.Identity.GetUserId();
+			}
 			var dbContext = new ApplicationDbContext();
 			var user = dbContext.Users.Find(userId);
 			var url = "/Content/images/profile-picture.png";

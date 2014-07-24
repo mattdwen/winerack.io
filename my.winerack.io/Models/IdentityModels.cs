@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -24,6 +25,11 @@ namespace winerack.Models {
 		public string LastName { get; set; }
 
 		public Guid? ImageID { get; set; }
+
+		[NotMapped]
+		public string Name {
+			get { return FirstName + " " + LastName; }
+		}
 
 		#endregion Properties
 

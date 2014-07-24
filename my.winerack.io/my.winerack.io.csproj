@@ -567,6 +567,7 @@
     <Content Include="Scripts\vendor\jQRangeSlider\History.md" />
     <Content Include="Scripts\vendor\jQRangeSlider\Readme.md" />
     <Content Include="Views\Shared\Wines\_Description.cshtml" />
+    <Content Include="Views\Shared\_UserHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

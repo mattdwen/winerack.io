@@ -23,8 +23,9 @@ namespace winerack.Controllers {
 
 		#region Details
 
-		// GET: Tastings/Details/5
-		[TastingAuthentication]
+		// GET: Tastings/5
+		[AllowAnonymous]
+		[Route("tastings/{id:int}")]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

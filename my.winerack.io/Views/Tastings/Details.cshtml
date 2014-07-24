@@ -1,26 +1,43 @@
 ﻿@model winerack.Models.Tasting
+@using winerack.Helpers
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.StoredBottle.Purchase.Bottle.Owner.Name + " opened a " + Model.StoredBottle.Purchase.Bottle.Wine.Description;
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @Html.Partial("_UserHeader", Model.StoredBottle.Purchase.Bottle.Owner)
 
-<div>
-    <h4>Tasting</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(m => m.StoredBottle.Purchase.Bottle.Wine)</dt>
-        <dd>@Model.StoredBottle.Purchase.Bottle.Wine.Description</dd>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>
+                    Opened a
+                    <a href="/wines/@Model.StoredBottle.Purchase.Bottle.WineID">
+                        @Html.Partial("Wines/_Description", Model.StoredBottle.Purchase.Bottle.Wine)
+                    </a>
+                </h2>
+                <p>
+                    <i class="wine-making-wine"></i>
+                    <a href="/vineyards/@Model.StoredBottle.Purchase.Bottle.Wine.VineyardID">@Model.StoredBottle.Purchase.Bottle.Wine.Vineyard.Name</a>
+                </p>
+                <p>
+                    <i class="fa fa-globe"></i>
+                    <a href="/regions/@Model.StoredBottle.Purchase.Bottle.Wine.RegionID">@Model.StoredBottle.Purchase.Bottle.Wine.Region.Label</a>
+                </p>
+            </div>
+            <div class="panel-body">
+                @if ((Model.ImageID.HasValue)) {
+                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/tastings/@{@Model.ImageID.Value}_m.jpg" />
+                }
+                
+                @Model.Notes
 
-        <dt>@Html.DisplayNameFor(m => m.TastedOn)</dt>
-        <dd>@Html.DisplayFor(m => m.TastedOn)</dd>
-
-        <dt>@Html.DisplayNameFor(m => m.Notes)</dt>
-        <dd>@Html.DisplayFor(m => m.Notes)</dd>
-    </dl>
+                @if (Model.TastedOn.HasValue) {
+                    <hr />
+                    <div class="text-muted">@ExtensionMethods.TimeAgo(Model.TastedOn.Value)</div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StoredBottleID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

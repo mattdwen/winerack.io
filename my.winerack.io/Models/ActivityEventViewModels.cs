@@ -11,9 +11,13 @@ namespace winerack.Models.ActivityEventViewModels {
 
 		public DateTime OccuredOn { get; set; }
 
-		public string Username { get; set; }
-
 		public string Image { get; set; }
+
+		public int ObjectID { get; set; }
+
+		public string ViewUrl { get; set; }
+
+		public string Username { get; set; }
 
 		#endregion Properties
 	}
