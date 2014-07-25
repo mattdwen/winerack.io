@@ -17,6 +17,8 @@ namespace winerack.Models.ActivityEventViewModels {
 
 		public string ViewUrl { get; set; }
 
+		public string UserID { get; set; }
+
 		public string Username { get; set; }
 
 		#endregion Properties

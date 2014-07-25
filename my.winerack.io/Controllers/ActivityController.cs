@@ -39,7 +39,8 @@ namespace winerack.Controllers {
 			var storedBottle = db.StoredBottles.Find(activity.Noun);
 			var viewmodel = new Models.ActivityEventViewModels.Opened {
 				OccuredOn = activity.OccuredOn,
-				Username = user.FirstName + " " + user.LastName,
+				Username = user.Name,
+				UserID = user.Id,
 				Notes = storedBottle.Opening.Notes,
 				Bottle = storedBottle.Purchase.Bottle.Wine.Description,
 				Winery = storedBottle.Purchase.Bottle.Wine.Vineyard.Name,
@@ -58,7 +59,8 @@ namespace winerack.Controllers {
 
 			var viewmodel = new Models.ActivityEventViewModels.Purchased {
 				OccuredOn = activity.OccuredOn,
-				Username = user.FirstName + " " + user.LastName,
+				Username = user.Name,
+				UserID = user.Id,
 				Notes = purchase.Notes,
 				Bottle = purchase.Bottle.Wine.Description,
 				Winery = purchase.Bottle.Wine.Vineyard.Name,

@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_ActivityEvent.cshtml";
 }
 
-<p>
-    @Model.Username purchased @ExtensionMethods.BottleQuantity(Model.Quantity)
-	of <a href="/wines/@Model.WineID">@Model.Bottle</a>
-	by <a href="/vineyards/@Model.VineyardID">@Model.Winery</a>.
-</p>
+@section Header {
+    purchased @ExtensionMethods.BottleQuantity(Model.Quantity)
+    of <a href="/wines/@Model.WineID">@Model.Bottle</a>
+    by <a href="/vineyards/@Model.VineyardID">@Model.Winery</a>.
+}
 
 @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
     <blockquote>@Model.Notes</blockquote>

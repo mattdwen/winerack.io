@@ -1,17 +1,7 @@
 ﻿@model winerack.Models.User
 @using winerack.Helpers
 
-<div class="media">
-    <div class="pull-left">
-        <a href="/users/@Model.Id">
-            <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Id)" width="75" />
-        </a>
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading">
-            <a href="/users/@Model.Id">
-                @Model.Name
-            </a>
-        </h4>
-    </div>
-</div>
+<a href="/users/@Model.Id">
+    <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Id)" width="75" />
+    <h4>@Model.Name</h4>
+</a>

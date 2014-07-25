@@ -5,16 +5,24 @@
 }
 
 <div class="activity-event panel panel-default">
-    <div class="panel-body">
+    <div class="panel-heading">
+        <a href="/users/@Model.UserID">
+            <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.UserID)" width="50" />
+            @Model.Username
+        </a>
+        @RenderSection("Header", true)
+    </div>
+    <div class="panel-body">        
+
         @RenderBody()
 
         @if (!string.IsNullOrWhiteSpace(Model.Image)) {
             <img src="@imageUrl" width="300" />
         }
+        
+        <hr />
 
-        <div class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</div>
-        <div>
-            <a href="@Model.ViewUrl/@Model.ObjectID">View details</a>
-        </div>
+        <p class="pull-right"><a href="@Model.ViewUrl/@Model.ObjectID">View details</a></p>
+        <p class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</p>
     </div>
 </div>
