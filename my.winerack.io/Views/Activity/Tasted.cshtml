@@ -1,0 +1,14 @@
+﻿@model winerack.Models.ActivityEventViewModels.Opened
+@{
+    Layout = "~/Views/Shared/_ActivityEvent.cshtml";
+}
+
+@section Header {
+    tasted a <a href="/wines/@Model.WineID">@Model.Bottle</a>
+    by <a href="/vineyards/@Model.VineyardID">@Model.Winery</a>
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.Notes)) {
+    <blockquote>@Model.Notes</blockquote>
+}
+

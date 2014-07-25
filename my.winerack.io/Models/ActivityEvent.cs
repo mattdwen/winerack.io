@@ -37,6 +37,7 @@ namespace winerack.Models {
 
 	public enum ActivityVerbs {
 		Purchased,
-		Opened
+		Opened,
+		Tasted
 	}
 }

@@ -75,6 +75,27 @@ namespace winerack.Controllers {
 			return PartialView(viewmodel);
 		}
 
+		public PartialViewResult Tasted(ActivityEvent activity) {
+			var user = db.Users.Where(u => u.Id == activity.UserID).FirstOrDefault();
+			var tasting = db.Tastings.Find(activity.Noun);
+
+			var viewmodel = new Models.ActivityEventViewModels.Tasted {
+				OccuredOn = activity.OccuredOn,
+				Username = user.Name,
+				UserID = user.Id,
+				Notes = tasting.Notes,
+				Bottle = tasting.Wine.Description,
+				Winery = tasting.Wine.Vineyard.Name,
+				Image = tasting.ImageID.HasValue ? "tastings/" + tasting.ImageID.Value : null,
+				WineID = tasting.WineID,
+				VineyardID = tasting.Wine.VineyardID,
+				ViewUrl = "/tastings",
+				ObjectID = tasting.ID
+			};
+
+			return PartialView(viewmodel);
+		}
+
 		#endregion Activities
 	}
 }

@@ -47,4 +47,8 @@ namespace winerack.Models.ActivityEventViewModels {
 		public int Quantity { get; set; }
 
 	}
+
+	public class Tasted : Opened {
+
+	}
 }

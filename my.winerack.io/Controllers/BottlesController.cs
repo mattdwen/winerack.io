@@ -1,13 +1,13 @@
-﻿using winerack.Models;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using System;
-using winerack.Helpers.Authentication;
 using System.Web;
+using System.Web.Mvc;
+using winerack.Helpers.Authentication;
 using winerack.Logic;
+using winerack.Models;
 
 namespace winerack.Controllers {
 
@@ -21,7 +21,9 @@ namespace winerack.Controllers {
 		#endregion Declarations
 
 		#region Private Methods
+
 		#region Create
+
 		private Bottle Create_Bottle(CreateBottleViewModel model) {
 			var userId = User.Identity.GetUserId();
 			var wine = Create_Wine(model);
@@ -107,8 +109,10 @@ namespace winerack.Controllers {
 
 			return wine;
 		}
-		#endregion
-		#endregion
+
+		#endregion Create
+
+		#endregion Private Methods
 
 		#region Protected Methods
 
@@ -198,7 +202,7 @@ namespace winerack.Controllers {
 					purchase.StoredBottles.Add(new StoredBottle());
 				}
 
-				db.Purchases.Add(purchase);				
+				db.Purchases.Add(purchase);
 				db.SaveChanges();
 
 				// Push to activity log
@@ -298,7 +302,8 @@ namespace winerack.Controllers {
 
 			return View(bottle);
 		}
-		#endregion
+
+		#endregion Drink
 
 		#endregion Actions
 
@@ -317,7 +322,6 @@ namespace winerack.Controllers {
 			return PartialView(bottles.ToList());
 		}
 
-		#endregion
-
+		#endregion Partial Views
 	}
 }

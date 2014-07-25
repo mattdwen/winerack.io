@@ -235,6 +235,7 @@
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StoredBottlesController.cs" />
     <Compile Include="Controllers\OpeningsController.cs" />
+    <Compile Include="Controllers\TastingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VineyardsController.cs" />
     <Compile Include="Controllers\WinesController.cs" />
@@ -305,6 +306,10 @@
     <Compile Include="Migrations\201407242349203_rename_tastings_to_openings.Designer.cs">
       <DependentUpon>201407242349203_rename_tastings_to_openings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407250317265_create_tastings.cs" />
+    <Compile Include="Migrations\201407250317265_create_tastings.Designer.cs">
+      <DependentUpon>201407250317265_create_tastings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -320,6 +325,8 @@
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\StoredBottle.cs" />
     <Compile Include="Models\Opening.cs" />
+    <Compile Include="Models\Tasting.cs" />
+    <Compile Include="Models\TastingViewModels.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Models\Varietal.cs" />
     <Compile Include="Models\Vineyard.cs" />
@@ -442,6 +449,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\openings\create.js" />
+    <Content Include="Scripts\tastings\create.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -493,6 +501,7 @@
     <Content Include="Scripts\vendor\jQRangeSlider\lib\jquery.mousewheel.min.js" />
     <Content Include="Scripts\vendor\jQRangeSlider\MIT-License.txt" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Activity\Tasted.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -572,6 +581,8 @@
     <Content Include="Scripts\vendor\jQRangeSlider\Readme.md" />
     <Content Include="Views\Shared\Wines\_Description.cshtml" />
     <Content Include="Views\Shared\_UserHeader.cshtml" />
+    <Content Include="Views\Tastings\Create.cshtml" />
+    <Content Include="Views\Tastings\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -623,6 +634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407242349203_rename_tastings_to_openings.resx">
       <DependentUpon>201407242349203_rename_tastings_to_openings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407250317265_create_tastings.resx">
+      <DependentUpon>201407250317265_create_tastings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -27,13 +27,15 @@ namespace winerack.Models {
 
 		public DbSet<Credentials> Credentials { get; set; }
 
+		public DbSet<Opening> Openings { get; set; }
+
 		public DbSet<Purchase> Purchases { get; set; }
 
 		public DbSet<Region> Regions { get; set; }
 
 		public DbSet<StoredBottle> StoredBottles { get; set; }
 
-		public DbSet<Opening> Openings { get; set; }
+		public DbSet<Tasting> Tastings { get; set; }
 
 		public DbSet<Varietal> Varietals { get; set; }
 

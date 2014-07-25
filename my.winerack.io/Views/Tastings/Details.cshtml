@@ -1,0 +1,41 @@
+﻿@model winerack.Models.Tasting
+@using winerack.Helpers
+
+@{
+    ViewBag.Title = Model.User.Name + " tasted a " + Model.Wine.Description;
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @Html.Partial("_UserHeader", Model.User)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>
+                    <small>Tasted a</small><br />
+                    <a href="/wines/@Model.WineID">
+                        @Html.Partial("Wines/_Description", Model.Wine)
+                    </a>
+                </h2>
+                <p>
+                    <i class="wine-making-wine"></i>
+                    <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>
+                </p>
+                <p>
+                    <i class="fa fa-globe"></i>
+                    <a href="/regions/@Model.Wine.RegionID">@Model.Wine.Region.Label</a>
+                </p>
+            </div>
+            <div class="panel-body">
+                @if ((Model.ImageID.HasValue)) {
+                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/tastings/@{@Model.ImageID.Value}_md.jpg" />
+                }
+
+                @Model.Notes
+
+                <hr />
+                <div class="text-muted">@Model.TastedOn.ToLongDateString()</div>
+            </div>
+        </div>
+    </div>
+</div>
