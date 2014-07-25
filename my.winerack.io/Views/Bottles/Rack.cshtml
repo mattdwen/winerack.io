@@ -19,7 +19,7 @@
                     <td>@Html.DisplayFor(b => bottle.Wine.Vintage)</td>
                     <td>
                         <span class="label label-info" title="Purchased">@bottle.NumberOfBottles</span>
-                        <span class="label label-danger" title="Drunk">@bottle.NumberDrunk</span>
+                        <span class="label label-danger" title="Opened">@bottle.NumberDrunk</span>
                         <span class="label label-success" title="Remaining">@bottle.NumberRemaining</span>
                     </td>
                     <td>
@@ -31,8 +31,8 @@
                                 <i class="fa fa-plus"></i>
                             </a>
                             @if (bottle.NumberRemaining > 0) {
-                                <a class="btn btn-success" href="/Tastings/CreateFromBottle/?BottleId=@bottle.ID" title="Drink">
-                                    <i class="fa fa-glass"></i>
+                                <a class="btn btn-success" href="/Openings/CreateFromBottle/?BottleId=@bottle.ID" title="Open">
+                                    <i class="wine-corkscrew"></i>
                                 </a>
                             }
                         </div>

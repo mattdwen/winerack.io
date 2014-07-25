@@ -1,12 +1,12 @@
-﻿@model winerack.Models.Tasting
+﻿@model winerack.Models.Opening
 
 @{
-    ViewBag.Title = "Tasting Details";
+    ViewBag.Title = "Open a Bottle";
 }
 
 <h2>Open a Bottle</h2>
 
-@using (Html.BeginForm("Create", "Tastings", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+@using (Html.BeginForm("Create", "Openings", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -32,10 +32,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.TastedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(m => m.OpenedOn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(m => m.TastedOn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.TastedOn, "", new { @class = "text-danger" })
+                @Html.EditorFor(m => m.OpenedOn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.OpenedOn, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -71,5 +71,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/tastings/create.js")
+    @Scripts.Render("~/Scripts/openings/create.js")
 }

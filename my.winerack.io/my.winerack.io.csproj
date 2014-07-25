@@ -234,7 +234,7 @@
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StoredBottlesController.cs" />
-    <Compile Include="Controllers\TastingsController.cs" />
+    <Compile Include="Controllers\OpeningsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VineyardsController.cs" />
     <Compile Include="Controllers\WinesController.cs" />
@@ -301,6 +301,10 @@
     <Compile Include="Migrations\201407222342559_create_credentials.Designer.cs">
       <DependentUpon>201407222342559_create_credentials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407242349203_rename_tastings_to_openings.cs" />
+    <Compile Include="Migrations\201407242349203_rename_tastings_to_openings.Designer.cs">
+      <DependentUpon>201407242349203_rename_tastings_to_openings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -315,7 +319,7 @@
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\StoredBottle.cs" />
-    <Compile Include="Models\Tasting.cs" />
+    <Compile Include="Models\Opening.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Models\Varietal.cs" />
     <Compile Include="Models\Vineyard.cs" />
@@ -405,7 +409,7 @@
     <Content Include="Global.asax" />
     <Content Include="Gruntfile.js" />
     <Content Include="Scripts\account\settings.js" />
-    <Content Include="Scripts\angular\controllers\tastings.js" />
+    <Content Include="Scripts\angular\controllers\openings.js" />
     <Content Include="Scripts\angular\services\bottleService.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
@@ -437,7 +441,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\purchases\create.js" />
-    <Content Include="Scripts\tastings\create.js" />
+    <Content Include="Scripts\openings\create.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
@@ -554,11 +558,11 @@
     <Content Include="Views\Users\Invite.cshtml" />
     <Content Include="Views\StoredBottles\Delete.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
-    <Content Include="Views\Tastings\Create.cshtml" />
-    <Content Include="Views\Tastings\Details.cshtml" />
-    <Content Include="Views\Tastings\CreateFromBottle.cshtml" />
+    <Content Include="Views\Openings\Create.cshtml" />
+    <Content Include="Views\Openings\Details.cshtml" />
+    <Content Include="Views\Openings\CreateFromBottle.cshtml" />
     <Content Include="Views\Users\MiniProfile.cshtml" />
-    <Content Include="Views\Tastings\Start.cshtml" />
+    <Content Include="Views\Openings\Start.cshtml" />
     <Content Include="Views\Activity\Stream.cshtml" />
     <Content Include="Views\Shared\_ActivityEvent.cshtml" />
     <Content Include="Views\Activity\Opened.cshtml" />
@@ -616,6 +620,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407222342559_create_credentials.resx">
       <DependentUpon>201407222342559_create_credentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407242349203_rename_tastings_to_openings.resx">
+      <DependentUpon>201407242349203_rename_tastings_to_openings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

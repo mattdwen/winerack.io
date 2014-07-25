@@ -11,7 +11,7 @@ using winerack.Models;
 namespace winerack.Controllers {
 
 	[Authorize]
-	public class TastingsController : Controller {
+	public class OpeningsController : Controller {
 
 		#region Declarations
 
@@ -23,15 +23,15 @@ namespace winerack.Controllers {
 
 		#region Details
 
-		// GET: Tastings/5
+		// GET: Openings/5
 		[AllowAnonymous]
-		[Route("tastings/{id:int}")]
+		[Route("openings/{id:int}")]
 		public ActionResult Details(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var tasting = db.Tastings.Find(id);
+			var tasting = db.Openings.Find(id);
 
 			if (tasting == null) {
 				return HttpNotFound();
@@ -44,7 +44,7 @@ namespace winerack.Controllers {
 
 		#region Create
 
-		// GET: /Tastings/CreateFromBottle?bottleId=5
+		// GET: /Openings/CreateFromBottle?bottleId=5
 		[BottleAuthentication(IdParameter="bottleId")]
 		public ActionResult CreateFromBottle(int? bottleId) {
 			if (bottleId == null) {
@@ -57,61 +57,61 @@ namespace winerack.Controllers {
 			}
 
 			if (bottle.NumberRemaining == 1) {
-				var storedId = bottle.Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Tasting == null).FirstOrDefault().ID;
+				var storedId = bottle.Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Opening == null).FirstOrDefault().ID;
 				return RedirectToAction("Create", new { storedBottleId = storedId });
 			}
 
 			return View(bottle);
 		}
 
-		// GET: Tastings/Create/?storedBottleId=5
+		// GET: Openings/Create/?storedBottleId=5
 		[StoredBottleAuthenticationAttribute(IdParameter = "storedBottleId")]
 		public ActionResult Create(int? storedBottleId) {
 			if (storedBottleId == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var tasting = new Tasting() {
-				TastedOn = DateTime.Now
+			var opening = new Opening() {
+				OpenedOn = DateTime.Now
 			};
 
-			tasting.StoredBottle = db.StoredBottles
+			opening.StoredBottle = db.StoredBottles
 				.Include("Purchase.Bottle.Wine")
 				.Where(b => b.ID == storedBottleId)
 				.FirstOrDefault();
 
-			return View(tasting);
+			return View(opening);
 		}
 
-		// POST: Tastings/Create
+		// POST: Openings/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Tasting tasting, HttpPostedFileBase photo) {
+		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Opening opening, HttpPostedFileBase photo) {
 			if (ModelState.IsValid) {
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
-					var blobHandler = new Logic.BlobHandler("tastings");
-					tasting.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Standard));
+					var blobHandler = new Logic.BlobHandler("openings");
+					opening.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Standard));
 				}
 
 				// Add the tasting
-				db.Tastings.Add(tasting);
+				db.Openings.Add(opening);
 
 				// Publish the event
-				ActivityStream.Publish(this.db, User.Identity.GetUserId(), ActivityVerbs.Opened, tasting.StoredBottleID);
+				ActivityStream.Publish(this.db, User.Identity.GetUserId(), ActivityVerbs.Opened, opening.StoredBottleID);
 
 				// Save
 				db.SaveChanges();
 				
-				return RedirectToAction("Details", new { id = tasting.StoredBottleID });
+				return RedirectToAction("Details", new { id = opening.StoredBottleID });
 			}
 
-			tasting.StoredBottle = db.StoredBottles
+			opening.StoredBottle = db.StoredBottles
 					.Include("Purchase.Bottle.Wine")
-					.Where(b => b.ID == tasting.StoredBottleID)
+					.Where(b => b.ID == opening.StoredBottleID)
 					.FirstOrDefault(); ;
 
-			return View(tasting);
+			return View(opening);
 		}
 
 		#endregion Create

@@ -37,7 +37,7 @@ namespace winerack.Helpers.Authentication {
 			}
 
 			var db = new Models.ApplicationDbContext();
-			var tasting = db.Tastings.Find(int.Parse(storedBottleId));
+			var tasting = db.Openings.Find(int.Parse(storedBottleId));
 
 			if (tasting == null) {
 				return;

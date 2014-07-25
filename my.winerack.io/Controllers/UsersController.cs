@@ -219,7 +219,7 @@ namespace winerack.Controllers {
 				.Where(b => b.OwnerID == userId)
 				.Count();
 
-			model.BottlesDrunk = db.Tastings
+			model.BottlesDrunk = db.Openings
 				.Where(t => t.StoredBottle.Purchase.Bottle.OwnerID == userId)
 				.Count();
 

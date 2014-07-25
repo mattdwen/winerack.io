@@ -49,7 +49,7 @@ namespace winerack.Models {
 		[Display(Name = "Opened")]
 		public int NumberDrunk {
 			get {
-				return Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Tasting != null).Count();
+				return Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Opening != null).Count();
 			}
 		}
 

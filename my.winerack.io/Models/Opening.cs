@@ -6,7 +6,11 @@ using System.Linq;
 using System.Web;
 
 namespace winerack.Models {
-	public class Tasting {
+
+	/// <summary>
+	/// Details the opening of a stored bottle
+	/// </summary>
+	public class Opening {
 
 		#region Properties
 
@@ -16,7 +20,7 @@ namespace winerack.Models {
 		[Display(Name = "Opened On")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}", NullDisplayText = "<em>Unknown</em>")]
-		public DateTime? TastedOn { get; set; }
+		public DateTime? OpenedOn { get; set; }
 
 		public Guid? ImageID { get; set; }
 

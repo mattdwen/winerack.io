@@ -1,4 +1,4 @@
-﻿@model winerack.Models.Tasting
+﻿@model winerack.Models.Opening
 @using winerack.Helpers
 
 @{
@@ -28,14 +28,14 @@
             </div>
             <div class="panel-body">
                 @if ((Model.ImageID.HasValue)) {
-                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/tastings/@{@Model.ImageID.Value}_m.jpg" />
+                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/openings/@{@Model.ImageID.Value}_md.jpg" />
                 }
                 
                 @Model.Notes
 
-                @if (Model.TastedOn.HasValue) {
+                @if (Model.OpenedOn.HasValue) {
                     <hr />
-                    <div class="text-muted">@Model.TastedOn.Value.ToLongDateString()</div>
+                    <div class="text-muted">@Model.OpenedOn.Value.ToLongDateString()</div>
                 }
             </div>
         </div>

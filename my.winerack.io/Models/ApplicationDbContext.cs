@@ -33,7 +33,7 @@ namespace winerack.Models {
 
 		public DbSet<StoredBottle> StoredBottles { get; set; }
 
-		public DbSet<Tasting> Tastings { get; set; }
+		public DbSet<Opening> Openings { get; set; }
 
 		public DbSet<Varietal> Varietals { get; set; }
 

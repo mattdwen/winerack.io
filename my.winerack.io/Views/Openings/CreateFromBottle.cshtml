@@ -17,13 +17,13 @@
     </thead>
     <tbody>
         @{ var i = 1; }
-        @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Tasting == null)) {
+        @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Opening == null)) {
             <tr>
                 <td>#@i</td>
                 <td>@Html.DisplayFor(m => stored.Location)</td>
                 <td>@Html.DisplayFor(m => stored.Purchase.PurchasedOn)</td>
                 <td>
-                    <a class="btn btn-xs btn-success" href="/Tastings/Create?storedBottleId=@stored.ID">
+                    <a class="btn btn-xs btn-success" href="/Openings/Create?storedBottleId=@stored.ID">
                         <i class="fa fa-glass"></i> This one
                     </a>
                 </td>

@@ -1,6 +1,6 @@
-﻿var tastingsApp = angular.module('tastingsApp', ['bottleService', 'ui.utils', 'ui.select2']);
+﻿var openingsApp = angular.module('openingsApp', ['bottleService', 'ui.utils', 'ui.select2']);
 
-tastingsApp.controller('StartCtrl', function ($scope, Bottle) {
+openingsApp.controller('StartCtrl', function ($scope, Bottle) {
     $scope.select2Options = {
         allowClear: true
     };

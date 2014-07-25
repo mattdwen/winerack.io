@@ -40,13 +40,13 @@ namespace winerack.Controllers {
 			var viewmodel = new Models.ActivityEventViewModels.Opened {
 				OccuredOn = activity.OccuredOn,
 				Username = user.FirstName + " " + user.LastName,
-				Notes = storedBottle.Tasting.Notes,
+				Notes = storedBottle.Opening.Notes,
 				Bottle = storedBottle.Purchase.Bottle.Wine.Description,
 				Winery = storedBottle.Purchase.Bottle.Wine.Vineyard.Name,
-				Image = storedBottle.Tasting.ImageID.HasValue ? "tastings/" + storedBottle.Tasting.ImageID.Value : null,
+				Image = storedBottle.Opening.ImageID.HasValue ? "openings/" + storedBottle.Opening.ImageID.Value : null,
 				WineID = storedBottle.Purchase.Bottle.WineID,
 				VineyardID = storedBottle.Purchase.Bottle.Wine.VineyardID,
-				ViewUrl = "/tastings",
+				ViewUrl = "/openings",
 				ObjectID = storedBottle.ID
 			};
 			return PartialView(viewmodel);

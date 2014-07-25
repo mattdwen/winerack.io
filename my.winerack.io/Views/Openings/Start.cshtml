@@ -4,7 +4,7 @@
     ViewBag.Title = "Open a Bottle";
 }
 
-<section ng-app="tastingsApp">
+<section ng-app="openingsApp">
     <div ng-controller="StartCtrl">
         <div class="page-header">
             <h1>Select a wine from your collection</h1>
@@ -63,12 +63,12 @@
                         <strong>{{ bottle.Description }}</strong>
                     </div>
                     <div class="panel-body">
-                        <div><i class="fa fa-map-marker"></i> {{ bottle.Vineyard }}</div>
+                        <div><i class="wine-making-wine"></i> {{ bottle.Vineyard }}</div>
                         <div><i class="fa fa-globe"></i> {{ bottle.Region }}</div>
                         <div><i class="fa fa-clock-o"></i> {{ bottle.CellarMin }} to {{ bottle.CellarMax }} years</div>
                     </div>
                     <div class="panel-footer">
-                        <a class="btn btn-primary" href="/Tastings/CreateFromBottle/?BottleId={{ bottle.ID }}">Open</a>
+                        <a class="btn btn-primary" href="/Openings/CreateFromBottle/?BottleId={{ bottle.ID }}">Open</a>
                     </div>
                 </div>
             </div>
@@ -81,5 +81,5 @@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/Scripts/vendor/angular-ui/select2.js")
     @Scripts.Render("~/Scripts/angular/services/bottleService.js")
-    @Scripts.Render("~/Scripts/angular/controllers/tastings.js")
+    @Scripts.Render("~/Scripts/angular/controllers/openings.js")
 }
