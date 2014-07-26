@@ -3,27 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace winerack.Models {
 
-	public class UserDetailsViewModel {
-
-		#region Properties
-
-		public string Id { get; set; }
-
-		[Display(Name = "Joined")]
-		[DataType(DataType.Date)]
-		public DateTime CreatedOn { get; set; }
-
-		public bool Administrator { get; set; }
-
-		public string Email { get; set; }
-
-		public string Name { get; set; }
-
-		public bool Verified { get; set; }
-
-		#endregion Properties
-	}
-
 	public class InviteUserViewModel {
 
 		#region Properties
@@ -61,6 +40,8 @@ namespace winerack.Models {
 		public int BottlesUnique { get; set; }
 
 		public int BottlesDrunk { get; set; }
+
+		public int Tasted { get; set; }
 
 		#endregion Properties
 	}

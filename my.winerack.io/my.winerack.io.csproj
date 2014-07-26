@@ -587,6 +587,7 @@
     <Content Include="Views\Shared\_UserHeader.cshtml" />
     <Content Include="Views\Tastings\Create.cshtml" />
     <Content Include="Views\Tastings\Details.cshtml" />
+    <Content Include="Views\Users\StatBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

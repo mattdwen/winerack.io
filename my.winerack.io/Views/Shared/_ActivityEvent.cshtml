@@ -6,9 +6,13 @@
 
 <div class="activity-event panel panel-default">
     <div class="panel-heading">
-        <a href="/users/@Model.UserID">
+        <a href="/users/@Model.Username">
             <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.UserID)" width="50" />
-            @Model.Username
+            @if (string.IsNullOrWhiteSpace(Model.Name)) {
+                @Model.Username
+            } else {
+                @Model.Name
+            }
         </a>
         @RenderSection("Header", true)
     </div>

@@ -1,47 +1,41 @@
-﻿@model winerack.Models.UserDetailsViewModel
+﻿@model winerack.Models.User
+@using winerack.Helpers
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(m => m.Id)</dt>
-        <dd>@Html.DisplayFor(m => m.Id)</dd>
-
-        <dt>@Html.DisplayNameFor(m => m.CreatedOn)</dt>
-        <dd>@Html.DisplayFor(m => m.CreatedOn)</dd>
-
-        <dt>@Html.DisplayNameFor(m => m.Name)</dt>
-        <dd>@Html.DisplayFor(m => m.Name)</dd>
-
-        <dt>@Html.DisplayNameFor(m => m.Email)</dt>
-        <dd>@Html.DisplayFor(m => m.Email)</dd>
-
-        <dt>Administrator</dt>
-        <dd>
-            @if (Model.Administrator) {
-                <i class="fa fa-check"></i>
+<div class="media">
+    <div class="pull-left">
+        <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq", Model.Id)" width="100" />
+    </div>
+    <div class="media-body">
+        <h1 class="media-heading">
+            @if (string.IsNullOrWhiteSpace(Model.Name)) {
+                @Model.UserName
             } else {
-                <i class="fa fa-times"></i>
+                @Model.Name
             }
-            @Html.ActionLink("change", "Administrator", new { id = Model.Id })
-        </dd>
-
-        <dt>Verified</dt>
-        <dd>
-            @if (Model.Verified) {
-                <i class="fa fa-check"></i>
-            } else {
-                <i class="fa fa-times"></i> @Html.ActionLink("resend", "ReInvite", new { id = Model.Id })
+        </h1>
+        <ul class="list-inline">
+            @if (!string.IsNullOrWhiteSpace(Model.Name)) {
+                <li>
+                    <i class="fa fa-user"></i> @Model.UserName
+                </li>
             }
-        </dd>
-    </dl>
+            <li>
+                <i class="fa fa-globe"></i> @Model.LocationDescription
+            </li>
+        </ul>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@{Html.RenderAction("StatBar", "Users", new { userId = Model.Id });}
+
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Recent Actvity</h2>
+        <hr />
+        @{Html.RenderAction("ByUser", "Activity", new { userId = Model.Id });}
+    </div>
+</div>

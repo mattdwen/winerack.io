@@ -30,6 +30,21 @@ namespace winerack.Controllers {
 			return PartialView("Stream", activity);
 		}
 
+		/// <summary>
+		/// Render the stream of activity by a given user
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <returns></returns>
+		public PartialViewResult ByUser(string userId) {
+			var activity = db.ActivityEvents
+				.Where(e => e.UserID == userId)
+				.OrderByDescending(e => e.OccuredOn)
+				.Take(20)
+				.ToList();
+
+			return PartialView("Stream", activity);
+		}
+
 		#endregion Partials
 
 		#region Activities
@@ -39,8 +54,9 @@ namespace winerack.Controllers {
 			var storedBottle = db.StoredBottles.Find(activity.Noun);
 			var viewmodel = new Models.ActivityEventViewModels.Opened {
 				OccuredOn = activity.OccuredOn,
-				Username = user.Name,
+				Username = user.UserName,
 				UserID = user.Id,
+				Name = user.Name,
 				Notes = storedBottle.Opening.Notes,
 				Bottle = storedBottle.Purchase.Bottle.Wine.Description,
 				Winery = storedBottle.Purchase.Bottle.Wine.Vineyard.Name,
@@ -59,7 +75,8 @@ namespace winerack.Controllers {
 
 			var viewmodel = new Models.ActivityEventViewModels.Purchased {
 				OccuredOn = activity.OccuredOn,
-				Username = user.Name,
+				Username = user.UserName,
+				Name = user.Name,
 				UserID = user.Id,
 				Notes = purchase.Notes,
 				Bottle = purchase.Bottle.Wine.Description,
@@ -81,7 +98,8 @@ namespace winerack.Controllers {
 
 			var viewmodel = new Models.ActivityEventViewModels.Tasted {
 				OccuredOn = activity.OccuredOn,
-				Username = user.Name,
+				Username = user.UserName,
+				Name = user.Name,
 				UserID = user.Id,
 				Notes = tasting.Notes,
 				Bottle = tasting.Wine.Description,

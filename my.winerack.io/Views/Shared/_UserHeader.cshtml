@@ -1,7 +1,29 @@
 ﻿@model winerack.Models.User
 @using winerack.Helpers
 
-<a href="/users/@Model.Id">
-    <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Id)" width="75" />
-    <h4>@Model.Name</h4>
-</a>
+<div class="media">
+    <a class="pull-left" href="/users/@Model.UserName">
+        <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Id)" width="75" />
+    </a>
+    <div class="media-body">
+        <h3 class="media-heading">
+            <a href="/users/@Model.UserName">
+                @if (string.IsNullOrWhiteSpace(Model.Name)) {
+                    @Model.UserName
+                } else {
+                    @Model.Name
+                }
+            </a>
+        </h3>
+        <ul class="list-inline">
+            @if (!string.IsNullOrWhiteSpace(Model.Name)) {
+                <li>
+                    <i class="fa fa-user"></i> @Model.UserName
+                </li>
+            }
+            <li>
+                <i class="fa fa-globe"></i> @Model.LocationDescription
+            </li>
+        </ul>
+    </div>
+</div>
