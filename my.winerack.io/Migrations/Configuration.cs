@@ -39,7 +39,7 @@ namespace winerack.Migrations {
 					FirstName = "Winerack",
 					LastName = "Admin",
 					Location = "Hawke's Bay",
-					Country = "New Zealand",
+					Country = "NZ",
 					EmailConfirmed = true
 				};
 

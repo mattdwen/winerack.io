@@ -131,7 +131,8 @@ namespace winerack.Controllers {
 					FirstName = model.FirstName,
 					LastName =model.LastName,
 					Location = model.Location,
-					Country = model.Country
+					Country = model.Country,
+					CreatedOn = DateTime.Now
 				};
 
 				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
