@@ -22,6 +22,8 @@ namespace winerack.Models {
 
 		public string Secret { get; set; }
 
+		public string Data1 { get; set; }
+
 		#endregion Properties
 
 		#region Relationships

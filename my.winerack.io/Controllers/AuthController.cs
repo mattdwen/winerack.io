@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using winerack.Models;
 using Microsoft.AspNet.Identity;
 using Facebook;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace winerack.Controllers {
 
@@ -23,18 +25,6 @@ namespace winerack.Controllers {
 		#endregion Delcarations
 
 		#region Private Methods
-
-		#region Tumblr
-
-		private DontPanic.TumblrSharp.OAuth.OAuthClient GetTumblrClient() {
-			var consumerKey = ConfigurationManager.AppSettings["tumblr:consumerKey"];
-			var consumerSecret = ConfigurationManager.AppSettings["tumblr:consumerSecret"];
-			var factory = new DontPanic.TumblrSharp.OAuthClientFactory();
-			var oauthClient = factory.Create(consumerKey, consumerSecret);
-			return oauthClient;
-		}
-
-		#endregion Tumblr
 
 		#region Twitter
 
@@ -192,39 +182,25 @@ namespace winerack.Controllers {
 		#region Tumblr
 
 		public ActionResult Tumblr() {
-			var client = GetTumblrClient();
-			var callbackUrl = "http://localhost:3890/Auth/Tumblr_Callback";
-			var requestToken = client.GetRequestTokenAsync(callbackUrl).Result;
-			Session["TumblrRequestToken"] = requestToken;
-			var authorizeUrl = client.GetAuthorizeUrl(requestToken);
-			return Redirect(authorizeUrl.ToString());
+			var client = new Logic.Social.Tumblr(context);
+			var url = client.GetAuthorizationUrl();
+			return Redirect(url);
 		}
 
-		public ActionResult Tumblr_Callback(string oauth_token, string oauth_verifier) {
-			var requestToken = Session["TumblrRequestToken"] as DontPanic.TumblrSharp.OAuth.Token;
-			var client = GetTumblrClient();
-			var authToken = client.GetAccessTokenAsync(requestToken, Request.Url.ToString()).Result;
+		public ActionResult Tumblr_Callback(string oauth_verifier) {
+			var client = new Logic.Social.Tumblr(context);
+			var credentials = client.ProcessAccessToken(oauth_verifier, User.Identity.GetUserId());
 
-			var userId = User.Identity.GetUserId();
-			var credentials = context.Credentials
-				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Tumblr)
-				.FirstOrDefault();
-
-			if (credentials == null) {
-				credentials = new Credentials {
-					UserID = userId,
-					CredentialType = CredentialTypes.Tumblr
-				};
+			// How many blogs
+			var blogs = client.GetBlogs(User.Identity.GetUserId());
+			if (blogs.Count < 1) {
+				throw new Exception("No blogs");
+			} else if (blogs.Count > 1) {
+				throw new Exception("Too many blogs");
+			} else {
+				var blog = blogs[0];
+				client.SetBlog(User.Identity.GetUserId(), blog);
 			}
-
-			credentials.Key = authToken.Key;
-			credentials.Secret = authToken.Secret;
-
-			if (credentials.ID < 1) {
-				context.Credentials.Add(credentials);
-			}
-
-			context.SaveChanges();
 
 			return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.TumblrConnected });
 		}

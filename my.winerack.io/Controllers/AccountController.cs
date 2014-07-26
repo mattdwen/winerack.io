@@ -10,8 +10,9 @@ using System.Net;
 using winerack.Logic;
 using Spring.Social.Twitter.Api.Impl;
 using System.Configuration;
-using DontPanic.TumblrSharp.Client;
 using System;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace winerack.Controllers {
 
@@ -31,6 +32,7 @@ namespace winerack.Controllers {
 
 		#region Declarations
 
+		private ApplicationDbContext context = new ApplicationDbContext();
 		private ApplicationUserManager _userManager;
 
 		#endregion Declarations
@@ -596,23 +598,6 @@ namespace winerack.Controllers {
 		}
 
 		public ActionResult TumblrPost() {
-			var user = UserManager.FindById(User.Identity.GetUserId());
-			var credentials = user.Credentials
-				.Where(c => c.CredentialType == CredentialTypes.Tumblr)
-				.FirstOrDefault();
-			var consumerKey = ConfigurationManager.AppSettings["tumblr:consumerKey"];
-			var consumerSecret = ConfigurationManager.AppSettings["tumblr:consumerSecret"];
-
-			var factory = new DontPanic.TumblrSharp.TumblrClientFactory();
-			var token = new DontPanic.TumblrSharp.OAuth.Token(credentials.Key, credentials.Secret);
-			var client = factory.Create<TumblrClient>(consumerKey, consumerSecret, token);
-
-			var title = "Test Title";
-			var body = "Test Body";
-			var tags = new string[] { "wine" };
-			var postData = DontPanic.TumblrSharp.PostData.CreateText(body, title, tags);
-			var result = client.CreatePostAsync("mattdwen.tumblr.com", postData).Result;
-
 			return RedirectToAction("Settings");
 		}
 

@@ -44,15 +44,6 @@
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="DontPanic.TumblrSharp">
-      <HintPath>..\packages\TumblrSharp.1.0.0\lib\net45\DontPanic.TumblrSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="DontPanic.TumblrSharp.Client">
-      <HintPath>..\packages\TumblrSharp.1.0.0\lib\net45\DontPanic.TumblrSharp.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="DontPanic.TumblrSharp.Net45">
-      <HintPath>..\packages\TumblrSharp.1.0.0\lib\net45\DontPanic.TumblrSharp.Net45.dll</HintPath>
-    </Reference>
     <Reference Include="Facebook">
       <HintPath>..\packages\Facebook.6.7.0\lib\net45\Facebook.dll</HintPath>
     </Reference>
@@ -77,6 +68,9 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Rest">
       <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
@@ -250,6 +244,8 @@
     <Compile Include="Logic\ActivityStream.cs" />
     <Compile Include="Logic\BlobHandler.cs" />
     <Compile Include="Logic\Images.cs" />
+    <Compile Include="Logic\Social\ISocial.cs" />
+    <Compile Include="Logic\Social\Tumblr.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>
@@ -314,6 +310,10 @@
     <Compile Include="Migrations\201407260530564_add_user_location_and_country.Designer.cs">
       <DependentUpon>201407260530564_add_user_location_and_country.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407260941516_credentials_add_data1.cs" />
+    <Compile Include="Migrations\201407260941516_credentials_add_data1.Designer.cs">
+      <DependentUpon>201407260941516_credentials_add_data1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -327,6 +327,7 @@
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\Social\Tumblr.cs" />
     <Compile Include="Models\StoredBottle.cs" />
     <Compile Include="Models\Opening.cs" />
     <Compile Include="Models\Tasting.cs" />
@@ -645,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407260530564_add_user_location_and_country.resx">
       <DependentUpon>201407260530564_add_user_location_and_country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407260941516_credentials_add_data1.resx">
+      <DependentUpon>201407260941516_credentials_add_data1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
