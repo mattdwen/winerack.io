@@ -2,10 +2,16 @@
 @using winerack.Helpers
 
 <div id="user-profile">
-    <h4>
-        <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="75" />
-        @Model.Username
-    </h4>
+    <div class="media">
+        <div class="pull-left">
+            <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="75" />
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">@Model.Name</h3>
+            <div class="text-muted"><i class="fa fa-user"></i> @Model.Username</div>
+            <div class="text-muted"><i class="fa fa-globe"></i> @Model.Location</div>
+        </div>
+    </div>
 
     <ul class="list-unstyled">
         <li>

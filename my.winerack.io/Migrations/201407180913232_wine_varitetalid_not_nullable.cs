@@ -7,12 +7,12 @@ namespace winerack.Migrations
     {
         public override void Up()
         {
-			AlterColumn("dbo.Wines", "VarietalID", c => c.Int(nullable: false));
+			//AlterColumn("dbo.Wines", "VarietalID", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
-			AlterColumn("dbo.Wines", "VarietalID", c => c.Int(nullable: true));
+			//AlterColumn("dbo.Wines", "VarietalID", c => c.Int(nullable: true));
 
         }
     }

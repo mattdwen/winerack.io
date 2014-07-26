@@ -30,15 +30,16 @@ namespace winerack.Migrations {
 				await manager.CreateAsync(role);
 			}
 
-			var adminEmail = "admin@winerack.io";
-			if (!context.Users.Any(u => u.Email == adminEmail)) {
+			if (!context.Users.Any(u => u.UserName == "winerack")) {
 				var manager = ApplicationUserManager.Create(context);
 				var user = new User {
 					CreatedOn = DateTime.Now,
-					Email = adminEmail,
-					UserName = adminEmail,
+					Email = "admin@winerack.io",
+					UserName = "winerack",
 					FirstName = "Winerack",
 					LastName = "Admin",
+					Location = "Hawke's Bay",
+					Country = "New Zealand",
 					EmailConfirmed = true
 				};
 

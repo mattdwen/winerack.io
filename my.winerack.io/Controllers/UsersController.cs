@@ -209,7 +209,9 @@ namespace winerack.Controllers {
 			var userId = User.Identity.GetUserId();
 			var model = new Models.MiniProfileViewModel();
 			var user = db.Users.Find(userId);
-			model.Username = user.FirstName + " " + user.LastName;
+			model.Username = user.UserName;
+			model.Name = user.Name;
+			model.Location = user.LocationDescription;
 
 			model.BottlesTotal = db.StoredBottles
 				.Where(sb => sb.Purchase.Bottle.OwnerID == userId)

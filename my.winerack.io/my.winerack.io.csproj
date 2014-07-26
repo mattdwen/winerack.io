@@ -310,6 +310,10 @@
     <Compile Include="Migrations\201407250317265_create_tastings.Designer.cs">
       <DependentUpon>201407250317265_create_tastings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407260530564_add_user_location_and_country.cs" />
+    <Compile Include="Migrations\201407260530564_add_user_location_and_country.Designer.cs">
+      <DependentUpon>201407260530564_add_user_location_and_country.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivityEvent.cs" />
@@ -637,6 +641,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407250317265_create_tastings.resx">
       <DependentUpon>201407250317265_create_tastings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407260530564_add_user_location_and_country.resx">
+      <DependentUpon>201407260530564_add_user_location_and_country.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

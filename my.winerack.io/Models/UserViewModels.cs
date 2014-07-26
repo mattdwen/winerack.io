@@ -50,7 +50,11 @@ namespace winerack.Models {
 
 		#region Properties
 
+		public string Name { get; set; }
+
 		public string Username { get; set; }
+
+		public string Location { get; set; }
 
 		public int BottlesTotal { get; set; }
 

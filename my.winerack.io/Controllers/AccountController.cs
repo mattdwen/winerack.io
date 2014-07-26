@@ -11,6 +11,7 @@ using winerack.Logic;
 using Spring.Social.Twitter.Api.Impl;
 using System.Configuration;
 using DontPanic.TumblrSharp.Client;
+using System;
 
 namespace winerack.Controllers {
 
@@ -55,7 +56,9 @@ namespace winerack.Controllers {
 			if (model == null) {
 				model = new SettingsViewModel {
 					FirstName = user.FirstName,
-					LastName = user.LastName
+					LastName = user.LastName,
+					Location = user.Location,
+					Country = user.Country
 				};	
 			}
 
@@ -88,7 +91,7 @@ namespace winerack.Controllers {
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> Login(LoginViewModel model, string returnUrl) {
 			if (ModelState.IsValid) {
-				var user = await UserManager.FindAsync(model.Email, model.Password);
+				var user = await UserManager.FindAsync(model.Username, model.Password);
 				if (user != null) {
 					await SignInAsync(user, model.RememberMe);
 					return RedirectToLocal(returnUrl);
@@ -110,6 +113,7 @@ namespace winerack.Controllers {
 		public ActionResult Register() {
 			return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
 			return View();
 		}
 
@@ -121,7 +125,15 @@ namespace winerack.Controllers {
 			return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
 			if (ModelState.IsValid) {
-				var user = new User() { UserName = model.Email, Email = model.Email };
+				var user = new User() {
+					UserName = model.Username,
+					Email = model.Email,
+					FirstName = model.FirstName,
+					LastName =model.LastName,
+					Location = model.Location,
+					Country = model.Country
+				};
+
 				IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded) {
 					await SignInAsync(user, isPersistent: false);
@@ -138,6 +150,8 @@ namespace winerack.Controllers {
 					AddErrors(result);
 				}
 			}
+
+			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
 
 			// If we got this far, something failed, redisplay form
 			return View(model);
@@ -498,6 +512,8 @@ namespace winerack.Controllers {
 				: authMessage == AuthControllerMessages.TumblrRemoved ? "Disconnected your account from Tumblr"
 				: null;
 
+			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+
 			return View(model);
 		}
 
@@ -518,6 +534,8 @@ namespace winerack.Controllers {
 
 				AddErrors(result);
 			}
+
+			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
 
 			return View(model);
 		}

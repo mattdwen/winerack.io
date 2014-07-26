@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -24,11 +25,27 @@ namespace winerack.Models {
 		[MaxLength(255)]
 		public string LastName { get; set; }
 
+		[MaxLength(255)]
+		public string Location { get; set; }
+
+		[MaxLength(255)]
+		public string Country { get; set; }
+
 		public Guid? ImageID { get; set; }
 
 		[NotMapped]
 		public string Name {
-			get { return FirstName + " " + LastName; }
+			get {
+				return FirstName + " " + LastName;
+			}
+		}
+
+		[NotMapped]
+		public string LocationDescription {
+			get {
+				var countryID = new RegionInfo(Country).TwoLetterISORegionName;
+				return (string.IsNullOrWhiteSpace(Location)) ? countryID : Location + ", " + countryID;
+			}
 		}
 
 		#endregion Properties

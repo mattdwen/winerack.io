@@ -17,7 +17,7 @@ namespace winerack.Migrations
                     })
                 .PrimaryKey(t => t.ID);
             
-            AddColumn("dbo.Wines", "VarietalID", c => c.Int(nullable: true));
+            AddColumn("dbo.Wines", "VarietalID", c => c.Int(nullable: false));
             CreateIndex("dbo.Wines", "VarietalID");
             AddForeignKey("dbo.Wines", "VarietalID", "dbo.Varietals", "ID", cascadeDelete: true);
             DropColumn("dbo.Wines", "Varietal");

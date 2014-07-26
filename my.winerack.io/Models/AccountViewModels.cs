@@ -40,9 +40,8 @@ namespace winerack.Models {
 	public class LoginViewModel {
 
 		[Required]
-		[EmailAddress]
-		[Display(Name = "Email")]
-		public string Email { get; set; }
+		[Display(Name = "Username")]
+		public string Username { get; set; }
 
 		[Required]
 		[DataType(DataType.Password)]
@@ -56,9 +55,29 @@ namespace winerack.Models {
 	public class RegisterViewModel {
 
 		[Required]
+		[Display(Name = "Username")]
+		[MaxLength(255)]
+		public string Username { get; set; }
+
+		[Required]
 		[EmailAddress]
 		[Display(Name = "Email")]
+		[MaxLength(255)]
 		public string Email { get; set; }
+
+		[Display(Name = "First Name")]
+		[MaxLength(255)]
+		public string FirstName { get; set; }
+
+		[Display(Name = "Last Name")]
+		[MaxLength(255)]
+		public string LastName { get; set; }
+
+		[MaxLength(255)]
+		public string Location { get; set; }
+
+		[Required]
+		public string Country { get; set; }
 
 		[Required]
 		[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -66,6 +85,7 @@ namespace winerack.Models {
 		[Display(Name = "Password")]
 		public string Password { get; set; }
 
+		[Required]
 		[DataType(DataType.Password)]
 		[Display(Name = "Confirm password")]
 		[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
@@ -103,6 +123,12 @@ namespace winerack.Models {
 		[MaxLength(255)]
 		[Required]
 		public string LastName { get; set; }
+
+		[MaxLength(255)]
+		public string Location { get; set; }
+
+		[Required]
+		public string Country { get; set; }
 
 		public Guid? ImageID { get; set; }
 
