@@ -131,6 +131,11 @@ namespace winerack.Controllers {
 				var wine = db.StoredBottles.Find(model.StoredBottleID).Purchase.Bottle.Wine;
 
 				// Share
+				if (model.PostFacebook) {
+					var facebook = new Logic.Social.Facebook(db);
+					facebook.OpenWine(User.Identity.GetUserId(), opening.StoredBottleID);
+				}
+
 				if (model.PostTumblr && opening.ImageID.HasValue) {
 					var tumblr = new Logic.Social.Tumblr(db);
 					var caption = wine.Description;

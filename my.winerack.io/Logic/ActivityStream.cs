@@ -11,7 +11,7 @@ namespace winerack.Logic {
 
 		#region Public Methods
 
-		public static void Publish(ApplicationDbContext db, string userId, ActivityVerbs verb, int noun) {
+		public static ActivityEvent Publish(ApplicationDbContext db, string userId, ActivityVerbs verb, int noun) {
 			var activity = new ActivityEvent {
 				UserID = userId,
 				OccuredOn = DateTime.Now,
@@ -20,6 +20,8 @@ namespace winerack.Logic {
 			};
 
 			db.ActivityEvents.Add(activity);
+
+			return activity;
 		}
 
 		#endregion

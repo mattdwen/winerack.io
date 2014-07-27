@@ -584,23 +584,6 @@ namespace winerack.Controllers {
 			return RedirectToAction("Settings");
 		}
 
-		public ActionResult Post() {
-			var user = UserManager.FindById(User.Identity.GetUserId());
-			var credentials = user.Credentials
-				.Where(c => c.CredentialType == CredentialTypes.Facebook)
-				.FirstOrDefault();
-
-			var client = new Facebook.FacebookClient(credentials.Secret);
-
-			dynamic result = client.Post("me/feed", new { message = "Test" });
-
-			return RedirectToAction("Settings");
-		}
-
-		public ActionResult TumblrPost() {
-			return RedirectToAction("Settings");
-		}
-
 		#endregion Social
 
 		#endregion Actions

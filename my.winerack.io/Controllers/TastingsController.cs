@@ -143,12 +143,17 @@ namespace winerack.Controllers {
 				db.SaveChanges();
 
 				// Push to activity log
-				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Tasted, tasting.ID);
+				var actvity = Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Tasted, tasting.ID);
 				db.SaveChanges();
 
 				wine = db.Wines.Find(wine.ID);
 
 				// Share
+				if (model.PostFacebook) {
+					var facebook = new Logic.Social.Facebook(db);
+					facebook.TasteWine(User.Identity.GetUserId(), tasting.ID);
+				}
+
 				if (model.PostTumblr && tasting.ImageID.HasValue) {
 					var tumblr = new Logic.Social.Tumblr(db);
 					var caption = wine.Description;

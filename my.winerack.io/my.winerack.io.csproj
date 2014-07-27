@@ -244,6 +244,7 @@
     <Compile Include="Logic\ActivityStream.cs" />
     <Compile Include="Logic\BlobHandler.cs" />
     <Compile Include="Logic\Images.cs" />
+    <Compile Include="Logic\Social\Facebook.cs" />
     <Compile Include="Logic\Social\ISocial.cs" />
     <Compile Include="Logic\Social\Tumblr.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
@@ -326,6 +327,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\OpeningViewModels.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseViewModels.cs" />
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\Social\Tumblr.cs" />
@@ -508,6 +510,7 @@
     <Content Include="Scripts\vendor\jQRangeSlider\MIT-License.txt" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Activity\Tasted.cshtml" />
+    <Content Include="Views\Shared\Meta\Wine.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

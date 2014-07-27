@@ -8,6 +8,7 @@ using System;
 using winerack.Helpers.Authentication;
 using System.Web;
 using winerack.Logic;
+using winerack.Models.PurchaseViewModels;
 
 namespace winerack.Controllers {
 
@@ -19,6 +20,25 @@ namespace winerack.Controllers {
 		private ApplicationDbContext db = new ApplicationDbContext();
 
 		#endregion Declarations
+
+		#region Private Methods
+
+		private Create GetCreateViewModel(Create model = null) {
+			if (model == null) {
+				model = new Create {
+					PurchasedOn = DateTime.Now
+				};
+			}
+
+			var user = db.Users.Find(User.Identity.GetUserId());
+			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
+			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
+			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+
+			return model;
+		}
+
+		#endregion Private Methods
 
 		#region Actions
 
@@ -61,21 +81,27 @@ namespace winerack.Controllers {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var purchase = new Purchase {
-				BottleID = BottleId.Value,
-				Bottle = db.Bottles.Find(BottleId),
-				PurchasedOn = DateTime.Now,
-				Quantity = 1
-			};
+			var model = GetCreateViewModel();
+			model.BottleID = BottleId.Value;
+			model.Bottle = db.Bottles.Find(BottleId);
+			model.Quantity = 1;
 
-			return View(purchase);
+			return View(model);
 		}
 
 		// POST: Purchases/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "BottleID,Quantity,PurchasedOn,PurchasePrice,Notes")] Purchase purchase, HttpPostedFileBase photo) {
+		public ActionResult Create(Create model, HttpPostedFileBase photo) {
 			if (ModelState.IsValid) {
+				var purchase = new Purchase {
+					BottleID = model.BottleID,
+					Notes = model.Notes,
+					PurchasedOn = model.PurchasedOn,
+					PurchasePrice = model.PurchasePrice,
+					Quantity = model.Quantity
+				};
+
 				// Add a stored bottle per quantity
 				for (int i = 0; i < purchase.Quantity; i++) {
 					purchase.StoredBottles.Add(new StoredBottle());
@@ -95,13 +121,21 @@ namespace winerack.Controllers {
 				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID);
 				db.SaveChanges();
 
+				// Share
+				if (model.PostFacebook) {
+					var facebook = new Logic.Social.Facebook(db);
+					facebook.PurchaseWine(User.Identity.GetUserId(), purchase.ID);
+				}
+
 				// Redirect
 				return RedirectToAction("Index");
 			}
 
-			purchase.Bottle = db.Bottles.Find(purchase.BottleID);
+			model = GetCreateViewModel(model);
 
-			return View(purchase);
+			model.Bottle = db.Bottles.Find(model.BottleID);
+
+			return View(model);
 		}
 		#endregion
 

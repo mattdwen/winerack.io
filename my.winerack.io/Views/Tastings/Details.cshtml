@@ -5,6 +5,13 @@
     ViewBag.Title = Model.User.Name + " tasted a " + Model.Wine.Description;
 }
 
+@section Head {
+    @{ Html.RenderPartial("Meta/Wine", Model.Wine); }
+    @if ((Model.ImageID.HasValue)) {
+        <meta property="og:image" content="https://winerack.blob.core.windows.net/tastings/@{@Model.ImageID.Value}_lg.jpg">
+    }
+}
+
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         @Html.Partial("_UserHeader", Model.User)
