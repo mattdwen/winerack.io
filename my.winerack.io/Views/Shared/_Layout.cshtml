@@ -1,93 +1,30 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - winerack.io</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <meta name="twitter:domain" content="winerack.io">
+﻿@{
+    Layout = "~/Views/Shared/_Structure.cshtml";
+}
+
+@section Head {
     @RenderSection("head", required: false)
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                @Html.ActionLink("winerack.io", "", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @if (Request.IsAuthenticated) {
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown">My Collection <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("In The Rack", "", "Bottles")</li>
-                                <li>@Html.ActionLink("Purchase History", "", "Purchases")</li>
-                            </ul>
-                        </li>
-                    }
-                    @if (User.IsInRole(MvcApplication.ADMINISTRATOR_GROUP)) {
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown">Admin <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/Regions">Regions</a></li>
-                                <li><a href="/Vineyards">Vineyards</a></li>
-                                <li><a href="/Wines">Wines</a></li>
-                                <li class="divider"></li>
-                                <li><a href="/Users">Users</a></li>
-                            </ul>
-                        </li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+}
+
+<div class="container body-content">
+
+    @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage)) {
+        <div class="alert alert-success alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            @ViewBag.SuccessMessage
         </div>
-    </div>
-    <div class="container body-content">
+    }
 
-        @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage)) {
-            <div class="alert alert-success alert-dismissable" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                @ViewBag.SuccessMessage
-            </div>
-        }
+    @if (!string.IsNullOrWhiteSpace(ViewBag.DangerMessage)) {
+        <div class="alert alert-danger alert-dismissable" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            @ViewBag.DangerMessage
+        </div>
+    }
 
-        @if (!string.IsNullOrWhiteSpace(ViewBag.DangerMessage)) {
-            <div class="alert alert-danger alert-dismissable" role="alert">
-                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                @ViewBag.DangerMessage
-            </div>
-        }
+    @RenderBody()
+</div>
 
-        @RenderBody()
-        <hr />
-        <footer>
-            <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="http://www.winerack.io">winerack.io</a>
-                        </li>
-                        <li>
-                            <a href="http://www.twitter.com/winerack_io" target="_blank"><i class="fa fa-twitter"><span class="sr-only">Twitter</span></i></a>
-                        </li>
-                        <li>
-                            <a href="http://www.facebook.com/winerack.io" target="_blank"><i class="fa fa-facebook"><span class="sr-only">Facebook</span></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <p class="pull-right">&copy; @DateTime.Now.Year Matt Dwen. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/dist/vendor.js")
+@section Scripts {
     @RenderSection("scripts", required: false)
-</body>
-</html>
+}

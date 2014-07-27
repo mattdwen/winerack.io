@@ -6,8 +6,31 @@
 // Imports
 // ----------------------------------------------------------------------------
 
+// Variables
+@import "_variables.scss";
+
+// Bootstrap
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 @import "../vendor/typeahead-bootstrap3.css";
+
+
+
+// Components
+// ----------------------------------------------------------------------------
+
+@import "_footer.scss";
+
+
+
+// Pages
+// ----------------------------------------------------------------------------
+
+@import "_welcome.scss";
+
+
+
+// Scaffolding
+// ----------------------------------------------------------------------------
 
 body {
     padding-top: 80px;

@@ -1,21 +1,51 @@
 ﻿@using Microsoft.AspNet.Identity;
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_Structure.cshtml";
 }
 
 @if (Request.IsAuthenticated) {
-    <div class="row">
-        <div class="col-sm-3">
-            @{Html.RenderAction("MiniProfile", "Users");}
-        </div>
-        <div class="col-sm-9">
-            @{Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                @{Html.RenderAction("MiniProfile", "Users");}
+            </div>
+            <div class="col-sm-9">
+                @{Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });}
+            </div>
         </div>
     </div>
-} else { 
-    <div class="jumbotron">
-        <h1>winerack.io</h1>
-        <p class="lead">Track your wine collection.</p>
-        <p><a href="/Account/Login" class="btn btn-primary btn-lg">Get started &raquo;</a></p>
-    </div>
+} else {
+
+    <section id="welcome-page">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>winerack.io</h1>
+                <p>Catalog and share your wine collection</p>
+            </div>
+        </div>
+
+        <div class="container marketing">
+            <h2>Track your wine purchases, where you've stored it, and with whom you drink it</h2>
+            <p class="lead">
+                Use our catalog to keep track of all your wine purchases, and record where you've stored it.<br>
+                Set cellaring ages to make it easier to find what to drink now.<br>
+                Make tasting notes and detail who you enjoyed your wine with.
+            </p>
+        </div>
+
+        <div class="spacer-image">
+        </div>
+
+        <div class="container marketing">
+            <h2 class="text-center">Get notified when winerack.io is ready</h2>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    @{ Html.RenderPartial("_MailchimpSignup"); }
+                </div>
+            </div>
+        </div>
+    </section>
 }

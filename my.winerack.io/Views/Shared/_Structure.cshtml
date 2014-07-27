@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - winerack.io</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="twitter:domain" content="winerack.io">
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                @Html.ActionLink("winerack.io", "", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Request.IsAuthenticated) {
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown">My Collection <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("In The Rack", "", "Bottles")</li>
+                                <li>@Html.ActionLink("Purchase History", "", "Purchases")</li>
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole(MvcApplication.ADMINISTRATOR_GROUP)) {
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Regions">Regions</a></li>
+                                <li><a href="/Vineyards">Vineyards</a></li>
+                                <li><a href="/Wines">Wines</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/Users">Users</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <a class="icon twitter fa fa-twitter" href="http://twitter.com/winerack_io" target="_blank">
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="icon facebook fa fa-facebook" href="https://www.facebook.com/winerack.io" target="_blank">
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </li>
+            </ul>
+            <span class="copyright">&copy; Matt Dwen. All rights reserved.</span>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/dist/vendor.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

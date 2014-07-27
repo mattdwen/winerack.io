@@ -1,0 +1,42 @@
+﻿.footer {
+	margin-top: ($line-height-computed * 6);
+	padding-top: ($line-height-computed * 4);
+	padding-bottom: ($line-height-computed * 4);
+
+	color: $gray;
+	text-align: center;
+
+	background-color: $brand-primary;
+
+	.icon {
+		position: relative;
+		display: inline-block;
+		height: 2.25em;
+		width: 2.25em;
+
+		color: #fff;
+
+		border: 0;
+		border-radius: 100%;
+		cursor: pointer;
+		transition: all 0.2s;
+
+		font-size: 1.25em;
+		line-height: 2.5em;
+		text-align: center;
+
+		&.facebook {
+			background-color: $brand-facebook;
+		}
+
+		&.twitter {
+			background-color: $brand-twitter;
+		}
+
+		&:hover {
+			top: -0.3em;
+
+			text-decoration: none;
+		}
+	}
+}
