@@ -83,6 +83,21 @@ namespace winerack.Controllers {
 			return wine;
 		}
 
+		private Create GetCreateViewModel(Create model = null) {
+			if (model == null) {
+				model = new Create {
+					TastingDate = DateTime.Now
+				};
+			}
+
+			var user = db.Users.Find(User.Identity.GetUserId());
+			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
+			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
+			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+
+			return model;
+		}
+
 		#endregion Private Methods
 
 		#region Actions
@@ -91,9 +106,7 @@ namespace winerack.Controllers {
 
 		// GET: /tastings/create
 		public ActionResult Create() {
-			var model = new Create {
-				TastingDate = DateTime.Now
-			};
+			var model = GetCreateViewModel();
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
 			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
@@ -133,6 +146,16 @@ namespace winerack.Controllers {
 				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Tasted, tasting.ID);
 				db.SaveChanges();
 
+				wine = db.Wines.Find(wine.ID);
+
+				// Share
+				if (model.PostTumblr && tasting.ImageID.HasValue) {
+					var tumblr = new Logic.Social.Tumblr(db);
+					var caption = wine.Description;
+					var imageUrl = "https://winerack.blob.core.windows.net/tastings/" + tasting.ImageID.Value.ToString() + "_lg.jpg";
+					tumblr.PostPhoto(User.Identity.GetUserId(), imageUrl, caption);
+				}
+
 				return Redirect("/tastings/" + tasting.ID.ToString());
 			}
 
@@ -141,6 +164,8 @@ namespace winerack.Controllers {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();
+
+			model = GetCreateViewModel(model);
 
 			return View(model);
 		}

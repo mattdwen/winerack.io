@@ -40,6 +40,18 @@ namespace winerack.Models.TastingViewModels {
 		[DataType(DataType.MultilineText)]
 		public string TastingNotes { get; set; }
 
+		public bool HasFacebook { get; set; }
+
+		public bool HasTumblr { get; set; }
+
+		public bool HasTwitter { get; set; }
+
+		public bool PostFacebook { get; set; }
+
+		public bool PostTumblr { get; set; }
+
+		public bool PostTwitter { get; set; }
+
 		#endregion
 
 	}

@@ -1,4 +1,4 @@
-﻿@model winerack.Models.Opening
+﻿@model winerack.Models.OpeningViewModels.Create
 
 @{
     ViewBag.Title = "Open a Bottle";
@@ -56,6 +56,40 @@
                 <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
             </div>
         </div>
+
+        @if (Model.HasFacebook || Model.HasTumblr || Model.HasTwitter) {
+            <div class="form-group">
+                <label class="control-label col-md-2">Share</label>
+                <div class="col-md-10">
+                    @if (Model.HasFacebook) {
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(m => m.PostFacebook)
+                                Facebook
+                            </label>
+                        </div>
+                    }
+
+                    @if (Model.HasTumblr) {
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(m => m.PostTumblr)
+                                Tumblr
+                            </label>
+                        </div>
+                    }
+
+                    @if (Model.HasTwitter) {
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(m => m.PostTwitter)
+                                Twitter
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -149,6 +149,17 @@ namespace winerack.Logic.Social {
 			context.SaveChanges();
 		}
 
+		public void PostPhoto(string userId, string imageUrl, string caption) {
+			var credentials = GetCredentials(userId);
+			var client = GetApiClient(userId);
+			var request = new RestRequest("blog/" + credentials.Data1 + ".tumblr.com/post", Method.POST);
+			request.AddParameter("type", "photo");
+			request.AddParameter("source", imageUrl);
+			request.AddParameter("caption", caption);
+			request.AddParameter("tags", "wine");
+			client.Execute(request);
+		}
+
 		#endregion Public Methods
 
 	}

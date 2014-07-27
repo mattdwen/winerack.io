@@ -324,6 +324,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\OpeningViewModels.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />

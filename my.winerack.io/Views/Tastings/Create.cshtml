@@ -100,6 +100,41 @@
                     <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
                 </div>
             </div>
+
+            @if (Model.HasFacebook || Model.HasTumblr || Model.HasTwitter) {
+                <div class="form-group">
+                    <label class="control-label col-md-2">Share</label>
+                    <div class="col-md-10">
+                        @if (Model.HasFacebook) {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.PostFacebook)
+                                    Facebook
+                                </label>
+                            </div>
+                        }
+
+                        @if (Model.HasTumblr) {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.PostTumblr)
+                                    Tumblr
+                                </label>
+                            </div>
+                        }
+
+                        @if (Model.HasTwitter) {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.PostTwitter)
+                                    Twitter
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            
         </fieldset>
 
         <div class="form-group">

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using winerack.Helpers.Authentication;
 using winerack.Logic;
 using winerack.Models;
+using winerack.Models.OpeningViewModels;
 
 namespace winerack.Controllers {
 
@@ -18,6 +19,25 @@ namespace winerack.Controllers {
 		private ApplicationDbContext db = new ApplicationDbContext();
 
 		#endregion Declarations
+
+		#region Private Methods
+
+		private Create GetCreateViewModel(Create model = null) {
+			if (model == null) {
+				model = new Create {
+					OpenedOn = DateTime.Now
+				};
+			}
+
+			var user = db.Users.Find(User.Identity.GetUserId());
+			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
+			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
+			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+
+			return model;
+		}
+
+		#endregion Private Methods
 
 		#region Actions
 
@@ -71,23 +91,28 @@ namespace winerack.Controllers {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 
-			var opening = new Opening() {
-				OpenedOn = DateTime.Now
-			};
+			var model = GetCreateViewModel();
 
-			opening.StoredBottle = db.StoredBottles
+			model.StoredBottle = db.StoredBottles
 				.Include("Purchase.Bottle.Wine")
 				.Where(b => b.ID == storedBottleId)
 				.FirstOrDefault();
+			model.StoredBottleID = model.StoredBottle.ID;
 
-			return View(opening);
+			return View(model);
 		}
 
 		// POST: Openings/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "StoredBottleId,TastedOn,Notes")]Opening opening, HttpPostedFileBase photo) {
+		public ActionResult Create(Create model, HttpPostedFileBase photo) {
 			if (ModelState.IsValid) {
+				var opening = new Opening {
+					OpenedOn = model.OpenedOn,
+					Notes = model.Notes,
+					StoredBottleID = model.StoredBottleID
+				};
+
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
 					var blobHandler = new Logic.BlobHandler("openings");
@@ -102,16 +127,28 @@ namespace winerack.Controllers {
 
 				// Save
 				db.SaveChanges();
+
+				var wine = db.StoredBottles.Find(model.StoredBottleID).Purchase.Bottle.Wine;
+
+				// Share
+				if (model.PostTumblr && opening.ImageID.HasValue) {
+					var tumblr = new Logic.Social.Tumblr(db);
+					var caption = wine.Description;
+					var imageUrl = "https://winerack.blob.core.windows.net/openings/" + opening.ImageID.Value.ToString() + "_lg.jpg";
+					tumblr.PostPhoto(User.Identity.GetUserId(), imageUrl, caption);
+				}
 				
 				return RedirectToAction("Details", new { id = opening.StoredBottleID });
 			}
 
-			opening.StoredBottle = db.StoredBottles
-					.Include("Purchase.Bottle.Wine")
-					.Where(b => b.ID == opening.StoredBottleID)
-					.FirstOrDefault(); ;
+			model = GetCreateViewModel(model);
 
-			return View(opening);
+			model.StoredBottle = db.StoredBottles
+				.Include("Purchase.Bottle.Wine")
+				.Where(b => b.ID == model.StoredBottleID)
+				.FirstOrDefault();
+
+			return View(model);
 		}
 
 		#endregion Create
