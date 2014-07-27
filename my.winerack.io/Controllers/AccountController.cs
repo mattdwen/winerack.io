@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using winerack.Logic;
-using Spring.Social.Twitter.Api.Impl;
 using System.Configuration;
 using System;
 using RestSharp;
@@ -567,24 +566,6 @@ namespace winerack.Controllers {
 		}
 
 		#endregion Profile Picture
-
-		#region Social
-
-		public ActionResult Tweet() {
-			var user = UserManager.FindById(User.Identity.GetUserId());
-			var credentials = user.Credentials
-				.Where(c => c.CredentialType == CredentialTypes.Twitter)
-				.FirstOrDefault();
-			var consumerKey = ConfigurationManager.AppSettings["twitter:ConsumerKey"];
-			var consumerSecret = ConfigurationManager.AppSettings["twitter:ConsumerSecret"];
-
-			var twitter = new TwitterTemplate(consumerKey, consumerSecret, credentials.Key, credentials.Secret);
-			twitter.TimelineOperations.UpdateStatusAsync("test");
-
-			return RedirectToAction("Settings");
-		}
-
-		#endregion Social
 
 		#endregion Actions
 

@@ -1,6 +1,4 @@
-﻿using Spring.Social.OAuth1;
-using Spring.Social.Twitter.Connect;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -26,24 +24,6 @@ namespace winerack.Controllers {
 
 		#region Private Methods
 
-		#region Twitter
-
-		private TwitterServiceProvider GetTwitterServiceProvider() {
-			var consumerKey = ConfigurationManager.AppSettings["twitter:ConsumerKey"];
-			var consumerSecret = ConfigurationManager.AppSettings["twitter:ConsumerSecret"];
-			var serviceProvider = new TwitterServiceProvider(consumerKey, consumerSecret);
-			return serviceProvider;
-		}
-
-		private OAuthToken GetTwitterConsumerToken() {
-			var provider = GetTwitterServiceProvider();
-			var callbackUrl = "http://localhost:3890/auth/twitter_callback";
-			var requestToken = provider.OAuthOperations.FetchRequestTokenAsync(callbackUrl, null).Result;
-			return requestToken;
-		}
-
-		#endregion Twitter
-
 		#endregion Private Methods
 
 		#region Actions
@@ -51,44 +31,14 @@ namespace winerack.Controllers {
 		#region Twitter
 
 		public ActionResult Twitter() {
-			var provider = GetTwitterServiceProvider();
-			var requestToken = GetTwitterConsumerToken();
-			Session["TwitterRequestToken"] = requestToken;
-			var url = provider.OAuthOperations.BuildAuthorizeUrl(requestToken.Value, null);
-
+			var client = new Logic.Social.Twitter(context);
+			var url = client.GetAuthorizationUrl();
 			return Redirect(url);
 		}
 
 		public ActionResult Twitter_Callback(string oauth_verifier) {
-			// Process the response
-			var provider = GetTwitterServiceProvider();
-			var requestToken = Session["TwitterRequestToken"] as OAuthToken;
-			var authorizedRequestToken = new AuthorizedRequestToken(requestToken, oauth_verifier);
-			var accessToken = provider.OAuthOperations.ExchangeForAccessTokenAsync(authorizedRequestToken, null).Result;
-
-			// Search for an existing credential set
-			var userId = User.Identity.GetUserId();
-			var credentials = context.Credentials
-				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Twitter)
-				.FirstOrDefault();
-
-			if (credentials == null) {
-				credentials = new Credentials {
-					UserID = userId,
-					CredentialType = CredentialTypes.Twitter
-				};
-			}
-
-			credentials.Key = accessToken.Value;
-			credentials.Secret = accessToken.Secret;
-
-			if (credentials.ID < 1) {
-				context.Credentials.Add(credentials);
-			}
-
-			context.SaveChanges();
-
-			Session["TwitterRequestToken"] = null;
+			var client = new Logic.Social.Twitter(context);
+			var credentials = client.ProcessAccessToken(oauth_verifier, User.Identity.GetUserId());
 
 			return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.TwitterConnected });
 		}

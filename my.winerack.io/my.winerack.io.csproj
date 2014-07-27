@@ -72,15 +72,6 @@
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Rest">
-      <HintPath>..\packages\Spring.Rest.1.1.1\lib\net40-client\Spring.Rest.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Social.Core">
-      <HintPath>..\packages\Spring.Social.Core.1.0.1\lib\net40-client\Spring.Social.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Social.Twitter">
-      <HintPath>..\packages\Spring.Social.Twitter.2.0.0-M1\lib\net40-client\Spring.Social.Twitter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -247,6 +238,7 @@
     <Compile Include="Logic\Social\Facebook.cs" />
     <Compile Include="Logic\Social\ISocial.cs" />
     <Compile Include="Logic\Social\Tumblr.cs" />
+    <Compile Include="Logic\Social\Twitter.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>
@@ -343,9 +335,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\Spring.Rest.txt" />
-    <Content Include="App_Readme\Spring.Social.Core.txt" />
-    <Content Include="App_Readme\Spring.Social.Twitter.txt" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
