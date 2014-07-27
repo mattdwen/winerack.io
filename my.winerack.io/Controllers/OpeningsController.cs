@@ -142,6 +142,13 @@ namespace winerack.Controllers {
 					var imageUrl = "https://winerack.blob.core.windows.net/openings/" + opening.ImageID.Value.ToString() + "_lg.jpg";
 					tumblr.PostPhoto(User.Identity.GetUserId(), imageUrl, caption);
 				}
+
+				if (model.PostTwitter) {
+					var twitter = new Logic.Social.Twitter(db);
+					var tweet = "I've opened a " + wine.Description;
+					var url = "http://winerack.io/openings/" + opening.StoredBottleID.ToString();
+					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
+				}
 				
 				return RedirectToAction("Details", new { id = opening.StoredBottleID });
 			}

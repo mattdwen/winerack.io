@@ -43,7 +43,7 @@ namespace winerack.Logic.Social {
 		private Credentials GetCredentials(string userId) {
 			return context.Credentials
 				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Twitter)
-				.FirstOrDefault();
+				.First();
 		}
 
 		private RestClient GetOAuthClient() {
@@ -125,9 +125,12 @@ namespace winerack.Logic.Social {
 			return credentials;
 		}
 
-		public void Tweet(string userId, string message) {
+		public void Tweet(string userId, string message, string url = null) {
 			var client = GetApiClient(userId);
 			var request = new RestRequest("statuses/update.json", Method.POST);
+			if (!string.IsNullOrWhiteSpace(url)) {
+				message += " " + url;
+			}
 			request.AddParameter("status", message);
 			client.Execute(request);
 		}

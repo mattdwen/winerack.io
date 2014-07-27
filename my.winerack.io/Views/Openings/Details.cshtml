@@ -8,7 +8,7 @@
 @section Head {
     @{ Html.RenderPartial("Meta/Wine", Model.StoredBottle.Purchase.Bottle.Wine); }
     @if ((Model.ImageID.HasValue)) {
-        <meta property="og:image" content="https://winerack.blob.core.windows.net/openings/@{@Model.ImageID.Value}_lg.jpg">
+        <meta name="twitter:image:src" property="og:image" content="https://winerack.blob.core.windows.net/openings/@{@Model.ImageID.Value}_lg.jpg">
     }
 }
 

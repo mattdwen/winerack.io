@@ -127,6 +127,15 @@ namespace winerack.Controllers {
 					facebook.PurchaseWine(User.Identity.GetUserId(), purchase.ID);
 				}
 
+				if (model.PostTwitter) {
+					purchase = db.Purchases.Find(purchase.ID);
+					var twitter = new Logic.Social.Twitter(db);
+					var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
+					var tweet = "I've purchased " + quantity + " of " + purchase.Bottle.Wine.Description;
+					var url = "http://winerack.io/purchases/" + purchase.ID.ToString();
+					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
+				}
+
 				// Redirect
 				return RedirectToAction("Index");
 			}

@@ -158,11 +158,16 @@ namespace winerack.Controllers {
 
 		// GET: Bottles/Create
 		public ActionResult Create() {
+			var user = db.Users.Find(User.Identity.GetUserId());
+
 			var model = new CreateBottleViewModel {
 				PurchaseDate = DateTime.Now,
 				PurchaseQuantity = 1,
 				CellarMin = 1,
-				CellarMax = 3
+				CellarMax = 3,
+				HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null),
+				HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null),
+				HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null)
 			};
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
@@ -209,6 +214,18 @@ namespace winerack.Controllers {
 				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID);
 				db.SaveChanges();
 
+				if (model.PostTwitter) {
+					purchase = db.Purchases
+						.Where(p => p.ID == purchase.ID)
+						.Include("Bottle.Wine.Varietal")
+						.FirstOrDefault();
+					var twitter = new Logic.Social.Twitter(db);
+					var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
+					var tweet = "I've purchased " + quantity + " of " + purchase.Bottle.Wine.Description;
+					var url = "http://winerack.io/purchases/" + purchase.ID.ToString();
+					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
+				}
+
 				return RedirectToAction("Details", new { id = bottle.ID });
 			}
 
@@ -217,6 +234,11 @@ namespace winerack.Controllers {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();
+
+			var user = db.Users.Find(User.Identity.GetUserId());
+			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
+			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
+			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
 
 			return View(model);
 		}
