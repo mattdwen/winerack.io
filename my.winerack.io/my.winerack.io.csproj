@@ -222,6 +222,7 @@
     <Compile Include="Controllers\OpeningsController.cs" />
     <Compile Include="Controllers\TastingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\VarietalsController.cs" />
     <Compile Include="Controllers\VineyardsController.cs" />
     <Compile Include="Controllers\WinesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -306,6 +307,10 @@
     <Compile Include="Migrations\201407260941516_credentials_add_data1.cs" />
     <Compile Include="Migrations\201407260941516_credentials_add_data1.Designer.cs">
       <DependentUpon>201407260941516_credentials_add_data1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407300911222_varietals_add_cellar_min_max.cs" />
+    <Compile Include="Migrations\201407300911222_varietals_add_cellar_min_max.Designer.cs">
+      <DependentUpon>201407300911222_varietals_add_cellar_min_max.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -587,6 +592,11 @@
     <Content Include="Views\Users\StatBar.cshtml" />
     <Content Include="Views\Shared\_MailchimpSignup.cshtml" />
     <Content Include="Views\Shared\_Structure.cshtml" />
+    <Content Include="Views\Varietals\Create.cshtml" />
+    <Content Include="Views\Varietals\Delete.cshtml" />
+    <Content Include="Views\Varietals\Details.cshtml" />
+    <Content Include="Views\Varietals\Edit.cshtml" />
+    <Content Include="Views\Varietals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -647,6 +657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407260941516_credentials_add_data1.resx">
       <DependentUpon>201407260941516_credentials_add_data1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407300911222_varietals_add_cellar_min_max.resx">
+      <DependentUpon>201407300911222_varietals_add_cellar_min_max.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

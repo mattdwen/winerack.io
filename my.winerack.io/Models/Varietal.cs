@@ -18,6 +18,10 @@ namespace winerack.Models {
 		[Required]
 		public VarietalStyles Style { get; set; }
 
+		public int? CellarMin { get; set; }
+
+		public int? CellarMax { get; set; }
+
 		#endregion Properties
 
 		#region Relationships
