@@ -195,7 +195,7 @@ namespace winerack.Controllers {
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model) {
 			if (ModelState.IsValid) {
-				var user = await UserManager.FindByNameAsync(model.Email);
+				var user = await UserManager.FindByEmailAsync(model.Email);
 				if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id))) {
 					ModelState.AddModelError("", "The user either does not exist or is not confirmed.");
 					return View();
@@ -240,7 +240,7 @@ namespace winerack.Controllers {
 		[ValidateAntiForgeryToken]
 		public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model) {
 			if (ModelState.IsValid) {
-				var user = await UserManager.FindByNameAsync(model.Email);
+				var user = await UserManager.FindByNameAsync(model.Username);
 				if (user == null) {
 					ModelState.AddModelError("", "No user found.");
 					return View();
