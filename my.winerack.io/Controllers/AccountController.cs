@@ -221,6 +221,42 @@ namespace winerack.Controllers {
 
 		#endregion Forgot Password
 
+		#region Forgot Username
+
+		// GET: /Account/ForgotUsername
+		[AllowAnonymous]
+		public ActionResult ForgotUsername() {
+			return View();
+		}
+
+		// POST: /Account/ForgotPassword
+		[HttpPost]
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> ForgotUsername(ForgotUsernameViewModel model) {
+			if (ModelState.IsValid) {
+				var user = await UserManager.FindByEmailAsync(model.Email);
+				if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id))) {
+					ModelState.AddModelError("", "The user either does not exist or is not confirmed.");
+					return View();
+				}
+
+				string username = user.UserName;
+				await UserManager.SendEmailAsync(user.Id, "Username", "Your username is <strong>" + username + "</strong>");
+				return RedirectToAction("ForgotUsernameConfirmation", "Account");
+			}
+
+			return View(model);
+		}
+
+		// GET: /Account/ForgotUsernameConfirmation
+		[AllowAnonymous]
+		public ActionResult ForgotUsernameConfirmation() {
+			return View();
+		}
+
+		#endregion Forgot Username
+
 		#region Reset Password
 
 		//

@@ -145,4 +145,12 @@ namespace winerack.Models {
 		[Display(Name = "Email")]
 		public string Email { get; set; }
 	}
+
+	public class ForgotUsernameViewModel {
+
+		[Required]
+		[EmailAddress]
+		[Display(Name = "Email")]
+		public string Email { get; set; }
+	}
 }
