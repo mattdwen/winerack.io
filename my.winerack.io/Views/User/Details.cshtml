@@ -1,4 +1,5 @@
 ﻿@model winerack.Models.User
+@using Microsoft.AspNet.Identity
 @using winerack.Helpers
 
 @{
@@ -30,10 +31,15 @@
     </div>
 </div>
 
-@{Html.RenderAction("StatBar", "Users", new { userId = Model.Id });}
+@{Html.RenderAction("StatBar", "User", new { userId = Model.Id });}
 
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-4 col-sm-push-8">
+        @if (Model.Id != User.Identity.GetUserId()) {
+            <a class="btn btn-primary btn-block" href="/Friends/Follow/@Model.Id">Follow @Model.UserName</a>
+        }
+    </div>
+    <div class="col-sm-8 col-sm-pull-4">
         <h2>Recent Actvity</h2>
         <hr />
         @{Html.RenderAction("ByUser", "Activity", new { userId = Model.Id });}

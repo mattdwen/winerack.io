@@ -43,6 +43,9 @@ namespace winerack.Models {
 		[NotMapped]
 		public string LocationDescription {
 			get {
+				if (string.IsNullOrWhiteSpace(Country)) {
+					return "Unknown";
+				}
 				var countryID = new RegionInfo(Country).TwoLetterISORegionName;
 				return (string.IsNullOrWhiteSpace(Location)) ? countryID : Location + ", " + countryID;
 			}
@@ -53,6 +56,10 @@ namespace winerack.Models {
 		#region Relationships
 
 		public virtual ICollection<Credentials> Credentials { get; set; }
+
+		public virtual ICollection<Friend> Following { get; set; }
+
+		public virtual ICollection<Friend> Followers { get; set; }
 
 		#endregion Relationships
 

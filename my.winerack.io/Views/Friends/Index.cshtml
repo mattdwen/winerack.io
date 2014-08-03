@@ -1,0 +1,30 @@
+﻿@model winerack.Models.User
+
+@{
+    ViewBag.Title = "Friends";
+}
+
+<div class="row">
+    <div class="col-sm-3">
+        @{ Html.RenderAction("MiniProfile", "User"); }
+    </div>
+
+    <div class="col-sm-9">
+        <div class="page-header">
+            <h1>Friends</h1>
+        </div>
+
+        @if (Model.Following.Count() > 0) {
+            foreach (var friend in Model.Following) {
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a class="btn btn-primary pull-right" href="/Friends/Unfollow/@friend.FolloweeID">Unfollow</a>
+                        @Html.Partial("_UserHeader", friend.Followee)
+                    </div>
+                </div>
+            }
+        } else {
+            <p>Ha ha!</p>
+        }
+    </div>
+</div>

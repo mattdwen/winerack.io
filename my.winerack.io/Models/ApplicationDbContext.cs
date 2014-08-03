@@ -27,6 +27,8 @@ namespace winerack.Models {
 
 		public DbSet<Credentials> Credentials { get; set; }
 
+		public DbSet<Friend> Friends { get; set; }
+
 		public DbSet<Opening> Openings { get; set; }
 
 		public DbSet<Purchase> Purchases { get; set; }
@@ -49,6 +51,16 @@ namespace winerack.Models {
 		protected override void OnModelCreating(DbModelBuilder modelBuilder) {
 			base.OnModelCreating(modelBuilder);
 			modelBuilder.Conventions.Add(new DateTime2Convention());
+
+			modelBuilder.Entity<User>()
+				.HasMany(u => u.Following)
+				.WithRequired(f => f.Follower)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<User>()
+				.HasMany(u => u.Followers)
+				.WithRequired(f => f.Followee)
+				.WillCascadeOnDelete(false);
 		}
 		#endregion
 

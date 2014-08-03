@@ -8,6 +8,9 @@ namespace winerack.Models {
 		#region Properties
 
 		[Required]
+		public string Username { get; set; }
+
+		[Required]
 		[EmailAddress]
 		[Display(Name = "Email")]
 		public string Email { get; set; }

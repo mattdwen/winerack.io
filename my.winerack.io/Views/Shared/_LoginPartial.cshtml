@@ -13,9 +13,8 @@
                 <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl()" width="32" />
             </a>
             <ul class="dropdown-menu">
-                <li>
-                    @Html.ActionLink("Account Settings", "Settings", "Account")
-                </li>
+                <li>@Html.ActionLink("Account Settings", "Settings", "Account")</li>
+                <li>@Html.ActionLink("Friends", "", "Friends")</li>
                 <li class="divider"></li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>

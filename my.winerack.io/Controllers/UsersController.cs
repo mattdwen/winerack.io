@@ -68,13 +68,13 @@ namespace winerack.Controllers {
 			}
 		}
 
-		private async Task SendInvite(string userId) {
+		private async Task SendInvite(string userId, string username) {
 			string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
 			var callbackUrl = Url.Action("AcceptInvite", "Account", new { userId = userId, code = code }, protocol: Request.Url.Scheme);
 			await UserManager.SendEmailAsync(
 				userId,
 				"winerack.io invitation",
-				"Please create your account by clicking <a href=\"" + callbackUrl + "\">here</a>. When prompted to reset your password, enter your email address and desired password.");
+				"Please create your account by clicking <a href=\"" + callbackUrl + "\">here</a>. When prompted to reset your password, enter your username '" + username + "' and desired password.");
 		}
 
 		#endregion Private Methods
@@ -89,6 +89,15 @@ namespace winerack.Controllers {
 		}
 
 		#endregion Index
+
+		#region Details
+
+		public ActionResult Details(string id) {
+			var user = UserManager.FindById(id);
+			return View(user);
+		}
+
+		#endregion Details
 
 		#region Administrator
 
@@ -135,7 +144,7 @@ namespace winerack.Controllers {
 				var user = new User {
 					CreatedOn = DateTime.Now,
 					Email = model.Email,
-					UserName = model.Email,
+					UserName = model.Username,
 					FirstName = model.FirstName,
 					LastName = model.LastName
 				};
@@ -143,7 +152,7 @@ namespace winerack.Controllers {
 				IdentityResult result = await UserManager.CreateAsync(user);
 
 				if (result.Succeeded) {
-					await SendInvite(user.Id);
+					await SendInvite(user.Id, model.Username);
 					return RedirectToAction("Index");
 				}
 
@@ -164,67 +173,13 @@ namespace winerack.Controllers {
 				return HttpNotFound();
 			}
 
-			await SendInvite(user.Id);
+			await SendInvite(user.Id, user.UserName);
 			return RedirectToAction("Details", new { id = user.Id });
 		}
 
 		#endregion Invite
 
 		#endregion Actions
-
-		#region Partials
-
-		#region Profile
-
-		public PartialViewResult MiniProfile() {
-			var userId = User.Identity.GetUserId();
-			var model = new Models.MiniProfileViewModel();
-			var user = db.Users.Find(userId);
-			model.Username = user.UserName;
-			model.Name = user.Name;
-			model.Location = user.LocationDescription;
-
-			model.BottlesTotal = db.StoredBottles
-				.Where(sb => sb.Purchase.Bottle.OwnerID == userId)
-				.Count();
-
-			model.BottlesUnique = db.Bottles
-				.Where(b => b.OwnerID == userId)
-				.Count();
-
-			model.BottlesDrunk = db.Openings
-				.Where(t => t.StoredBottle.Purchase.Bottle.OwnerID == userId)
-				.Count();
-
-			return PartialView(model);
-		}
-
-		public PartialViewResult StatBar(string userId) {
-			var model = new Models.MiniProfileViewModel();
-			var user = db.Users.Find(userId);
-
-			model.BottlesTotal = db.StoredBottles
-				.Where(sb => sb.Purchase.Bottle.OwnerID == userId)
-				.Count();
-
-			model.BottlesUnique = db.Bottles
-				.Where(b => b.OwnerID == userId)
-				.Count();
-
-			model.BottlesDrunk = db.Openings
-				.Where(t => t.StoredBottle.Purchase.Bottle.OwnerID == userId)
-				.Count();
-
-			model.Tasted = db.Tastings
-				.Where(t => t.UserID == userId)
-				.Count();
-
-			return PartialView(model);
-		}
-
-		#endregion Profile
-
-		#endregion Partials
 
 		#region Public Methods
 
