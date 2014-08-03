@@ -221,6 +221,7 @@
     <Compile Include="Controllers\StoredBottlesController.cs" />
     <Compile Include="Controllers\OpeningsController.cs" />
     <Compile Include="Controllers\TastingsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VarietalsController.cs" />
     <Compile Include="Controllers\VineyardsController.cs" />
@@ -521,7 +522,6 @@
     <Content Include="Views\Wines\Edit.cshtml" />
     <Content Include="Views\Wines\Index.cshtml" />
     <Content Include="Views\Shared\Wines\Editor.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Account\RegisterSent.cshtml" />
     <Content Include="Views\Bottles\Create.cshtml" />
@@ -561,6 +561,7 @@
     <Content Include="Views\Varietals\Details.cshtml" />
     <Content Include="Views\Varietals\Edit.cshtml" />
     <Content Include="Views\Varietals\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

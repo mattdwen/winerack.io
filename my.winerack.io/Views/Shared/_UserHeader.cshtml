@@ -2,12 +2,12 @@
 @using winerack.Helpers
 
 <div class="media">
-    <a class="pull-left" href="/users/@Model.UserName">
+    <a class="pull-left" href="/user/@Model.UserName">
         <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Id)" width="75" />
     </a>
     <div class="media-body">
         <h3 class="media-heading">
-            <a href="/users/@Model.UserName">
+            <a href="/user/@Model.UserName">
                 @if (string.IsNullOrWhiteSpace(Model.Name)) {
                     @Model.UserName
                 } else {

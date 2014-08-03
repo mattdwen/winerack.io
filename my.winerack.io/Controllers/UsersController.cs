@@ -90,26 +90,6 @@ namespace winerack.Controllers {
 
 		#endregion Index
 
-		#region Details
-
-		// GET: Users/username
-		[Route("users/{username}")]
-		public ActionResult Details(string username) {
-			if (username == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-
-			User user = db.Users.Where(u => u.UserName == username).FirstOrDefault();
-
-			if (user == null) {
-				return HttpNotFound();
-			}
-
-			return View(user);
-		}
-
-		#endregion Details
-
 		#region Administrator
 
 		public async Task<ActionResult> Administrator(string id) {

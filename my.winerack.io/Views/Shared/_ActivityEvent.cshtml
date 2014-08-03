@@ -6,7 +6,7 @@
 
 <div class="activity-event panel panel-default">
     <div class="panel-heading">
-        <a href="/users/@Model.Username">
+        <a href="/user/@Model.Username">
             <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.UserID)" width="50" />
             @if (string.IsNullOrWhiteSpace(Model.Name)) {
                 @Model.Username
