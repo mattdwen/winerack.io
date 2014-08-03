@@ -17,12 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Style)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CellarMin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CellarMax)
-        </th>
         <th></th>
     </tr>
 
@@ -33,12 +27,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Style)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CellarMin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CellarMax)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

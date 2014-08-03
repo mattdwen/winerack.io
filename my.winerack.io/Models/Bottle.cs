@@ -33,9 +33,9 @@ namespace winerack.Models {
 		[Display(Name = "Added")]
 		public DateTime CreatedOn { get; set; }
 
-		public int CellarMin { get; set; }
+		public int? CellarMin { get; set; }
 
-		public int CellarMax { get; set; }
+		public int? CellarMax { get; set; }
 
 		[NotMapped]
 		[Display(Name = "Purchased")]

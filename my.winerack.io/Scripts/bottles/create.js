@@ -47,13 +47,3 @@ $('#Photo').change(function () {
         reader.readAsDataURL(this.files[0]);
     }
 });
-
-$('#cellarSlider').editRangeSlider({
-    arrows: false,
-    bounds: { min: 0, max: 20 },
-    defaultValues: { min: $('#CellarMin').val(), max: $('#CellarMax').val() },
-    step: 1
-}).bind("valuesChanged", function (e, data) {
-    $('#CellarMin').val(data.values.min);
-    $('#CellarMax').val(data.values.max);
-});

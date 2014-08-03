@@ -46,9 +46,11 @@ namespace winerack.Models {
 		[DataType(DataType.MultilineText)]
 		public string PurchaseNotes { get; set; }
 
-		public int CellarMin { get; set; }
+		[Display(Name="At less than")]
+		public int? CellarMin { get; set; }
 
-		public int CellarMax { get; set; }
+		[Display(Name="No more than")]
+		public int? CellarMax { get; set; }
 
 		public bool HasFacebook { get; set; }
 
@@ -81,9 +83,9 @@ namespace winerack.Models.BottleViewModels {
 
 		public string Region { get; set; }
 
-		public int CellarMin { get; set; }
+		public int? CellarMin { get; set; }
 
-		public int CellarMax { get; set; }
+		public int? CellarMax { get; set; }
 
 		public string Varietal { get; set; }
 

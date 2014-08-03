@@ -8,6 +8,21 @@ using winerack.Models;
 
 namespace winerack.Helpers {
 	public static class ExtensionMethods {
+
+		public static MvcHtmlString CellarDescription(int? min, int? max) {
+			string desc = "";
+
+			if (min.HasValue && max.HasValue) {
+				desc = min.Value.ToString() + " to " + max.Value.ToString() + " years";
+			} else if (max.HasValue) {
+				desc = "Up to " + max.Value.ToString() + " years";
+			} else if (min.HasValue) {
+				desc = "At least " + min.Value.ToString() + " years";
+			}
+
+			return MvcHtmlString.Create(desc);
+		}
+
 		public static MvcHtmlString TimeAgo(DateTime when) {
 			var span = DateTime.Now - when;
 

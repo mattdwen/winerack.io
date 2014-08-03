@@ -6,13 +6,27 @@ using winerack.Models;
 
 namespace winerack.Controllers {
 
+	[Authorize]
 	public class VarietalsController : Controller {
+
+		#region Declarations
+
 		private ApplicationDbContext db = new ApplicationDbContext();
+
+		#endregion Declarations
+
+		#region Actions
+
+		#region Index
 
 		// GET: Varietals
 		public async Task<ActionResult> Index() {
 			return View(await db.Varietals.ToListAsync());
 		}
+
+		#endregion Index
+
+		#region Details
 
 		// GET: Varietals/Details/5
 		public async Task<ActionResult> Details(int? id) {
@@ -25,6 +39,10 @@ namespace winerack.Controllers {
 			}
 			return View(varietal);
 		}
+
+		#endregion Details
+
+		#region Create
 
 		// GET: Varietals/Create
 		public ActionResult Create() {
@@ -45,6 +63,10 @@ namespace winerack.Controllers {
 
 			return View(varietal);
 		}
+
+		#endregion Create
+
+		#region Edit
 
 		// GET: Varietals/Edit/5
 		public async Task<ActionResult> Edit(int? id) {
@@ -72,6 +94,10 @@ namespace winerack.Controllers {
 			return View(varietal);
 		}
 
+		#endregion Edit
+
+		#region Delete
+
 		// GET: Varietals/Delete/5
 		public async Task<ActionResult> Delete(int? id) {
 			if (id == null) {
@@ -94,11 +120,19 @@ namespace winerack.Controllers {
 			return RedirectToAction("Index");
 		}
 
+		#endregion Delete
+
+		#endregion Actions
+
+		#region Implementation
+
 		protected override void Dispose(bool disposing) {
 			if (disposing) {
 				db.Dispose();
 			}
 			base.Dispose(disposing);
 		}
+
+		#endregion Implementation
 	}
 }

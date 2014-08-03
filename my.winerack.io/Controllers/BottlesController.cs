@@ -163,8 +163,6 @@ namespace winerack.Controllers {
 			var model = new CreateBottleViewModel {
 				PurchaseDate = DateTime.Now,
 				PurchaseQuantity = 1,
-				CellarMin = 1,
-				CellarMax = 3,
 				HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null),
 				HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null),
 				HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null)

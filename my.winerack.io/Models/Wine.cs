@@ -56,5 +56,29 @@ namespace winerack.Models {
 		public virtual Vineyard Vineyard { get; set; }
 
 		#endregion Relationships
+
+		#region Overrides
+
+		public override string ToString() {
+			string description = "";
+
+			if (Vineyard != null) {
+				description = Vineyard.Name + " ";
+			}
+
+			if (!string.IsNullOrWhiteSpace(Name)) {
+				description = "'" + Name + "' ";
+			}
+
+			if (Vintage.HasValue) {
+				description += "'" + Vintage.ToString().Substring(2) + " ";
+			}
+
+			description += Varietal.Name;
+
+			return description;
+		}
+
+		#endregion
 	}
 }

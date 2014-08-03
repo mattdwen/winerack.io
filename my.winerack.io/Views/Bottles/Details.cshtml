@@ -1,7 +1,8 @@
 ﻿@model winerack.Models.Bottle
+@using winerack.Helpers
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Model.Wine.ToString();
 }
 
 <input id="Bottle_ID" type="hidden" value="@Model.ID"/>
@@ -38,35 +39,12 @@
 
             <dt>@Html.DisplayNameFor(m => m.NumberRemaining)</dt>
             <dd><span class="label label-success">@Model.NumberRemaining</span></dd>
+
+            @if (Model.CellarMin.HasValue || Model.CellarMax.HasValue) {
+                <dt>Cellar</dt>
+                <dd>@ExtensionMethods.CellarDescription(Model.CellarMin, Model.CellarMax)</dd>
+            }
         </dl>
-
-        <h4>Cellaring</h4>
-        <hr />
-        <br />
-        <dl class="dl-horizontal">
-            <dt>Cellar for</dt>
-            <dd>
-                <input id="cellarMin" name="cellarMin" type="hidden" value="@Model.CellarMin" />
-                <input id="cellarMax" name="cellarMax" type="hidden" value="@Model.CellarMax" />
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div id="cellarSlider"></div>
-                    </div>
-                    <div class="col-sm-2">
-                        years
-                    </div>
-                </div>
-            </dd>
-
-            <dt></dt>
-            <dd>
-                <br />
-                <button class="btn btn-success" id="cellarUpdate">Save</button>
-            </dd>
-        </dl>
-
-        <a class="btn btn-link" href="/Bottles">Back to collection</a>
     </div>
 
     <div class="tab-pane" id="purchases">
@@ -163,9 +141,3 @@
         </div>
     }
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/Scripts/jquery-ui-1.10.4.min.js")
-    @Scripts.Render("~/Scripts/vendor/jQRangeSlider/jQEditRangeSlider-min.js")
-    @Scripts.Render("~/Scripts/bottles/details.js")
-}
