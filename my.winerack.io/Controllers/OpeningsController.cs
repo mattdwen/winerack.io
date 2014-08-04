@@ -123,7 +123,10 @@ namespace winerack.Controllers {
 				db.Openings.Add(opening);
 
 				// Publish the event
-				ActivityStream.Publish(this.db, User.Identity.GetUserId(), ActivityVerbs.Opened, opening.StoredBottleID);
+				var activityLogic = new Logic.Activities(db);
+				var storedBottle = db.StoredBottles.Find(opening.StoredBottleID);
+				activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Opened, opening.StoredBottleID, storedBottle.Purchase.Bottle.WineID);
+				activityLogic.SaveChanges();
 
 				// Save
 				db.SaveChanges();

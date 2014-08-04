@@ -118,8 +118,10 @@ namespace winerack.Controllers {
 				db.SaveChanges();
 
 				// Activity feed
-				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID);
-				db.SaveChanges();
+				var activityLogic = new Logic.Activities(db);
+				var bottle = db.Bottles.Find(purchase.BottleID);
+				activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID, bottle.WineID);
+				activityLogic.SaveChanges();
 
 				// Share
 				if (model.PostFacebook) {

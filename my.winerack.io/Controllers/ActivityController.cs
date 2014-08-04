@@ -21,9 +21,10 @@ namespace winerack.Controllers {
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		public PartialViewResult VisibleToUser(string userId) {
-			var activity = db.ActivityEvents
-				.Where(e => e.UserID == userId)
-				.OrderByDescending(e => e.OccuredOn)
+			var activity = db.ActivityNotifications
+				.Where(n => n.UserID == userId)
+				.Select(a => a.Activity)
+				.OrderByDescending(a => a.OccuredOn)
 				.Take(20)
 				.ToList();
 
@@ -36,9 +37,9 @@ namespace winerack.Controllers {
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		public PartialViewResult ByUser(string userId) {
-			var activity = db.ActivityEvents
-				.Where(e => e.UserID == userId)
-				.OrderByDescending(e => e.OccuredOn)
+			var activity = db.Activities
+				.Where(a => a.ActorID == userId)
+				.OrderByDescending(a => a.OccuredOn)
 				.Take(20)
 				.ToList();
 
@@ -49,14 +50,11 @@ namespace winerack.Controllers {
 
 		#region Activities
 
-		public PartialViewResult Opened(ActivityEvent activity) {
-			var user = db.Users.Where(u => u.Id == activity.UserID).FirstOrDefault();
-			var storedBottle = db.StoredBottles.Find(activity.Noun);
+		public PartialViewResult Opened(Activity activity) {
+			var storedBottle = db.StoredBottles.Find(activity.ObjectID);
 			var viewmodel = new Models.ActivityEventViewModels.Opened {
 				OccuredOn = activity.OccuredOn,
-				Username = user.UserName,
-				UserID = user.Id,
-				Name = user.Name,
+				Actor = activity.Actor,
 				Notes = storedBottle.Opening.Notes,
 				Bottle = storedBottle.Purchase.Bottle.Wine.Description,
 				Winery = storedBottle.Purchase.Bottle.Wine.Vineyard.Name,
@@ -69,15 +67,12 @@ namespace winerack.Controllers {
 			return PartialView(viewmodel);
 		}
 
-		public PartialViewResult Purchased(ActivityEvent activity) {
-			var user = db.Users.Where(u => u.Id == activity.UserID).FirstOrDefault();
-			var purchase = db.Purchases.Find(activity.Noun);
+		public PartialViewResult Purchased(Activity activity) {
+			var purchase = db.Purchases.Find(activity.ObjectID);
 
 			var viewmodel = new Models.ActivityEventViewModels.Purchased {
+				Actor = activity.Actor,
 				OccuredOn = activity.OccuredOn,
-				Username = user.UserName,
-				Name = user.Name,
-				UserID = user.Id,
 				Notes = purchase.Notes,
 				Bottle = purchase.Bottle.Wine.Description,
 				Winery = purchase.Bottle.Wine.Vineyard.Name,
@@ -92,15 +87,12 @@ namespace winerack.Controllers {
 			return PartialView(viewmodel);
 		}
 
-		public PartialViewResult Tasted(ActivityEvent activity) {
-			var user = db.Users.Where(u => u.Id == activity.UserID).FirstOrDefault();
-			var tasting = db.Tastings.Find(activity.Noun);
+		public PartialViewResult Tasted(Activity activity) {
+			var tasting = db.Tastings.Find(activity.ObjectID);
 
 			var viewmodel = new Models.ActivityEventViewModels.Tasted {
+				Actor = activity.Actor,
 				OccuredOn = activity.OccuredOn,
-				Username = user.UserName,
-				Name = user.Name,
-				UserID = user.Id,
 				Notes = tasting.Notes,
 				Bottle = tasting.Wine.Description,
 				Winery = tasting.Wine.Vineyard.Name,

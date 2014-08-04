@@ -235,7 +235,7 @@
     <Compile Include="Helpers\Authentication\StoredBottleAuthenticationAttribute.cs" />
     <Compile Include="Helpers\Authentication\TastingAuthenticationAttribute.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
-    <Compile Include="Logic\ActivityStream.cs" />
+    <Compile Include="Logic\Activities.cs" />
     <Compile Include="Logic\BlobHandler.cs" />
     <Compile Include="Logic\Images.cs" />
     <Compile Include="Logic\Social\Facebook.cs" />
@@ -326,10 +326,15 @@
     <Compile Include="Migrations\201408030521535_create_friends.Designer.cs">
       <DependentUpon>201408030521535_create_friends.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408030841066_refactor_activities.cs" />
+    <Compile Include="Migrations\201408030841066_refactor_activities.Designer.cs">
+      <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ActivityEvent.cs" />
-    <Compile Include="Models\ActivityEventViewModels.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\ActivityNotification.cs" />
+    <Compile Include="Models\ActivityViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Bottle.cs" />
     <Compile Include="Models\BottleViewModels.cs" />
@@ -552,7 +557,7 @@
     <Content Include="Views\User\MiniProfile.cshtml" />
     <Content Include="Views\Openings\Start.cshtml" />
     <Content Include="Views\Activity\Stream.cshtml" />
-    <Content Include="Views\Shared\_ActivityEvent.cshtml" />
+    <Content Include="Views\Shared\_Activity.cshtml" />
     <Content Include="Views\Activity\Opened.cshtml" />
     <Content Include="Views\Account\Settings.cshtml" />
     <Content Include="Views\Activity\Purchased.cshtml" />
@@ -642,6 +647,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408030521535_create_friends.resx">
       <DependentUpon>201408030521535_create_friends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408030841066_refactor_activities.resx">
+      <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

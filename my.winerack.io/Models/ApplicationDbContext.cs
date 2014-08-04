@@ -21,7 +21,9 @@ namespace winerack.Models {
 
 		#region Properties
 
-		public DbSet<ActivityEvent> ActivityEvents { get; set; }
+		public DbSet<Activity> Activities { get; set; }
+
+		public DbSet<ActivityNotification> ActivityNotifications { get; set; }
 
 		public DbSet<Bottle> Bottles { get; set; }
 

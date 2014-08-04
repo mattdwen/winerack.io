@@ -143,7 +143,8 @@ namespace winerack.Controllers {
 				db.SaveChanges();
 
 				// Push to activity log
-				var actvity = Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Tasted, tasting.ID);
+				var activityLogic = new Logic.Activities(db);
+				var actvity = activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Tasted, tasting.ID, tasting.WineID);
 				db.SaveChanges();
 
 				wine = db.Wines.Find(wine.ID);

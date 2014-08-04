@@ -209,8 +209,9 @@ namespace winerack.Controllers {
 				db.SaveChanges();
 
 				// Push to activity log
-				Logic.ActivityStream.Publish(db, User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID);
-				db.SaveChanges();
+				var activityLogic = new Logic.Activities(db);
+				activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID, bottle.WineID);
+				activityLogic.SaveChanges();
 
 				if (model.PostTwitter) {
 					purchase = db.Purchases
