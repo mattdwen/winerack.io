@@ -330,6 +330,10 @@
     <Compile Include="Migrations\201408030841066_refactor_activities.Designer.cs">
       <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408040105324_create_tastings_taggedusers.cs" />
+    <Compile Include="Migrations\201408040105324_create_tastings_taggedusers.Designer.cs">
+      <DependentUpon>201408040105324_create_tastings_taggedusers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -575,6 +579,7 @@
     <Content Include="Views\Varietals\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Shared\_TaggedUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -650,6 +655,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408030841066_refactor_activities.resx">
       <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408040105324_create_tastings_taggedusers.resx">
+      <DependentUpon>201408040105324_create_tastings_taggedusers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

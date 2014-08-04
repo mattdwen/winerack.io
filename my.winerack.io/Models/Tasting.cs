@@ -11,6 +11,14 @@ namespace winerack.Models {
 
 		#region Declarations
 
+		public Tasting() {
+			TaggedUsers = new List<User>();
+		}
+
+		#endregion Declarations
+
+		#region Declarations
+
 		public int ID { get; set; }
 
 		[ForeignKey("User")]
@@ -32,6 +40,8 @@ namespace winerack.Models {
 		#endregion Declarations
 
 		#region Relationships
+
+		public virtual IList<User> TaggedUsers { get; set; }
 
 		public virtual User User { get; set; }
 

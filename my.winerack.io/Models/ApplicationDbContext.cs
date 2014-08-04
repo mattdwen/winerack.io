@@ -63,6 +63,10 @@ namespace winerack.Models {
 				.HasMany(u => u.Followers)
 				.WithRequired(f => f.Followee)
 				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<User>()
+				.HasMany(u => u.TaggedTastings)
+				.WithMany(t => t.TaggedUsers);
 		}
 		#endregion
 

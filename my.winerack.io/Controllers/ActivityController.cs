@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using winerack.Models;
@@ -100,7 +101,8 @@ namespace winerack.Controllers {
 				WineID = tasting.WineID,
 				VineyardID = tasting.Wine.VineyardID,
 				ViewUrl = "/tastings",
-				ObjectID = tasting.ID
+				ObjectID = tasting.ID,
+				TaggedUsers = tasting.TaggedUsers.ToList()
 			};
 
 			return PartialView(viewmodel);

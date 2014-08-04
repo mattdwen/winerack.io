@@ -6,6 +6,7 @@ using winerack.Models.TastingViewModels;
 using Microsoft.AspNet.Identity;
 using winerack.Logic;
 using System;
+using System.Collections.Generic;
 
 namespace winerack.Controllers {
 
@@ -98,6 +99,30 @@ namespace winerack.Controllers {
 			return model;
 		}
 
+		private void PopulateCreateViewBag() {
+			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+
+			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
+
+			var userId = User.Identity.GetUserId();
+			var friendList = new List<SelectListItem>();
+
+			var following = db.Friends.Where(f => f.FollowerID == userId).ToList();
+			foreach (var followee in following) {
+				friendList.Add(new SelectListItem {
+					Text = followee.Followee.Name,
+					Value = followee.FolloweeID
+				});
+			}
+
+			friendList = friendList.OrderBy(f => f.Text).ToList();
+
+			ViewBag.Friends = friendList;
+		}
+
 		#endregion Private Methods
 
 		#region Actions
@@ -107,13 +132,7 @@ namespace winerack.Controllers {
 		// GET: /tastings/create
 		public ActionResult Create() {
 			var model = GetCreateViewModel();
-
-			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
-				Text = x.Name,
-				Value = x.ID.ToString()
-			}).ToList();
-
+			PopulateCreateViewBag();
 			return View(model);
 		}
 
@@ -132,6 +151,11 @@ namespace winerack.Controllers {
 					TastedOn = model.TastingDate,
 					Notes = model.TastingNotes
 				};
+
+				foreach (var taggedUserID in model.Friends) {
+					var taggedUser = db.Users.Find(taggedUserID);
+					tasting.TaggedUsers.Add(taggedUser);
+				}
 
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
@@ -172,11 +196,7 @@ namespace winerack.Controllers {
 				return Redirect("/tastings/" + tasting.ID.ToString());
 			}
 
-			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
-				Text = x.Name,
-				Value = x.ID.ToString()
-			}).ToList();
+			PopulateCreateViewBag();
 
 			model = GetCreateViewModel(model);
 

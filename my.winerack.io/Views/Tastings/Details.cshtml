@@ -37,8 +37,12 @@
                 @if ((Model.ImageID.HasValue)) {
                     <img class="img-responsive" src="https://winerack.blob.core.windows.net/tastings/@{@Model.ImageID.Value}_md.jpg" />
                 }
+                
+                @Html.Partial("_TaggedUsers", Model.TaggedUsers)
 
-                @Model.Notes
+                @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
+                    <blockquote>@Model.Notes</blockquote>
+                }
 
                 <hr />
                 <div class="text-muted">@Model.TastedOn.ToLongDateString()</div>

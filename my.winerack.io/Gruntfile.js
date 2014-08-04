@@ -35,7 +35,8 @@
         concat: {
             serve: {
                 src: [
-                    'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js'
+                    'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+                    'bower_components/select2/select2.js'
                 ],
                 dest: 'Scripts/dist/vendor.js'
             }

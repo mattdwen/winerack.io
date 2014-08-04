@@ -36,9 +36,12 @@ namespace winerack.Models.TastingViewModels {
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime TastingDate { get; set; }
 
-		[Display(Name = "Notes")]
+		[Display(Name = "Tasting Notes")]
 		[DataType(DataType.MultilineText)]
 		public string TastingNotes { get; set; }
+
+		[Display(Name="Who are you with?")]
+		public List<string> Friends { get; set; }
 
 		public bool HasFacebook { get; set; }
 

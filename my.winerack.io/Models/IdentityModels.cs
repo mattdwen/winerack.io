@@ -61,6 +61,8 @@ namespace winerack.Models {
 
 		public virtual ICollection<Friend> Followers { get; set; }
 
+		public virtual ICollection<Tasting> TaggedTastings { get; set; }
+
 		#endregion Relationships
 
 		#region Public Methods

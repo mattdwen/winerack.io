@@ -7,6 +7,14 @@ using System.Web.Mvc;
 namespace winerack.Models.ActivityEventViewModels {
 	public class Base {
 
+		#region Constructor
+
+		public Base() {
+			TaggedUsers = new List<User>();
+		}
+
+		#endregion Constructor
+
 		#region Properties
 
 		public User Actor { get; set; }
@@ -18,6 +26,8 @@ namespace winerack.Models.ActivityEventViewModels {
 		public int ObjectID { get; set; }
 
 		public string ViewUrl { get; set; }
+
+		public IList<User> TaggedUsers { get; set; }
 
 		#endregion Properties
 	}

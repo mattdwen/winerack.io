@@ -24,6 +24,8 @@
             <img src="@imageUrl" width="300" />
         }
         
+        @Html.Partial("_TaggedUsers", Model.TaggedUsers)
+        
         <hr />
 
         <p class="pull-right"><a href="@Model.ViewUrl/@Model.ObjectID">View details</a></p>
