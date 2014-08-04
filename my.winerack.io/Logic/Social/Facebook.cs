@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using winerack.Models;
+using winerack.Models.Social;
 
 namespace winerack.Logic.Social {
 	public class Facebook {
@@ -38,6 +39,19 @@ namespace winerack.Logic.Social {
 		}
 
 		#region Public Methods
+
+		public IList<FacebookFriend> GetFriends(string userId) {
+			var client = GetClient(userId);
+			dynamic result = client.Get("me/taggable_friends");
+			var friends = new List<FacebookFriend>();
+			foreach (var person in result.data) {
+				friends.Add(new FacebookFriend {
+					id = person.id,
+					name = person.name
+				});
+			}
+			return friends;
+		}
 
 		public void OpenWine(string userId, int openingId) {
 			var client = GetClient(userId);

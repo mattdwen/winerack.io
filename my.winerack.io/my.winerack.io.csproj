@@ -351,6 +351,7 @@
     <Compile Include="Models\PurchaseViewModels.cs" />
     <Compile Include="Models\RackViewModels.cs" />
     <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\Social\Facebook.cs" />
     <Compile Include="Models\Social\Tumblr.cs" />
     <Compile Include="Models\StoredBottle.cs" />
     <Compile Include="Models\Opening.cs" />

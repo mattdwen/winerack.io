@@ -65,11 +65,12 @@ namespace winerack.Controllers {
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
 			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
 			var redirectUrl = "http://localhost:3890/auth/facebook_callback/";
-			var scope = "publish_actions";
+			var scope = "publish_actions,user_friends";
 
 			var url = "https://www.facebook.com/dialog/oauth?" +
 				"client_id=" + appId +
-				"&redirect_uri=" + redirectUrl;
+				"&redirect_uri=" + redirectUrl +
+				"&scope=" + scope;
 
 			return Redirect(url);
 		}

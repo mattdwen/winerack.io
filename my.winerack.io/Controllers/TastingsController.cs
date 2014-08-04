@@ -118,6 +118,15 @@ namespace winerack.Controllers {
 				});
 			}
 
+			var facebook = new Logic.Social.Facebook(db);
+			var facebookFriends = facebook.GetFriends(User.Identity.GetUserId());
+			foreach (var friend in facebookFriends) {
+				friendList.Add(new SelectListItem {
+					Text = friend.name,
+					Value = friend.id
+				});
+			}
+
 			friendList = friendList.OrderBy(f => f.Text).ToList();
 
 			ViewBag.Friends = friendList;
