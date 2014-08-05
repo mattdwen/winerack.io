@@ -14,6 +14,7 @@ namespace winerack.Logic.Social {
 
 		public Facebook(ApplicationDbContext db) {
 			this.db = db;
+			this.appNamespace = ConfigurationManager.AppSettings["facebook:appNamespace"];
 		}
 
 		#endregion Constructor
@@ -21,6 +22,7 @@ namespace winerack.Logic.Social {
 		#region Declarations
 
 		private ApplicationDbContext db;
+		private string appNamespace;
 
 		#endregion Declarations
 
@@ -88,7 +90,7 @@ namespace winerack.Logic.Social {
 				tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
 			}
 
-			client.Post("me/winerackio:taste", new { wine = tastingUrl, tags = tags });
+			client.Post("me/" + appNamespace + ":taste", new { wine = tastingUrl, tags = tags });
 		}
 
 		#endregion Public Methods
