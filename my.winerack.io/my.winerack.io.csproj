@@ -242,6 +242,7 @@
     <Compile Include="Logic\Social\ISocial.cs" />
     <Compile Include="Logic\Social\Tumblr.cs" />
     <Compile Include="Logic\Social\Twitter.cs" />
+    <Compile Include="Logic\Tagging.cs" />
     <Compile Include="Migrations\201405280844439_init.cs" />
     <Compile Include="Migrations\201405280844439_init.Designer.cs">
       <DependentUpon>201405280844439_init.cs</DependentUpon>
@@ -334,10 +335,23 @@
     <Compile Include="Migrations\201408040105324_create_tastings_taggedusers.Designer.cs">
       <DependentUpon>201408040105324_create_tastings_taggedusers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408050328594_create_tagged_users.cs" />
+    <Compile Include="Migrations\201408050328594_create_tagged_users.Designer.cs">
+      <DependentUpon>201408050328594_create_tagged_users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408050345096_add_tagged_users_alt_user_id.cs" />
+    <Compile Include="Migrations\201408050345096_add_tagged_users_alt_user_id.Designer.cs">
+      <DependentUpon>201408050345096_add_tagged_users_alt_user_id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408050353020_tastings_remove_tagged_users.cs" />
+    <Compile Include="Migrations\201408050353020_tastings_remove_tagged_users.Designer.cs">
+      <DependentUpon>201408050353020_tastings_remove_tagged_users.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ActivityNotification.cs" />
+    <Compile Include="Models\TaggedUser.cs" />
     <Compile Include="Models\ActivityViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Bottle.cs" />
@@ -659,6 +673,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408040105324_create_tastings_taggedusers.resx">
       <DependentUpon>201408040105324_create_tastings_taggedusers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408050328594_create_tagged_users.resx">
+      <DependentUpon>201408050328594_create_tagged_users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408050345096_add_tagged_users_alt_user_id.resx">
+      <DependentUpon>201408050345096_add_tagged_users_alt_user_id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408050353020_tastings_remove_tagged_users.resx">
+      <DependentUpon>201408050353020_tastings_remove_tagged_users.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

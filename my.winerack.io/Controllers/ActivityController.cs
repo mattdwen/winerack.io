@@ -102,7 +102,7 @@ namespace winerack.Controllers {
 				VineyardID = tasting.Wine.VineyardID,
 				ViewUrl = "/tastings",
 				ObjectID = tasting.ID,
-				TaggedUsers = tasting.TaggedUsers.ToList()
+				TaggedUsers = db.TaggedUsers.Where(t => t.ParentID == tasting.ID && t.ActivityVerb == ActivityVerbs.Tasted).ToList()
 			};
 
 			return PartialView(viewmodel);

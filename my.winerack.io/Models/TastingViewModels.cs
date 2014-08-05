@@ -59,4 +59,11 @@ namespace winerack.Models.TastingViewModels {
 
 	}
 
+	public class Details {
+
+		public Tasting Tasting { get; set; }
+
+		public IList<TaggedUser> TaggedUsers { get; set; }
+	}
+
 }

@@ -123,7 +123,7 @@ namespace winerack.Controllers {
 			foreach (var friend in facebookFriends) {
 				friendList.Add(new SelectListItem {
 					Text = friend.name,
-					Value = friend.id
+					Value = "fb::" + friend.id + "::" + friend.name
 				});
 			}
 
@@ -161,11 +161,6 @@ namespace winerack.Controllers {
 					Notes = model.TastingNotes
 				};
 
-				foreach (var taggedUserID in model.Friends) {
-					var taggedUser = db.Users.Find(taggedUserID);
-					tasting.TaggedUsers.Add(taggedUser);
-				}
-
 				// Save the photo
 				if (photo != null && photo.ContentLength > 0) {
 					var blobHandler = new Logic.BlobHandler("tastings");
@@ -174,6 +169,10 @@ namespace winerack.Controllers {
 
 				db.Tastings.Add(tasting);
 				db.SaveChanges();
+
+				// Tag Users
+				var taggingLogic = new Tagging(db);
+				var taggedUsers = taggingLogic.TagUsers(model.Friends, tasting.ID, ActivityVerbs.Tasted, User.Identity.GetUserId());
 
 				// Push to activity log
 				var activityLogic = new Logic.Activities(db);
@@ -221,7 +220,11 @@ namespace winerack.Controllers {
 		[Route("tastings/{id:int}")]
 		public ActionResult Details(int id) {
 			var tasting = db.Tastings.Find(id);
-			return View(tasting);
+			var model = new Details {
+				Tasting = db.Tastings.Find(id),
+				TaggedUsers = db.TaggedUsers.Where(t => t.ParentID == id && t.ActivityVerb == ActivityVerbs.Tasted).ToList()
+			};
+			return View(model);
 		}
 
 		#endregion Details

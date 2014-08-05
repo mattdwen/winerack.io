@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace winerack.Models {
 
-	public class Tasting {
+	public class TaggedUser {
 
 		#region Declarations
 
 		public int ID { get; set; }
 
+		public int ParentID { get; set; }
+
 		[ForeignKey("User")]
 		public string UserID { get; set; }
 
-		[ForeignKey("Wine")]
-		public int WineID { get; set; }
+		public string AltUserID { get; set; }
 
-		public Guid? ImageID { get; set; }
+		public ActivityVerbs ActivityVerb { get; set; }
 
-		[Display(Name = "Tasted On")]
-		[DataType(DataType.Date)]
-		public DateTime TastedOn { get; set; }
+		public TaggedUserTypes UserType { get; set; }
 
-		[Display(Name = "Tasting Notes")]
-		[DataType(DataType.MultilineText)]
-		public string Notes { get; set; }
+		public string Name { get; set; }
 
 		#endregion Declarations
 
@@ -35,9 +31,12 @@ namespace winerack.Models {
 
 		public virtual User User { get; set; }
 
-		public virtual Wine Wine { get; set; }
-
 		#endregion Relationships
+	}
+
+	public enum TaggedUserTypes {
+		Winerack = 100,
+		Facebook = 200
 	}
 
 }

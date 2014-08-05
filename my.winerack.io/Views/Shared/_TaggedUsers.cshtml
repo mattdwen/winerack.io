@@ -1,4 +1,4 @@
-﻿@model IList<winerack.Models.User>
+﻿@model IList<winerack.Models.TaggedUser>
 
 @if (Model.Count > 0) {
     <p>
@@ -9,7 +9,7 @@
             } else if (i > 0) {
                 @Html.Raw(", ")
             }
-            <a href="/user/@Model[i].UserName">@Model[i].Name</a>
+            @Model[i].Name
         }
     </p>
 }

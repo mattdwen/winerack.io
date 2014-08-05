@@ -39,6 +39,8 @@ namespace winerack.Models {
 
 		public DbSet<StoredBottle> StoredBottles { get; set; }
 
+		public DbSet<TaggedUser> TaggedUsers { get; set; }
+
 		public DbSet<Tasting> Tastings { get; set; }
 
 		public DbSet<Varietal> Varietals { get; set; }
@@ -63,10 +65,6 @@ namespace winerack.Models {
 				.HasMany(u => u.Followers)
 				.WithRequired(f => f.Followee)
 				.WillCascadeOnDelete(false);
-
-			modelBuilder.Entity<User>()
-				.HasMany(u => u.TaggedTastings)
-				.WithMany(t => t.TaggedUsers);
 		}
 		#endregion
 

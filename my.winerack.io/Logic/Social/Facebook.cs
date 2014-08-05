@@ -25,8 +25,6 @@ namespace winerack.Logic.Social {
 
 		#region Private Methods
 
-		#endregion Private Methods
-
 		private Credentials GetCredentials(string userId) {
 			return context.Credentials
 				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Facebook)
@@ -37,6 +35,8 @@ namespace winerack.Logic.Social {
 			var credentials = GetCredentials(userId);
 			return new FacebookClient(credentials.Secret);
 		}
+
+		#endregion Private Methods
 
 		#region Public Methods
 
@@ -51,6 +51,12 @@ namespace winerack.Logic.Social {
 				});
 			}
 			return friends;
+		}
+
+		public string GetName(string userId, string facebookUserId) {
+			var client = GetClient(userId);
+			dynamic result = client.Get(facebookUserId);
+			return result.first_name + " " + result.last_name;
 		}
 
 		public void OpenWine(string userId, int openingId) {

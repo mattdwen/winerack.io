@@ -10,7 +10,7 @@ namespace winerack.Models.ActivityEventViewModels {
 		#region Constructor
 
 		public Base() {
-			TaggedUsers = new List<User>();
+			TaggedUsers = new List<TaggedUser>();
 		}
 
 		#endregion Constructor
@@ -27,7 +27,7 @@ namespace winerack.Models.ActivityEventViewModels {
 
 		public string ViewUrl { get; set; }
 
-		public IList<User> TaggedUsers { get; set; }
+		public IList<TaggedUser> TaggedUsers { get; set; }
 
 		#endregion Properties
 	}
