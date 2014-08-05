@@ -64,7 +64,7 @@ namespace winerack.Controllers {
 		public ActionResult Facebook() {
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
 			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
-			var redirectUrl = "http://localhost:3890/auth/facebook_callback/";
+			var redirectUrl = "http://winerack-fb-test.azurewebsites.net/auth/facebook_callback/";
 			var scope = "publish_actions,user_friends,public_profile";
 
 			var url = "https://www.facebook.com/dialog/oauth?" +
