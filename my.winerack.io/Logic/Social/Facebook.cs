@@ -1,6 +1,7 @@
 ﻿using Facebook;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using winerack.Models;
@@ -73,7 +74,8 @@ namespace winerack.Logic.Social {
 
 		public void TasteWine(string userId, int tastingId) {
 			var client = GetClient(userId);
-			var wineUrl = "http://winerack.io/tastings/" + tastingId.ToString();
+			var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+			var tastingUrl = baseUrl + "/tastings/" + tastingId.ToString();
 			var facebookFriends = db.TaggedUsers
 				.Where(
 					t => t.ParentID == tastingId
@@ -86,7 +88,7 @@ namespace winerack.Logic.Social {
 				tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
 			}
 
-			client.Post("me/winerackio:taste", new { wine = wineUrl, tags = tags });
+			client.Post("me/winerackio:taste", new { wine = tastingUrl, tags = tags });
 		}
 
 		#endregion Public Methods

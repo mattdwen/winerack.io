@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using winerack.Logic;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace winerack.Controllers {
 
@@ -182,6 +183,9 @@ namespace winerack.Controllers {
 				wine = db.Wines.Find(wine.ID);
 
 				// Share
+				var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+				var tastingUrl = baseUrl + "/tastings/" + tasting.ID.ToString();
+
 				if (model.PostFacebook) {
 					var facebook = new Logic.Social.Facebook(db);
 					facebook.TasteWine(User.Identity.GetUserId(), tasting.ID);
@@ -197,8 +201,7 @@ namespace winerack.Controllers {
 				if (model.PostTwitter) {
 					var twitter = new Logic.Social.Twitter(db);
 					var tweet = "I'm tasting a " + wine.Description;
-					var url = "http://winerack.io/tastings/" + tasting.ID.ToString();
-					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
+					twitter.Tweet(User.Identity.GetUserId(), tweet, tastingUrl);
 				}
 
 				return Redirect("/tastings/" + tasting.ID.ToString());
