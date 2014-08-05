@@ -75,7 +75,7 @@ namespace winerack.Controllers {
 		public ActionResult Facebook() {
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
 			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
-			var redirectUrl = GetBaseUrl() + "/auth/facebook_callback/";
+			var redirectUrl = GetBaseUrl() + "auth/facebook_callback/";
 			var scope = "publish_actions,user_friends,public_profile";
 
 			var url = "https://www.facebook.com/dialog/oauth?" +
@@ -91,7 +91,7 @@ namespace winerack.Controllers {
 			var client = new Facebook.FacebookClient();
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
 			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
-			var redirectUrl = GetBaseUrl() + "/auth/facebook_callback/";
+			var redirectUrl = GetBaseUrl() + "auth/facebook_callback/";
 			dynamic result = client.Get("oauth/access_token", new {
 				client_id = appId,
 				redirect_uri = redirectUrl,
