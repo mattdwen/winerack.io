@@ -31,6 +31,11 @@ namespace winerack.Logic {
 		/// <param name="userIDs"></param>
 		public IList<TaggedUser> TagUsers(IList<string> userIDs, int parentID, ActivityVerbs verb, string userId) {
 			var taggedUsers = new List<TaggedUser>();
+
+			if (userIDs == null) {
+				return taggedUsers;
+			}
+
 			var facebook = new Social.Facebook(db);
 
 			foreach (var id in userIDs) {

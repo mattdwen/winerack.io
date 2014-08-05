@@ -100,7 +100,7 @@ namespace winerack.Controllers {
 			return model;
 		}
 
-		private void PopulateCreateViewBag() {
+		private void PopulateCreateViewBag(bool hasFacebook = false) {
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
 
 			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
@@ -119,13 +119,15 @@ namespace winerack.Controllers {
 				});
 			}
 
-			var facebook = new Logic.Social.Facebook(db);
-			var facebookFriends = facebook.GetFriends(User.Identity.GetUserId());
-			foreach (var friend in facebookFriends) {
-				friendList.Add(new SelectListItem {
-					Text = friend.name,
-					Value = "fb::" + friend.id + "::" + friend.name
-				});
+			if (hasFacebook) {
+				var facebook = new Logic.Social.Facebook(db);
+				var facebookFriends = facebook.GetFriends(User.Identity.GetUserId());
+				foreach (var friend in facebookFriends) {
+					friendList.Add(new SelectListItem {
+						Text = friend.name,
+						Value = "fb::" + friend.id + "::" + friend.name
+					});
+				}
 			}
 
 			friendList = friendList.OrderBy(f => f.Text).ToList();
@@ -142,7 +144,7 @@ namespace winerack.Controllers {
 		// GET: /tastings/create
 		public ActionResult Create() {
 			var model = GetCreateViewModel();
-			PopulateCreateViewBag();
+			PopulateCreateViewBag(model.HasFacebook);
 			return View(model);
 		}
 
@@ -207,10 +209,8 @@ namespace winerack.Controllers {
 				return Redirect("/tastings/" + tasting.ID.ToString());
 			}
 
-			PopulateCreateViewBag();
-
 			model = GetCreateViewModel(model);
-
+			PopulateCreateViewBag(model.HasFacebook);
 			return View(model);
 		}
 
