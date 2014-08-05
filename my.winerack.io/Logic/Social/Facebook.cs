@@ -11,22 +11,22 @@ namespace winerack.Logic.Social {
 
 		#region Constructor
 
-		public Facebook(ApplicationDbContext context) {
-			this.context = context;
+		public Facebook(ApplicationDbContext db) {
+			this.db = db;
 		}
 
 		#endregion Constructor
 
 		#region Declarations
 
-		private ApplicationDbContext context;
+		private ApplicationDbContext db;
 
 		#endregion Declarations
 
 		#region Private Methods
 
 		private Credentials GetCredentials(string userId) {
-			return context.Credentials
+			return db.Credentials
 				.Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Facebook)
 				.FirstOrDefault();
 		}
@@ -74,7 +74,19 @@ namespace winerack.Logic.Social {
 		public void TasteWine(string userId, int tastingId) {
 			var client = GetClient(userId);
 			var wineUrl = "http://winerack.io/tastings/" + tastingId.ToString();
-			client.Post("me/winerackio:taste", new { wine = wineUrl });
+			var facebookFriends = db.TaggedUsers
+				.Where(
+					t => t.ParentID == tastingId
+					&& t.ActivityVerb == ActivityVerbs.Tasted
+					&& t.UserType == TaggedUserTypes.Facebook
+				);
+
+			var tags = "";
+			if (facebookFriends.Count() > 0) {
+				tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
+			}
+
+			client.Post("me/winerackio:taste", new { wine = wineUrl, tags = tags });
 		}
 
 		#endregion Public Methods
