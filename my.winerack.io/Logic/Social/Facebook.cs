@@ -75,6 +75,7 @@ namespace winerack.Logic.Social {
 		}
 
 		public void TasteWine(string userId, int tastingId) {
+			var tasting = db.Tastings.Find(tastingId);
 			var client = GetClient(userId);
 			var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
 			var tastingUrl = baseUrl + "/tastings/" + tastingId.ToString();
@@ -85,12 +86,20 @@ namespace winerack.Logic.Social {
 					&& t.UserType == TaggedUserTypes.Facebook
 				);
 
-			var tags = "";
+			var parameters = new Dictionary<string, object>();
+			parameters.Add("wine", tastingUrl);
+			parameters.Add("fb:explicitly_shared", true);
+
 			if (facebookFriends.Count() > 0) {
-				tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
+				var tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
+				parameters.Add("tags", tags);
 			}
 
-			client.Post("me/" + appNamespace + ":taste", new { wine = tastingUrl, tags = tags });
+			if (!string.IsNullOrWhiteSpace(tasting.Notes)) {
+				parameters.Add("message", tasting.Notes);
+			}
+
+			client.Post("me/" + appNamespace + ":taste", parameters);
 		}
 
 		#endregion Public Methods
