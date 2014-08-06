@@ -14,3 +14,5 @@ $('#Photo').change(function () {
         reader.readAsDataURL(this.files[0]);
     }
 });
+
+$('#Friends').select2();

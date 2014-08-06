@@ -20,6 +20,9 @@ namespace winerack.Models.OpeningViewModels {
 		[DataType(DataType.MultilineText)]
 		public string Notes { get; set; }
 
+		[Display(Name = "Who are you with?")]
+		public List<string> Friends { get; set; }
+
 		public bool HasFacebook { get; set; }
 
 		public bool HasTumblr { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -35,6 +36,34 @@ namespace winerack.Controllers {
 			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
 
 			return model;
+		}
+
+		private void PopulateCreateViewBag(bool hasFacebook = false) {
+			var userId = User.Identity.GetUserId();
+			var friendList = new List<SelectListItem>();
+
+			var following = db.Friends.Where(f => f.FollowerID == userId).ToList();
+			foreach (var followee in following) {
+				friendList.Add(new SelectListItem {
+					Text = followee.Followee.Name,
+					Value = followee.FolloweeID
+				});
+			}
+
+			if (hasFacebook) {
+				var facebook = new Logic.Social.Facebook(db);
+				var facebookFriends = facebook.GetFriends(User.Identity.GetUserId());
+				foreach (var friend in facebookFriends) {
+					friendList.Add(new SelectListItem {
+						Text = friend.name,
+						Value = "fb::" + friend.id + "::" + friend.name
+					});
+				}
+			}
+
+			friendList = friendList.OrderBy(f => f.Text).ToList();
+
+			ViewBag.Friends = friendList;
 		}
 
 		#endregion Private Methods
@@ -99,6 +128,8 @@ namespace winerack.Controllers {
 				.FirstOrDefault();
 			model.StoredBottleID = model.StoredBottle.ID;
 
+			PopulateCreateViewBag(model.HasFacebook);
+
 			return View(model);
 		}
 
@@ -121,6 +152,11 @@ namespace winerack.Controllers {
 
 				// Add the tasting
 				db.Openings.Add(opening);
+				db.SaveChanges();
+
+				// Tag Users
+				var taggingLogic = new Tagging(db);
+				var taggedUsers = taggingLogic.TagUsers(model.Friends, opening.StoredBottleID, ActivityVerbs.Opened, User.Identity.GetUserId());
 
 				// Publish the event
 				var activityLogic = new Logic.Activities(db);
@@ -162,6 +198,8 @@ namespace winerack.Controllers {
 				.Include("Purchase.Bottle.Wine")
 				.Where(b => b.ID == model.StoredBottleID)
 				.FirstOrDefault();
+
+			PopulateCreateViewBag(model.HasFacebook);
 
 			return View(model);
 		}

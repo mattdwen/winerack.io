@@ -104,6 +104,7 @@ namespace winerack.Logic {
 	}
 
 	public enum BlobImageDirectories {
-		tastings
+		tastings,
+		openings
 	};
 }
