@@ -32,7 +32,7 @@ namespace winerack.Models {
 			get {
 				string description = "";
 				if (!string.IsNullOrWhiteSpace(Name)) {
-					description = Name + " ";
+					description = "“" + Name + "” ";
 				}
 
 				if (Vintage.HasValue) {

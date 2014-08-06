@@ -17,23 +17,25 @@
         @Html.Partial("_UserHeader", Model.Tasting.User)
 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-body">
                 <h2>
-                    <small>Tasted a</small><br />
+                    <small>Tasted a</small>
                     <a href="/wines/@Model.Tasting.WineID">
                         @Html.Partial("Wines/_Description", Model.Tasting.Wine)
                     </a>
                 </h2>
-                <p>
-                    <i class="wine-making-wine"></i>
-                    <a href="/vineyards/@Model.Tasting.Wine.VineyardID">@Model.Tasting.Wine.Vineyard.Name</a>
-                </p>
-                <p>
-                    <i class="fa fa-globe"></i>
-                    <a href="/regions/@Model.Tasting.Wine.RegionID">@Model.Tasting.Wine.Region.Label</a>
-                </p>
-            </div>
-            <div class="panel-body">
+
+                <ul class="list-inline">
+                    <li>
+                        <i class="wine-making-wine"></i>
+                        <a href="/vineyards/@Model.Tasting.Wine.VineyardID">@Model.Tasting.Wine.Vineyard.Name</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-globe"></i>
+                        <a href="/regions/@Model.Tasting.Wine.RegionID">@Model.Tasting.Wine.Region.Label</a>
+                    </li>
+                </ul>
+
                 @if ((Model.Tasting.ImageID.HasValue)) {
                     <img class="img-responsive" src="https://winerack.blob.core.windows.net/tastings/@{@Model.Tasting.ImageID.Value}_md.jpg" />
                 }

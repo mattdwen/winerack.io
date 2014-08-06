@@ -8753,3 +8753,12 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Projects\/my\.winerack\.io\/my\.winerack\.io\/Content\/_scss\/main\.scss}line{font-family:\0000348}}
+.panel-body > h2 {
+  margin-top: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Projects\/my\.winerack\.io\/my\.winerack\.io\/Content\/_scss\/main\.scss}line{font-family:\0000351}}
+.panel-body > h2 small {
+  display: block;
+}
