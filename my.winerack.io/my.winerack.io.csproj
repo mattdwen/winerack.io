@@ -512,9 +512,11 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="Scripts\typeahead.jquery.min.js" />
+    <Content Include="Scripts\vendor\angular-ui\select2.js" />
     <Content Include="Scripts\vendor\angular\angular-resource.js" />
     <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
     <Content Include="Scripts\vendor\angular\angular.js" />
+    <Content Include="Scripts\vendor\select2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Activity\Tasted.cshtml" />
     <Content Include="Views\Shared\Meta\Wine.cshtml" />
