@@ -99,6 +99,13 @@ namespace winerack.Logic.Social {
 				parameters.Add("message", tasting.Notes);
 			}
 
+			if (tasting.ImageID.HasValue) {
+				var blobHandler = new BlobHandler(BlobImageDirectories.tastings);
+				var imageUrl = blobHandler.GetImageUrl(tasting.ImageID.Value, "lg");
+				parameters.Add("image[0][url]", imageUrl);
+				parameters.Add("image[0][user_generated]", true);
+			}
+
 			client.Post("me/" + appNamespace + ":taste", parameters);
 		}
 

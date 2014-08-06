@@ -16,18 +16,14 @@ namespace winerack.Logic {
 
 		#region Constructor
 
+		public BlobHandler(BlobImageDirectories directory) {
+			this.imageDirectory = directory.ToString();
+			Init();
+		}
+
 		public BlobHandler(string imageDirectory) {
 			this.imageDirectory = imageDirectory;
-
-			var connectionString = ConfigurationManager.ConnectionStrings["AzureJobsStorage"].ConnectionString;
-			storageAccount = CloudStorageAccount.Parse(connectionString);
-
-			CloudBlobClient client = storageAccount.CreateCloudBlobClient();
-			CloudBlobContainer container = client.GetContainerReference(imageDirectory);
-			container.CreateIfNotExists();
-			container.SetPermissions(new BlobContainerPermissions {
-				PublicAccess = BlobContainerPublicAccessType.Blob
-			});
+			Init();
 		}
 
 		#endregion Constructor
@@ -39,6 +35,22 @@ namespace winerack.Logic {
 		CloudStorageAccount storageAccount;
 
 		#endregion Declarations
+
+		#region Private Methods
+
+		private void Init() {
+			var connectionString = ConfigurationManager.ConnectionStrings["AzureJobsStorage"].ConnectionString;
+			storageAccount = CloudStorageAccount.Parse(connectionString);
+
+			CloudBlobClient client = storageAccount.CreateCloudBlobClient();
+			CloudBlobContainer container = client.GetContainerReference(imageDirectory);
+			container.CreateIfNotExists();
+			container.SetPermissions(new BlobContainerPermissions {
+				PublicAccess = BlobContainerPublicAccessType.Blob
+			});
+		}
+
+		#endregion Private Methods
 
 		#region Public Methods
 
@@ -77,7 +89,21 @@ namespace winerack.Logic {
 			return null;
 		}
 
+		/// <summary>
+		/// Returns an absolute URL for an image
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="size"></param>
+		/// <returns></returns>
+		public string GetImageUrl(Guid imageId, string size) {
+			return "https://winerack.blob.core.windows.net/" + imageDirectory + "/" + imageId.ToString() + "_" + size + ".jpg";
+		}
+
 		#endregion Public Methods
 
 	}
+
+	public enum BlobImageDirectories {
+		tastings
+	};
 }
