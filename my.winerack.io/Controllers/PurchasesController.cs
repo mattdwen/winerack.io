@@ -9,6 +9,7 @@ using winerack.Helpers.Authentication;
 using System.Web;
 using winerack.Logic;
 using winerack.Models.PurchaseViewModels;
+using System.Collections.Generic;
 
 namespace winerack.Controllers {
 
@@ -36,6 +37,34 @@ namespace winerack.Controllers {
 			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
 
 			return model;
+		}
+
+		private void PopulateCreateViewBag(bool hasFacebook = false) {
+			var userId = User.Identity.GetUserId();
+			var friendList = new List<SelectListItem>();
+
+			var following = db.Friends.Where(f => f.FollowerID == userId).ToList();
+			foreach (var followee in following) {
+				friendList.Add(new SelectListItem {
+					Text = followee.Followee.Name,
+					Value = followee.FolloweeID
+				});
+			}
+
+			if (hasFacebook) {
+				var facebook = new Logic.Social.Facebook(db);
+				var facebookFriends = facebook.GetFriends(User.Identity.GetUserId());
+				foreach (var friend in facebookFriends) {
+					friendList.Add(new SelectListItem {
+						Text = friend.name,
+						Value = "fb::" + friend.id + "::" + friend.name
+					});
+				}
+			}
+
+			friendList = friendList.OrderBy(f => f.Text).ToList();
+
+			ViewBag.Friends = friendList;
 		}
 
 		#endregion Private Methods
@@ -86,6 +115,8 @@ namespace winerack.Controllers {
 			model.Bottle = db.Bottles.Find(BottleId);
 			model.Quantity = 1;
 
+			PopulateCreateViewBag(model.HasFacebook);
+
 			return View(model);
 		}
 
@@ -117,6 +148,10 @@ namespace winerack.Controllers {
 				db.Purchases.Add(purchase);
 				db.SaveChanges();
 
+				// Tag Users
+				var taggingLogic = new Tagging(db);
+				var taggedUsers = taggingLogic.TagUsers(model.Friends, purchase.ID, ActivityVerbs.Purchased, User.Identity.GetUserId());
+
 				// Activity feed
 				var activityLogic = new Logic.Activities(db);
 				var bottle = db.Bottles.Find(purchase.BottleID);
@@ -145,6 +180,8 @@ namespace winerack.Controllers {
 			model = GetCreateViewModel(model);
 
 			model.Bottle = db.Bottles.Find(model.BottleID);
+
+			PopulateCreateViewBag(model.HasFacebook);
 
 			return View(model);
 		}

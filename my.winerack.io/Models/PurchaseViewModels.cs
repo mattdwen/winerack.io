@@ -12,10 +12,11 @@ namespace winerack.Models.PurchaseViewModels {
 
 		public Bottle Bottle { get; set; }
 
+		[Display(Name="Number of bottles")]
 		[Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
 		public int Quantity { get; set; }
 
-		[Display(Name = "Date")]
+		[Display(Name = "Purchased on")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime? PurchasedOn { get; set; }
@@ -26,6 +27,9 @@ namespace winerack.Models.PurchaseViewModels {
 		public decimal? PurchasePrice { get; set; }
 
 		public string Notes { get; set; }
+
+		[Display(Name = "Who are you with?")]
+		public List<string> Friends { get; set; }
 
 		public bool HasFacebook { get; set; }
 
