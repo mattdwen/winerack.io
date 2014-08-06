@@ -28,12 +28,12 @@ namespace winerack.Models {
 		[Display(Name = "Name")]
 		public string WineName { get; set; }
 
-		[Display(Name = "Date")]
+		[Display(Name = "Purchased On")]
 		[DataType(DataType.Date)]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		public DateTime? PurchaseDate { get; set; }
 
-		[Display(Name = "Quantity")]
+		[Display(Name = "Number of bottles")]
 		[Range(1, int.MaxValue, ErrorMessage="Quantity must be at least 1")]
 		public int PurchaseQuantity { get; set; }
 
@@ -46,7 +46,10 @@ namespace winerack.Models {
 		[DataType(DataType.MultilineText)]
 		public string PurchaseNotes { get; set; }
 
-		[Display(Name="At less than")]
+		[Display(Name = "Who are you with?")]
+		public List<string> Friends { get; set; }
+
+		[Display(Name="No less than")]
 		public int? CellarMin { get; set; }
 
 		[Display(Name="No more than")]

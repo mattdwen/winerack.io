@@ -98,9 +98,33 @@ namespace winerack.Logic.Social {
 		}
 
 		public void PurchaseWine(string userId, int purchaseId) {
+			var purchase = db.Purchases.Find(purchaseId);
 			var client = GetClient(userId);
-			var wineUrl = "http://winerack.io/purchases/" + purchaseId.ToString();
-			client.Post("me/winerackio:purchase", new { wine = wineUrl });
+			var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+			var purchaseUrl = baseUrl + "/purchases/" + purchaseId.ToString();
+			var facebookFriends = db.TaggedUsers
+				.Where(
+					t => t.ParentID == purchaseId
+					&& t.ActivityVerb == ActivityVerbs.Purchased
+					&& t.UserType == TaggedUserTypes.Facebook
+				);
+			var parameters = new Dictionary<string, object>();
+			parameters.Add("wine", purchaseUrl);
+			parameters.Add("fb:explicitly_shared", true);
+			if (facebookFriends.Count() > 0) {
+				var tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
+				parameters.Add("tags", tags);
+			}
+			if (!string.IsNullOrWhiteSpace(purchase.Notes)) {
+				parameters.Add("message", purchase.Notes);
+			}
+			if (purchase.ImageID.HasValue) {
+				var blobHandler = new BlobHandler(BlobImageDirectories.purchases);
+				var imageUrl = blobHandler.GetImageUrl(purchase.ImageID.Value, "lg");
+				parameters.Add("image[0][url]", imageUrl);
+				parameters.Add("image[0][user_generated]", true);
+			}
+			client.Post("me/" + appNamespace + ":purchase", parameters);
 		}
 
 		public void TasteWine(string userId, int tastingId) {

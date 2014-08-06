@@ -13,7 +13,11 @@ namespace winerack.Helpers {
 			string desc = "";
 
 			if (min.HasValue && max.HasValue) {
-				desc = min.Value.ToString() + " to " + max.Value.ToString() + " years";
+				if (min.Value == max.Value) {
+					desc = min.Value + " years";
+				} else {
+					desc = min.Value.ToString() + " to " + max.Value.ToString() + " years";
+				}
 			} else if (max.HasValue) {
 				desc = "Up to " + max.Value.ToString() + " years";
 			} else if (min.HasValue) {

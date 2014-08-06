@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -110,6 +111,40 @@ namespace winerack.Controllers {
 			return wine;
 		}
 
+		private void PopulateCreateViewBag(bool hasFacebook = false) {
+			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
+				Text = x.Name,
+				Value = x.ID.ToString()
+			}).ToList();
+
+			var userId = User.Identity.GetUserId();
+			var friendList = new List<SelectListItem>();
+
+			var following = db.Friends.Where(f => f.FollowerID == userId).ToList();
+			foreach (var followee in following) {
+				friendList.Add(new SelectListItem {
+					Text = followee.Followee.Name,
+					Value = followee.FolloweeID
+				});
+			}
+
+			if (hasFacebook) {
+				var facebook = new Logic.Social.Facebook(db);
+				var facebookFriends = facebook.GetFriends(User.Identity.GetUserId());
+				foreach (var friend in facebookFriends) {
+					friendList.Add(new SelectListItem {
+						Text = friend.name,
+						Value = "fb::" + friend.id + "::" + friend.name
+					});
+				}
+			}
+
+			friendList = friendList.OrderBy(f => f.Text).ToList();
+
+			ViewBag.Friends = friendList;
+		}
+
 		#endregion Create
 
 		#endregion Private Methods
@@ -168,11 +203,7 @@ namespace winerack.Controllers {
 				HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null)
 			};
 
-			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
-				Text = x.Name,
-				Value = x.ID.ToString()
-			}).ToList();
+			PopulateCreateViewBag(model.HasFacebook);
 
 			return View(model);
 		}
@@ -208,6 +239,10 @@ namespace winerack.Controllers {
 				db.Purchases.Add(purchase);
 				db.SaveChanges();
 
+				// Tag Users
+				var taggingLogic = new Tagging(db);
+				var taggedUsers = taggingLogic.TagUsers(model.Friends, purchase.ID, ActivityVerbs.Purchased, User.Identity.GetUserId());
+
 				// Push to activity log
 				var activityLogic = new Logic.Activities(db);
 				activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID, bottle.WineID);
@@ -225,19 +260,20 @@ namespace winerack.Controllers {
 					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
 				}
 
+				if (model.PostFacebook) {
+					var facebook = new Logic.Social.Facebook(db);
+					facebook.PurchaseWine(User.Identity.GetUserId(), purchase.ID);
+				}
+
 				return RedirectToAction("Details", new { id = bottle.ID });
 			}
-
-			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
-				Text = x.Name,
-				Value = x.ID.ToString()
-			}).ToList();
 
 			var user = db.Users.Find(User.Identity.GetUserId());
 			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
 			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
 			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+
+			PopulateCreateViewBag(model.HasFacebook);
 
 			return View(model);
 		}
