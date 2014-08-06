@@ -77,6 +77,7 @@ namespace winerack.Logic.Social {
 			var parameters = new Dictionary<string, object>();
 			parameters.Add("wine", openingUrl);
 			parameters.Add("fb:explicitly_shared", true);
+			parameters.Add("wine.title", opening.StoredBottle.Purchase.Bottle.Wine.Description);
 
 			if (facebookFriends.Count() > 0) {
 				var tags = string.Join(",", facebookFriends.Select(t => t.AltUserID));
