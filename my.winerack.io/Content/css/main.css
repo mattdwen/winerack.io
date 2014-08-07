@@ -8608,7 +8608,7 @@ button.close {
   margin-top: 120px;
   padding-top: 80px;
   padding-bottom: 80px;
-  color: #555555;
+  color: #777777;
   text-align: center;
   background-color: #2b252c;
 }
@@ -8639,6 +8639,10 @@ button.close {
 .footer .icon:hover {
   top: -0.3em;
   text-decoration: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Projects\/my\.winerack\.io\/my\.winerack\.io\/Content\/_scss\/_footer\.scss}line{font-family:\0000344}}
+.footer p a {
+  color: #777777;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Projects\/my\.winerack\.io\/my\.winerack\.io\/Content\/_scss\/_welcome\.scss}line{font-family:\000031}}

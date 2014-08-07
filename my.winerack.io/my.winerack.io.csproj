@@ -523,6 +523,7 @@
     <Content Include="Views\Account\ForgotUsername.cshtml" />
     <Content Include="Views\Account\ForgotUsernameConfirmation.cshtml" />
     <Content Include="Views\Friends\Index.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

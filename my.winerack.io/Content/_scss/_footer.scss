@@ -3,7 +3,7 @@
 	padding-top: ($line-height-computed * 4);
 	padding-bottom: ($line-height-computed * 4);
 
-	color: $gray;
+	color: $gray-light;
 	text-align: center;
 
 	background-color: $brand-primary;
@@ -39,4 +39,10 @@
 			text-decoration: none;
 		}
 	}
+
+    p {
+        a {
+            color: $gray-light;
+        }
+    }
 }

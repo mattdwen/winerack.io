@@ -15,6 +15,11 @@ namespace winerack.Controllers {
 			return View();
 		}
 
+		[Route("privacy")]
+		public ActionResult Privacy() {
+			return View();
+		}
+
 		#endregion Actions
 	}
 }
