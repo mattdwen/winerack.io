@@ -7,8 +7,16 @@
 
 @section Head {
     @{ Html.RenderPartial("Meta/Wine", Model.Tasting.Wine); }
+
     @if ((Model.Tasting.ImageID.HasValue)) {
+        <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image:src" property="og:image" content="https://winerack.blob.core.windows.net/tastings/@{@Model.Tasting.ImageID.Value}_lg.jpg">
+    } else {
+        <meta property="twitter:card" content="summary" />
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Tasting.Notes)) {
+        <meta property="twitter:description" content="@Model.Tasting.Notes" />
     }
 }
 
