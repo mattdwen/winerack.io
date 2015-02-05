@@ -450,8 +450,8 @@
     <Content Include="package.json" />
     <Content Include="bower.json" />
     <Content Include="Content\_scss\main.scss" />
-    <Content Include="AppSettings.config" />
     <Content Include="AppSettings.template.config" />
+    <Content Include="AppSettings.config" />
     <None Include="Content\_scss\_footer.scss" />
     <Content Include="Content\_scss\_variables.scss" />
     <Content Include="Content\_scss\_welcome.scss" />
@@ -690,10 +690,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
-  </Target> -->
+    <Copy SourceFiles="AppSettings.template.config" DestinationFiles="AppSettings.config" SkipUnchangedFiles="true" Condition="!Exists('AppSettings.config')" />
+  </Target>
 </Project>
