@@ -47,6 +47,11 @@ namespace winerack.Controllers {
 			var userId = User.Identity.GetUserId();
 			var model = new Models.MiniProfileViewModel();
 			var user = db.Users.Find(userId);
+
+			if (user == null) {
+				return null;
+			}
+
 			model.Username = user.UserName;
 			model.Name = user.Name;
 			model.Location = user.LocationDescription;
