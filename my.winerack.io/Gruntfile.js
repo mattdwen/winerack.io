@@ -1,57 +1,80 @@
 ﻿module.exports = function (grunt) {
 
-    // Setup
-    // ========================================================================
+  // Setup
+  // ========================================================================
 
-    // Show elapsed time after tasks run
-    require('time-grunt')(grunt);
+  // Show elapsed time after tasks run
+  require('time-grunt')(grunt);
 
-    // Load all Grunt tasks
-    require('load-grunt-tasks')(grunt);
+  // Load all Grunt tasks
+  require('load-grunt-tasks')(grunt);
 
 
-    // Config
-    // ========================================================================
+  // Config
+  // ========================================================================
 
-    grunt.initConfig({
+  grunt.initConfig({
 
-        // Compass & Sass
-        // --------------------------------------------------------------------
-        compass: {
-            options: {
-                sassDir: 'Content/_scss',
-                cssDir: 'Content/css',
-                importPath: 'bower_components'
-            },
-            serve: {
-                options: {
-                    debugInfo: true
-                }
-            }
-        },
+    // Watches files for changes and runs tasks based on the changed files
+    watch: {
+      sass: {
+        files: ['Content/_scss/{,*/}*.{scss,sass}'],
+        tasks: ['sass:serve', 'autoprefixer']
+      }
+    },
 
-        // Concatenate Javascript files
-        // --------------------------------------------------------------------
-        concat: {
-            serve: {
-                src: [
-                    'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js'
-                ],
-                dest: 'Scripts/dist/vendor.js'
-            }
-        }
-    });
+    // Compiles Sass to CSS and generates necessary files if requested
+    sass: {
+      options: {
+        loadPath: 'bower_components'
+      },
+      serve: {
+        files: [{
+          expand: true,
+          cwd: 'Content/_scss',
+          src: ['*.{scss,sass}'],
+          dest: 'Content/css',
+          ext: '.css'
+        }]
+      }
+    },
 
-    // Tasks
-    // ========================================================================
+    // Add vendor prefixed styles
+    autoprefixer: {
+      options: {
+        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'Content/styles/',
+          src: 'main.css',
+          dest: 'Content/styles/'
+        }]
+      }
+    },
 
-    grunt.registerTask('serve', [
-        'compass:serve',
-        'concat:serve'
-    ]);
+    // Concatenate Javascript files
+    concat: {
+      serve: {
+        src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js'],
+        dest: 'Scripts/dist/vendor.js'
+      }
+    }
+  });
 
-    grunt.registerTask('default', [
-        'serve'
-    ]);
+  // Tasks
+  // ========================================================================
+
+  grunt.registerTask('serve', [
+    'sass:serve',
+    'concat:serve',
+    'autoprefixer',
+    'watch'
+  ]);
+
+  grunt.registerTask('default', [
+    'serve'
+  ]);
 
 };

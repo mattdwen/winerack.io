@@ -452,13 +452,14 @@
     <Content Include="Content\_scss\main.scss" />
     <Content Include="AppSettings.template.config" />
     <Content Include="AppSettings.config" />
-    <None Include="Content\_scss\_footer.scss" />
     <Content Include="Content\_scss\_variables.scss" />
-    <Content Include="Content\_scss\_welcome.scss" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\_scss\_normalize.scss" />
+    <Content Include="Content\_scss\_navbar.scss" />
+    <Content Include="Content\_scss\_scaffolding.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
