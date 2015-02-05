@@ -389,8 +389,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\main.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\icomoon-wines.css" />
     <Content Include="Content\select2-bootstrap.css" />
     <Content Include="Content\select2-spinner.gif" />
@@ -432,7 +430,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\vendor\typeahead-bootstrap3.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\icomoon-wines.svg" />
     <Content Include="Global.asax" />
     <Content Include="Gruntfile.js" />
@@ -453,10 +450,6 @@
     <Content Include="AppSettings.template.config" />
     <Content Include="AppSettings.config" />
     <Content Include="Content\_scss\_variables.scss" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Content\_scss\_normalize.scss" />
     <Content Include="Content\_scss\_navbar.scss" />
     <Content Include="Content\_scss\_scaffolding.scss" />
