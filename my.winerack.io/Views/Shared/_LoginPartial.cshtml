@@ -2,29 +2,30 @@
 @using winerack.Helpers
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"  }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
+    }
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav navbar-right">
+        <li><a href="/Friends" title="Friends"><i class="fa fa-users"></i></a></li>
+        <li><a href="/Account/Settings" title="Settings"><i class="fa fa-cog"></i></a></li>
         <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                @User.Identity.GetUserName()
-                <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl()" width="32" />
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" title="Account">
+                <i class="fa fa-user"></i>
             </a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Account Settings", "Settings", "Account")</li>
                 <li>@Html.ActionLink("Friends", "", "Friends")</li>
-                <li class="divider"></li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>
-        </li>        
+        </li>
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()" title="Sign out">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </li>
     </ul>
-    }
-}
-else
-{
-    <ul class="navbar-nav">
+} else {
+    <ul class="navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

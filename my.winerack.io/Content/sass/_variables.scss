@@ -25,6 +25,10 @@ $white-text:                rgba(255,255,255,.9);
 
 $red-500:                   #f44336;
 $red-900:                   #b71c1c;
+
+$cyan-500:                  #00bcd4;
+
+$brand-primary:             $cyan-500;
 $brand-red:                 $red-900;
 
 
@@ -56,6 +60,17 @@ $input-color:               $white-text;
 $input-color-placeholder:   $white-disabled;
 
 $input-group-addon-bg:      $black-divider;
+
+
+// Dropdowns
+
+$dropdown-bg:               $black-secondary;
+$dropdown-border:           $black-secondary;
+$dropdown-divider-bg:       $black-divider;
+
+$dropdown-link-color:       $white-text;
+$dropdown-link-hover-color: $white-text;
+$dropdown-link-hover-bg:    $brand-primary;
 
 
 // Form states and alerts
