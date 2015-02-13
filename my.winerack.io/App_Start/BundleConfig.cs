@@ -26,8 +26,7 @@ namespace winerack {
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/Scripts/vendor/jQRangeSlider/css/classic.css",
 				"~/Content/css/main.css",
-				"~/Content/font-awesome.css",
-				"~/Content/icomoon-wines.css",
+				"~/Content/css/icomoon-wines.css",
 				"~/Content/select2.css",
 				"~/Content/select2-bootstrap.css"));
 

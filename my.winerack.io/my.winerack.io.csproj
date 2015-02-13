@@ -389,7 +389,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\main.css" />
-    <Content Include="Content\icomoon-wines.css" />
+    <Content Include="Content\css\icomoon-wines.css" />
     <Content Include="Content\select2-bootstrap.css" />
     <Content Include="Content\select2-spinner.gif" />
     <Content Include="Content\select2.css" />
@@ -430,7 +430,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\vendor\typeahead-bootstrap3.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\icomoon-wines.svg" />
+    <Content Include="Content\fonts\wines\icomoon-wines.svg" />
     <Content Include="Global.asax" />
     <Content Include="Gruntfile.js" />
     <Content Include="Scripts\account\settings.js" />
@@ -441,9 +441,9 @@
     <Content Include="Scripts\bloodhound\regions.js" />
     <Content Include="Scripts\bloodhound\varietals.js" />
     <Content Include="Scripts\bloodhound\vineyards.js" />
-    <Content Include="fonts\icomoon-wines.eot" />
-    <Content Include="fonts\icomoon-wines.ttf" />
-    <Content Include="fonts\icomoon-wines.woff" />
+    <Content Include="Content\fonts\wines\icomoon-wines.eot" />
+    <Content Include="Content\fonts\wines\icomoon-wines.ttf" />
+    <Content Include="Content\fonts\wines\icomoon-wines.woff" />
     <Content Include="package.json" />
     <Content Include="bower.json" />
     <Content Include="AppSettings.template.config" />
@@ -451,6 +451,15 @@
     <Content Include="Content\sass\main.scss" />
     <Content Include="Content\sass\_bootstrap.scss" />
     <Content Include="Content\sass\_variables.scss" />
+    <Content Include="Content\sass\_scaffolding.scss" />
+    <Content Include="Content\sass\_navbar.scss" />
+    <Content Include="Content\sass\_typography.scss" />
+    <Content Include="Content\sass\_footer.scss" />
+    <Content Include="Content\sass\_jumbotron.scss" />
+    <Content Include="Content\sass\_buttons.scss" />
+    <Content Include="Content\sass\_forms.scss" />
+    <Content Include="Content\sass\_account.scss" />
+    <Content Include="Content\sass\_widgets.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
