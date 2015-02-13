@@ -2,21 +2,19 @@
 
 @{
     ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_Structure.cshtml";
 }
 
-@if (Request.IsAuthenticated) {
-    Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });
-} else {
-
-    <section id="welcome-page">
-        <div class="jumbotron">
-            <div class="container">
-                <h1><span class="text-thin">wine</span><strong>rack</strong></h1>
-                <p>Catalog and share your wine collection</p>
-            </div>
+<section id="welcome-page">
+    <div class="jumbotron">
+        <div class="container">
+            <h1><span class="text-thin">wine</span><strong>rack</strong></h1>
+            <p>Catalog and share your wine collection</p>
         </div>
+    </div>
 
-        <div class="container marketing">
+    <div class="marketing">
+        <div class="container">
             <h2>Track your wine purchases, where you've stored it, and with whom you drink it</h2>
             <p class="lead">
                 Use our catalog to keep track of all your wine purchases, and record where you've stored it.<br>
@@ -24,18 +22,15 @@
                 Make tasting notes and detail who you enjoyed your wine with.
             </p>
         </div>
+    </div>
 
-        <div class="spacer-image">
-        </div>
+    <div class="container">
+        <h2 class="text-center">Get notified when <span class="text-thin">wine</span><strong>rack</strong> is ready</h2>
 
-        <div class="container marketing">
-            <h2 class="text-center">Get notified when winerack.io is ready</h2>
-
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    @{ Html.RenderPartial("_MailchimpSignup"); }
-                </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                @{ Html.RenderPartial("_MailchimpSignup"); }
             </div>
         </div>
-    </section>
-}
+    </div>
+</section>

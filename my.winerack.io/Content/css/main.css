@@ -5536,13 +5536,32 @@ body {
     font-size: 3rem; }
 
 .jumbotron {
-  padding: 6.4rem;
-  font-size: 3.4rem;
+  font-size: 2.4rem;
   font-weight: 300;
   line-height: 1; }
+  @media only screen and (min-width: 768px) {
+    .jumbotron {
+      padding: 6.4rem;
+      font-size: 3.4rem; } }
   .jumbotron h1 {
-    font-size: 11.2rem;
+    font-size: 6rem;
     line-height: 1; }
+    @media only screen and (min-width: 768px) {
+      .jumbotron h1 {
+        font-size: 11.2rem; } }
+
+.marketing {
+  margin-top: 24px;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: center; }
+  @media only screen and (min-width: 768px) {
+    .marketing {
+      padding-top: 24px;
+      padding-bottom: 24px;
+      margin-bottom: 24px; } }
+  .marketing h2 {
+    font-size: 2.4rem; }
 
 .navbar {
   position: fixed;
@@ -5692,5 +5711,11 @@ body {
   .login-form h1 {
     font-size: 1.6rem;
     text-align: center; }
+
+#mc_embed_signup .row + .row {
+  margin-top: 15px; }
+@media only screen and (max-width: 767px) {
+  #mc_embed_signup .col-sm-6 + .col-sm-6 {
+    margin-top: 15px; } }
 
 /*# sourceMappingURL=main.css.map */

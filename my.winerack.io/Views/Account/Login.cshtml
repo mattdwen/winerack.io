@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Sign in";
+    Layout = "~/Views/Shared/_Structure.cshtml";
 }
 
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "login-form" })) {

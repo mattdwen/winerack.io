@@ -461,6 +461,8 @@
     <Content Include="Content\sass\_account.scss" />
     <Content Include="Content\sass\_widgets.scss" />
     <Content Include="Content\sass\_sidenav.scss" />
+    <Content Include="Content\sass\_marketing.scss" />
+    <Content Include="Content\sass\_home.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
@@ -494,6 +496,7 @@
     <Content Include="Views\Account\ForgotUsername.cshtml" />
     <Content Include="Views\Account\ForgotUsernameConfirmation.cshtml" />
     <Content Include="Views\Friends\Index.cshtml" />
+    <Content Include="Views\Home\IndexLoggedIn.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -582,6 +585,7 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Shared\_Sidenav.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

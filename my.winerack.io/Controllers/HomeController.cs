@@ -1,20 +1,25 @@
 ﻿using System.Web.Mvc;
 
-namespace winerack.Controllers {
+namespace winerack.Controllers
+{
+    public class HomeController : Controller
+    {
+        #region Actions
 
-	public class HomeController : Controller {
+        public ActionResult Index()
+        {
+            if (Request.IsAuthenticated) {
+                return View("IndexLoggedIn");
+            }
+            return View();
+        }
 
-		#region Actions
+        public ActionResult AccessDenied()
+        {
+            Response.StatusCode = 403;
+            return View();
+        }
 
-		public ActionResult Index() {
-			return View();
-		}
-
-		public ActionResult AccessDenied() {
-			Response.StatusCode = 403;
-			return View();
-		}
-
-		#endregion Actions
-	}
+        #endregion Actions
+    }
 }

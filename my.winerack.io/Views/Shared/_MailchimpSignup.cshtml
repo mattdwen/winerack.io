@@ -17,15 +17,11 @@
             </div>
         </div>
 
-        <br />
-
         <div class="row">
             <div class="col-sm-12">
                 <input type="email" value="" name="EMAIL" class="form-control required email" id="mce-EMAIL" placeholder="Email">
             </div>
         </div>
-
-        <br />
 
         <div class="row actions">
             <div class="col-sm-12">
@@ -130,17 +126,17 @@ function mce_init_form(){
                                             bday = true;
                                             fields[2] = {'value':1970};//trick birthdays into having years
                                         }
-                                    	if ( fields[0].value=='MM' && fields[1].value=='DD' && (fields[2].value=='YYYY' || (bday && fields[2].value==1970) ) ){
-                                    		this.value = '';
-									    } else if ( fields[0].value=='' && fields[1].value=='' && (fields[2].value=='' || (bday && fields[2].value==1970) ) ){
-                                    		this.value = '';
-									    } else {
-									        if (/\[day\]/.test(fields[0].name)){
-    	                                        this.value = fields[1].value+'/'+fields[0].value+'/'+fields[2].value;
-									        } else {
-    	                                        this.value = fields[0].value+'/'+fields[1].value+'/'+fields[2].value;
-	                                        }
-	                                    }
+                                        if ( fields[0].value=='MM' && fields[1].value=='DD' && (fields[2].value=='YYYY' || (bday && fields[2].value==1970) ) ){
+                                            this.value = '';
+                                        } else if ( fields[0].value=='' && fields[1].value=='' && (fields[2].value=='' || (bday && fields[2].value==1970) ) ){
+                                            this.value = '';
+                                        } else {
+                                            if (/\[day\]/.test(fields[0].name)){
+                                                this.value = fields[1].value+'/'+fields[0].value+'/'+fields[2].value;
+                                            } else {
+                                                this.value = fields[0].value+'/'+fields[1].value+'/'+fields[2].value;
+                                            }
+                                        }
                                     });
                             });
                         $('.phonefield-us','#mc_embed_signup').each(
@@ -155,10 +151,10 @@ function mce_init_form(){
                                 $(':hidden', this).each(
                                     function(){
                                         if ( fields[0].value.length != 3 || fields[1].value.length!=3 || fields[2].value.length!=4 ){
-                                    		this.value = '';
-									    } else {
-									        this.value = 'filled';
-	                                    }
+                                            this.value = '';
+                                        } else {
+                                            this.value = 'filled';
+                                        }
                                     });
                             });
                         return mce_validator.form();
@@ -178,7 +174,7 @@ function mce_success_cb(resp){
         $('#mce-'+resp.result+'-response').html(resp.msg);
         $('#mc-embedded-subscribe-form').each(function(){
             this.reset();
-    	});
+        });
     } else {
         var index = -1;
         var msg;

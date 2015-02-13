@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
+﻿        @using Microsoft.AspNet.Identity
 @using winerack.Helpers
 @if (Request.IsAuthenticated)
 {
@@ -27,6 +27,10 @@
 } else {
     <ul class="navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            <a href="/Account/Login" title="Sign in">
+                <i class="fa fa-sign-in"></i>
+            </a>
+        </li>
     </ul>
 }
