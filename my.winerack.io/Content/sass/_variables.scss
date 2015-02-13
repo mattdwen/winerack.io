@@ -23,7 +23,9 @@ $white-disabled:            rgba(255,255,255,.3);
 $white-secondary:           rgba(255,255,255,.7);
 $white-text:                rgba(255,255,255,.9);
 
-$brand-red:                 #7e1428;
+$red-500:                   #f44336;
+$red-900:                   #b71c1c;
+$brand-red:                 $red-900;
 
 
 // Scaffolding
@@ -54,3 +56,10 @@ $input-color:               $white-text;
 $input-color-placeholder:   $white-disabled;
 
 $input-group-addon-bg:      $black-divider;
+
+
+// Form states and alerts
+
+$state-danger-text:         $white-text;
+$state-danger-bg:           transparentize($red-500, .8);
+$state-danger-border:       transparentize($red-500, .3);

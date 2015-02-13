@@ -60,3 +60,8 @@
     }
   }
 }
+
+.validation-summary-errors {
+  @extend .alert;
+  @extend .alert-danger;
+}
