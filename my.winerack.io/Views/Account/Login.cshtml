@@ -2,16 +2,15 @@
 @model LoginViewModel
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Sign in";
 }
 
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" })) {
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "login-form" })) {
     @Html.AntiForgeryToken()
     
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <h1>Login</h1>
-            <hr />
+        <div class="col-sm-4 col-sm-offset-4 widget">
+            <h1>Sign in to your account</h1>
 
             @Html.ValidationSummary()
 
@@ -38,9 +37,11 @@
                 </label>
             </div>
 
-            <input type="submit" value="Login" class="btn btn-primary btn-block" />
-            <a class="btn btn-link btn-block" href="/Account/ForgotPassword">Forgotten your password?</a>
-            <a class="btn btn-link btn-block" href="/Account/ForgotUsername">Forgotten your username?</a>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                <a class="btn btn-link btn-block" href="/Account/ForgotPassword">Forgotten your password?</a>
+                <a class="btn btn-link btn-block" href="/Account/ForgotUsername">Forgotten your username?</a>
+            </div>
         </div>
     </div>
 }

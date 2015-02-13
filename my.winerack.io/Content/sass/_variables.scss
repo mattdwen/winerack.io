@@ -21,7 +21,7 @@ $white:                     #fff;
 $white-divider:             rgba(255,255,255,.12);
 $white-disabled:            rgba(255,255,255,.3);
 $white-secondary:           rgba(255,255,255,.7);
-$white-text:                $white;
+$white-text:                rgba(255,255,255,.9);
 
 $brand-red:                 #7e1428;
 
@@ -29,6 +29,10 @@ $brand-red:                 #7e1428;
 // Scaffolding
 
 $text-color:                $white-text;
+
+$link-color:                $white-secondary;
+$link-hover-color:          $white-text;
+$link-hover-decoration:     none;
 
 
 // Typography
@@ -43,8 +47,10 @@ $font-weight-bold:          700;
 
 // Forms
 
-$input-bg:                  $black-divider;
-$input-border:              $black-divider;
-$input-border-focus:        $black-disabled;
+$input-bg:                  rgba(51,51,51,0.4);
+$input-border:              rgba(0,0,0,0.075);
+$input-border-focus:        rgba(0,0,0,0.2);
 $input-color:               $white-text;
 $input-color-placeholder:   $white-disabled;
+
+$input-group-addon-bg:      $black-divider;

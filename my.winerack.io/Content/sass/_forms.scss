@@ -3,7 +3,17 @@
 // ----------------------------------------------------------------------------
 
 .form-control {
+  box-shadow: inset 0 1px 1px $input-border;
+
   &:focus {
     box-shadow: inset 0 1px 1px $input-border-focus;
   }
+}
+
+.form-actions {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 15px;
+
+  background-color: $black-divider;
 }
