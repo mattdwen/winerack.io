@@ -2,20 +2,10 @@
 
 @{
     ViewBag.Title = "Welcome";
-    Layout = "~/Views/Shared/_Structure.cshtml";
 }
 
 @if (Request.IsAuthenticated) {
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                @{Html.RenderAction("MiniProfile", "User");}
-            </div>
-            <div class="col-sm-9">
-                @{Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });}
-            </div>
-        </div>
-    </div>
+    Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });
 } else {
 
     <section id="welcome-page">

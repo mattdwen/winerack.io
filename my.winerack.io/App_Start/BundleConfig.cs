@@ -23,6 +23,10 @@ namespace winerack {
 				"~/Scripts/vendor/angular/angular-*",
 				"~/Scripts/vendor/angular/ui-utils.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/winerack").Include(
+                "~/Scripts/winerack.js"
+                ));
+
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/Scripts/vendor/jQRangeSlider/css/classic.css",
 				"~/Content/css/main.css",

@@ -18,14 +18,40 @@
 }
 
 .navbar-toggle {
-  display: none;
+  float: left;
+  margin-left: -16px;
+  padding: 16px;
+
+  font-size: 2rem;
+
+  border: 0 none;
+  background-color: transparent;
+
+  @media (min-width: $screen-md-min) {
+    display: none;
+  }
+
+  .fa-caret-left {
+    display: none;
+  }
+}
+
+.is-sidenav-visible {
+  .navbar-toggle {
+    .fa-caret-left {
+      display: inline-block;
+    }
+
+    .fa-caret-right {
+      display: none;
+    }
+  }
 }
 
 .navbar-brand {
   display: block;
   float: left;
-  padding: 16px;
-  margin-left: -16px;
+  padding: 16px 16px 16px 12px;
 
   color: $white-text;
   font-size: 2.4rem;

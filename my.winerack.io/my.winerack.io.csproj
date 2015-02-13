@@ -460,6 +460,7 @@
     <Content Include="Content\sass\_forms.scss" />
     <Content Include="Content\sass\_account.scss" />
     <Content Include="Content\sass\_widgets.scss" />
+    <Content Include="Content\sass\_sidenav.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
@@ -486,6 +487,7 @@
     <Content Include="Scripts\vendor\angular\angular-resource.js" />
     <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
     <Content Include="Scripts\vendor\angular\angular.js" />
+    <Content Include="Scripts\winerack.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Activity\Tasted.cshtml" />
     <Content Include="Views\Shared\Meta\Wine.cshtml" />
@@ -579,6 +581,7 @@
     <Content Include="Views\Varietals\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Shared\_Sidenav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

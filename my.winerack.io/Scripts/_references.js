@@ -27,3 +27,4 @@
 /// <reference path="typeahead.jquery.min.js" />
 /// <reference path="typeahead.bundle.min.js" />
 /// <reference path="bloodhound.min.js" />
+/// <reference path="winerack.js" />

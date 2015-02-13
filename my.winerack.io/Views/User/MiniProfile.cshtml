@@ -1,7 +1,7 @@
 ﻿@model winerack.Models.MiniProfileViewModel
 @using winerack.Helpers
 
-<div id="user-profile">
+<div class="user-profile">
     <div class="media">
         <div class="pull-left">
             <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="75" />
@@ -24,8 +24,4 @@
             <span class="badge">@Model.BottlesDrunk</span> Opened
         </li>
     </ul>
-
-    <a class="btn btn-primary btn-block" href="/Openings/Start">Open a bottle</a>
-    <a class="btn btn-primary btn-block" href="/Tastings/Create">Taste a glass</a>
-    <a class="btn btn-primary btn-block" href="/Bottles/Create">Collect a bottle</a>
 </div>

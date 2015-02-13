@@ -14,8 +14,10 @@
     <div class="navbar">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="sidenav">
+                    <i class="fa fa-caret-left"></i>
                     <i class="fa fa-bars"></i>
+                    <i class="fa fa-caret-right"></i>
                 </button>
 
                 <a class="navbar-brand" href="/">
@@ -77,6 +79,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/dist/vendor.js")
+    @Scripts.Render("~/bundles/winerack")
     @RenderSection("scripts", required: false)
 </body>
 </html>

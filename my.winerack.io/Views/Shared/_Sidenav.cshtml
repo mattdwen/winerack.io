@@ -1,0 +1,26 @@
+﻿<nav class="sidenav col-xs-6 col-sm-1">
+    @{
+        Html.RenderAction("MiniProfile", "User");   
+    }
+
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <a href="/Openings/Start" title="Open a bottle">
+                <i class="wine-corkscrew"></i>
+                <span class="nav-text">Open a bottle</span>
+            </a>
+        </li>
+        <li>
+            <a href="/Tastings/Create" title="Taste a glass">
+                <i class="wine-glass-hand"></i>
+                <span class="nav-text">Taste a glass</span>
+            </a>
+        </li>
+        <li>
+            <a href="/Bottles/Create" title="Collect a bottle">
+                <i class="wine-bottles"></i>
+                <span class="nav-text">Collect a bottle</span>
+            </a>
+        </li>
+    </ul>
+</nav>
