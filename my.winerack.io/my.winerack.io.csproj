@@ -446,13 +446,11 @@
     <Content Include="fonts\icomoon-wines.woff" />
     <Content Include="package.json" />
     <Content Include="bower.json" />
-    <Content Include="Content\_scss\main.scss" />
     <Content Include="AppSettings.template.config" />
     <Content Include="AppSettings.config" />
-    <Content Include="Content\_scss\_variables.scss" />
-    <Content Include="Content\_scss\_normalize.scss" />
-    <Content Include="Content\_scss\_navbar.scss" />
-    <Content Include="Content\_scss\_scaffolding.scss" />
+    <Content Include="Content\sass\main.scss" />
+    <Content Include="Content\sass\_bootstrap.scss" />
+    <Content Include="Content\sass\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />

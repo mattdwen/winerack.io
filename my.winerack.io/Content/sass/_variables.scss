@@ -1,0 +1,50 @@
+﻿//
+// Font Awesome
+// ----------------------------------------------------------------------------
+$fa-font-path:              '../fonts/font-awesome';
+
+
+//
+// Bootstrap
+// ----------------------------------------------------------------------------
+
+
+// Colors
+
+$black:                     #000;
+$black-divider:             rgba(0,0,0,.12);
+$black-disabled:            rgba(0,0,0,.26);
+$black-secondary:           rgba(0,0,0,.54);
+$black-text:                rgba(0,0,0,.87);
+
+$white:                     #fff;
+$white-divider:             rgba(255,255,255,.12);
+$white-disabled:            rgba(255,255,255,.3);
+$white-secondary:           rgba(255,255,255,.7);
+$white-text:                $white;
+
+$brand-red:                 #7e1428;
+
+
+// Scaffolding
+
+$text-color:                $white-text;
+
+
+// Typography
+
+$font-family-sans-serif:    'Roboto', sans-serif;
+
+$font-weight-light:         300;
+$font-weight-normal:        400;
+$font-weight-medium:        500;
+$font-weight-bold:          700;
+
+
+// Forms
+
+$input-bg:                  $black-divider;
+$input-border:              $black-divider;
+$input-border-focus:        $black-disabled;
+$input-color:               $white-text;
+$input-color-placeholder:   $white-disabled;

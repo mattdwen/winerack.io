@@ -1,5 +1,4 @@
 ﻿module.exports = function (grunt) {
-
   // Setup
   // ========================================================================
 
@@ -9,17 +8,32 @@
   // Load all Grunt tasks
   require('load-grunt-tasks')(grunt);
 
-
   // Config
   // ========================================================================
 
   grunt.initConfig({
-
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       sass: {
-        files: ['Content/_scss/{,*/}*.{scss,sass}'],
+        files: ['Content/sass/{,*/}*.{scss,sass}'],
         tasks: ['sass:serve', 'autoprefixer']
+      }
+    },
+
+    // Clean up old files
+    clean: {
+      server: [
+        'Content/fonts/font-awesome'
+      ]
+    },
+
+    // Copy files
+    copy: {
+      fonts: {
+        expand: true,
+        cwd: 'bower_components/font-awesome/fonts',
+        src: '*',
+        dest: 'Content/fonts/font-awesome'
       }
     },
 
@@ -31,7 +45,7 @@
       serve: {
         files: [{
           expand: true,
-          cwd: 'Content/_scss',
+          cwd: 'Content/sass',
           src: ['*.{scss,sass}'],
           dest: 'Content/css',
           ext: '.css'
@@ -60,21 +74,26 @@
         src: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js'],
         dest: 'Scripts/dist/vendor.js'
       }
+    },
+
+    // Tasks to run at the same time
+    concurrent: {
+      server: ['sass:serve', 'copy:fonts']
     }
-  });
+});
 
-  // Tasks
-  // ========================================================================
+// Tasks
+// ========================================================================
 
-  grunt.registerTask('serve', [
-    'sass:serve',
-    'concat:serve',
-    'autoprefixer',
-    'watch'
-  ]);
+grunt.registerTask('serve', [
+  'clean:server',
+  'concurrent:server',
+  'concat:serve',
+  'autoprefixer',
+  'watch'
+]);
 
-  grunt.registerTask('default', [
-    'serve'
-  ]);
-
+grunt.registerTask('default', [
+  'serve'
+]);
 };
