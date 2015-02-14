@@ -1,4 +1,6 @@
-﻿<div class="navbar">
+﻿@using winerack.Helpers
+
+<div class="navbar">
     <div class="container">
         <div class="navbar-header">
             @if (Request.IsAuthenticated) {
@@ -15,34 +17,51 @@
             </a>
         </div>
 
-        <div class="navbar-collapse collapse">
-            <ul class="navbar-nav">
-                @if (Request.IsAuthenticated) {
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown">My Collection <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("In The Rack", "", "Bottles")</li>
-                            <li>@Html.ActionLink("Purchase History", "", "Purchases")</li>
-                        </ul>
-                    </li>
-                }
-                @if (User.IsInRole(MvcApplication.ADMINISTRATOR_GROUP)) {
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown">Admin <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Regions">Regions</a></li>
-                            <li><a href="/Varietals">Varietals</a></li>
-                            <li><a href="/Vineyards">Vineyards</a></li>
-                            <li><a href="/Wines">Wines</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/Users">Users</a></li>
-                        </ul>
-                    </li>
-                }
-            </ul>
-        </div>
+        <ul class="navbar-nav navbar-right">
+            @if (User.IsInRole(MvcApplication.ADMINISTRATOR_GROUP)) {
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Regions">Regions</a></li>
+                        <li><a href="/Varietals">Varietals</a></li>
+                        <li><a href="/Vineyards">Vineyards</a></li>
+                        <li><a href="/Wines">Wines</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Users">Users</a></li>
+                    </ul>
+                </li>
+            }
 
-        @Html.Partial("_LoginPartial")
+            @if (Request.IsAuthenticated) {
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="20" /></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Friends">Friends</a></li>
+                        <li><a href="/Account/Settings">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()" title="Sign out">
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                </li>
+            } else {
+                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>
+                    <a href="/Account/Login" title="Sign in">
+                        <i class="fa fa-sign-in"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+
     </div>
+
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"  }))
+    {
+        @Html.AntiForgeryToken();
+    }
 </div>
 

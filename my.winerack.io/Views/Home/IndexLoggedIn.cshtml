@@ -4,4 +4,4 @@
     ViewBag.Title = "Welcome";
 }
 
- Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() });
+@{ Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() }); }

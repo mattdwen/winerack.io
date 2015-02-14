@@ -1,4 +1,5 @@
 ﻿@model winerack.Models.MiniProfileViewModel
+
 @using winerack.Helpers
 
 <div class="user-profile">
@@ -13,15 +14,16 @@
         </div>
     </div>
 
+    <h4><i class="wine-bottle-glass"></i> Wines</h4>
     <ul class="list-group">
         <li class="list-group-item">
-            <span class="badge">@Model.BottlesTotal</span> Total
+            Total <span class="label label-primary pull-right">@Model.BottlesTotal</span> 
         </li>
         <li class="list-group-item">
-            <span class="badge">@Model.BottlesUnique</span> Unique
+            Unique <span class="label label-primary pull-right">@Model.BottlesUnique</span>
         </li>
         <li class="list-group-item">
-            <span class="badge">@Model.BottlesDrunk</span> Opened
+            Opened <span class="label label-primary pull-right">@Model.BottlesDrunk</span>
         </li>
     </ul>
 </div>

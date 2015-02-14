@@ -55,6 +55,8 @@ $font-weight-normal:        400;
 $font-weight-medium:        500;
 $font-weight-bold:          700;
 
+$headings-font-weight:      $font-weight-light;
+
 
 // Iconography
 //
@@ -128,3 +130,10 @@ $nav-link-hover-bg:         $black-divider;
 $state-danger-text:         $white-text;
 $state-danger-bg:           transparentize($red-500, .8);
 $state-danger-border:       transparentize($red-500, .3);
+
+
+// Type
+//
+//
+
+$text-muted:                $white-secondary;
