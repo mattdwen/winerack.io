@@ -5745,6 +5745,9 @@ body {
   .navbar-brand:hover {
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none; }
+  @media only screen and (min-width: 992px) {
+    .navbar-brand {
+      margin-left: -15px; } }
 
 @media only screen and (min-width: 768px) {
   .navbar-collapse {
@@ -5773,18 +5776,15 @@ body {
 
 .row-offcanvas {
   position: relative;
-  left: 0;
-  transition: all .25s ease-out; }
+  left: 0; }
 
 .sidenav {
   position: absolute;
   top: 0;
-  left: -75%;
+  left: -90%;
   z-index: 5;
-  width: 75%;
-  margin-left: 0;
-  padding-top: 20px;
-  transition: all .25s ease-out; }
+  width: 90%;
+  padding-top: 20px; }
   @media only screen and (min-width: 768px) {
     .sidenav {
       left: 0;
@@ -5825,23 +5825,21 @@ body {
     width: 75%; } }
 
 .is-sidenav-visible .row-offcanvas {
-  left: 75%; }
+  left: 90%;
+  margin-left: 0; }
   @media only screen and (min-width: 768px) {
     .is-sidenav-visible .row-offcanvas {
       left: 0; } }
-.is-sidenav-visible .sidenav {
-  margin-left: 32px; }
-  @media only screen and (min-width: 768px) {
-    .is-sidenav-visible .sidenav {
-      width: 40%;
-      margin-left: 0; } }
-  @media only screen and (min-width: 768px) {
-    .is-sidenav-visible .sidenav .user-profile {
-      display: block; } }
+@media only screen and (min-width: 768px) {
+  .is-sidenav-visible .sidenav {
+    width: 40%;
+    margin-left: 0; } }
+@media only screen and (min-width: 768px) {
+  .is-sidenav-visible .sidenav .user-profile {
+    display: block; } }
 @media only screen and (min-width: 768px) {
   .is-sidenav-visible .body-content {
-    margin-left: 40%;
-    transition: all .25s ease-out; } }
+    margin-left: 40%; } }
 @media only screen and (min-width: 768px) {
   .is-sidenav-visible .nav-text {
     display: inline-block; } }

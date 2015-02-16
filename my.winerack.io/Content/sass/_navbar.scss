@@ -60,6 +60,10 @@
     color: $white-text;
     text-decoration: none;
   }
+
+  @media only screen and (min-width: $screen-md-min) {
+    margin-left: -15px;
+  }
 }
 
 .navbar-collapse {
