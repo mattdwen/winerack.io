@@ -464,6 +464,8 @@
     <Content Include="Content\sass\_marketing.scss" />
     <Content Include="Content\sass\_home.scss" />
     <Content Include="Content\sass\_list-group.scss" />
+    <Content Include="Content\sass\_type.scss" />
+    <Content Include="Content\sass\_tables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />

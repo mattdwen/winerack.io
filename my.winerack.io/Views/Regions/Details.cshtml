@@ -5,21 +5,22 @@
 }
 
 <div class="page-header">
-	<h1>
-		@Model.Label
-		@if(User.IsInRole("Administrators")) {
-			<small>
-				@Html.ActionLink("Edit", "Edit", new { id = Model.ID })
-			</small>
-		}
-	</h1>
+    <h1>
+        @Model.Label
+
+        @if(User.IsInRole("Administrators")) {
+            <small>
+                <a href="/Regions/Edit/@Model.ID" title="Edit"><i class="fa fa-edit"></i></a>
+            </small>
+        }
+    </h1>
 </div>
 
 @if (Model.Wines.Count() > 0) {
-	<section>
-		<h3>Wines</h3>
-		@foreach (var wine in Model.Wines) {
-			@Html.Partial("Wines/_Preview", wine)
-		}
-	</section>
+    <section>
+        <h3>Wines</h3>
+        @foreach (var wine in Model.Wines) {
+            @Html.Partial("Wines/_Preview", wine)
+        }
+    </section>
 }

@@ -21,7 +21,7 @@ namespace winerack.Controllers {
 
 		// GET: Regions
 		public ActionResult Index() {
-			return View(db.Regions.ToList());
+			return View(db.Regions.OrderBy(r => r.Name).ToList());
 		}
 
 		#endregion Index
@@ -35,10 +35,12 @@ namespace winerack.Controllers {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
+
 			Region region = db.Regions.Find(id);
 			if (region == null) {
 				return HttpNotFound();
 			}
+
 			return View(region);
 		}
 

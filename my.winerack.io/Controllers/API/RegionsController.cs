@@ -16,7 +16,7 @@ namespace winerack.Controllers.API {
 
 		// GET: api/regions
 		public IQueryable<Region> GetRegions() {
-			return db.Regions;
+			return db.Regions.OrderBy(r => r.Name);
 		}
 
 		#endregion Endpoints

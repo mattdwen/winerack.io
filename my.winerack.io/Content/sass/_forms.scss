@@ -2,11 +2,26 @@
 // Forms
 // ----------------------------------------------------------------------------
 
+.control-label {
+  font-weight: $font-weight-light;
+}
+
+.field-validation-error {
+  color: $brand-warning;
+  font-size: 1.2rem;
+  font-weight: $font-weight-light;
+}
+
 .form-control {
   box-shadow: inset 0 1px 1px $input-border;
 
   &:focus {
     box-shadow: inset 0 1px 1px $input-border-focus;
+  }
+
+  &.input-validation-error {
+    border: 0 none;
+    box-shadow: inset 0 0 3px $brand-warning;
   }
 }
 

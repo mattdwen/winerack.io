@@ -14,7 +14,7 @@ namespace winerack.Models {
 
 		public int ID { get; set; }
 
-		[Required]
+		[Required(ErrorMessage="Country is required")]
 		public string Country { get; set; }
 
 		[NotMapped]
@@ -24,7 +24,7 @@ namespace winerack.Models {
 			}
 		}
 
-		[Required]
+		[Required(ErrorMessage="Name is required")]
 		public string Name { get; set; }
 
 		[NotMapped]

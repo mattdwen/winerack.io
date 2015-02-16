@@ -4,5 +4,7 @@
 
 .widget {
   background-color: $black-divider;
-  border-radius: $border-radius-base;
+  border-radius: $border-radius-small;
+
+  padding: 16px;
 }

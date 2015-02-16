@@ -21,16 +21,24 @@ $white-disabled:            rgba(255,255,255,.3);
 $white-secondary:           rgba(255,255,255,.7);
 $white-text:                rgba(255,255,255,.9);
 
-// Reds
-$red-500:                   #f44336;
-$red-900:                   #b71c1c;
+// Amber
+$amber-100:                 #ffecb3;
+$amber-500:                 #ffc107;
 
 // Cyan
 $cyan-500:                  #00bcd4;
 
+// Reds
+$red-500:                   #f44336;
+$red-900:                   #b71c1c;
+
 // Brand specific
 $brand-primary:             $cyan-500;
+$brand-danger:              $red-500;
+$brand-warning:             $amber-500;
+
 $brand-red:                 $red-900;
+$brand-amber:               $amber-500;
 
 
 // Scaffolding
