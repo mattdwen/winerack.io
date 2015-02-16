@@ -11,7 +11,7 @@ namespace winerack.Models {
 
 		public int ID { get; set; }
 
-		[Required]
+		[Required(ErrorMessage="Name is required")]
 		public string Name { get; set; }
 
 		#endregion Properties
