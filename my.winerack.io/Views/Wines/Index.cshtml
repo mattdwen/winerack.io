@@ -4,34 +4,43 @@
     ViewBag.Title = "Wines";
 }
 
-<h2>Wines</h2>
+<div class="page-header">
+    <div class="pull-right">
+        @Html.ActionLink("New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(m => m.Vineyard)</th>
-        <th>@Html.DisplayNameFor(m => m.Varietal)</th>
-        <th>@Html.DisplayNameFor(m => m.Vintage)</th>
-        <th>@Html.DisplayNameFor(m => m.Name)</th>
-        <th>@Html.DisplayNameFor(m => m.Region)</th>
-        <th></th>
-    </tr>
+    <h1>Wines</h1>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.DisplayFor(i => item.Vineyard.Name)</td>
-        <td>@Html.DisplayFor(i => item.Varietal.Name)</td>
-        <td>@Html.DisplayFor(i => item.Vintage)</td>
-        <td>@Html.DisplayFor(i => item.Name)</td>
-        <td>@Html.DisplayFor(i => item.Region.Name), @Html.DisplayFor(i => item.Region.Country)</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="widget">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Vineyard)</th>
+                <th>@Html.DisplayNameFor(m => m.Varietal)</th>
+                <th>@Html.DisplayNameFor(m => m.Vintage)</th>
+                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                <th>@Html.DisplayNameFor(m => m.Region)</th>
+                <th></th>
+            </tr>
+        </thead>
 
-</table>
+        <tbody>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td><a href="/wines/@item.ID">@Html.DisplayFor(i => item.Vineyard.Name)</a></td>
+                    <td>@Html.DisplayFor(i => item.Varietal.Name)</td>
+                    <td>@Html.DisplayFor(i => item.Vintage)</td>
+                    <td>@Html.DisplayFor(i => item.Name)</td>
+                    <td>@Html.DisplayFor(i => item.Region.Name), @Html.DisplayFor(i => item.Region.Country)</td>
+                    <td class="text-right">
+                        <a href="/Wines/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a href="/Wines/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

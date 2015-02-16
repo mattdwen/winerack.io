@@ -4,81 +4,84 @@ using System.Web.Mvc;
 
 namespace winerack.Models {
 
-	public class Wine {
+    public class Wine {
 
-		#region Properties
+        #region Properties
 
-		public int ID { get; set; }
+        public int ID { get; set; }
 
-		public string Name { get; set; }
+        public string Name { get; set; }
 
-		[Required]
-		[ForeignKey("Varietal")]
-		public int VarietalID { get; set; }
+        [Required(ErrorMessage="Varietal is required")]
+        [ForeignKey("Varietal")]
+        [Display(Name="Varietal")]
+        public int VarietalID { get; set; }
 
-		[DisplayFormat(NullDisplayText = "NV")]
-		public int? Vintage { get; set; }
+        [DisplayFormat(NullDisplayText = "NV")]
+        public int? Vintage { get; set; }
 
-		[Display(Name = "Region")]
-		[ForeignKey("Region")]
-		public int RegionID { get; set; }
+        [Required(ErrorMessage="Region is required")]
+        [Display(Name = "Region")]
+        [ForeignKey("Region")]
+        public int RegionID { get; set; }
 
-		[Display(Name = "Vineyard")]
-		[ForeignKey("Vineyard")]
-		public int VineyardID { get; set; }
+        [Required(ErrorMessage="Vineyard is required")]
+        [Display(Name = "Vineyard")]
+        [ForeignKey("Vineyard")]
+        public int VineyardID { get; set; }
 
-		[NotMapped]
-		public string Description {
-			get {
-				string description = "";
-				if (!string.IsNullOrWhiteSpace(Name)) {
-					description = Name + " ";
-				}
+        [NotMapped]
+        public string Description {
+            get {
+                string description = "";
+                if (!string.IsNullOrWhiteSpace(Name)) {
+                    description = Name + " ";
+                }
 
-				if (Vintage.HasValue) {
-					description += "'" + Vintage.ToString().Substring(2) + " ";
-				}
+                if (Vintage.HasValue) {
+                    description += "'" + Vintage.ToString().Substring(2) + " ";
+                }
 
-				description += Varietal.Name;
+                description += Varietal.Name;
 
-				return description;
-			}
-		}
+                return description;
+            }
+        }
 
-		#endregion Properties
+        #endregion Properties
 
-		#region Relationships
+        #region Relationships
 
-		public virtual Region Region { get; set; }
+        public virtual Region Region { get; set; }
 
-		public virtual Varietal Varietal { get; set; }
+        public virtual Varietal Varietal { get; set; }
 
-		public virtual Vineyard Vineyard { get; set; }
+        public virtual Vineyard Vineyard { get; set; }
 
-		#endregion Relationships
+        #endregion Relationships
 
-		#region Overrides
+        #region Overrides
 
-		public override string ToString() {
-			string description = "";
+        public override string ToString() {
+            string description = "";
 
-			if (Vineyard != null) {
-				description = Vineyard.Name + " ";
-			}
+            if (Vineyard != null) {
+                description = Vineyard.Name + " ";
+            }
 
-			if (!string.IsNullOrWhiteSpace(Name)) {
-				description = "'" + Name + "' ";
-			}
+            if (!string.IsNullOrWhiteSpace(Name)) {
+                description = "'" + Name + "' ";
+            }
 
-			if (Vintage.HasValue) {
-				description += "'" + Vintage.ToString().Substring(2) + " ";
-			}
+            if (Vintage.HasValue) {
+                description += "'" + Vintage.ToString().Substring(2) + " ";
+            }
 
-			description += Varietal.Name;
+            description += Varietal.Name;
 
-			return description;
-		}
+            return description;
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

@@ -59,7 +59,7 @@ namespace winerack.Controllers {
 		// POST: Wines/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "ID,Name,Varietal,Vintage,RegionID,VineyardID")] Wine wine) {
+		public ActionResult Create([Bind(Include = "ID,Name,VarietalID,Vintage,RegionID,VineyardID")] Wine wine) {
 			if (ModelState.IsValid) {
 				db.Wines.Add(wine);
 				db.SaveChanges();

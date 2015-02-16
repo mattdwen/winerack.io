@@ -46,10 +46,10 @@ th {
           color: $brand-primary;
 
           .fa {
-            color: $white-disabled;
+            color: $white-secondary;
 
             &:hover {
-              color: $white-secondary;
+              color: $white-text;
             }
           }
         }

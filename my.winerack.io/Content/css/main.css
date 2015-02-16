@@ -5438,9 +5438,9 @@ th {
     .table > tbody > tr > td a {
       color: #00bcd4; }
       .table > tbody > tr > td a .fa, .table > tbody > tr > td a .checkbox input[type=checkbox]:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:after {
-        color: rgba(255, 255, 255, 0.3); }
+        color: rgba(255, 255, 255, 0.7); }
         .table > tbody > tr > td a .fa:hover, .table > tbody > tr > td a .checkbox input[type=checkbox]:hover:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:hover:after {
-          color: rgba(255, 255, 255, 0.7); }
+          color: rgba(255, 255, 255, 0.9); }
 
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
