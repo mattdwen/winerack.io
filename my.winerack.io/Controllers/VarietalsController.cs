@@ -3,136 +3,138 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using winerack.Models;
+using System.Linq;
 
 namespace winerack.Controllers {
 
-	[Authorize]
-	public class VarietalsController : Controller {
+    [Authorize]
+    public class VarietalsController : Controller {
 
-		#region Declarations
+        #region Declarations
 
-		private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-		#endregion Declarations
+        #endregion Declarations
 
-		#region Actions
+        #region Actions
 
-		#region Index
+        #region Index
 
-		// GET: Varietals
-		public async Task<ActionResult> Index() {
-			return View(await db.Varietals.ToListAsync());
-		}
+        // GET: Varietals
+        public async Task<ActionResult> Index() {
+            return View(await db.Varietals.OrderBy(v => v.Name).ToListAsync());
+        }
 
-		#endregion Index
+        #endregion Index
 
-		#region Details
+        #region Details
 
-		// GET: Varietals/Details/5
-		public async Task<ActionResult> Details(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Varietal varietal = await db.Varietals.FindAsync(id);
-			if (varietal == null) {
-				return HttpNotFound();
-			}
-			return View(varietal);
-		}
+        // GET: varietal/5
+        [Route("varietal/{id:int}")]
+        public async Task<ActionResult> Details(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Varietal varietal = await db.Varietals.FindAsync(id);
+            if (varietal == null) {
+                return HttpNotFound();
+            }
+            return View(varietal);
+        }
 
-		#endregion Details
+        #endregion Details
 
-		#region Create
+        #region Create
 
-		// GET: Varietals/Create
-		public ActionResult Create() {
-			return View();
-		}
+        // GET: Varietals/Create
+        public ActionResult Create() {
+            return View();
+        }
 
-		// POST: Varietals/Create
-		// To protect from overposting attacks, please enable the specific properties you want to bind to, for
-		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Create([Bind(Include = "ID,Name,Style,CellarMin,CellarMax")] Varietal varietal) {
-			if (ModelState.IsValid) {
-				db.Varietals.Add(varietal);
-				await db.SaveChangesAsync();
-				return RedirectToAction("Index");
-			}
+        // POST: Varietals/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Style,CellarMin,CellarMax")] Varietal varietal) {
+            if (ModelState.IsValid) {
+                db.Varietals.Add(varietal);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
 
-			return View(varietal);
-		}
+            return View(varietal);
+        }
 
-		#endregion Create
+        #endregion Create
 
-		#region Edit
+        #region Edit
 
-		// GET: Varietals/Edit/5
-		public async Task<ActionResult> Edit(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Varietal varietal = await db.Varietals.FindAsync(id);
-			if (varietal == null) {
-				return HttpNotFound();
-			}
-			return View(varietal);
-		}
+        // GET: Varietals/Edit/5
+        public async Task<ActionResult> Edit(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Varietal varietal = await db.Varietals.FindAsync(id);
+            if (varietal == null) {
+                return HttpNotFound();
+            }
+            return View(varietal);
+        }
 
-		// POST: Varietals/Edit/5
-		// To protect from overposting attacks, please enable the specific properties you want to bind to, for
-		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Style,CellarMin,CellarMax")] Varietal varietal) {
-			if (ModelState.IsValid) {
-				db.Entry(varietal).State = EntityState.Modified;
-				await db.SaveChangesAsync();
-				return RedirectToAction("Index");
-			}
-			return View(varietal);
-		}
+        // POST: Varietals/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Style,CellarMin,CellarMax")] Varietal varietal) {
+            if (ModelState.IsValid) {
+                db.Entry(varietal).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(varietal);
+        }
 
-		#endregion Edit
+        #endregion Edit
 
-		#region Delete
+        #region Delete
 
-		// GET: Varietals/Delete/5
-		public async Task<ActionResult> Delete(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Varietal varietal = await db.Varietals.FindAsync(id);
-			if (varietal == null) {
-				return HttpNotFound();
-			}
-			return View(varietal);
-		}
+        // GET: Varietals/Delete/5
+        public async Task<ActionResult> Delete(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Varietal varietal = await db.Varietals.FindAsync(id);
+            if (varietal == null) {
+                return HttpNotFound();
+            }
+            return View(varietal);
+        }
 
-		// POST: Varietals/Delete/5
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> DeleteConfirmed(int id) {
-			Varietal varietal = await db.Varietals.FindAsync(id);
-			db.Varietals.Remove(varietal);
-			await db.SaveChangesAsync();
-			return RedirectToAction("Index");
-		}
+        // POST: Varietals/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id) {
+            Varietal varietal = await db.Varietals.FindAsync(id);
+            db.Varietals.Remove(varietal);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
 
-		#endregion Delete
+        #endregion Delete
 
-		#endregion Actions
+        #endregion Actions
 
-		#region Implementation
+        #region Implementation
 
-		protected override void Dispose(bool disposing) {
-			if (disposing) {
-				db.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#endregion Implementation
-	}
+        #endregion Implementation
+    }
 }

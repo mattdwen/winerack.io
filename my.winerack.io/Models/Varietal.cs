@@ -6,34 +6,35 @@ using System.Linq;
 using System.Web;
 
 namespace winerack.Models {
-	public class Varietal {
+    public class Varietal {
 
-		#region Properties
+        #region Properties
 
-		public int ID { get; set; }
+        public int ID { get; set; }
 
-		[Required]
-		public string Name { get; set; }
+        [Required(ErrorMessage="Name is required")]
+        public string Name { get; set; }
 
-		[Required]
-		public VarietalStyles Style { get; set; }
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Style is required")]
+        public VarietalStyles Style { get; set; }
 
-		#endregion Properties
+        #endregion Properties
 
-		#region Relationships
+        #region Relationships
 
-		[JsonIgnore]
-		public virtual ICollection<Wine> Wines { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Wine> Wines { get; set; }
 
-		#endregion Relationships
-	}
+        #endregion Relationships
+    }
 
-	public enum VarietalStyles {
-		Red = 100,
-		White = 200,
-		Fortified = 300,
-		Dessert = 400,
-		Sparkling = 500,
-		Other = 1000
-	}
+    public enum VarietalStyles {
+        Red = 100,
+        White = 200,
+        Fortified = 300,
+        Dessert = 400,
+        Sparkling = 500,
+        Other = 1000
+    }
 }

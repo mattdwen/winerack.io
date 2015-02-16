@@ -1,39 +1,47 @@
 ﻿@model IEnumerable<winerack.Models.Varietal>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Varietals";
 }
 
-<h2>Index</h2>
+<div classs="page-header">
+    <div class="pull-right">
+        @Html.ActionLink("New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Style)
-        </th>
-        <th></th>
-    </tr>
+    <h1>Varietals</h1>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Style)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="widget">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Style)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
-</table>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        <a href="/varietal/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Style)
+                    </td>
+                    <td class="text-right">
+                        <a href="/Varietals/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a href="/Varietals/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

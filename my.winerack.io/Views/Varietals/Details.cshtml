@@ -1,34 +1,18 @@
 ﻿@model winerack.Models.Varietal
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
+<div class="page-header">
+    <h1>
+        @Model.Name
 
-<div>
-    <h4>Varietal</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        <small>
+            @if (User.IsInRole("Administrators")) {
+                <a href="/Varietals/Edit/@Model.ID" title="Edit"><i class="fa fa-edit"></i></a>
+            }
+        </small>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Style)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Style)
-        </dd>
-
-    </dl>
+    </h1>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
