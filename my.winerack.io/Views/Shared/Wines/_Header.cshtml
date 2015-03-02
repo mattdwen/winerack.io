@@ -16,6 +16,10 @@
             }
             <span class="varietal">@Html.DisplayFor(m => m.Varietals)</span>
         </a>
+
+        @if (User.IsInRole("Administrators")) {
+            <small><a href="/Wines/Edit/@Model.ID" title="Edit"><i class="fa fa-edit"></i></a></small>
+        }
     </h2>
     <h4><a href="/Vineyards/@Model.VineyardID">@Model.Vineyard.Name</a></h4>
     <h6><a href="/Regions/@Model.RegionID">@Model.Region.Label</a></h6>

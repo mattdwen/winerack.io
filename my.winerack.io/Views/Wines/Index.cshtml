@@ -6,7 +6,7 @@
 
 <div class="page-header">
     <div class="pull-right">
-        @Html.ActionLink("New", "Create", null, new { @class = "btn btn-primary" })
+        <a href="/Wines/Create" title="New wine"><i class="fa fa-2x fa-plus"></i></a>
     </div>
 
     <h1>Wines</h1>
@@ -16,10 +16,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(m => m.Vineyard)</th>
-                <th>@Html.DisplayNameFor(m => m.Varietals)</th>
-                <th>@Html.DisplayNameFor(m => m.Vintage)</th>
-                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                <th>Wine</th>
                 <th>@Html.DisplayNameFor(m => m.Region)</th>
                 <th></th>
             </tr>
@@ -29,11 +26,13 @@
 
             @foreach (var item in Model) {
                 <tr>
-                    <td><a href="/wines/@item.ID">@Html.DisplayFor(i => item.Vineyard.Name)</a></td>
-                    <td>@Html.DisplayFor(i => item.Varietals)</td>
-                    <td>@Html.DisplayFor(i => item.Vintage)</td>
-                    <td>@Html.DisplayFor(i => item.Name)</td>
-                    <td>@Html.DisplayFor(i => item.Region.Name), @Html.DisplayFor(i => item.Region.Country)</td>
+                    <td>
+                        <a href="/wines/@item.ID">
+                            @item.Vineyard.Name
+                            @item.Description
+                        </a>
+                    </td>
+                    <td>@item.Region.Label</td>
                     <td class="text-right">
                         <a href="/Wines/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
                         <a href="/Wines/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>

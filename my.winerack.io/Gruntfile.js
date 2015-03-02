@@ -38,7 +38,7 @@
       select2: {
         expand: true,
         cwd: 'bower_components/select2',
-        src: '*.css',
+        src: '*.{css,png,gif}',
         dest: 'Content/vendor/select2'
       }
     },
@@ -81,7 +81,7 @@
           'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
           'bower_components/select2/select2.js',
           'bower_components/typeahead.js/dist/bloodhound.js',
-          'bower_components/typeahead.js/dist/typeahead.jquery.js',
+          'bower_components/typeahead.js/dist/typeahead.jquery.js'
         ],
         dest: 'Scripts/dist/vendor.js'
       }

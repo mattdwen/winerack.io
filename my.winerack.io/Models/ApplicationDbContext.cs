@@ -56,12 +56,17 @@ namespace winerack.Models {
 			base.OnModelCreating(modelBuilder);
 			modelBuilder.Conventions.Add(new DateTime2Convention());
 
+            modelBuilder.Entity<Activity>()
+                .HasRequired(a => a.Wine)
+                .WithMany()
+                .WillCascadeOnDelete(true);
+
             modelBuilder.Entity<Wine>()
                 .HasMany(w => w.Varietals)
                 .WithMany(w => w.Wines);
 
             modelBuilder.Entity<Wine>()
-                .HasMany(w => w.Style)
+                .HasMany(w => w.Styles)
                 .WithMany(s => s.Wines);
 
 			modelBuilder.Entity<User>()

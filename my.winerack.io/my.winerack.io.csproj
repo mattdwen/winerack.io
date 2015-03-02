@@ -367,6 +367,10 @@
     <Compile Include="Migrations\201503022129504_wine-styles.Designer.cs">
       <DependentUpon>201503022129504_wine-styles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503022329303_wine_activities_cascade_delete.cs" />
+    <Compile Include="Migrations\201503022329303_wine_activities_cascade_delete.Designer.cs">
+      <DependentUpon>201503022329303_wine_activities_cascade_delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -394,8 +398,10 @@
     <Compile Include="Models\Varietal.cs" />
     <Compile Include="Models\Vineyard.cs" />
     <Compile Include="Models\Wine.cs" />
+    <Compile Include="Models\WineViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validation\AtLeastOneItemAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\main.css" />
@@ -495,6 +501,7 @@
     <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
     <Content Include="Scripts\vendor\angular\angular.js" />
     <Content Include="Scripts\winerack.js" />
+    <Content Include="Scripts\wine\editor.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Activity\Tasted.cshtml" />
     <Content Include="Views\Shared\Meta\Wine.cshtml" />
@@ -678,6 +685,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503022129504_wine-styles.resx">
       <DependentUpon>201503022129504_wine-styles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503022329303_wine_activities_cascade_delete.resx">
+      <DependentUpon>201503022329303_wine_activities_cascade_delete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

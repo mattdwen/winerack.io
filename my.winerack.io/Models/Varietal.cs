@@ -23,5 +23,16 @@ namespace winerack.Models {
         public virtual ICollection<Wine> Wines { get; set; }
 
         #endregion Relationships
+
+        #region Public Methods
+
+        public static IEnumerable<Varietal> GetVarietals()
+        {
+            var context = new ApplicationDbContext();
+            return context.Varietals
+                .OrderBy(r => r.Name);
+        }
+
+        #endregion Public Methods
     }
 }

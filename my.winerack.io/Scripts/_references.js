@@ -25,3 +25,4 @@
 /// <reference path="modernizr-2.8.3.js" />
 /// <reference path="modernizr-2.6.2.js" />
 /// <reference path="winerack.js" />
+/// <reference path="wine/editor.js" />

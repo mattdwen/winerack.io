@@ -1,7 +1,7 @@
-﻿@model winerack.Models.Wine
+﻿@model winerack.Models.WineViewModels.WineCreateAndEditModel
 
 <div class="form-group">
-    @Html.LabelFor(model => model.Vineyard, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.VineyardID, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
         @Html.DropDownListFor(m => m.VineyardID, new SelectList(winerack.Models.Vineyard.GetVineyards(), "ID", "Name"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.VineyardID, "", new { @class = "text-danger" })
@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group">
-    @Html.LabelFor(model => model.Region, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.RegionID, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
         @Html.DropDownListFor(m => m.RegionID, new SelectList(winerack.Models.Region.GetRegions(), "ID", "Label"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.RegionID, "", new { @class = "text-danger" })
@@ -17,9 +17,37 @@
 </div>
 
 <div class="form-group">
+    @Html.LabelFor(model => model.Styles, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @foreach (var style in winerack.Models.Style.GetStyles()) {
+            <div class="checkbox">
+                <label>
+                    @{
+                        string isChecked = Model.Styles.Contains(style.ID) ? "checked" : "";
+                    }
+
+                    <input type="checkbox" name="Styles" value="@style.ID" @isChecked/>
+
+                    @style.Name
+                </label>
+            </div>
+        }
+
+        @Html.ValidationMessageFor(model => model.Styles, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
     @Html.LabelFor(model => model.Varietals, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.DropDownListFor(m => m.Varietals, null, "", htmlAttributes: new { @class = "form-control" })
+        <select class="form-control" id="Varietals" name="Varietals" multiple>
+            @foreach (var varietal in winerack.Models.Varietal.GetVarietals()) {
+                var isChecked = (Model.Varietals.Contains(varietal.ID)) ? "selected" : "";
+                    
+                <option value="@varietal.ID" @isChecked>@varietal.Name</option>
+            }
+        </select>
+
         @Html.ValidationMessageFor(model => model.Varietals, "", new { @class = "text-danger" })
     </div>
 </div>
@@ -32,7 +60,6 @@
     </div>
 </div>
 
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 <div class="form-group">
     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">

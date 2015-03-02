@@ -15,6 +15,29 @@
   }
 }
 
+.select2-drop {
+  background-color: $white-secondary;
+}
+
+.select2-results {
+  .select2-no-results {
+    color: $brand-danger;
+
+    background: none;
+  }
+}
+
+.select2-search {
+  padding-top: $padding-small-vertical;
+
+  input {
+    color: $black-text;
+
+    background: none;
+    background-color: $white-secondary;
+  }
+}
+
 .select2-search-choice-close {
   @extend .fa;
   @extend .fa-close;

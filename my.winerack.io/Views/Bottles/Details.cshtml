@@ -69,9 +69,7 @@
                                 <a href="/Openings/Create?storedBottleId=@stored.ID" title="Open"><i class="fa-fw fa-2x wine-corkscrew"></i></a>
                                 <a href="/StoredBottles/Delete/@stored.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
                             } else {
-                                <div>
-                                    @Html.ActionLink("tasting notes", "Details", new { controller = "Openings", id = stored.ID })
-                                </div>
+                                @Html.ActionLink("tasting notes", "Details", new { controller = "Openings", id = stored.ID })
                             }
                         </td>
                     </tr>

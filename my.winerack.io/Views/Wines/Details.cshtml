@@ -4,14 +4,4 @@
     ViewBag.Title = @Model.Vineyard.Name + " " + @Model.Description;
 }
 
-<div class="page-header">
-    <h1>
-        @Html.Partial("Wines/_Description")
-
-        @if(User.IsInRole("Administrators")) {
-            <small><a href="/Wines/Edit/@Model.ID" title="Edit"><i class="fa fa-edit"></i></a></small>
-        }
-    </h1>
-    <p><a href="/vineyards/@Model.VineyardID">@Model.Vineyard.Name</a></p>
-    <p><a href="/regions/@Model.RegionID">@Model.Region.Label</a></p>
-</div>
+@Html.Partial("Wines/_Header", Model)

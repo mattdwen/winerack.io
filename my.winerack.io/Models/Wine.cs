@@ -1,22 +1,22 @@
 ﻿using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Web.Mvc;
 using System.Linq;
 
-namespace winerack.Models {
-
+namespace winerack.Models
+{
     public class Wine
     {
-
         #region Constructor
+
         public Wine()
         {
+            Styles = new List<Style>();
             Varietals = new List<Varietal>();
         }
-        #endregion
+
+        #endregion Constructor
 
         #region Properties
 
@@ -27,26 +27,29 @@ namespace winerack.Models {
         [DisplayFormat(NullDisplayText = "NV")]
         public int? Vintage { get; set; }
 
-        [Required(ErrorMessage="Region is required")]
+        [Required(ErrorMessage = "Region is required")]
         [Display(Name = "Region")]
         [ForeignKey("Region")]
         public int RegionID { get; set; }
 
-        [Required(ErrorMessage="Vineyard is required")]
+        [Required(ErrorMessage = "Vineyard is required")]
         [Display(Name = "Vineyard")]
         [ForeignKey("Vineyard")]
         public int VineyardID { get; set; }
 
         [NotMapped]
-        public string Description {
-            get {
+        public string Description
+        {
+            get
+            {
                 string description = "";
-                if (!string.IsNullOrWhiteSpace(Name)) {
-                    description = Name + " ";
-                }
 
                 if (Vintage.HasValue) {
                     description += "'" + Vintage.ToString().Substring(2) + " ";
+                }
+
+                if (!string.IsNullOrWhiteSpace(Name)) {
+                    description += Name + " ";
                 }
 
                 description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
@@ -60,10 +63,15 @@ namespace winerack.Models {
         #region Relationships
 
         [JsonIgnore]
-        public virtual ICollection<Style> Style { get; set; }
+        public virtual ICollection<Activity> Activities { get; set; }
+
+        [JsonIgnore]
+        [Required]
+        public virtual ICollection<Style> Styles { get; set; }
 
         [JsonIgnore]
         [UIHint("Varietals")]
+        [Required]
         public virtual ICollection<Varietal> Varietals { get; set; }
 
         public virtual Region Region { get; set; }
@@ -74,7 +82,8 @@ namespace winerack.Models {
 
         #region Overrides
 
-        public override string ToString() {
+        public override string ToString()
+        {
             string description = "";
 
             if (Vineyard != null) {
@@ -94,6 +103,6 @@ namespace winerack.Models {
             return description;
         }
 
-        #endregion
+        #endregion Overrides
     }
 }

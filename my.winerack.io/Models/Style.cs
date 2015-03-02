@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace winerack.Models
 {
@@ -21,5 +22,16 @@ namespace winerack.Models
         public virtual ICollection<Wine> Wines { get; set; }
 
         #endregion Relationships
+
+        #region Public Methods
+
+        public static IEnumerable<Style> GetStyles()
+        {
+            var context = new ApplicationDbContext();
+            return context.Styles
+                .OrderBy(r => r.Name);
+        }
+
+        #endregion Public Methods
     }
 }

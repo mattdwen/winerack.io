@@ -43,7 +43,7 @@ namespace winerack.Controllers.API {
                     CellarMin = bottle.CellarMin,
                     CellarMax = bottle.CellarMax,
                     Varietals = bottle.Wine.Varietals.Select(v => v.Name).ToList(),
-                    VarietalStyle = bottle.Wine.Style.ToString(),
+                    Styles = bottle.Wine.Styles.Select(s => s.Name).ToList(),
                     Purchased = bottle.NumberOfBottles,
                     Opened = bottle.NumberDrunk,
                     Remaining = bottle.NumberRemaining

@@ -4,28 +4,10 @@
     ViewBag.Title = "Delete Wine";
 }
 
-<div class="page-header">
-    <h1>Delete Wine</h1>
-</div>
+@Html.Partial("Wines/_Header", Model)
 
 <div class="widget">
-    <h3>Are you sure you want to delete this wine?</h3>
-
-    <dl class="dl-horizontal">
-        @if (!string.IsNullOrWhiteSpace(Model.Name)) {
-            <dt>@Html.DisplayNameFor(model => model.Name)</dt>
-            <dd>@Html.DisplayFor(model => model.Name)</dd>
-        }
-        
-        <dt>@Html.DisplayNameFor(model => model.Vineyard)</dt>
-        <dd>@Html.DisplayFor(model => model.Vineyard.Name)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.Varietal)</dt>
-        <dd>@Html.DisplayFor(model => model.Varietal.Name)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.Vintage)</dt>
-        <dd>@Html.DisplayFor(model => model.Vintage)</dd>
-    </dl>
+    <p>Are you sure you want to delete this wine?</p>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
