@@ -14,3 +14,9 @@ body {
     font-size: 1.3rem;
   }
 }
+
+.body-content {
+  > .page-header {
+    margin-top: 0;
+  }
+}

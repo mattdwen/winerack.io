@@ -21,27 +21,14 @@
             <div class="panel-heading">
                 @if (Model.Bottle.OwnerID == User.Identity.GetUserId()) {
                     <div class="pull-right">
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary btn-sm" })
-                        @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger btn-sm" })
+                        <a href="/Purchases/Edit/@Model.ID" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
+                        <a href="/Purchases/Delete/@Model.ID" title="Delete"><i class="fa fa-fw fa-remove"></i></a>
                     </div>
                 }
                 
-                <h2>
-                    <small>Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of</small><br />
-                    <a href="/wines/@Model.Bottle.WineID">
-                        @Html.Partial("Wines/_Description", Model.Bottle.Wine)
-                    </a>
-                </h2>
-
-                <p>
-                    <i class="wine-making-wine"></i>
-                    <a href="/vineyards/@Model.Bottle.Wine.VineyardID">@Model.Bottle.Wine.Vineyard.Name</a>
-                </p>
-
-                <p>
-                    <i class="fa fa-globe"></i>
-                    <a href="/regions/@Model.Bottle.Wine.RegionID">@Model.Bottle.Wine.Region.Label</a>
-                </p>
+                Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of
+                
+                @Html.Partial("Wines/_Header", Model.Bottle.Wine)
             </div>
             <div class="panel-body">
                 @if ((Model.ImageID.HasValue)) {

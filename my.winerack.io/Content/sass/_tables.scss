@@ -45,6 +45,7 @@ th {
         a {
           color: $brand-primary;
 
+          &.btn,
           .fa,
           [class*="wine-"] {
             color: $white-secondary;

@@ -4,103 +4,99 @@
     ViewBag.Title = "Open a Bottle";
 }
 
-<h2>Open a Bottle</h2>
+@Html.Partial("Wines/_Header", Model.StoredBottle.Purchase.Bottle.Wine)
 
-@using (Html.BeginForm("Create", "Openings", FormMethod.Post, new { enctype = "multipart/form-data" })) {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+<h2>Open a bottle</h2>
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="widget">
+    @using (Html.BeginForm("Create", "Openings", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+        @Html.AntiForgeryToken()
 
-        @Html.HiddenFor(m => m.StoredBottleID)
+        <div class="form-horizontal">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.StoredBottle.Purchase.Bottle.Wine, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <span class="form-control">
-                    @Model.StoredBottle.Purchase.Bottle.Wine.Description
-                </span>
-            </div>
-        </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <label class="control-label col-md-2" for="@Html.IdFor(m => m.StoredBottle.Location)">Stored</label>
-            <div class="col-md-10">
-                <span class="form-control">@Html.DisplayFor(m => m.StoredBottle.Location)</span>
-            </div>
-        </div>
+            @Html.HiddenFor(m => m.StoredBottleID)
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.OpenedOn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.OpenedOn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.OpenedOn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.Notes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Photo</label>
-            <div class="col-md-10">
-                <a id="photoSelect" href="#">
-                    <img id="photoPreview" src="//placehold.it/300x200&text=Photo" width="300" />
-                </a>
-                <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
-            </div>
-        </div>
-
-        @if (Model.HasFacebook || Model.HasTumblr || Model.HasTwitter) {
             <div class="form-group">
-                <label class="control-label col-md-2">Share</label>
+                <label class="control-label col-md-2" for="@Html.IdFor(m => m.StoredBottle.Location)">Stored</label>
                 <div class="col-md-10">
-                    @if (Model.HasFacebook) {
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.PostFacebook)
-                                Facebook
-                            </label>
-                        </div>
-                    }
-
-                    @if (Model.HasTumblr) {
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.PostTumblr)
-                                Tumblr
-                            </label>
-                        </div>
-                    }
-
-                    @if (Model.HasTwitter) {
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.PostTwitter)
-                                Twitter
-                            </label>
-                        </div>
-                    }
+                    <span class="form-control">@Html.DisplayFor(m => m.StoredBottle.Location)</span>
                 </div>
             </div>
-        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Open bottle" class="btn btn-success" />
+            <div class="form-group">
+                @Html.LabelFor(m => m.OpenedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.OpenedOn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.OpenedOn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Photo</label>
+                <div class="col-md-10">
+                    <a id="photoSelect" href="#">
+                        <img id="photoPreview" src="//placehold.it/300x200&text=Photo" width="300" />
+                    </a>
+                    <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
+                </div>
+            </div>
+
+            @if (Model.HasFacebook || Model.HasTumblr || Model.HasTwitter) {
+                <div class="form-group">
+                    <label class="control-label col-md-2">Share</label>
+                    <div class="col-md-10">
+                        @if (Model.HasFacebook) {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.PostFacebook)
+                                    Facebook
+                                </label>
+                            </div>
+                        }
+
+                        @if (Model.HasTumblr) {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.PostTumblr)
+                                    Tumblr
+                                </label>
+                            </div>
+                        }
+
+                        @if (Model.HasTwitter) {
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.PostTwitter)
+                                    Twitter
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">Open bottle</button>
+                    @Html.ActionLink("Back to bottle", "Details", new { controller = "Bottles", id = @Model.StoredBottle.Purchase.BottleID }, new { @class = "btn btn-linked" })
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    
 </div>
 
 @section Scripts {

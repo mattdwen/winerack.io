@@ -2708,11 +2708,11 @@ select[multiple].input-lg,
     background-color: #fff; }
 
 .btn-success {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   background-color: #5cb85c;
   border-color: #4cae4c; }
   .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.9);
     background-color: #449d44;
     border-color: #398439; }
   .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
@@ -2722,7 +2722,7 @@ select[multiple].input-lg,
     border-color: #4cae4c; }
   .btn-success .badge {
     color: #5cb85c;
-    background-color: #fff; }
+    background-color: rgba(255, 255, 255, 0.9); }
 
 .btn-info {
   color: #fff;
@@ -5415,6 +5415,9 @@ body {
     body {
       font-size: 1.3rem; } }
 
+.body-content > .page-header {
+  margin-top: 0; }
+
 .text-thin {
   font-weight: 300; }
 
@@ -5438,10 +5441,18 @@ th {
     vertical-align: top; }
     .table > tbody > tr > td a {
       color: #00bcd4; }
-      .table > tbody > tr > td a .fa, .table > tbody > tr > td a .checkbox input[type=checkbox]:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:after, .table > tbody > tr > td a .select2-search-choice-close,
+      .table > tbody > tr > td a.btn,
+      .table > tbody > tr > td a .fa,
+      .table > tbody > tr > td a .checkbox input[type=checkbox]:after,
+      .checkbox .table > tbody > tr > td a input[type=checkbox]:after,
+      .table > tbody > tr > td a .select2-search-choice-close,
       .table > tbody > tr > td a [class*="wine-"] {
         color: rgba(255, 255, 255, 0.7); }
-        .table > tbody > tr > td a .fa:hover, .table > tbody > tr > td a .checkbox input[type=checkbox]:hover:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:hover:after, .table > tbody > tr > td a .select2-search-choice-close:hover,
+        .table > tbody > tr > td a.btn:hover,
+        .table > tbody > tr > td a .fa:hover,
+        .table > tbody > tr > td a .checkbox input[type=checkbox]:hover:after,
+        .checkbox .table > tbody > tr > td a input[type=checkbox]:hover:after,
+        .table > tbody > tr > td a .select2-search-choice-close:hover,
         .table > tbody > tr > td a [class*="wine-"]:hover {
           color: rgba(255, 255, 255, 0.9); }
 
@@ -5622,6 +5633,9 @@ th {
 .navbar-right {
   float: right; }
 
+.panel-heading h2 {
+  margin: 0; }
+
 .row-offcanvas {
   position: relative;
   left: 0; }
@@ -5696,7 +5710,7 @@ th {
   margin-bottom: 0;
   border-bottom: 0 none; }
 
-.widget {
+.widget, .panel {
   background-color: rgba(0, 0, 0, 0.12);
   border-radius: 3px;
   padding: 16px; }

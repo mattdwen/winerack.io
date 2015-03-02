@@ -4,7 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+@Html.Partial("Wines/_Header", Model.Wine)
+
+<div class="page-header">
+    <h2>Delete</h2>
+</div>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>

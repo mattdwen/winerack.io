@@ -10,6 +10,10 @@
 <div class="row">
     <div class="col-md-9">
         @Html.Partial("Wines/_Header", Model.Wine)
+        @if (Model.NumberRemaining > 0) {
+            <a href="/Openings/CreateFromBottle?BottleId=@Model.ID" class="btn btn-link"><i class="wine-corkscrew"></i> Open a bottle</a>
+        }
+        <a href="/Purchases/Create?BottleId=@Model.ID" class="btn btn-link"><i class="fa fa-plus"></i> Purchase more</a>
     </div>
     <div class="col-md-3">
         <br />
@@ -39,17 +43,14 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Bottle</th>
                     <th>Stored</th>
                     <th>Purchased</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @{ var i = 1; }
-                @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles)) {
+                @foreach (var stored in Model.Purchases.OrderByDescending(p => p.PurchasedOn).SelectMany(p => p.StoredBottles)) {
                     <tr>
-                        <td>#@i</td>
                         <td>
                             @if (stored.Opening == null) {
                                 <input class="form-control"
@@ -62,13 +63,11 @@
                                 <span>Opened @Html.DisplayFor(s => stored.Opening.OpenedOn)</span>
                             }
                         </td>
-                        <td>@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
-                        <td>
+                        <td valign="middle">@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
+                        <td class="text-right">
                             @if (stored.Opening == null) {
-                                <div class="pull-right">
-                                    <a href="/Openings/Create?storedBottleId=@stored.ID" title="Open"><i class="fa-fw fa-2x wine-corkscrew"></i></a>
-                                    <a href="/StoredBottles/Delete/@stored.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
-                                </div>
+                                <a href="/Openings/Create?storedBottleId=@stored.ID" title="Open"><i class="fa-fw fa-2x wine-corkscrew"></i></a>
+                                <a href="/StoredBottles/Delete/@stored.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
                             } else {
                                 <div>
                                     @Html.ActionLink("tasting notes", "Details", new { controller = "Openings", id = stored.ID })
@@ -76,7 +75,6 @@
                             }
                         </td>
                     </tr>
-                            i++;
                 }
             </tbody>
         </table>
