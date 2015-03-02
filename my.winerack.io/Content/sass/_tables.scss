@@ -45,7 +45,8 @@ th {
         a {
           color: $brand-primary;
 
-          .fa {
+          .fa,
+          [class*="wine-"] {
             color: $white-secondary;
 
             &:hover {

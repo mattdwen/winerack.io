@@ -60,6 +60,7 @@ namespace winerack.Models {
         #region Relationships
 
         [JsonIgnore]
+        [UIHint("Varietals")]
         public virtual ICollection<Varietal> Varietals { get; set; }
 
         public virtual Region Region { get; set; }

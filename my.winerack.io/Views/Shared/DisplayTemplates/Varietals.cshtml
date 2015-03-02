@@ -1,0 +1,7 @@
+﻿@{
+    var varietals = (IEnumerable<winerack.Models.Varietal>)Model;
+    var display = string.Join(" ", varietals.Select(v => v.Name));
+        
+}
+
+@display

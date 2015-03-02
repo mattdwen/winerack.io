@@ -2170,7 +2170,7 @@ legend {
   margin-bottom: 20px;
   font-size: 21px;
   line-height: inherit;
-  color: #333333;
+  color: rgba(255, 255, 255, 0.9);
   border: 0;
   border-bottom: 1px solid #e5e5e5; }
 
@@ -5438,9 +5438,11 @@ th {
     vertical-align: top; }
     .table > tbody > tr > td a {
       color: #00bcd4; }
-      .table > tbody > tr > td a .fa, .table > tbody > tr > td a .checkbox input[type=checkbox]:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:after, .table > tbody > tr > td a .select2-search-choice-close {
+      .table > tbody > tr > td a .fa, .table > tbody > tr > td a .checkbox input[type=checkbox]:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:after, .table > tbody > tr > td a .select2-search-choice-close,
+      .table > tbody > tr > td a [class*="wine-"] {
         color: rgba(255, 255, 255, 0.7); }
-        .table > tbody > tr > td a .fa:hover, .table > tbody > tr > td a .checkbox input[type=checkbox]:hover:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:hover:after, .table > tbody > tr > td a .select2-search-choice-close:hover {
+        .table > tbody > tr > td a .fa:hover, .table > tbody > tr > td a .checkbox input[type=checkbox]:hover:after, .checkbox .table > tbody > tr > td a input[type=checkbox]:hover:after, .table > tbody > tr > td a .select2-search-choice-close:hover,
+        .table > tbody > tr > td a [class*="wine-"]:hover {
           color: rgba(255, 255, 255, 0.9); }
 
 .table-striped > tbody > tr:nth-child(odd) > td,
@@ -5710,6 +5712,12 @@ th {
 @media only screen and (max-width: 767px) {
   #mc_embed_signup .col-sm-6 + .col-sm-6 {
     margin-top: 15px; } }
+
+.winerack .winerack-bottle h3 {
+  margin: 0; }
+.winerack .winerack-bottle .label {
+  position: relative;
+  top: 6px; }
 
 /*! Select2 Bootstrap 3 CSS v1.4.6 | MIT License | github.com/t0m/select2-bootstrap-css */
 /**

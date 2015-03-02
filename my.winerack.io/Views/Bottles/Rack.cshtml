@@ -1,49 +1,40 @@
 ﻿@model IEnumerable<winerack.Models.Bottle>
 
 @if (Model.Count() > 0) {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Wine.Vineyard)</th>
-                <th>@Html.DisplayNameFor(m => m.Wine.Varietal)</th>
-                <th>@Html.DisplayNameFor(m => m.Wine.Vintage)</th>
-                <th>Bottles</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var bottle in Model) {
-                <tr>
-                    <td>@Html.DisplayFor(b => bottle.Wine.Vineyard.Name)</td>
-                    <td>@Html.DisplayFor(b => bottle.Wine.Varietal.Name)</td>
-                    <td>@Html.DisplayFor(b => bottle.Wine.Vintage)</td>
-                    <td>
-                        <span class="label label-info" title="Purchased">@bottle.NumberOfBottles</span>
-                        <span class="label label-danger" title="Opened">@bottle.NumberDrunk</span>
-                        <span class="label label-success" title="Remaining">@bottle.NumberRemaining</span>
-                    </td>
-                    <td>
-                        <div class="btn-group btn-group-xs">
-                            <a class="btn btn-info" href="/Bottles/Details/@bottle.ID" title="Details">
-                                <i class="fa fa-search"></i>
-                            </a>
-                            <a class="btn btn-primary" href="/Purchases/Create/?BottleId=@bottle.ID" title="Purchase More">
-                                <i class="fa fa-plus"></i>
-                            </a>
-                            @if (bottle.NumberRemaining > 0) {
-                                <a class="btn btn-success" href="/Openings/CreateFromBottle/?BottleId=@bottle.ID" title="Open">
-                                    <i class="wine-corkscrew"></i>
-                                </a>
-                            }
+    <div class="row winerack">
+        @foreach (var bottle in Model) {
+            <div class="col-sm-6 col-md-4">
+                <div class="widget winerack-bottle">
+                    <a href="/Bottles/Details/@bottle.ID">
+                        <h3>@Html.Partial("Wines/_Description", bottle.Wine)</h3>
+                        <h5>@bottle.Wine.Vineyard.Name</h5>
+                    </a>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <span class="label label-info" title="Purchased">@bottle.NumberOfBottles</span>
+                            <span class="label label-danger" title="Opened">@bottle.NumberDrunk</span>
+                            <span class="label label-success" title="Remaining">@bottle.NumberRemaining</span>
                         </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                        <div class="col-sm-6">
+                            <div class="pull-right">
+                                <a href="/Purchases/Create/?BottleId=@bottle.ID" title="Purchase More">
+                                    <i class="fa fa-fw fa-2x fa-plus"></i>
+                                </a>
+                                @if (bottle.NumberRemaining > 0) {
+                                    <a href="/Openings/CreateFromBottle/?BottleId=@bottle.ID" title="Open">
+                                        <i class="fa-fw fa-2x wine-corkscrew"></i>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        }
+    </div>
 } else {
     <div class="jumbotron">
         <p>You're out of wine!</p>
-        @Html.ActionLink("Add a bottle", "Create", new { controller = "Bottles" }, new { @class = "btn btn-lg btn-primary" })
     </div>
 }

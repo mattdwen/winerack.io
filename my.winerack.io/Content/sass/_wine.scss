@@ -1,0 +1,16 @@
+﻿//
+// Wine
+// ============================================================================
+
+.winerack {
+  .winerack-bottle {
+    h3 {
+      margin: 0;
+    }
+
+    .label {
+      position: relative;
+      top: $padding-base-vertical;
+    }
+  }
+}

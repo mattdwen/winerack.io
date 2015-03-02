@@ -1,0 +1,22 @@
+﻿@model winerack.Models.Wine
+
+<div class="wine_header">
+    <h2>
+        <a href="/Wines/@Model.ID">
+            @if (!string.IsNullOrWhiteSpace(Model.Name)) {
+                <span class="name"><em>@Model.Name</em></span>
+            }
+
+
+            @if (Model.Vintage.HasValue) {
+                <span class="vintage">@Model.Vintage.ToString()</span>
+
+            } else {
+                <span class="vintage">NV</span>
+            }
+            <span class="varietal">@Html.DisplayFor(m => m.Varietals)</span>
+        </a>
+    </h2>
+    <h4><a href="/Vineyards/@Model.VineyardID">@Model.Vineyard.Name</a></h4>
+    <h6><a href="/Regions/@Model.RegionID">@Model.Region.Label</a></h6>
+</div>

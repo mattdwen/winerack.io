@@ -464,6 +464,7 @@
     <Content Include="Content\sass\_tables.scss" />
     <Content Include="Content\sass\_typeahead.scss" />
     <Content Include="Content\sass\_select2.scss" />
+    <Content Include="Content\sass\_wine.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
@@ -494,6 +495,8 @@
     <Content Include="Views\Account\ForgotUsernameConfirmation.cshtml" />
     <Content Include="Views\Friends\Index.cshtml" />
     <Content Include="Views\Home\IndexLoggedIn.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Varietals.cshtml" />
+    <Content Include="Views\Shared\Wines\_Header.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
