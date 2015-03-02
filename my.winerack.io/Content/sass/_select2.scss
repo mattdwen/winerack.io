@@ -1,0 +1,21 @@
+﻿//
+// select2
+// ============================================================================
+
+@import 'select2-bootstrap3-css/lib/select2-bootstrap.scss';
+
+.select2-container-multi {
+  .select2-choices {
+    .select2-search-choice {
+      color: $input-color;
+
+      background-color: $input-bg;
+      border-color: $input-border;
+    }
+  }
+}
+
+.select2-search-choice-close {
+  @extend .fa;
+  @extend .fa-close;
+}

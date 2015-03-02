@@ -25,8 +25,8 @@
             <dt>@Html.DisplayNameFor(m => m.Wine.Vineyard)</dt>
             <dd>@Html.DisplayFor(m => m.Wine.Vineyard.Name)</dd>
 
-            <dt>@Html.DisplayNameFor(m => m.Wine.Varietal)</dt>
-            <dd>@Html.DisplayFor(m => m.Wine.Varietal.Name)</dd>
+            <dt>@Html.DisplayNameFor(m => m.Wine.Varietals)</dt>
+            <dd>@string.Join(" ", Model.Wine.Varietals.Select(v => v.Name).ToList())</dd>
 
             <dt>@Html.DisplayNameFor(m => m.Wine.Vintage)</dt>
             <dd>@Html.DisplayFor(m => m.Wine.Vintage)</dd>

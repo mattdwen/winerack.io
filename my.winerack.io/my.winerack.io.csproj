@@ -358,6 +358,10 @@
     <Compile Include="Migrations\201408030841066_refactor_activities.Designer.cs">
       <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503020031385_wine_varietal_many_many.cs" />
+    <Compile Include="Migrations\201503020031385_wine_varietal_many_many.Designer.cs">
+      <DependentUpon>201503020031385_wine_varietal_many_many.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -390,11 +394,6 @@
   <ItemGroup>
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\icomoon-wines.css" />
-    <Content Include="Content\select2-bootstrap.css" />
-    <Content Include="Content\select2-spinner.gif" />
-    <Content Include="Content\select2.css" />
-    <Content Include="Content\select2.png" />
-    <Content Include="Content\select2x2.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -428,7 +427,6 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="Content\vendor\typeahead-bootstrap3.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\wines\icomoon-wines.svg" />
     <Content Include="Global.asax" />
@@ -436,8 +434,6 @@
     <Content Include="Scripts\account\settings.js" />
     <Content Include="Scripts\angular\controllers\openings.js" />
     <Content Include="Scripts\angular\services\bottleService.js" />
-    <Content Include="Scripts\bloodhound.js" />
-    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bloodhound\regions.js" />
     <Content Include="Scripts\bloodhound\varietals.js" />
     <Content Include="Scripts\bloodhound\vineyards.js" />
@@ -466,6 +462,8 @@
     <Content Include="Content\sass\_list-group.scss" />
     <Content Include="Content\sass\_type.scss" />
     <Content Include="Content\sass\_tables.scss" />
+    <Content Include="Content\sass\_typeahead.scss" />
+    <Content Include="Content\sass\_select2.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
@@ -485,10 +483,6 @@
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\openings\create.js" />
     <Content Include="Scripts\tastings\create.js" />
-    <Content Include="Scripts\typeahead.bundle.js" />
-    <Content Include="Scripts\typeahead.bundle.min.js" />
-    <Content Include="Scripts\typeahead.jquery.js" />
-    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Scripts\vendor\angular\angular-resource.js" />
     <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
     <Content Include="Scripts\vendor\angular\angular.js" />
@@ -591,6 +585,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\vendor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -662,6 +657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408030841066_refactor_activities.resx">
       <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503020031385_wine_varietal_many_many.resx">
+      <DependentUpon>201503020031385_wine_varietal_many_many.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

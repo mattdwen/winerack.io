@@ -86,28 +86,32 @@ namespace winerack.Controllers {
 			var region = Create_Region(model);
 			var vineyard = Create_Vineyard(model);
 
-			var wine = db.Wines
-				.Where(w => w.Name == model.WineName
-					&& w.RegionID == region.ID
-					&& w.VarietalID == model.VarietalID
-					&& w.VineyardID == vineyard.ID
-					&& w.Vintage == model.Vintage)
-				.FirstOrDefault();
+            var wine = db.Wines
+                .Where(w => w.Name == model.WineName
+                    && w.RegionID == region.ID
+                    && w.Varietals.All(v => model.Varietals.Contains(v.ID))
+                    && w.VineyardID == vineyard.ID
+                    && w.Vintage == model.Vintage)
+                .FirstOrDefault();
 
-			if (wine == null) {
-				wine = new Wine {
-					Name = model.WineName,
-					RegionID = region.ID,
-					VarietalID = model.VarietalID,
-					VineyardID = vineyard.ID,
-					Vintage = model.Vintage
-				};
+            if (wine == null) {
+                wine = new Wine {
+                    Name = model.WineName,
+                    RegionID = region.ID,
+                    VineyardID = vineyard.ID,
+                    Vintage = model.Vintage
+                };
 
-				db.Wines.Add(wine);
-				db.SaveChanges();
-			}
+                foreach (var varietalId in model.Varietals) {
+                    var varietal = db.Varietals.Find(varietalId);
+                    wine.Varietals.Add(varietal);
+                }
 
-			return wine;
+                db.Wines.Add(wine);
+                db.SaveChanges();
+            }
+
+            return wine;
 		}
 
 		#endregion Create
@@ -169,7 +173,7 @@ namespace winerack.Controllers {
 			};
 
 			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
+			ViewBag.Varietals = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();

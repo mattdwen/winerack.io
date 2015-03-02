@@ -29,14 +29,11 @@ namespace winerack {
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 				"~/Scripts/vendor/jQRangeSlider/css/classic.css",
+                "~/Content/vendor/select2/select2.css",
 				"~/Content/css/main.css",
-				"~/Content/css/icomoon-wines.css",
-				"~/Content/select2.css",
-				"~/Content/select2-bootstrap.css"));
+				"~/Content/css/icomoon-wines.css"));
 
 			bundles.Add(new ScriptBundle("~/bundles/bottlecreate").Include(
-				"~/Scripts/bloodhound.js",
-				"~/Scripts/typeahead.jquery.js",
 				"~/Scripts/bloodhound/vineyards.js",
 				"~/Scripts/bloodhound/regions.js",
 				"~/Scripts/bloodhound/varietals.js",
@@ -44,8 +41,6 @@ namespace winerack {
 				"~/Scripts/bottles/create.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/tastingscreate").Include(
-				"~/Scripts/bloodhound.js",
-				"~/Scripts/typeahead.jquery.js",
 				"~/Scripts/bloodhound/vineyards.js",
 				"~/Scripts/bloodhound/regions.js",
 				"~/Scripts/bloodhound/varietals.js",

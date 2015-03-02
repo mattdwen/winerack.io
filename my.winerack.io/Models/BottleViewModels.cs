@@ -6,22 +6,21 @@ using System.Web;
 
 namespace winerack.Models {
 	public class CreateBottleViewModel {
-		[Required]
+		[Required(ErrorMessage="Vineyard Name is required")]
 		public string Vineyard { get; set; }
 
 		public int VineyardID { get; set; }
 
-		[Required]
+		[Required(ErrorMessage="Region is required")]
 		public string Region { get; set; }
 
 		public int RegionID { get; set; }
 
-		[Required]
+		[Required(ErrorMessage="Country is required")]
 		public string Country { get; set; }
 
-		[Required]
-		[Display(Name = "Varietal")]
-		public int VarietalID { get; set; }
+		[Display(Name = "Varietals")]
+		public int[] Varietals { get; set; }
 
 		public int? Vintage { get; set; }
 
@@ -46,7 +45,7 @@ namespace winerack.Models {
 		[DataType(DataType.MultilineText)]
 		public string PurchaseNotes { get; set; }
 
-		[Display(Name="At less than")]
+		[Display(Name="At least")]
 		public int? CellarMin { get; set; }
 
 		[Display(Name="No more than")]

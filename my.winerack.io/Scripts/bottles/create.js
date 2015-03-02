@@ -25,12 +25,6 @@ $('#Region').typeahead(null, {
     $("#Country").val(datum.country);
 });
 
-$('#Varietal').typeahead(null, {
-    name: 'varietals',
-    displayKey: 'name',
-    source: varietalBloodhound.ttAdapter()
-});
-
 $('#photoSelect').click(function (e) {
     e.preventDefault();
     $("#Photo").click();
@@ -46,4 +40,8 @@ $('#Photo').change(function () {
 
         reader.readAsDataURL(this.files[0]);
     }
+});
+
+$(function () {
+  $('#Varietals').select2();
 });

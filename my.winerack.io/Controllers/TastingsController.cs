@@ -59,28 +59,30 @@ namespace winerack.Controllers {
 			var region = Create_Region(model);
 			var vineyard = Create_Vineyard(model);
 
-			var wine = db.Wines
-				.Where(w => w.Name == model.WineName
-					&& w.RegionID == region.ID
-					&& w.VarietalID == model.VarietalID
-					&& w.VineyardID == vineyard.ID
-					&& w.Vintage == model.Vintage)
-				.FirstOrDefault();
+            throw new NotImplementedException();
 
-			if (wine == null) {
-				wine = new Wine {
-					Name = model.WineName,
-					RegionID = region.ID,
-					VarietalID = model.VarietalID,
-					VineyardID = vineyard.ID,
-					Vintage = model.Vintage
-				};
+            //var wine = db.Wines
+            //    .Where(w => w.Name == model.WineName
+            //        && w.RegionID == region.ID
+            //        && w.VarietalID == model.VarietalID
+            //        && w.VineyardID == vineyard.ID
+            //        && w.Vintage == model.Vintage)
+            //    .FirstOrDefault();
 
-				db.Wines.Add(wine);
-				db.SaveChanges();
-			}
+            //if (wine == null) {
+            //    wine = new Wine {
+            //        Name = model.WineName,
+            //        RegionID = region.ID,
+            //        VarietalID = model.VarietalID,
+            //        VineyardID = vineyard.ID,
+            //        Vintage = model.Vintage
+            //    };
 
-			return wine;
+            //    db.Wines.Add(wine);
+            //    db.SaveChanges();
+            //}
+
+            //return wine;
 		}
 
 		private Create GetCreateViewModel(Create model = null) {

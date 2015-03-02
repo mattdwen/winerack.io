@@ -1,0 +1,38 @@
+﻿//
+// typeahead.js
+// ============================================================================
+
+.tt-hint {
+  color: $white-disabled;
+}
+
+.tt-dropdown-menu {
+  padding-top: $padding-small-vertical;
+  padding-bottom: $padding-small-vertical;
+  min-width: 244px;
+
+  border: 1px solid $black-text;
+  border-radius: $border-radius-base;
+  background-color: $white;
+}
+
+.tt-suggestion {
+  color: $black-text;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $white-text;
+
+    background-color: $brand-primary;
+  }
+}
+
+.tt-suggestion.tt-is-under-cursor {
+  background-color: aqua;
+}
+
+.tt-suggestion p {
+  margin: 0;
+  padding: $padding-small-vertical $padding-small-horizontal;
+}

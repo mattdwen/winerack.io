@@ -54,6 +54,10 @@ namespace winerack.Models {
 			base.OnModelCreating(modelBuilder);
 			modelBuilder.Conventions.Add(new DateTime2Convention());
 
+            modelBuilder.Entity<Wine>()
+                .HasMany(w => w.Varietals)
+                .WithMany(w => w.Wines);
+
 			modelBuilder.Entity<User>()
 				.HasMany(u => u.Following)
 				.WithRequired(f => f.Follower)

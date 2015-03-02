@@ -24,7 +24,4 @@
 /// <reference path="modernizr-2.8.3.js" />
 /// <reference path="modernizr-2.8.3.js" />
 /// <reference path="modernizr-2.6.2.js" />
-/// <reference path="typeahead.jquery.min.js" />
-/// <reference path="typeahead.bundle.min.js" />
-/// <reference path="bloodhound.min.js" />
 /// <reference path="winerack.js" />

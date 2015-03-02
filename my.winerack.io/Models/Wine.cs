@@ -1,21 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace winerack.Models {
 
-    public class Wine {
+    public class Wine
+    {
+
+        #region Constructor
+        public Wine()
+        {
+            Varietals = new List<Varietal>();
+        }
+        #endregion
 
         #region Properties
 
         public int ID { get; set; }
 
         public string Name { get; set; }
-
-        [Required(ErrorMessage="Varietal is required")]
-        [ForeignKey("Varietal")]
-        [Display(Name="Varietal")]
-        public int VarietalID { get; set; }
 
         [DisplayFormat(NullDisplayText = "NV")]
         public int? Vintage { get; set; }
@@ -42,7 +49,7 @@ namespace winerack.Models {
                     description += "'" + Vintage.ToString().Substring(2) + " ";
                 }
 
-                description += Varietal.Name;
+                description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
 
                 return description;
             }
@@ -52,9 +59,10 @@ namespace winerack.Models {
 
         #region Relationships
 
-        public virtual Region Region { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Varietal> Varietals { get; set; }
 
-        public virtual Varietal Varietal { get; set; }
+        public virtual Region Region { get; set; }
 
         public virtual Vineyard Vineyard { get; set; }
 
@@ -77,7 +85,7 @@ namespace winerack.Models {
                 description += "'" + Vintage.ToString().Substring(2) + " ";
             }
 
-            description += Varietal.Name;
+            description += string.Join(" ", Varietals.Select(v => v.Name));
 
             return description;
         }
