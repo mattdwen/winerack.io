@@ -34,22 +34,20 @@ namespace winerack.Controllers.API {
 					continue;
 				}
 
-                throw new NotImplementedException();
-
-                //result.Add(new Models.BottleViewModels.ApiBottle {
-                //    ID = bottle.ID,
-                //    Description = bottle.Wine.Description,
-                //    Vineyard = bottle.Wine.Vineyard.Name,
-                //    Region = bottle.Wine.Region.Label,
-                //    Vintage = bottle.Wine.Vintage,
-                //    CellarMin = bottle.CellarMin,
-                //    CellarMax = bottle.CellarMax,
-                //    Varietal = bottle.Wine.Varietal.Name,
-                //    VarietalStyle = bottle.Wine.Varietal.Style.ToString(),
-                //    Purchased = bottle.NumberOfBottles,
-                //    Opened = bottle.NumberDrunk,
-                //    Remaining = bottle.NumberRemaining
-                //});
+                result.Add(new Models.BottleViewModels.ApiBottle {
+                    ID = bottle.ID,
+                    Description = bottle.Wine.Description,
+                    Vineyard = bottle.Wine.Vineyard.Name,
+                    Region = bottle.Wine.Region.Label,
+                    Vintage = bottle.Wine.Vintage,
+                    CellarMin = bottle.CellarMin,
+                    CellarMax = bottle.CellarMax,
+                    Varietals = bottle.Wine.Varietals.Select(v => v.Name).ToList(),
+                    VarietalStyle = bottle.Wine.Style.ToString(),
+                    Purchased = bottle.NumberOfBottles,
+                    Opened = bottle.NumberDrunk,
+                    Remaining = bottle.NumberRemaining
+                });
 			}
 
 			return result;

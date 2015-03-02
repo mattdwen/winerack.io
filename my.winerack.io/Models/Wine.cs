@@ -55,6 +55,19 @@ namespace winerack.Models {
             }
         }
 
+        [NotMapped]
+        public VarietalStyles Style
+        {
+            get
+            {
+                if (Varietals.Any(v => v.Style == VarietalStyles.Dessert)) {
+                    return VarietalStyles.Dessert;
+                }
+
+                return VarietalStyles.Other;
+            }
+        }
+
         #endregion Properties
 
         #region Relationships

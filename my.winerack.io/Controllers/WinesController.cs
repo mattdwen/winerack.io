@@ -48,7 +48,7 @@ namespace winerack.Controllers {
 
 		// GET: Wines/Create
 		public ActionResult Create() {
-			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+			ViewBag.Varietals = db.Varietals.Select(x => new SelectListItem {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();
@@ -66,7 +66,7 @@ namespace winerack.Controllers {
 				return RedirectToAction("Index");
 			}
 
-			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+			ViewBag.Varietals = db.Varietals.Select(x => new SelectListItem {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();
@@ -88,7 +88,7 @@ namespace winerack.Controllers {
 				return HttpNotFound();
 			}
 
-			ViewBag.VarietalID = db.Varietals.Select(x => new SelectListItem {
+            ViewBag.Varietals = db.Varietals.Select(x => new SelectListItem {
 				Text = x.Name,
 				Value = x.ID.ToString()
 			}).ToList();

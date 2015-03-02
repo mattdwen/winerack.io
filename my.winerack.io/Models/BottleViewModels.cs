@@ -86,7 +86,7 @@ namespace winerack.Models.BottleViewModels {
 
 		public int? CellarMax { get; set; }
 
-		public string Varietal { get; set; }
+		public List<string> Varietals { get; set; }
 
 		public string VarietalStyle { get; set; }
 

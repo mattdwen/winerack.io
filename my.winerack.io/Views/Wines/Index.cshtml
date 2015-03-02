@@ -17,7 +17,7 @@
         <thead>
             <tr>
                 <th>@Html.DisplayNameFor(m => m.Vineyard)</th>
-                <th>@Html.DisplayNameFor(m => m.Varietal)</th>
+                <th>@Html.DisplayNameFor(m => m.Varietals)</th>
                 <th>@Html.DisplayNameFor(m => m.Vintage)</th>
                 <th>@Html.DisplayNameFor(m => m.Name)</th>
                 <th>@Html.DisplayNameFor(m => m.Region)</th>
@@ -30,7 +30,7 @@
             @foreach (var item in Model) {
                 <tr>
                     <td><a href="/wines/@item.ID">@Html.DisplayFor(i => item.Vineyard.Name)</a></td>
-                    <td>@Html.DisplayFor(i => item.Varietal.Name)</td>
+                    <td>@Html.DisplayFor(i => item.Varietals)</td>
                     <td>@Html.DisplayFor(i => item.Vintage)</td>
                     <td>@Html.DisplayFor(i => item.Name)</td>
                     <td>@Html.DisplayFor(i => item.Region.Name), @Html.DisplayFor(i => item.Region.Country)</td>
