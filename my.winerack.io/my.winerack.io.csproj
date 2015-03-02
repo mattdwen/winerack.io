@@ -249,6 +249,7 @@
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\StoredBottlesController.cs" />
     <Compile Include="Controllers\OpeningsController.cs" />
+    <Compile Include="Controllers\StylesController.cs" />
     <Compile Include="Controllers\TastingsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -362,6 +363,10 @@
     <Compile Include="Migrations\201503020031385_wine_varietal_many_many.Designer.cs">
       <DependentUpon>201503020031385_wine_varietal_many_many.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503022129504_wine-styles.cs" />
+    <Compile Include="Migrations\201503022129504_wine-styles.Designer.cs">
+      <DependentUpon>201503022129504_wine-styles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -382,6 +387,7 @@
     <Compile Include="Models\Social\Tumblr.cs" />
     <Compile Include="Models\StoredBottle.cs" />
     <Compile Include="Models\Opening.cs" />
+    <Compile Include="Models\Style.cs" />
     <Compile Include="Models\Tasting.cs" />
     <Compile Include="Models\TastingViewModels.cs" />
     <Compile Include="Models\UserViewModels.cs" />
@@ -586,6 +592,11 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Shared\_Sidenav.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Styles\Create.cshtml" />
+    <Content Include="Views\Styles\Delete.cshtml" />
+    <Content Include="Views\Styles\Details.cshtml" />
+    <Content Include="Views\Styles\Edit.cshtml" />
+    <Content Include="Views\Styles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -664,6 +675,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503020031385_wine_varietal_many_many.resx">
       <DependentUpon>201503020031385_wine_varietal_many_many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503022129504_wine-styles.resx">
+      <DependentUpon>201503022129504_wine-styles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -39,6 +39,8 @@ namespace winerack.Models {
 
 		public DbSet<StoredBottle> StoredBottles { get; set; }
 
+        public DbSet<Style> Styles { get; set; }
+
 		public DbSet<Tasting> Tastings { get; set; }
 
 		public DbSet<Varietal> Varietals { get; set; }
@@ -57,6 +59,10 @@ namespace winerack.Models {
             modelBuilder.Entity<Wine>()
                 .HasMany(w => w.Varietals)
                 .WithMany(w => w.Wines);
+
+            modelBuilder.Entity<Wine>()
+                .HasMany(w => w.Style)
+                .WithMany(s => s.Wines);
 
 			modelBuilder.Entity<User>()
 				.HasMany(u => u.Following)

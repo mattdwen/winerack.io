@@ -50,33 +50,45 @@ namespace winerack.Migrations {
 			return true;
 		}
 
+        private void Seed_Styles(ApplicationDbContext context) {
+            IList<Style> styles = new List<Style>();
+
+            styles.Add(new Style { Name = "Red" });
+            styles.Add(new Style { Name = "White" });
+            styles.Add(new Style { Name = "Rosé" });
+            styles.Add(new Style { Name = "Dessert" });
+            styles.Add(new Style { Name = "Sparkling" });
+
+            foreach(var style in styles) {
+                context.Styles.AddOrUpdate(s => s.Name, style);
+            }
+
+            context.SaveChanges();
+        }
+
 		private void Seed_Varietals(ApplicationDbContext context) {
 			IList<Varietal> varietals = new List<Varietal>();
 
-			varietals.Add(new Varietal { Name = "Cabernet", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Cabernet Franc", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Cabernet Merlot", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Cabernet Merlot Franc Malbec", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Cabernet Sauvignon", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Chardonnay", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Fiano", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Gewürztraminer", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Malbec", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Merlot", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Merlot Cabernet Franc", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Montepulciano", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Muscato", Style = VarietalStyles.Sparkling });
-			varietals.Add(new Varietal { Name = "Noble", Style = VarietalStyles.Dessert });
-			varietals.Add(new Varietal { Name = "Pinot Gris", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Pinot Noir", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Riesling", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Rosé", Style = VarietalStyles.Other });
-			varietals.Add(new Varietal { Name = "Sangiovese", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Sauvignon Blanc", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Sémillon", Style = VarietalStyles.White });
-			varietals.Add(new Varietal { Name = "Shiraz", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Syrah", Style = VarietalStyles.Red });
-			varietals.Add(new Varietal { Name = "Viognier", Style = VarietalStyles.White });
+			varietals.Add(new Varietal { Name = "Cabernet" });
+			varietals.Add(new Varietal { Name = "Cabernet Franc" });
+			varietals.Add(new Varietal { Name = "Cabernet Sauvignon" });
+			varietals.Add(new Varietal { Name = "Chardonnay" });
+			varietals.Add(new Varietal { Name = "Fiano" });
+			varietals.Add(new Varietal { Name = "Gewürztraminer" });
+			varietals.Add(new Varietal { Name = "Malbec" });
+			varietals.Add(new Varietal { Name = "Merlot" });
+			varietals.Add(new Varietal { Name = "Montepulciano" });
+			varietals.Add(new Varietal { Name = "Muscato" });
+			varietals.Add(new Varietal { Name = "Pinot Gris" });
+			varietals.Add(new Varietal { Name = "Pinot Noir" });
+			varietals.Add(new Varietal { Name = "Riesling" });
+			varietals.Add(new Varietal { Name = "Rosé" });
+			varietals.Add(new Varietal { Name = "Sangiovese" });
+			varietals.Add(new Varietal { Name = "Sauvignon Blanc" });
+			varietals.Add(new Varietal { Name = "Sémillon" });
+			varietals.Add(new Varietal { Name = "Shiraz" });
+			varietals.Add(new Varietal { Name = "Syrah" });
+			varietals.Add(new Varietal { Name = "Viognier" });
 
 			foreach (var varietal in varietals) {
 				context.Varietals.AddOrUpdate(v => v.Name, varietal);
@@ -94,33 +106,11 @@ namespace winerack.Migrations {
 			var identityTask = Seed_Identity(context);
 			var identityResult = identityTask.Result;
 
-			// Regions
-			//context.Regions.AddOrUpdate(
-			//	r => new { r.Name, r.Country },
-			//	new Region { Name = "Hawke's Bay", Country = "NZ" }
-			//);
-
-			//// Vineyards
-			//context.Vineyards.AddOrUpdate(
-			//	v => new { v.Name },
-			//	new Vineyard { Name = "Askerne Estate" }
-			//);
-
-			//context.SaveChanges();
+            // Styles
+            Seed_Styles(context);
 
 			// Varietals
 			Seed_Varietals(context);
-
-			// Wines
-			//context.Wines.AddOrUpdate(
-			//	w => new { w.VarietalID, w.RegionID, w.VineyardID },
-			//	new Wine {
-			//		VarietalID = 1,
-			//		Vintage = 2008,
-			//		RegionID = context.Regions.First().ID,
-			//		VineyardID = context.Vineyards.First().ID
-			//	}
-			//);
 		}
 
 		#endregion Implementation

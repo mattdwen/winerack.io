@@ -1,0 +1,21 @@
+﻿@model winerack.Models.Style
+
+@{
+    ViewBag.Title = "Delete Wine Style";
+}
+
+<div class="page-header">
+    <h2>@Model.Name</h2>
+</div>
+
+
+<div class="widget">
+    <p>Are you sure you want to delete this wine style?</p>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-danger">Delete style</button>
+        @Html.ActionLink("Back to List", "Index")
+    }
+</div>    

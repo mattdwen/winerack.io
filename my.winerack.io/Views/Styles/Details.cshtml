@@ -1,0 +1,15 @@
+﻿@model winerack.Models.Style
+
+@{
+    ViewBag.Title = Model.Name + " Wines";
+}
+
+<div class="page-header">
+    @if (User.IsInRole("Administrators")) {
+        <div class="pull-right">
+            <a href="/Styles/Edit/@Model.ID" title="Edit"><i class="fa fa-fw fa-2x fa-edit"></i></a>
+            <a href="/Styles/Delete/@Model.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
+        </div>
+    }
+    <h2>@Model.Name Wines</h2>
+</div>
