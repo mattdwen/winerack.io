@@ -19,8 +19,8 @@
                 <label class="sr-only" for="tastingStyle">Style</label>
                 <select id="tastingStyle" ui-select2="{ allowClear: true}" data-placeholder="Style" ng-model="filter.style">
                     <option value=""></option>
-                    <option ng-repeat="bottle in bottles | unique:'VarietalStyle' | orderBy:'VarietalStyle'" value=" {{ bottle.VarietalStyle }}">
-                        {{ bottle.VarietalStyle}}
+                    <option ng-repeat="style in styles" value="{{ style }}">
+                        {{ style }}
                     </option>
                 </select>
             </div>
@@ -29,8 +29,8 @@
                 <label class="sr-only" for="tastingVarietal">Varietal</label>
                 <select id="tastingVarietal" ui-select2="{ allowClear: true }" data-placeholder="Varietal" ng-model="filter.varietal">
                     <option value=""></option>
-                    <option ng-repeat="bottle in bottles | unique:'Varietal' | orderBy:'Varietal'" value="{{ bottle.Varietal }}">
-                        {{ bottle.Varietal }}
+                    <option ng-repeat="varietal in varietals" value="{{ varietal }}">
+                        {{ varietal }}
                     </option>
                 </select>
             </div>
@@ -51,25 +51,39 @@
             </div>
         </div>
 
-        <div class="row">
+        <br />
+
+        <div class="row winerack">
             <div class="col-sm-6 col-md-4" ng-repeat="bottle in bottles | filter:search">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="pull-right">
+                <div class="widget winerack-bottle">
+                    <div class="pull-right">
+                        <a href="/Openings/CreateFromBottle/?BottleId={{ bottle.ID }}" title="Open"><i class="fa-2x wine-corkscrew"></i></a>
+                    </div>
+                    <h3 class="winedescription">{{ bottle.Description }}</h3>
+                    <h5>{{ bottle.Vineyard }}</h5>
+
+                    
+
+                    <div class="row">
+                        <div class="col-sm-5">
                             <span class="label label-primary" title="Purchased">{{ bottle.Purchased }}</span>
                             <span class="label label-danger" title="Opened">{{ bottle.Opened }}</span>
                             <span class="label label-success" title="Remaining">{{ bottle.Remaining }}</span>
                         </div>
-                        <strong>{{ bottle.Description }}</strong>
-                    </div>
-                    <div class="panel-body">
-                        <div><i class="wine-making-wine"></i> {{ bottle.Vineyard }}</div>
-                        <div><i class="fa fa-globe"></i> {{ bottle.Region }}</div>
-                        <div><i class="fa fa-clock-o"></i> {{ bottle.CellarMin }} to {{ bottle.CellarMax }} years</div>
-                    </div>
-                    <div class="panel-footer">
-                        <a class="btn btn-primary" href="/Openings/CreateFromBottle/?BottleId={{ bottle.ID }}">Open</a>
-                    </div>
+                        <div class="col-sm-7 text-right">
+                            <span ng-show="bottle.CellarMin > 0 && bottle.CellarMax > 0">
+                                {{ bottle.CellarMin }} to {{ bottle.CellarMax }} years
+                            </span>
+
+                            <span ng-show="bottle.CellarMin > 0 && bottle.CellarMax < 1">
+                                More than {{ bottle.CellarMin }} years
+                            </span>
+
+                            <span ng-show="bottle.CellarMin < 1 && bottle.CellarMax > 0">
+                                Less than {{ bottle.CellarMax }} years
+                            </span>
+                        </div>
+                    </div>                    
                 </div>
             </div>
         </div>
