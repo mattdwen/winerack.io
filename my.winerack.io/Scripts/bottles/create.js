@@ -43,5 +43,6 @@ $('#Photo').change(function () {
 });
 
 $(function () {
+  $('#Country').select2();
   $('#Varietals').select2();
 });

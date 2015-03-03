@@ -49,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var stored in Model.Purchases.OrderByDescending(p => p.PurchasedOn).SelectMany(p => p.StoredBottles)) {
+                @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles)) {
                     <tr>
                         <td>
                             @if (stored.Opening == null) {
@@ -100,7 +100,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var purchase in Model.Purchases) {
+                @foreach (var purchase in Model.Purchases.OrderByDescending(p => p.PurchasedOn)) {
                     <tr>
                         <td>
                             <a href="/Purchases/@purchase.ID" title="View details">

@@ -89,6 +89,7 @@ namespace winerack.Controllers {
             var wine = db.Wines
                 .Where(w => w.Name == model.WineName
                     && w.RegionID == region.ID
+                    && w.Styles.All(s => model.Styles.Contains(s.ID))
                     && w.Varietals.All(v => model.Varietals.Contains(v.ID))
                     && w.VineyardID == vineyard.ID
                     && w.Vintage == model.Vintage)
@@ -101,6 +102,11 @@ namespace winerack.Controllers {
                     VineyardID = vineyard.ID,
                     Vintage = model.Vintage
                 };
+
+                foreach (var styleId in model.Styles) {
+                    var style = db.Styles.Find(styleId);
+                    wine.Styles.Add(style);
+                }
 
                 foreach (var varietalId in model.Varietals) {
                     var varietal = db.Varietals.Find(varietalId);
@@ -116,11 +122,25 @@ namespace winerack.Controllers {
 
 		#endregion Create
 
-		#endregion Private Methods
+        #region ViewBag
 
-		#region Protected Methods
+        private void PopulateViewBag()
+        {
+            ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+            ViewBag.Varietals = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
+                Text = x.Name,
+                Value = x.ID.ToString()
+            }).ToList();
+            ViewBag.Styles = db.Styles.OrderBy(s => s.Name).ToList();
+        }
 
-		protected override void Dispose(bool disposing) {
+        #endregion ViewBag
+
+        #endregion Private Methods
+
+        #region Protected Methods
+
+        protected override void Dispose(bool disposing) {
 			if (disposing) {
 				db.Dispose();
 			}
@@ -172,11 +192,7 @@ namespace winerack.Controllers {
 				HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null)
 			};
 
-			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.Varietals = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
-				Text = x.Name,
-				Value = x.ID.ToString()
-			}).ToList();
+            PopulateViewBag();
 
 			return View(model);
 		}
@@ -232,16 +248,12 @@ namespace winerack.Controllers {
 				return RedirectToAction("Details", new { id = bottle.ID });
 			}
 
-			ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
-			ViewBag.VarietalID = db.Varietals.OrderBy(v => v.Name).Select(x => new SelectListItem {
-				Text = x.Name,
-				Value = x.ID.ToString()
-			}).ToList();
-
 			var user = db.Users.Find(User.Identity.GetUserId());
 			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
 			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
 			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+
+            PopulateViewBag();
 
 			return View(model);
 		}
