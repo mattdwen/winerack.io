@@ -6,22 +6,18 @@
 
 <div classs="page-header">
     <div class="pull-right">
-        @Html.ActionLink("New", "Create", null, new { @class = "btn btn-primary" })
+        <a href="/Varietals/Create" title="New varietal"><i class="fa fa-2x fa-plus"></i></a>
     </div>
 
-    <h1>Varietals</h1>
+    <h1>@ViewBag.Title</h1>
 </div>
 
 <div class="widget">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Style)
-                </th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>Wines</th>
                 <th></th>
             </tr>
         </thead>
@@ -32,9 +28,7 @@
                     <td>
                         <a href="/varietal/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Style)
-                    </td>
+                    <td>@item.Wines.Count</td>
                     <td class="text-right">
                         <a href="/Varietals/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
                         <a href="/Varietals/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>

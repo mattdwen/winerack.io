@@ -5,14 +5,11 @@
 }
 
 <div class="page-header">
-    <h1>
-        @Model.Name
+    @if (User.IsInRole("Administrators")) {
+        <div class="pull-right">
+            <a href="/Varietals/Edit/@Model.ID" title="Edit"><i class="fa fa-2x fa-edit"></i></a>
+        </div>
+    }
 
-        <small>
-            @if (User.IsInRole("Administrators")) {
-                <a href="/Varietals/Edit/@Model.ID" title="Edit"><i class="fa fa-edit"></i></a>
-            }
-        </small>
-
-    </h1>
+    <h1>@Model.Name</h1>
 </div>
