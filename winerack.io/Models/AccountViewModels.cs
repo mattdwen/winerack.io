@@ -126,6 +126,8 @@ namespace winerack.Models {
 		[MaxLength(255)]
 		public string Location { get; set; }
 
+        public string Username { get; set; }
+
 		[Required]
 		public string Country { get; set; }
 

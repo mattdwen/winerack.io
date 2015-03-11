@@ -59,7 +59,8 @@ namespace winerack.Controllers {
 					FirstName = user.FirstName,
 					LastName = user.LastName,
 					Location = user.Location,
-					Country = user.Country
+					Country = user.Country,
+                    Username = user.UserName
 				};	
 			}
 
@@ -564,6 +565,8 @@ namespace winerack.Controllers {
 			if (ModelState.IsValid) {
 				user.FirstName = model.FirstName;
 				user.LastName = model.LastName;
+                user.Location = model.Location;
+                user.Country = model.Country;
 
 				var result = UserManager.Update(user);
 				if (result.Succeeded) {

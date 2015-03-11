@@ -4,105 +4,110 @@
     ViewBag.Title = "Account Settings";
 }
 
-<h4>Profile</h4>
-<hr />
-
-@using (Html.BeginForm("ProfilePicture", "Account", FormMethod.Post, new { @class="form-horizontal", id="formProfilePicture", enctype = "multipart/form-data" })) {
-    @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        <label class="control-label col-md-2">Profile Picture</label>
-        <div class="col-md-10">
-            <a id="photoSelect" href="#">
-                <img class="img-circle" id="photoPreview" src="@ExtensionMethods.ProfileImageUrl("sq")" width="150" />
-            </a>
-            <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
-        </div>
-    </div>
-}
-
-@using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-    @Html.AntiForgeryToken()
-
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    
-    <div class="form-group"></div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-        </div>
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.Location, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
-        </div>
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.Location, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Country, null, "", htmlAttributes: new { @class = "form-control", required = "required" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Update profile" class="btn btn-success" />
-        </div>
-    </div>
-}
-
-<h4>Password</h4>
-<hr />
-
-<div class="form-horizontal">
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <a class="btn btn-default" href="/Account/Manage">Change password</a>
-        </div>
-    </div>
+<div class="page-header">
+    <h1>@Model.Username</h1>
 </div>
 
-<h4>Social Connections</h4>
-<hr />
+<div class="row">
+    <div class="col-md-9">
+        <div class="widget">
+            @using (Html.BeginForm("ProfilePicture", "Account", FormMethod.Post, new { @class = "form-horizontal", id = "formProfilePicture", enctype = "multipart/form-data" })) {
+                @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <p>
-                @if (Model.SocialTwitter) {
-                    <a class="btn btn-danger" href="/Auth/Twitter_Remove"><i class="fa fa-twitter"></i> Disconnect Twitter</a>
-                } else {
-                    <a class="btn btn-primary" href="/Auth/Twitter"><i class="fa fa-twitter"></i> Connect Twitter</a>
-                }
-            </p>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Profile Picture</label>
+                    <div class="col-sm-9">
+                        <a id="photoSelect" href="#">
+                            <img class="img-circle" id="photoPreview" src="@ExtensionMethods.ProfileImageUrl("sq")" width="150" />
+                        </a>
+                        <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
+                    </div>
+                </div>
+            }
 
-            <p>
-                @if (Model.SocialFacebook) {
-                    <a class="btn btn-danger" href="/Auth/Facebook_Remove"><i class="fa fa-facebook"></i> Disconnect Facebook</a>
-                } else {
-                    <a class="btn btn-primary" href="/Auth/Facebook"><i class="fa fa-facebook"></i> Connect Facebook</a>
-                }
-            </p>
+            @using (Html.BeginForm("Settings", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
+                @Html.AntiForgeryToken()
 
-            <p>
-                @if (Model.SocialTumblr) {
-                    <a class="btn btn-danger" href="/Auth/Tumblr_Remove"><i class="fa fa-tumblr"></i> Disconnect Tumblr</a>
-                } else {
-                    <a class="btn btn-primary" href="/Auth/Tumblr"><i class="fa fa-tumblr"></i> Connect Tumblr</a>
-                }
-            </p>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="form-group"></div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FirstName, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Location, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Country, new { @class = "col-sm-3 control-label" })
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(m => m.Country, null, "", htmlAttributes: new { @class = "form-control", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <input type="submit" value="Update profile" class="btn btn-success" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-sm-6 col-md-12">
+                <div class="widget">
+                    <h4><i class="fa fa-key"></i> Password</h4>
+
+                    <a class="btn btn-default btn-block" href="/Account/Manage">Change password</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-12">
+                <div class="widget">
+                    <h4>Social</h4>
+
+                    <p>
+                        @if (Model.SocialTwitter) {
+                            <a class="btn btn-danger btn-block" href="/Auth/Twitter_Remove"><i class="fa fa-twitter"></i> Disconnect Twitter</a>
+                        } else {
+                            <a class="btn btn-primary btn-block" href="/Auth/Twitter"><i class="fa fa-twitter"></i> Connect Twitter</a>
+                        }
+                    </p>
+
+                    <p>
+                        @if (Model.SocialFacebook) {
+                            <a class="btn btn-danger btn-block" href="/Auth/Facebook_Remove"><i class="fa fa-facebook"></i> Disconnect Facebook</a>
+                        } else {
+                            <a class="btn btn-primary btn-block" href="/Auth/Facebook"><i class="fa fa-facebook"></i> Connect Facebook</a>
+                        }
+                    </p>
+
+                    <p>
+                        @if (Model.SocialTumblr) {
+                            <a class="btn btn-danger btn-block" href="/Auth/Tumblr_Remove"><i class="fa fa-tumblr"></i> Disconnect Tumblr</a>
+                        } else {
+                            <a class="btn btn-primary btn-block" href="/Auth/Tumblr"><i class="fa fa-tumblr"></i> Connect Tumblr</a>
+                        }
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

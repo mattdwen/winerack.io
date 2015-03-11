@@ -28,7 +28,10 @@ $amber-500:                 #ffc107;
 // Cyan
 $cyan-500:                  #00bcd4;
 
-// Reds
+// Green
+$green-500:                 #4caf50;
+
+// Red
 $red-500:                   #f44336;
 $red-900:                   #b71c1c;
 
@@ -76,6 +79,7 @@ $fa-font-path:              '../fonts/font-awesome';
 // Components
 //
 // Common padding and border radius values
+
 
 
 // Tables
@@ -142,6 +146,10 @@ $nav-link-hover-bg:         $black-divider;
 $state-danger-text:         $white-text;
 $state-danger-bg:           transparentize($red-500, .8);
 $state-danger-border:       transparentize($red-500, .3);
+
+$state-success-text:        $white-text;
+$state-success-bg:          transparentize($green-500, .8);
+$state-success-border:       transparentize($green-500, .3);
 
 
 // Type
