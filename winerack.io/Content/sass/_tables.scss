@@ -1,0 +1,75 @@
+﻿//
+// Tables
+// ------------------------------------------------------------------------------------------------
+
+
+// Generic styles
+
+th {
+  text-align: left;
+}
+
+
+// Default table
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px;
+
+  > thead {
+    > tr {
+      > th {
+        padding: $table-cell-padding;
+
+        color: $white-text;
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  > tbody {
+    > tr {
+      > td {
+        padding: $table-cell-padding;
+
+        font-weight: $font-weight-light;
+
+        border-top: 1px solid $black-divider;
+
+        vertical-align: top;
+
+        a {
+          color: $brand-primary;
+
+          &.btn,
+          .fa,
+          [class*="wine-"] {
+            color: $white-secondary;
+
+            &:hover {
+              color: $white-text;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Striped table
+
+.table-striped {
+  > tbody {
+    > tr:nth-child(odd) {
+      > td,
+      > th {
+        background-color: $black-divider;
+      }
+    }
+  }
+}

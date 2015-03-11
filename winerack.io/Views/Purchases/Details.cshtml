@@ -1,0 +1,47 @@
+﻿@model winerack.Models.Purchase
+@using winerack.Helpers
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = Model.Bottle.Owner.Name + " purchased a " + Model.Bottle.Wine.Description;
+}
+
+@section Head {
+    @{ Html.RenderPartial("Meta/Wine", Model.Bottle.Wine); }
+    @if ((Model.ImageID.HasValue)) {
+        <meta name="twitter:image:src" property="og:image" content="https://winerack.blob.core.windows.net/purchases/@{@Model.ImageID.Value}_lg.jpg">
+    }
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @Html.Partial("_UserHeader", Model.Bottle.Owner)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @if (Model.Bottle.OwnerID == User.Identity.GetUserId()) {
+                    <div class="pull-right">
+                        <a href="/Purchases/Edit/@Model.ID" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
+                        <a href="/Purchases/Delete/@Model.ID" title="Delete"><i class="fa fa-fw fa-remove"></i></a>
+                    </div>
+                }
+                
+                Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of
+                
+                @Html.Partial("Wines/_Header", Model.Bottle.Wine)
+            </div>
+            <div class="panel-body">
+                @if ((Model.ImageID.HasValue)) {
+                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/purchases/@{@Model.ImageID.Value}_md.jpg" />
+                }
+
+                @Model.Notes
+
+                @if (Model.PurchasedOn.HasValue) {
+                    <hr />
+                    <div class="text-muted">@Model.PurchasedOn.Value.ToLongDateString()</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

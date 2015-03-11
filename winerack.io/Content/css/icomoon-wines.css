@@ -1,0 +1,70 @@
+@font-face {
+	font-family: 'icomoon-wines';
+	src:url('../fonts/wines/icomoon-wines.eot?6wp9ge');
+	src:url('../fonts/wines/icomoon-wines.eot?#iefix6wp9ge') format('embedded-opentype'),
+		url('../fonts/wines/icomoon-wines.woff?6wp9ge') format('woff'),
+		url('../fonts/wines/icomoon-wines.ttf?6wp9ge') format('truetype'),
+		url('../fonts/wines/icomoon-wines.svg?6wp9ge#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="wine-"], [class*=" wine-"] {
+	font-family: 'icomoon-wines';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.wine-taste:before {
+	content: "\e609";
+}
+.wine-glass-hand:before {
+	content: "\e60a";
+}
+.wine-leaf:before {
+	content: "\e60b";
+}
+.wine-glass:before {
+	content: "\e60c";
+}
+.wine-bottles:before {
+	content: "\e60d";
+}
+.wine-barrel:before {
+	content: "\e60e";
+}
+.wine-tractor:before {
+	content: "\e60f";
+}
+.wine-bottle-glass:before {
+	content: "\e610";
+}
+.wine-pour:before {
+	content: "\e611";
+}
+.wine-making-wine:before {
+	content: "\e612";
+}
+.wine-grapes:before {
+	content: "\e613";
+}
+.wine-frenchy:before {
+	content: "\e614";
+}
+.wine-corkscrew:before {
+	content: "\e615";
+}
+.wine-cork:before {
+	content: "\e616";
+}
+.wine-champagne:before {
+	content: "\e617";
+}

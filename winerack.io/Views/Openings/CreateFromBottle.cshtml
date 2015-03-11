@@ -1,0 +1,34 @@
+﻿@model winerack.Models.Bottle
+
+@{
+    ViewBag.Title = "Locate a Bottle";
+}
+
+@Html.Partial("Wines/_Header", Model.Wine)
+
+<h2>Select a bottle to open</h2>
+
+<div class="widget">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Purchases.FirstOrDefault().StoredBottles.FirstOrDefault().Location)</th>
+                <th>Purchased</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Opening == null)) {
+                <tr>
+                    <td>@Html.DisplayFor(m => stored.Location)</td>
+                    <td>@Html.DisplayFor(m => stored.Purchase.PurchasedOn)</td>
+                    <td class="text-right">
+                        <a class="btn btn-xs btn-success" href="/Openings/Create?storedBottleId=@stored.ID">
+                            <i class="wine-corkscrew"></i> Open bottle
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

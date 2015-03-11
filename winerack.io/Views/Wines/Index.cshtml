@@ -1,0 +1,45 @@
+﻿@model IEnumerable<winerack.Models.Wine>
+
+@{
+    ViewBag.Title = "Wines";
+}
+
+<div class="page-header">
+    <div class="pull-right">
+        <a href="/Wines/Create" title="New wine"><i class="fa fa-2x fa-plus"></i></a>
+    </div>
+
+    <h1>Wines</h1>
+</div>
+
+<div class="widget">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Wine</th>
+                <th>@Html.DisplayNameFor(m => m.Region)</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        <a href="/wines/@item.ID">
+                            @item.Vineyard.Name
+                            @item.Description
+                        </a>
+                    </td>
+                    <td>@item.Region.Label</td>
+                    <td class="text-right">
+                        <a href="/Wines/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a href="/Wines/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

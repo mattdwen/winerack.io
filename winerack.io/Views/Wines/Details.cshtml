@@ -1,0 +1,7 @@
+﻿@model winerack.Models.Wine
+
+@{
+    ViewBag.Title = @Model.Vineyard.Name + " " + @Model.Description;
+}
+
+@Html.Partial("Wines/_Header", Model)

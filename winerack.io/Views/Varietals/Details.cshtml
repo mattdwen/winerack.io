@@ -1,0 +1,18 @@
+﻿@model winerack.Models.Varietal
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="page-header">
+    <h1>
+        @Model.Name
+
+        <small>
+            @if (User.IsInRole("Administrators")) {
+                <a href="/Varietals/Edit/@Model.ID" title="Edit"><i class="fa fa-edit"></i></a>
+            }
+        </small>
+
+    </h1>
+</div>

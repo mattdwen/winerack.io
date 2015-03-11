@@ -1,0 +1,7 @@
+﻿@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "Welcome";
+}
+
+@{ Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() }); }

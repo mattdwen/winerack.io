@@ -1,0 +1,32 @@
+﻿@model winerack.Models.WineViewModels.WineCreateAndEditModel
+
+@{
+    ViewBag.Title = "New Wine";
+}
+
+<div class="page-header">
+    <h2>New Wine</h2>
+</div>
+
+<div class="widget">
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.Partial("Wines/Editor")
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">Save Wine</button>
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/wine-editor")
+}

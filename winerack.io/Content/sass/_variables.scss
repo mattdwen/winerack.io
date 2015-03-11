@@ -1,0 +1,151 @@
+﻿//
+// Variables
+// ----------------------------------------------------------------------------
+
+
+// Colors
+//
+//
+
+// Blacks
+$black:                     #000;
+$black-divider:             rgba(0,0,0,.12);
+$black-disabled:            rgba(0,0,0,.26);
+$black-secondary:           rgba(0,0,0,.54);
+$black-text:                rgba(0,0,0,.87);
+
+// Whites
+$white:                     #fff;
+$white-divider:             rgba(255,255,255,.12);
+$white-disabled:            rgba(255,255,255,.3);
+$white-secondary:           rgba(255,255,255,.7);
+$white-text:                rgba(255,255,255,.9);
+
+// Amber
+$amber-100:                 #ffecb3;
+$amber-500:                 #ffc107;
+
+// Cyan
+$cyan-500:                  #00bcd4;
+
+// Reds
+$red-500:                   #f44336;
+$red-900:                   #b71c1c;
+
+// Brand specific
+$brand-primary:             $cyan-500;
+$brand-danger:              $red-500;
+$brand-warning:             $amber-500;
+
+$brand-red:                 $red-900;
+$brand-amber:               $amber-500;
+
+
+// Scaffolding
+//
+//
+
+$text-color:                $white-text;
+
+$link-color:                $white-secondary;
+$link-hover-color:          $white-text;
+$link-hover-decoration:     none;
+
+
+// Typography
+//
+//
+
+$font-family-sans-serif:    'Roboto', sans-serif;
+
+$font-weight-light:         300;
+$font-weight-normal:        400;
+$font-weight-medium:        500;
+$font-weight-bold:          700;
+
+$headings-font-weight:      $font-weight-light;
+
+
+// Iconography
+//
+//
+
+$fa-font-path:              '../fonts/font-awesome';
+
+
+// Components
+//
+// Common padding and border radius values
+
+
+// Tables
+//
+//
+
+
+// Buttons
+//
+//
+
+$btn-success-color:         $white-text;
+
+
+// Forms
+//
+//
+
+$input-bg:                  rgba(51,51,51,0.4);
+$input-border:              rgba(0,0,0,0.075);
+$input-border-focus:        rgba(0,0,0,0.2);
+$input-color:               $white-text;
+$input-color-placeholder:   $white-disabled;
+
+$input-group-addon-bg:      $black-divider;
+
+$legend-color:              $white-text;
+
+
+// Dropdowns
+//
+//
+
+$dropdown-bg:               $black-secondary;
+$dropdown-border:           $black-secondary;
+$dropdown-divider-bg:       $black-divider;
+
+$dropdown-link-color:       $white-text;
+$dropdown-link-hover-color: $white-text;
+$dropdown-link-hover-bg:    $brand-primary;
+
+
+// Media Queries
+//
+//
+
+
+
+// Navbar
+//
+//
+$navbar-height:             70px;
+
+
+// Navs
+//
+//
+
+$nav-link-hover-bg:         $black-divider;
+
+
+// Form states and alerts
+
+$state-danger-text:         $white-text;
+$state-danger-bg:           transparentize($red-500, .8);
+$state-danger-border:       transparentize($red-500, .3);
+
+
+// Type
+//
+//
+
+$text-muted:                $white-secondary;

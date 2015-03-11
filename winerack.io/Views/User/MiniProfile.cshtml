@@ -1,0 +1,28 @@
+﻿@model winerack.Models.MiniProfileViewModel
+
+@using winerack.Helpers
+
+<div class="user-profile">
+    <div class="media">
+        <div class="pull-left">
+            <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="75" />
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">@Model.Name</h3>
+            <div class="text-muted"><i class="fa fa-user"></i> @Model.Username</div>
+            <div class="text-muted"><i class="fa fa-globe"></i> @Model.Location</div>
+        </div>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            Bottles in collection <span class="badge pull-right">@Model.BottlesTotal</span> 
+        </li>
+        <li class="list-group-item">
+            Unique bottles <span class="badge pull-right">@Model.BottlesUnique</span>
+        </li>
+        <li class="list-group-item">
+            Bottles opened <span class="badge pull-right">@Model.BottlesDrunk</span>
+        </li>
+    </ul>
+</div>

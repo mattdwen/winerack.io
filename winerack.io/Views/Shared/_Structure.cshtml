@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - winerack.io</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta name="twitter:domain" content="winerack.io">
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @Html.Partial("_Navbar")
+
+    @RenderBody()
+
+    <footer class="footer">
+        <div class="container">
+            <ul class="list-inline">
+                <li>
+                    <a class="icon twitter fa fa-twitter" href="http://twitter.com/winerack_io" target="_blank">
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="icon facebook fa fa-facebook" href="https://www.facebook.com/winerack.io" target="_blank">
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                </li>
+            </ul>
+            <span class="copyright">&copy; Matt Dwen. All rights reserved.</span>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/dist/vendor.js")
+    @Scripts.Render("~/bundles/winerack")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

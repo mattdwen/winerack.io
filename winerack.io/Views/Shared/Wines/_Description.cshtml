@@ -1,0 +1,13 @@
+﻿@model winerack.Models.Wine
+
+<div class="winedescription">
+    @if (!string.IsNullOrWhiteSpace(Model.Name)) {
+        <span class="name"><em>@Model.Name</em></span>
+    }
+
+    @if (Model.Vintage.HasValue) {
+        <span class="vintage">'@Model.Vintage.ToString().Substring(2)</span>
+    }
+    
+    <span class="varietal">@Html.DisplayFor(m => m.Varietals)</span>
+</div>

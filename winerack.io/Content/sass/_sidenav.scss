@@ -1,0 +1,119 @@
+﻿//
+// Sidenav
+// ----------------------------------------------------------------------------
+
+.row-offcanvas {
+  position: relative;
+  left: 0;
+
+  //transition: all .25s ease-out;
+}
+
+.sidenav {
+  position: absolute;
+  top: 0;
+  left: -90%;
+  z-index: 5;
+
+  width: 90%;
+  padding-top: 20px;
+
+  //transition: all .25s ease-out;
+
+  @media only screen and (min-width: $screen-sm-min) {
+    left: 0;
+
+    width: (100% / 12);
+  }
+
+  @media only screen and (min-width: $screen-md-min) {
+    width: 25%;
+  }
+
+  .user-profile {
+    @media only screen and (min-width: $screen-sm-min) {
+      display: none;
+    }
+
+    @media only screen and (min-width: $screen-md-min) {
+      display: block;
+    }
+  }
+
+  .nav-stacked {
+    margin-left: -15px;
+
+    @media only screen and (min-width: $screen-md-min) {
+      margin-left: 0;
+    }
+  }
+
+  .nav-text {
+    margin-left: 30px;
+
+    font-size: 1.6rem;
+    font-weight: $font-weight-light;
+
+    @media only screen and (min-width: $screen-sm-min) {
+      display: none;
+    }
+
+    @media only screen and (min-width: $screen-md-min) {
+      display: inline;
+    }
+  }
+
+  [class*="wine-"] {
+    font-size: 2rem;
+  }
+  
+  .wine-bottles {
+    position: relative;
+    top: 4px;
+  }
+}
+
+.body-content {
+  @media only screen and (min-width: $screen-md-min) {
+    margin-left: 25%;
+    width: 75%;
+  }
+}
+
+.is-sidenav-visible {
+  .row-offcanvas {
+    left: 90%;
+    margin-left: 0;
+
+    @media only screen and (min-width: $screen-sm-min) {
+      left: 0;
+    }
+  }
+
+  .sidenav {
+    @media only screen and (min-width: $screen-sm-min) {
+      width: 40%;
+      margin-left: 0;
+    }
+
+    .user-profile {
+      @media only screen and (min-width: $screen-sm-min) {
+        display: block;
+      }
+    }
+  }
+
+  .body-content {
+    @media only screen and (min-width: $screen-sm-min) {
+      margin-left: 40%;
+
+      //transition: all .25s ease-out;
+    }
+  }
+
+  .nav-text {
+    @media only screen and (min-width: $screen-sm-min) {
+      display: inline-block;
+    }
+  }
+}

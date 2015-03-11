@@ -1,0 +1,68 @@
+﻿@using winerack.Helpers
+
+<div class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            @if (Request.IsAuthenticated) {
+                <button type="button" class="navbar-toggle" data-toggle="sidenav">
+                    <i class="fa fa-caret-left"></i>
+                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-caret-right"></i>
+                </button>
+            }
+
+            <a class="navbar-brand" href="/">
+                <i class="wine-corkscrew"></i>
+                <span class="text-thin">wine</span><strong>rack</strong>
+            </a>
+        </div>
+
+        <ul class="navbar-nav navbar-right">
+            @if (User.IsInRole(MvcApplication.ADMINISTRATOR_GROUP)) {
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="/Regions">Regions</a></li>
+                        <li><a href="/Styles">Styles</a></li>
+                        <li><a href="/Varietals">Varietals</a></li>
+                        <li><a href="/Vineyards">Vineyards</a></li>
+                        <li><a href="/Wines">Wines</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Users">Users</a></li>
+                    </ul>
+                </li>
+            }
+
+            @if (Request.IsAuthenticated) {
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="20" /></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="/Friends">Friends</a></li>
+                        <li><a href="/Account/Settings">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Sign out</a></li>
+                    </ul>
+                </li>
+                <li class="hidden-xs">
+                    <a href="javascript:document.getElementById('logoutForm').submit()" title="Sign out">
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                </li>
+            } else {
+                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>
+                    <a href="/Account/Login" title="Sign in">
+                        <i class="fa fa-sign-in"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+
+    </div>
+
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"  }))
+    {
+        @Html.AntiForgeryToken();
+    }
+</div>
+

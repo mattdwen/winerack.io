@@ -1,0 +1,55 @@
+﻿@model winerack.Models.Purchase
+
+@{
+    ViewBag.Title = "Edit Purchase";
+}
+
+@Html.Partial("Wines/_Header", Model.Bottle.Wine)
+
+<div class="page-header">
+    <h2>Edit Purchase</h2>
+</div>
+
+<div class="widget">
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(m => m.BottleID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PurchasedOn, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PurchasedOn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PurchasedOn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PurchasePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PurchasePrice, new { htmlAttributes = new { @class = "form-control", step = "0.01" } })
+                    @Html.ValidationMessageFor(model => model.PurchasePrice, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-success">Save purchase</button>
+                    @Html.ActionLink("Back to purchase", "Details", new { id = Model.ID }, new { @class = "btn btn-link" })
+                    @Html.ActionLink("Back to purchase list", "Index", null, new { @class = "btn btn-link" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

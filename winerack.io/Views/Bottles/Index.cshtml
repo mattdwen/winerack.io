@@ -1,0 +1,15 @@
+﻿@model IEnumerable<winerack.Models.Bottle>
+
+@{
+    ViewBag.Title = "In The Rack";
+}
+
+<div class="page-header">
+    <div class="pull-right">
+        <a class="btn btn-primary" href="/Bottles/Create">Add a bottle</a>
+    </div>
+
+    <h2>In The Rack</h2>
+</div>
+
+@{Html.RenderAction("Rack");}

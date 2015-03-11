@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F45B491-1171-4FC7-B387-BB620E7F7DE4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>winerack</RootNamespace>
+    <AssemblyName>winerack</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Spatial, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.3\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\API\BottlesController.cs" />
+    <Compile Include="Controllers\API\RegionsController.cs" />
+    <Compile Include="Controllers\API\VarietalsController.cs" />
+    <Compile Include="Controllers\API\VineyardsController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BottlesController.cs" />
+    <Compile Include="Controllers\FriendsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
+    <Compile Include="Controllers\RegionsController.cs" />
+    <Compile Include="Controllers\StoredBottlesController.cs" />
+    <Compile Include="Controllers\OpeningsController.cs" />
+    <Compile Include="Controllers\StylesController.cs" />
+    <Compile Include="Controllers\TastingsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\VarietalsController.cs" />
+    <Compile Include="Controllers\VineyardsController.cs" />
+    <Compile Include="Controllers\WinesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Authentication\BottleAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\PurchaseAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\StoredBottleAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\Authentication\TastingAuthenticationAttribute.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Logic\Activities.cs" />
+    <Compile Include="Logic\BlobHandler.cs" />
+    <Compile Include="Logic\Images.cs" />
+    <Compile Include="Logic\Social\Facebook.cs" />
+    <Compile Include="Logic\Social\ISocial.cs" />
+    <Compile Include="Logic\Social\Tumblr.cs" />
+    <Compile Include="Logic\Social\Twitter.cs" />
+    <Compile Include="Migrations\201405280844439_init.cs" />
+    <Compile Include="Migrations\201405280844439_init.Designer.cs">
+      <DependentUpon>201405280844439_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405290444381_purchase-stored-relation.cs" />
+    <Compile Include="Migrations\201405290444381_purchase-stored-relation.Designer.cs">
+      <DependentUpon>201405290444381_purchase-stored-relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405290532462_remove-bottle-stored.cs" />
+    <Compile Include="Migrations\201405290532462_remove-bottle-stored.Designer.cs">
+      <DependentUpon>201405290532462_remove-bottle-stored.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405300402302_user-created-date.cs" />
+    <Compile Include="Migrations\201405300402302_user-created-date.Designer.cs">
+      <DependentUpon>201405300402302_user-created-date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405300730210_tasting.cs" />
+    <Compile Include="Migrations\201405300730210_tasting.Designer.cs">
+      <DependentUpon>201405300730210_tasting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407110220072_create_activityevents_table.cs" />
+    <Compile Include="Migrations\201407110220072_create_activityevents_table.Designer.cs">
+      <DependentUpon>201407110220072_create_activityevents_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407120456271_add_imageid_to_purchases.cs" />
+    <Compile Include="Migrations\201407120456271_add_imageid_to_purchases.Designer.cs">
+      <DependentUpon>201407120456271_add_imageid_to_purchases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407120925144_add_imageid_to_tastings.cs" />
+    <Compile Include="Migrations\201407120925144_add_imageid_to_tastings.Designer.cs">
+      <DependentUpon>201407120925144_add_imageid_to_tastings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.cs" />
+    <Compile Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.Designer.cs">
+      <DependentUpon>201407130442121_add_cellar_min_max_to_bottles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407170325400_create_varietals_table.cs" />
+    <Compile Include="Migrations\201407170325400_create_varietals_table.Designer.cs">
+      <DependentUpon>201407170325400_create_varietals_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407180913232_wine_varitetalid_not_nullable.cs" />
+    <Compile Include="Migrations\201407180913232_wine_varitetalid_not_nullable.Designer.cs">
+      <DependentUpon>201407180913232_wine_varitetalid_not_nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407220301466_users_add_imageid.cs" />
+    <Compile Include="Migrations\201407220301466_users_add_imageid.Designer.cs">
+      <DependentUpon>201407220301466_users_add_imageid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407222342559_create_credentials.cs" />
+    <Compile Include="Migrations\201407222342559_create_credentials.Designer.cs">
+      <DependentUpon>201407222342559_create_credentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407242349203_rename_tastings_to_openings.cs" />
+    <Compile Include="Migrations\201407242349203_rename_tastings_to_openings.Designer.cs">
+      <DependentUpon>201407242349203_rename_tastings_to_openings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407250317265_create_tastings.cs" />
+    <Compile Include="Migrations\201407250317265_create_tastings.Designer.cs">
+      <DependentUpon>201407250317265_create_tastings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407260530564_add_user_location_and_country.cs" />
+    <Compile Include="Migrations\201407260530564_add_user_location_and_country.Designer.cs">
+      <DependentUpon>201407260530564_add_user_location_and_country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407260941516_credentials_add_data1.cs" />
+    <Compile Include="Migrations\201407260941516_credentials_add_data1.Designer.cs">
+      <DependentUpon>201407260941516_credentials_add_data1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407300911222_varietals_add_cellar_min_max.cs" />
+    <Compile Include="Migrations\201407300911222_varietals_add_cellar_min_max.Designer.cs">
+      <DependentUpon>201407300911222_varietals_add_cellar_min_max.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408030345103_remove_varietal_cellar_min_and_max.cs" />
+    <Compile Include="Migrations\201408030345103_remove_varietal_cellar_min_and_max.Designer.cs">
+      <DependentUpon>201408030345103_remove_varietal_cellar_min_and_max.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408030401030_bottle_cellar_min_max_nullable.cs" />
+    <Compile Include="Migrations\201408030401030_bottle_cellar_min_max_nullable.Designer.cs">
+      <DependentUpon>201408030401030_bottle_cellar_min_max_nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408030521535_create_friends.cs" />
+    <Compile Include="Migrations\201408030521535_create_friends.Designer.cs">
+      <DependentUpon>201408030521535_create_friends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408030841066_refactor_activities.cs" />
+    <Compile Include="Migrations\201408030841066_refactor_activities.Designer.cs">
+      <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503020031385_wine_varietal_many_many.cs" />
+    <Compile Include="Migrations\201503020031385_wine_varietal_many_many.Designer.cs">
+      <DependentUpon>201503020031385_wine_varietal_many_many.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503022129504_wine-styles.cs" />
+    <Compile Include="Migrations\201503022129504_wine-styles.Designer.cs">
+      <DependentUpon>201503022129504_wine-styles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503022329303_wine_activities_cascade_delete.cs" />
+    <Compile Include="Migrations\201503022329303_wine_activities_cascade_delete.Designer.cs">
+      <DependentUpon>201503022329303_wine_activities_cascade_delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\ActivityNotification.cs" />
+    <Compile Include="Models\ActivityViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Bottle.cs" />
+    <Compile Include="Models\BottleViewModels.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Credentials.cs" />
+    <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\OpeningViewModels.cs" />
+    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchaseViewModels.cs" />
+    <Compile Include="Models\RackViewModels.cs" />
+    <Compile Include="Models\Region.cs" />
+    <Compile Include="Models\Social\Tumblr.cs" />
+    <Compile Include="Models\StoredBottle.cs" />
+    <Compile Include="Models\Opening.cs" />
+    <Compile Include="Models\Style.cs" />
+    <Compile Include="Models\Tasting.cs" />
+    <Compile Include="Models\TastingViewModels.cs" />
+    <Compile Include="Models\UserViewModels.cs" />
+    <Compile Include="Models\Varietal.cs" />
+    <Compile Include="Models\Vineyard.cs" />
+    <Compile Include="Models\Wine.cs" />
+    <Compile Include="Models\WineViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Validation\AtLeastOneItemAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\icomoon-wines.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Content\fonts\wines\icomoon-wines.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Gruntfile.js" />
+    <Content Include="Scripts\account\settings.js" />
+    <Content Include="Scripts\angular\controllers\openings.js" />
+    <Content Include="Scripts\angular\services\bottleService.js" />
+    <Content Include="Scripts\bloodhound\regions.js" />
+    <Content Include="Scripts\bloodhound\varietals.js" />
+    <Content Include="Scripts\bloodhound\vineyards.js" />
+    <Content Include="Content\fonts\wines\icomoon-wines.eot" />
+    <Content Include="Content\fonts\wines\icomoon-wines.ttf" />
+    <Content Include="Content\fonts\wines\icomoon-wines.woff" />
+    <Content Include="package.json" />
+    <Content Include="bower.json" />
+    <Content Include="AppSettings.template.config" />
+    <Content Include="AppSettings.config" />
+    <Content Include="Content\sass\main.scss" />
+    <Content Include="Content\sass\_bootstrap.scss" />
+    <Content Include="Content\sass\_variables.scss" />
+    <Content Include="Content\sass\_scaffolding.scss" />
+    <Content Include="Content\sass\_navbar.scss" />
+    <Content Include="Content\sass\_typography.scss" />
+    <Content Include="Content\sass\_footer.scss" />
+    <Content Include="Content\sass\_jumbotron.scss" />
+    <Content Include="Content\sass\_buttons.scss" />
+    <Content Include="Content\sass\_forms.scss" />
+    <Content Include="Content\sass\_account.scss" />
+    <Content Include="Content\sass\_widgets.scss" />
+    <Content Include="Content\sass\_sidenav.scss" />
+    <Content Include="Content\sass\_marketing.scss" />
+    <Content Include="Content\sass\_home.scss" />
+    <Content Include="Content\sass\_list-group.scss" />
+    <Content Include="Content\sass\_type.scss" />
+    <Content Include="Content\sass\_tables.scss" />
+    <Content Include="Content\sass\_typeahead.scss" />
+    <Content Include="Content\sass\_select2.scss" />
+    <Content Include="Content\sass\_wine.scss" />
+    <Content Include="Content\sass\_panels.scss" />
+    <Content Include="Content\sass\_activity.scss" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bottles\create.js" />
+    <Content Include="Scripts\dist\vendor.js" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <Content Include="Scripts\jquery-ui-1.11.2.js" />
+    <Content Include="Scripts\jquery-ui-1.11.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\purchases\create.js" />
+    <Content Include="Scripts\openings\create.js" />
+    <Content Include="Scripts\tastings\create.js" />
+    <Content Include="Scripts\vendor\angular\angular-resource.js" />
+    <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
+    <Content Include="Scripts\vendor\angular\angular.js" />
+    <Content Include="Scripts\winerack.js" />
+    <Content Include="Scripts\wine\editor.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Activity\Tasted.cshtml" />
+    <Content Include="Views\Shared\Meta\Wine.cshtml" />
+    <Content Include="Views\Account\ForgotUsername.cshtml" />
+    <Content Include="Views\Account\ForgotUsernameConfirmation.cshtml" />
+    <Content Include="Views\Friends\Index.cshtml" />
+    <Content Include="Views\Home\IndexLoggedIn.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Varietals.cshtml" />
+    <Content Include="Views\Shared\Wines\_Header.cshtml" />
+    <None Include="Views\Shared\Wines\_Preview.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Regions\Create.cshtml" />
+    <Content Include="Views\Regions\Delete.cshtml" />
+    <Content Include="Views\Regions\Details.cshtml" />
+    <Content Include="Views\Regions\Edit.cshtml" />
+    <Content Include="Views\Regions\Index.cshtml" />
+    <Content Include="Views\Vineyards\Create.cshtml" />
+    <Content Include="Views\Vineyards\Delete.cshtml" />
+    <Content Include="Views\Vineyards\Details.cshtml" />
+    <Content Include="Views\Vineyards\Edit.cshtml" />
+    <Content Include="Views\Vineyards\Index.cshtml" />
+    <Content Include="Views\Wines\Create.cshtml" />
+    <Content Include="Views\Wines\Delete.cshtml" />
+    <Content Include="Views\Wines\Details.cshtml" />
+    <Content Include="Views\Wines\Edit.cshtml" />
+    <Content Include="Views\Wines\Index.cshtml" />
+    <Content Include="Views\Shared\Wines\Editor.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Account\RegisterSent.cshtml" />
+    <Content Include="Views\Bottles\Create.cshtml" />
+    <Content Include="Views\Bottles\Delete.cshtml" />
+    <Content Include="Views\Bottles\Details.cshtml" />
+    <Content Include="Views\Bottles\Edit.cshtml" />
+    <Content Include="Views\Bottles\Index.cshtml" />
+    <Content Include="Views\Purchases\Delete.cshtml" />
+    <Content Include="Views\Purchases\Edit.cshtml" />
+    <Content Include="Views\Purchases\Index.cshtml" />
+    <Content Include="Views\Bottles\Rack.cshtml" />
+    <Content Include="Views\Purchases\Create.cshtml" />
+    <Content Include="Views\Purchases\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Users\Invite.cshtml" />
+    <Content Include="Views\StoredBottles\Delete.cshtml" />
+    <Content Include="Views\Home\AccessDenied.cshtml" />
+    <Content Include="Views\Openings\Create.cshtml" />
+    <Content Include="Views\Openings\Details.cshtml" />
+    <Content Include="Views\Openings\CreateFromBottle.cshtml" />
+    <Content Include="Views\User\MiniProfile.cshtml" />
+    <Content Include="Views\Openings\Start.cshtml" />
+    <Content Include="Views\Activity\Stream.cshtml" />
+    <Content Include="Views\Shared\_Activity.cshtml" />
+    <Content Include="Views\Activity\Opened.cshtml" />
+    <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\Activity\Purchased.cshtml" />
+    <Content Include="Views\Shared\Wines\_Description.cshtml" />
+    <Content Include="Views\Shared\_UserHeader.cshtml" />
+    <Content Include="Views\Tastings\Create.cshtml" />
+    <Content Include="Views\Tastings\Details.cshtml" />
+    <Content Include="Views\User\StatBar.cshtml" />
+    <Content Include="Views\Shared\_MailchimpSignup.cshtml" />
+    <Content Include="Views\Shared\_Structure.cshtml" />
+    <Content Include="Views\Varietals\Create.cshtml" />
+    <Content Include="Views\Varietals\Delete.cshtml" />
+    <Content Include="Views\Varietals\Details.cshtml" />
+    <Content Include="Views\Varietals\Edit.cshtml" />
+    <Content Include="Views\Varietals\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Shared\_Sidenav.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Styles\Create.cshtml" />
+    <Content Include="Views\Styles\Delete.cshtml" />
+    <Content Include="Views\Styles\Details.cshtml" />
+    <Content Include="Views\Styles\Edit.cshtml" />
+    <Content Include="Views\Styles\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\vendor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201405280844439_init.resx">
+      <DependentUpon>201405280844439_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405290444381_purchase-stored-relation.resx">
+      <DependentUpon>201405290444381_purchase-stored-relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405290532462_remove-bottle-stored.resx">
+      <DependentUpon>201405290532462_remove-bottle-stored.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405300402302_user-created-date.resx">
+      <DependentUpon>201405300402302_user-created-date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405300730210_tasting.resx">
+      <DependentUpon>201405300730210_tasting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407110220072_create_activityevents_table.resx">
+      <DependentUpon>201407110220072_create_activityevents_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407120456271_add_imageid_to_purchases.resx">
+      <DependentUpon>201407120456271_add_imageid_to_purchases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407120925144_add_imageid_to_tastings.resx">
+      <DependentUpon>201407120925144_add_imageid_to_tastings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407130442121_add_cellar_min_max_to_bottles.resx">
+      <DependentUpon>201407130442121_add_cellar_min_max_to_bottles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407170325400_create_varietals_table.resx">
+      <DependentUpon>201407170325400_create_varietals_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407180913232_wine_varitetalid_not_nullable.resx">
+      <DependentUpon>201407180913232_wine_varitetalid_not_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407220301466_users_add_imageid.resx">
+      <DependentUpon>201407220301466_users_add_imageid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407222342559_create_credentials.resx">
+      <DependentUpon>201407222342559_create_credentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407242349203_rename_tastings_to_openings.resx">
+      <DependentUpon>201407242349203_rename_tastings_to_openings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407250317265_create_tastings.resx">
+      <DependentUpon>201407250317265_create_tastings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407260530564_add_user_location_and_country.resx">
+      <DependentUpon>201407260530564_add_user_location_and_country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407260941516_credentials_add_data1.resx">
+      <DependentUpon>201407260941516_credentials_add_data1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407300911222_varietals_add_cellar_min_max.resx">
+      <DependentUpon>201407300911222_varietals_add_cellar_min_max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408030345103_remove_varietal_cellar_min_and_max.resx">
+      <DependentUpon>201408030345103_remove_varietal_cellar_min_and_max.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408030401030_bottle_cellar_min_max_nullable.resx">
+      <DependentUpon>201408030401030_bottle_cellar_min_max_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408030521535_create_friends.resx">
+      <DependentUpon>201408030521535_create_friends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408030841066_refactor_activities.resx">
+      <DependentUpon>201408030841066_refactor_activities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503020031385_wine_varietal_many_many.resx">
+      <DependentUpon>201503020031385_wine_varietal_many_many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503022129504_wine-styles.resx">
+      <DependentUpon>201503022129504_wine-styles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503022329303_wine_activities_cascade_delete.resx">
+      <DependentUpon>201503022329303_wine_activities_cascade_delete.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3890</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3890/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="AppSettings.template.config" DestinationFiles="AppSettings.config" SkipUnchangedFiles="true" Condition="!Exists('AppSettings.config')" />
+  </Target>
+</Project>

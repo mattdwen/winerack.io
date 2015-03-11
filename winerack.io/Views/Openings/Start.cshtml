@@ -1,0 +1,99 @@
+﻿@model IEnumerable<winerack.Models.Bottle>
+
+@{
+    ViewBag.Title = "Open a Bottle";
+}
+
+<section ng-app="openingsApp">
+    <div ng-controller="StartCtrl">
+        <div class="page-header">
+            <h1>Select a wine from your collection</h1>
+        </div>
+
+        <div class="jumbotron" ng-show="bottles.count < 1">
+            You have no bottles to open!
+        </div>
+
+        <div class="form-inline well well-sm">
+            <div class="form-group">
+                <label class="sr-only" for="tastingStyle">Style</label>
+                <select id="tastingStyle" ui-select2="{ allowClear: true}" data-placeholder="Style" ng-model="filter.style">
+                    <option value=""></option>
+                    <option ng-repeat="style in styles" value="{{ style }}">
+                        {{ style }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="tastingVarietal">Varietal</label>
+                <select id="tastingVarietal" ui-select2="{ allowClear: true }" data-placeholder="Varietal" ng-model="filter.varietal">
+                    <option value=""></option>
+                    <option ng-repeat="varietal in varietals" value="{{ varietal }}">
+                        {{ varietal }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="tastingDrinking">Drinking</label>
+                <select id="tastingDrinking" ui-select2="{ allowClear: true }" data-placeholder="Drinking" ng-model="filter.drinking">
+                    <option value=""></option>
+                    <option value="now">Now</option>
+                    <option value="over">Overdue</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="sr-only" for="tastingKeywords">Keywords</label>
+                <input class="form-control" type="text" placeholder="Search"
+                       ng-model="filter.keywords" />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row winerack">
+            <div class="col-sm-6 col-md-4" ng-repeat="bottle in bottles | filter:search">
+                <div class="widget winerack-bottle">
+                    <div class="pull-right">
+                        <a href="/Openings/CreateFromBottle/?BottleId={{ bottle.ID }}" title="Open"><i class="fa-2x wine-corkscrew"></i></a>
+                    </div>
+                    <h3 class="winedescription">{{ bottle.Description }}</h3>
+                    <h5>{{ bottle.Vineyard }}</h5>
+
+                    
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <span class="label label-primary" title="Purchased">{{ bottle.Purchased }}</span>
+                            <span class="label label-danger" title="Opened">{{ bottle.Opened }}</span>
+                            <span class="label label-success" title="Remaining">{{ bottle.Remaining }}</span>
+                        </div>
+                        <div class="col-sm-7 text-right">
+                            <span ng-show="bottle.CellarMin > 0 && bottle.CellarMax > 0">
+                                {{ bottle.CellarMin }} to {{ bottle.CellarMax }} years
+                            </span>
+
+                            <span ng-show="bottle.CellarMin > 0 && bottle.CellarMax < 1">
+                                More than {{ bottle.CellarMin }} years
+                            </span>
+
+                            <span ng-show="bottle.CellarMin < 1 && bottle.CellarMax > 0">
+                                Less than {{ bottle.CellarMax }} years
+                            </span>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/vendor/select2.js")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/Scripts/vendor/angular-ui/select2.js")
+    @Scripts.Render("~/Scripts/angular/services/bottleService.js")
+    @Scripts.Render("~/Scripts/angular/controllers/openings.js")
+}

@@ -1,0 +1,130 @@
+﻿@model winerack.Models.Bottle
+@using winerack.Helpers
+
+@{
+    ViewBag.Title = @Model.Wine.ToString();
+}
+
+<input id="Bottle_ID" type="hidden" value="@Model.ID"/>
+
+<div class="row">
+    <div class="col-md-9">
+        @Html.Partial("Wines/_Header", Model.Wine)
+        @if (Model.NumberRemaining > 0) {
+            <a href="/Openings/CreateFromBottle?BottleId=@Model.ID" class="btn btn-link"><i class="wine-corkscrew"></i> Open a bottle</a>
+        }
+        <a href="/Purchases/Create?BottleId=@Model.ID" class="btn btn-link"><i class="fa fa-plus"></i> Purchase more</a>
+    </div>
+    <div class="col-md-3">
+        <br />
+        <ul class="list-group">
+            <li class="list-group-item">
+                @Html.DisplayNameFor(m => m.NumberOfBottles)
+                <span class="label label-info pull-right">@Model.NumberOfBottles</span>
+            </li>
+            <li class="list-group-item">
+                @Html.DisplayNameFor(m => m.NumberDrunk)
+                <span class="label label-danger pull-right">@Model.NumberDrunk</span>
+            </li>
+            <li class="list-group-item">
+                @Html.DisplayNameFor(m => m.NumberRemaining)
+                <span class="label label-success pull-right">@Model.NumberRemaining</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<h2>Bottles</h2>
+<div class="widget">
+    @using (Html.BeginForm("Update", "StoredBottles")) {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="BottleID" value="@Model.ID" />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Stored</th>
+                    <th>Purchased</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles)) {
+                    <tr>
+                        <td>
+                            @if (stored.Opening == null) {
+                                <input class="form-control"
+                                       id="bottle_@stored.ID"
+                                       name="bottle_@stored.ID"
+                                       type="text"
+                                       value="@stored.Location"
+                                       placeholder="Location" />
+                            } else {
+                                <span>Opened @Html.DisplayFor(s => stored.Opening.OpenedOn)</span>
+                            }
+                        </td>
+                        <td valign="middle">@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
+                        <td class="text-right">
+                            @if (stored.Opening == null) {
+                                <a href="/Openings/Create?storedBottleId=@stored.ID" title="Open"><i class="fa-fw fa-2x wine-corkscrew"></i></a>
+                                <a href="/StoredBottles/Delete/@stored.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
+                            } else {
+                                @Html.ActionLink("tasting notes", "Details", new { controller = "Openings", id = stored.ID })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button class="btn btn-success" type="submit">Save storage details</button>
+
+    }
+</div>
+
+<div>
+    <div class="pull-right">
+        <a class="btn btn-primary" href="/Purchases/Create/?BottleId=@Model.ID"><i class="fa fa-plus"></i> Purchase More</a>
+    </div>
+    <h2>Purchases</h2>
+</div>
+<div class="widget">
+    @if (Model.Purchases.Count > 0) {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasedOn)</th>
+                    <th>@Html.DisplayNameFor(m => m.Purchases.First().Quantity)</th>
+                    <th>@Html.DisplayNameFor(m => m.Purchases.First().PurchasePrice)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var purchase in Model.Purchases.OrderByDescending(p => p.PurchasedOn)) {
+                    <tr>
+                        <td>
+                            <a href="/Purchases/@purchase.ID" title="View details">
+                                @Html.DisplayFor(p => purchase.PurchasedOn)
+                            </a>
+                        </td>
+                        <td>@purchase.StoredBottles.Count</td>
+                        <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
+                        <td class="text-right">
+                            <a href="/Purchases/@purchase.ID" title="View details"><i class="fa fa-fw fa-eye"></i></a>
+                            <a href="/Purchases/Edit/@purchase.ID" title="Edit purchase"><i class="fa fa-fw fa-edit"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <p>
+            
+        </p>
+    } else {
+        <div class="jumbotron">
+            <p>You haven't purchased this wine yet.</p>
+            <a class="btn btn-primary" href="/Purchases/Create/?BottleId=@Model.ID"><i class="fa fa-plus"></i> Purchase now</a>
+        </div>
+    }
+</div>

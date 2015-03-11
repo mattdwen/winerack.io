@@ -1,0 +1,13 @@
+﻿@model IEnumerable<winerack.Models.Activity>
+
+@if (Model.Count() < 1) {
+    <div class="jumbotron">
+        There is no recent activity!
+    </div>
+} else {
+    <div id="activity-stream">
+        @foreach (var activity in Model) {
+            Html.RenderAction(activity.Verb.ToString(), "Activity", new { activity = activity});
+        }
+    </div>
+}
