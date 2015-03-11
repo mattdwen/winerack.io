@@ -478,6 +478,7 @@
     <Content Include="Content\sass\_select2.scss" />
     <Content Include="Content\sass\_wine.scss" />
     <Content Include="Content\sass\_panels.scss" />
+    <Content Include="Content\sass\_activity.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />

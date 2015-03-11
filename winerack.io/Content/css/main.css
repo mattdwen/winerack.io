@@ -5513,6 +5513,9 @@ th {
 .btn {
   transition: all .2s; }
 
+#activity-stream .activity-event {
+  margin-bottom: 20px; }
+
 .footer {
   padding: 10rem 0 10rem;
   color: rgba(255, 255, 255, 0.7);
