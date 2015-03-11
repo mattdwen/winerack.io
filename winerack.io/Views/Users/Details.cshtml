@@ -1,154 +1,82 @@
 ﻿@model winerack.Models.User
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>Details</h2>
+<div class="page-header">
+    <h1>@Model.Name</h1>
+</div>
 
-<div>
-    <h4>User</h4>
-    <hr />
+<div class="widget">
+    <h3>Account</h3>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
+        <dt>Username</dt>
+        <dd>@Model.UserName</dd>
 
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
         <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
+            <a href="mailto:@Model.Email">@Model.Email</a>
+            @if (Model.EmailConfirmed) {
+                <i class="fa fa-check" title="Confirmed"></i>
+            }
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.CreatedOn)</dt>
+        <dd>@Html.DisplayFor(model => model.CreatedOn)</dd>
 
+        <dt>Administrator</dt>
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @if ((bool)ViewBag.IsAdministrator) {
+                <a href="/Users/Administrator/@Model.Id"><i class="fa fa-check"></i></a>
+            } else {
+                <a href="/Users/Administrator/@Model.Id"><i class="fa fa-times"></i></a>
+            }
         </dd>
+    </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+    <h3>Personal</h3>
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
+        <dt>@Html.DisplayNameFor(model => model.PhoneNumber)</dt>
         <dd>
             @Html.DisplayFor(model => model.PhoneNumber)
+            @if (Model.PhoneNumberConfirmed) {
+                <i class="fa fa-check" title="Confirmed"></i>
+            }
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Location)</dt>
+        <dd>@Html.DisplayFor(model => model.Location)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Country)</dt>
+        <dd>@Html.DisplayFor(model => model.Country)</dd>
+    </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
+    <h3>Security</h3>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.TwoFactorEnabled)</dt>
+        <dd>@Html.DisplayFor(model => model.TwoFactorEnabled)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
+        <dt>@Html.DisplayNameFor(model => model.AccessFailedCount)</dt>
+        <dd>@Html.DisplayFor(model => model.AccessFailedCount)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.LockoutEnabled)</dt>
+        <dd>@Html.DisplayFor(model => model.LockoutEnabled)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEndDateUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
+        <dt>@Html.DisplayNameFor(model => model.LockoutEndDateUtc)</dt>
+        <dd>@Html.DisplayFor(model => model.LockoutEndDateUtc)</dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+
+
+
+
+@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-link" })

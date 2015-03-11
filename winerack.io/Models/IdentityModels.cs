@@ -15,6 +15,7 @@ namespace winerack.Models {
 
 		#region Properties
 
+        [Display(Name = "Member since")]
 		public DateTime CreatedOn { get; set; }
 
 		[Display(Name="First Name")]

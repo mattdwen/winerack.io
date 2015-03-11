@@ -94,6 +94,9 @@ namespace winerack.Controllers {
 
 		public ActionResult Details(string id) {
 			var user = UserManager.FindById(id);
+
+            ViewBag.IsAdministrator = UserManager.IsInRole(id, "Administrators");
+
 			return View(user);
 		}
 

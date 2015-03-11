@@ -4,36 +4,41 @@
     ViewBag.Title = "Users";
 }
 
-<h2>Users</h2>
+<div class="page-header">
+    <div class="pull-right">
+        @Html.ActionLink("Invite", "Invite", null, new { @class = "btn btn-primary" })
+    </div>
 
-<p>
-    @Html.ActionLink("Invite", "Invite", null, new { @class = "btn btn-default" })
-</p>
+    <h1>Users</h1>
+</div>
 
-<table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(m => m.Email)</th>
-        <th>@Html.DisplayNameFor(m => m.FirstName)</th>
-        <th>@Html.DisplayNameFor(m => m.LastName)</th>
-        <th>Verified</th>
-        <th></th>
-    </tr>
+<div class="widget">
 
-    @foreach (var user in Model) {
-        <tr>
-            <td>@Html.DisplayFor(m => user.Email)</td>
-            <td>@Html.DisplayFor(m => user.FirstName)</td>
-            <td>@Html.DisplayFor(m => user.LastName)</td>
-            <td>
-                @if (user.EmailConfirmed) {
-                    <i class="fa fa-check"></i>
-                } else {
-                    <i class="fa fa-times"></i>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = user.Id })
-            </td>
-        </tr>
-    }
-</table>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.UserName)</th>
+                <th>@Html.DisplayNameFor(m => m.Email)</th>
+                <th>Name</th>
+                <th>Verified</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var user in Model) {
+                <tr>
+                    <td><a href="/Users/Details/@user.Id">@user.UserName</a></td>
+                    <td><a href="mailto:@user.Email">@Html.DisplayFor(m => user.Email)</a></td>
+                    <td>@user.Name</td>
+                    <td>
+                        @if (user.EmailConfirmed) {
+                            <i class="fa fa-check"></i>
+                        } else {
+                            <i class="fa fa-times"></i>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

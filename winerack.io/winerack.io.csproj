@@ -406,39 +406,28 @@
   <ItemGroup>
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\icomoon-wines.css" />
-    <Content Include="Content\themes\base\accordion.css" />
-    <Content Include="Content\themes\base\all.css" />
-    <Content Include="Content\themes\base\autocomplete.css" />
-    <Content Include="Content\themes\base\base.css" />
-    <Content Include="Content\themes\base\button.css" />
-    <Content Include="Content\themes\base\core.css" />
-    <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\dialog.css" />
-    <Content Include="Content\themes\base\draggable.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\menu.css" />
-    <Content Include="Content\themes\base\progressbar.css" />
-    <Content Include="Content\themes\base\resizable.css" />
-    <Content Include="Content\themes\base\selectable.css" />
-    <Content Include="Content\themes\base\selectmenu.css" />
-    <Content Include="Content\themes\base\slider.css" />
-    <Content Include="Content\themes\base\sortable.css" />
-    <Content Include="Content\themes\base\spinner.css" />
-    <Content Include="Content\themes\base\tabs.css" />
-    <Content Include="Content\themes\base\theme.css" />
-    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Content\images\corks-lg.jpg" />
+    <Content Include="Content\images\corks-md.jpg" />
+    <Content Include="Content\images\corks-sm%402x.jpg" />
+    <Content Include="Content\images\corks-sm.jpg" />
+    <Content Include="Content\images\corks-xs%402x.jpg" />
+    <Content Include="Content\images\corks-xs.jpg" />
+    <Content Include="Content\images\corks.jpg" />
+    <Content Include="Content\images\profile-picture.png" />
+    <Content Include="Content\images\vasse-felix-lg.jpg" />
+    <Content Include="Content\images\vasse-felix-md.jpg" />
+    <Content Include="Content\images\vasse-felix-sm%402x.jpg" />
+    <Content Include="Content\images\vasse-felix-sm.jpg" />
+    <Content Include="Content\images\vasse-felix-xs%402x.jpg" />
+    <Content Include="Content\images\vasse-felix-xs.jpg" />
+    <Content Include="Content\images\vasse-felix.jpg" />
+    <Content Include="Content\vendor\chosen.jquery.js" />
+    <Content Include="Content\vendor\select2\select2-bootstrap.css" />
+    <Content Include="Content\vendor\select2\select2-spinner.gif" />
+    <Content Include="Content\vendor\select2\select2.css" />
+    <Content Include="Content\vendor\select2\select2.png" />
+    <Content Include="Content\vendor\select2\select2x2.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\wines\icomoon-wines.svg" />
     <Content Include="Global.asax" />
@@ -479,6 +468,12 @@
     <Content Include="Content\sass\_wine.scss" />
     <Content Include="Content\sass\_panels.scss" />
     <Content Include="Content\sass\_activity.scss" />
+    <Content Include="Content\css\main.css.map" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\font-awesome\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />
@@ -608,7 +603,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\vendor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
