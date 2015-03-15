@@ -4,12 +4,12 @@
     ViewBag.Title = "In The Rack";
 }
 
-<div class="page-header">
-    <div class="pull-right">
-        <a class="btn btn-primary" href="/Bottles/Create">Add a bottle</a>
-    </div>
+<div class="pull-right">
+    <a class="fa fa-2x fa-plus" href="/Bottles/Create" title="Add a bottle"></a>
+</div>
 
-    <h2>In The Rack</h2>
+<div class="page-header">
+    <h1>In The Rack</h1>
 </div>
 
 @{Html.RenderAction("Rack");}

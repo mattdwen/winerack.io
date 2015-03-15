@@ -4,8 +4,12 @@
     ViewBag.Title = "Purchases";
 }
 
+<div class="pull-right">
+    <a class="fa fa-2x fa-plus" href="/Bottles/Create" title="Add a bottle"></a>
+</div>
+
 <div class="page-header">
-    <h2>Purchases</h2>
+    <h1>Purchases</h1>
 </div>
 
 @if (Model.Count() > 0) {
@@ -34,7 +38,7 @@
     </div>
 } else {
     <div class="jumbotron">
-        <p>Uh-oh, no wine!</p>
-        @Html.ActionLink("Add a bottle", "Create", new { controller = "Bottles" }, new { @class = "btn btn-primary btn-lg" })
+        <p>You're yet to purchase any wine.</p>
+        <a class="btn btn-primary btn-lg" href="/Bottles/Create"><i class="fa fa-plus"></i> Add a bottle</a>
     </div>
 }

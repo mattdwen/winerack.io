@@ -474,6 +474,7 @@
     <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\font-awesome\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="Content\sass\_page-header.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\dist\vendor.js" />

@@ -1,119 +1,144 @@
 ﻿//
 // Sidenav
+// ============================================================================
+
+
+
+// Variables
 // ----------------------------------------------------------------------------
 
-.row-offcanvas {
-  position: relative;
-  left: 0;
+$sidenav-width-xs:          256px;
+$sidenav-width-sm:          64px;
+$sidenav-width-md:          $sidenav-width-sm;
+$sidenav-width-lg:          $sidenav-width-xs;
 
-  //transition: all .25s ease-out;
+$sidenav-visible-width-sm:  $sidenav-width-xs;
+$sidenav-visible-width-md:  $sidenav-width-xs;
+$sidenav-visible-width-lg:  $sidenav-width-xs;
+
+@mixin sidenav-transition() {
+  transition: left ease-in-out .2s;
+}
+
+
+// Default state
+// ----------------------------------------------------------------------------
+
+.main-wrapper {
+  width: 100%;
+  overflow: hidden;
 }
 
 .sidenav {
-  position: absolute;
-  top: 0;
-  left: -90%;
-  z-index: 5;
+  position: fixed;
+  left: -($sidenav-width-xs);
 
-  width: 90%;
-  padding-top: 20px;
+  width: $sidenav-width-xs;
+  height: 100%;
 
-  //transition: all .25s ease-out;
+  overflow-y: scroll;
+
+  @include sidenav-transition();
 
   @media only screen and (min-width: $screen-sm-min) {
     left: 0;
 
-    width: (100% / 12);
+    width: $sidenav-width-sm;
+
+    .nav-text,
+    .user-profile {
+      display: none;
+    }
   }
 
   @media only screen and (min-width: $screen-md-min) {
-    width: 25%;
+    width: $sidenav-width-md;
   }
 
-  .user-profile {
-    @media only screen and (min-width: $screen-sm-min) {
-      display: none;
-    }
+  @media only screen and (min-width: $screen-lg-min) {
+    width: $sidenav-width-lg;
 
-    @media only screen and (min-width: $screen-md-min) {
-      display: block;
-    }
-  }
-
-  .nav-stacked {
-    margin-left: -15px;
-
-    @media only screen and (min-width: $screen-md-min) {
-      margin-left: 0;
-    }
-  }
-
-  .nav-text {
-    margin-left: 30px;
-
-    font-size: 1.6rem;
-    font-weight: $font-weight-light;
-
-    @media only screen and (min-width: $screen-sm-min) {
-      display: none;
-    }
-
-    @media only screen and (min-width: $screen-md-min) {
-      display: inline;
-    }
-  }
-
-  [class*="wine-"] {
-    font-size: 2rem;
-  }
-  
-  .wine-bottles {
-    position: relative;
-    top: 4px;
-  }
-}
-
-.body-content {
-  @media only screen and (min-width: $screen-md-min) {
-    margin-left: 25%;
-    width: 75%;
-  }
-}
-
-.is-sidenav-visible {
-  .row-offcanvas {
-    left: 90%;
-    margin-left: 0;
-
-    @media only screen and (min-width: $screen-sm-min) {
-      left: 0;
-    }
-  }
-
-  .sidenav {
-    @media only screen and (min-width: $screen-sm-min) {
-      width: 40%;
-      margin-left: 0;
+    .nav-text {
+      display: inline-block;
     }
 
     .user-profile {
-      @media only screen and (min-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+}
+
+.content-wrapper {
+  position: relative;
+  left: 0;
+
+  padding: 0 16px;
+
+  @include sidenav-transition();
+
+  @media only screen and (min-width: $screen-sm-min) {
+    margin-left: $sidenav-width-sm;
+  }
+
+  @media only screen and (min-width: $screen-md-min) {
+    margin-left: $sidenav-width-md;
+  }
+
+  @media only screen and (min-width: $screen-lg-min) {
+    margin-left: $sidenav-width-lg;
+  }
+}
+
+.content-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 530px;
+
+  @media only screen and (min-width: $screen-sm-min) {
+    max-width: 700px;
+  }
+
+  @media only screen and (min-width: $screen-md-min) {
+    max-width: 800px;
+  }
+
+  @media only screen and (min-width: $screen-lg-min) {
+    max-width: 1200px;
+  }
+}
+
+
+.user-profile {
+  padding-left: 8px;
+}
+
+
+
+// Visible state
+// ----------------------------------------------------------------------------
+
+.is-sidenav-visible {
+  .sidenav {
+    left: 0;
+
+    @media only screen and (min-width: $screen-sm-min) {
+      width: $sidenav-visible-width-sm;
+
+      .nav-text {
+        display: inline-block;
+      }
+
+      .user-profile {
         display: block;
       }
     }
   }
 
-  .body-content {
-    @media only screen and (min-width: $screen-sm-min) {
-      margin-left: 40%;
+  .content-wrapper {
+    left: $sidenav-width-xs;
 
-      //transition: all .25s ease-out;
-    }
-  }
-
-  .nav-text {
-    @media only screen and (min-width: $screen-sm-min) {
-      display: inline-block;
+    @media only screen and (min-width: $screen-lg-min) {
+      left: 0;
     }
   }
 }
