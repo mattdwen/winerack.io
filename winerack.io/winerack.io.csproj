@@ -600,6 +600,7 @@
     <Content Include="Views\Styles\Details.cshtml" />
     <Content Include="Views\Styles\Edit.cshtml" />
     <Content Include="Views\Styles\Index.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
