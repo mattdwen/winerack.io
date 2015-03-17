@@ -76,7 +76,7 @@
 
     // Concatenate Javascript files
     concat: {
-      serve: {
+      vendor: {
         src: [
           'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
           'bower_components/masonry/dist/masonry.pkgd.js',
@@ -85,6 +85,17 @@
           'bower_components/typeahead.js/dist/typeahead.jquery.js'
         ],
         dest: 'Scripts/dist/vendor.js'
+      },
+      angular: {
+        src: [
+          'bower_components/angular/angular.js',
+          'bower_components/angular-resource/angular-resource.js',
+          'bower_components/angular-route/angular-route.js',
+          'bower_components/angular-sanitize/angular-sanitize.js',
+          'bower_components/angular-ui-select2/src/select2.js',
+          'bower_components/angular-ui-utils/ui-utils.js',
+        ],
+        dest: 'Scripts/dist/angular.js'
       }
     },
 
@@ -100,7 +111,7 @@
 grunt.registerTask('serve', [
   'clean:server',
   'concurrent:server',
-  'concat:serve',
+  'concat',
   'autoprefixer',
   'watch'
 ]);

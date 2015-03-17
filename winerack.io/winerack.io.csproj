@@ -487,6 +487,7 @@
     <Content Include="Content\sass\_page-header.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
+    <Content Include="Scripts\dist\angular.js" />
     <Content Include="Scripts\dist\vendor.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
@@ -504,9 +505,6 @@
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\openings\create.js" />
     <Content Include="Scripts\tastings\create.js" />
-    <Content Include="Scripts\vendor\angular\angular-resource.js" />
-    <Content Include="Scripts\vendor\angular\angular-sanitize.js" />
-    <Content Include="Scripts\vendor\angular\angular.js" />
     <Content Include="Scripts\winerack.js" />
     <Content Include="Scripts\wine\editor.js" />
     <Content Include="Scripts\_references.js" />

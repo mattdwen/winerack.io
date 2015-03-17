@@ -19,9 +19,7 @@ namespace winerack {
 				"~/Scripts/modernizr-*"));
 
 			bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-				"~/Scripts/vendor/angular/angular.js",
-				"~/Scripts/vendor/angular/angular-*",
-				"~/Scripts/vendor/angular/ui-utils.js"));
+				"~/Scripts/dist/angular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/winerack").Include(
                 "~/Scripts/winerack.js"
