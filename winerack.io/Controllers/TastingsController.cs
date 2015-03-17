@@ -167,7 +167,7 @@ namespace winerack.Controllers {
 				if (model.PostTwitter) {
 					var twitter = new Logic.Social.Twitter(db);
 					var tweet = "I'm tasting a " + wine.Description;
-					var url = "http://winerack.io/tastings/" + tasting.ID.ToString();
+					var url = "http://www.winerack.io/tastings/" + tasting.ID.ToString();
 					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
 				}
 

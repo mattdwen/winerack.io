@@ -241,7 +241,7 @@ namespace winerack.Controllers {
 					var twitter = new Logic.Social.Twitter(db);
 					var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
 					var tweet = "I've purchased " + quantity + " of " + purchase.Bottle.Wine.Description;
-					var url = "http://winerack.io/purchases/" + purchase.ID.ToString();
+					var url = "http://www.winerack.io/purchases/" + purchase.ID.ToString();
 					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
 				}
 

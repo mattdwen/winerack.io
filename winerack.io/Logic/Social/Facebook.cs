@@ -41,19 +41,19 @@ namespace winerack.Logic.Social {
 
 		public void OpenWine(string userId, int openingId) {
 			var client = GetClient(userId);
-			var wineUrl = "http://winerack.io/openings/" + openingId.ToString();
+			var wineUrl = "http://www.winerack.io/openings/" + openingId.ToString();
 			client.Post("me/winerackio:open", new { wine = wineUrl });
 		}
 
 		public void PurchaseWine(string userId, int purchaseId) {
 			var client = GetClient(userId);
-			var wineUrl = "http://winerack.io/purchases/" + purchaseId.ToString();
+			var wineUrl = "http://www.winerack.io/purchases/" + purchaseId.ToString();
 			client.Post("me/winerackio:purchase", new { wine = wineUrl });
 		}
 
 		public void TasteWine(string userId, int tastingId) {
 			var client = GetClient(userId);
-			var wineUrl = "http://winerack.io/tastings/" + tastingId.ToString();
+			var wineUrl = "http://www.winerack.io/tastings/" + tastingId.ToString();
 			client.Post("me/winerackio:taste", new { wine = wineUrl });
 		}
 
