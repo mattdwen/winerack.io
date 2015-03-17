@@ -158,11 +158,16 @@ namespace winerack.Controllers {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
+
 			Purchase purchase = db.Purchases.Find(id);
 			if (purchase == null) {
 				return HttpNotFound();
 			}
+
+            purchase.Quantity = 1;
+
 			ViewBag.BottleID = new SelectList(db.Bottles, "ID", "OwnerID", purchase.BottleID);
+
 			return View(purchase);
 		}
 
@@ -170,13 +175,17 @@ namespace winerack.Controllers {
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[PurchaseAuthenticationAttribute]
-		public ActionResult Edit([Bind(Include = "ID,BottleID,PurchasedOn,PurchasePrice,Notes")] Purchase purchase) {
+		public ActionResult Edit([Bind(Include = "ID,BottleID,PurchasedOn,PurchasePrice,Notes,Quantity")] Purchase purchase) {
 			if (ModelState.IsValid) {
 				db.Entry(purchase).State = EntityState.Modified;
 				db.SaveChanges();
-				return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = purchase.ID });
 			}
+
+            purchase.Bottle = db.Bottles.Find(purchase.BottleID);
+
 			ViewBag.BottleID = new SelectList(db.Bottles, "ID", "OwnerID", purchase.BottleID);
+
 			return View(purchase);
 		}
 

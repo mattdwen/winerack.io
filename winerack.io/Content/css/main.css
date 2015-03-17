@@ -5565,8 +5565,38 @@ th {
 .btn {
   transition: all .2s; }
 
-#activity-stream .activity-event {
-  margin-bottom: 20px; }
+.btn-circle {
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  padding-top: 8px;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center; }
+  .btn-circle.btn-lg {
+    width: 48px;
+    height: 48px;
+    padding-top: 5px;
+    font-size: 36px;
+    line-height: 36px; }
+
+.activity-stream {
+  margin-left: -8px;
+  margin-right: -8px; }
+
+.activity-event {
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-bottom: 16px; }
+  @media only screen and (min-width: 768px) {
+    .activity-event {
+      width: 50%; } }
+  @media only screen and (min-width: 1200px) {
+    .activity-event {
+      width: 33.33333%; } }
+  .activity-event .panel {
+    margin-bottom: 0; }
 
 .footer {
   padding: 10rem 0 10rem;
@@ -5634,7 +5664,7 @@ th {
 
 .navbar-toggle {
   float: left;
-  margin-left: -16px;
+  margin-left: -8px;
   padding: 16px;
   font-size: 2rem;
   border: 0 none;
@@ -5694,8 +5724,20 @@ th {
     margin-top: 0;
     margin-bottom: 0; }
 
-.panel-heading h2 {
-  margin: 0; }
+.panel-heading:before, .panel-heading:after {
+  content: " ";
+  display: table; }
+.panel-heading:after {
+  clear: both; }
+
+.panel-heading-image {
+  float: left;
+  margin-right: 16px; }
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.8rem; }
 
 .main-wrapper {
   width: 100%;
@@ -5704,10 +5746,18 @@ th {
 .sidenav {
   position: fixed;
   left: -256px;
+  padding-left: 8px;
   width: 256px;
-  height: 100%;
-  overflow-y: scroll;
   transition: left ease-in-out .2s; }
+  .sidenav .nav-text {
+    margin-left: 8px; }
+  .sidenav i {
+    display: inline-block;
+    width: 26px;
+    font-size: 2rem;
+    text-align: center; }
+  .sidenav .nav > li > a {
+    padding-left: 13px; }
   @media only screen and (min-width: 768px) {
     .sidenav {
       left: 0;
@@ -5744,19 +5794,16 @@ th {
 .content-container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 530px; }
+  max-width: 480px; }
   @media only screen and (min-width: 768px) {
     .content-container {
-      max-width: 700px; } }
+      max-width: 750px; } }
   @media only screen and (min-width: 992px) {
     .content-container {
       max-width: 800px; } }
   @media only screen and (min-width: 1200px) {
     .content-container {
       max-width: 1200px; } }
-
-.user-profile {
-  padding-left: 8px; }
 
 .is-sidenav-visible .sidenav {
   left: 0; }

@@ -27,3 +27,4 @@
 /// <reference path="winerack.js" />
 /// <reference path="wine/editor.js" />
 /// <reference path="../content/vendor/chosen.jquery.js" />
+/// <reference path="activity/stream.js" />

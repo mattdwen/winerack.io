@@ -4,11 +4,11 @@
 }
 
 @section Header {
-    opened a bottle
+    Opened a bottle
     of <a href="/wines/@Model.WineID">@Model.Bottle</a>
     by <a href="/vineyards/@Model.VineyardID">@Model.Winery</a>
 }
 
 @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
-    <blockquote>@Model.Notes</blockquote>
+    <p>@Model.Notes</p>
 }

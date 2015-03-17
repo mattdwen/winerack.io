@@ -5,3 +5,7 @@
 }
 
 @{ Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() }); }
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/activity/stream.js")
+}

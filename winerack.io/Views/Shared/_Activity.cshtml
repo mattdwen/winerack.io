@@ -4,29 +4,35 @@
     var imageUrl = "https://winerack.blob.core.windows.net/" + Model.Image + "_sm.jpg";
 }
 
-<div class="activity-event panel panel-default">
-    <div class="panel-heading">
-        <a href="/user/@Model.Actor.UserName">
-            <img class="img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Actor.Id)" width="50" />
-            @if (string.IsNullOrWhiteSpace(Model.Actor.Name)) {
-                @Model.Actor.UserName
-            } else {
-                @Model.Actor.Name
+<div class="activity-event">
+    <div class="panel">
+        <div class="pull-right">
+            <a href="@Model.ViewUrl/@Model.ObjectID">Details</a>
+        </div>
+
+        <div class="panel-heading">
+            <a href="/user/@Model.Actor.UserName"><img class="panel-heading-image img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Actor.Id)" width="50" /></a>
+            <h4 class="panel-title">
+                <a href="/user/@Model.Actor.UserName">
+                    @if (string.IsNullOrWhiteSpace(Model.Actor.Name)) {
+                        @Model.Actor.UserName
+                    } else {
+                        @Model.Actor.Name
+                    }
+                </a>
+            </h4>
+            <p class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</p>
+        </div>
+        <div class="panel-body">
+            <p class="lead">@RenderSection("Header", true)</p>
+
+            @RenderBody()
+
+            @if (!string.IsNullOrWhiteSpace(Model.Image)) {
+                <div class="text-center">
+                    <img class="img-responsive" src="@imageUrl"/>
+                </div>
             }
-        </a>
-        @RenderSection("Header", true)
-    </div>
-    <div class="panel-body">        
-
-        @RenderBody()
-
-        @if (!string.IsNullOrWhiteSpace(Model.Image)) {
-            <img src="@imageUrl" width="300" />
-        }
-        
-        <hr />
-
-        <p class="pull-right"><a href="@Model.ViewUrl/@Model.ObjectID">View details</a></p>
-        <p class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</p>
+        </div>
     </div>
 </div>

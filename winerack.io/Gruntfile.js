@@ -79,6 +79,7 @@
       serve: {
         src: [
           'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+          'bower_components/masonry/dist/masonry.pkgd.js',
           'bower_components/select2/select2.js',
           'bower_components/typeahead.js/dist/bloodhound.js',
           'bower_components/typeahead.js/dist/typeahead.jquery.js'
