@@ -24,10 +24,9 @@ namespace winerack {
         #endregion Declarations
 
         protected void Application_Start() {
-            var config = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration(null);
-            var raygunKey = config.AppSettings.Settings["raygun:apiKey"];
-            if (raygunKey != null) {
-                client = new RaygunClient(raygunKey.Value);
+            var raygunKey = ConfigurationManager.AppSettings["raygun:apiKey"];
+            if (!string.IsNullOrWhiteSpace(raygunKey)) {
+                client = new RaygunClient(raygunKey);
             }
 
 			if (bool.Parse(ConfigurationManager.AppSettings["MigrateDatabaseToLatestVersion"])) {
