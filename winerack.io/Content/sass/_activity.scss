@@ -26,14 +26,11 @@
   }
 
   .panel-body {
+    color: $white-secondary;
+
     a {
-      color: $text-color;
       font-weight: $font-weight-medium;
       transition: all .2s;
-
-      &:hover {
-        color: $brand-primary;
-      }
     }
   }
 }

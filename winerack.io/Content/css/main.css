@@ -5611,12 +5611,11 @@ th {
       width: 33.33333%; } }
   .activity-event .panel {
     margin-bottom: 0; }
-  .activity-event .panel-body a {
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-    transition: all .2s; }
-    .activity-event .panel-body a:hover {
-      color: #00bcd4; }
+  .activity-event .panel-body {
+    color: rgba(255, 255, 255, 0.7); }
+    .activity-event .panel-body a {
+      font-weight: 500;
+      transition: all .2s; }
 
 .footer {
   padding: 10rem 0 10rem;
@@ -5870,11 +5869,20 @@ th {
   #mc_embed_signup .col-sm-6 + .col-sm-6 {
     margin-top: 15px; } }
 
+.opening-details > .media {
+  margin-bottom: 10px; }
+
+.purchase-details > .media {
+  margin-bottom: 10px; }
+
 .winerack .winerack-bottle h3 {
   margin: 0; }
 .winerack .winerack-bottle .label {
   position: relative;
   top: 6px; }
+
+.wine_header h2 {
+  margin-top: 6px; }
 
 /*! Select2 Bootstrap 3 CSS v1.4.6 | MIT License | github.com/t0m/select2-bootstrap-css */
 /**

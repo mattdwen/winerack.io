@@ -1,5 +1,6 @@
 ﻿@model winerack.Models.Opening
 @using winerack.Helpers
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = Model.StoredBottle.Purchase.Bottle.Owner.Name + " opened a " + Model.StoredBottle.Purchase.Bottle.Wine.Description;
@@ -21,26 +22,36 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        @Html.Partial("_UserHeader", Model.StoredBottle.Purchase.Bottle.Owner)
+        <div class="opening-details">
+            @Html.Partial("_UserHeader", Model.StoredBottle.Purchase.Bottle.Owner)
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Opened a
-                @Html.Partial("Wines/_Header", Model.StoredBottle.Purchase.Bottle.Wine)
-            </div>
-            <div class="panel-body">
-                @if ((Model.ImageID.HasValue)) {
-                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/openings/@{@Model.ImageID.Value}_md.jpg" />
-                }
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (Model.StoredBottle.Purchase.Bottle.OwnerID == User.Identity.GetUserId()) {
+                        <div class="pull-right">
+                            <a href="/openings/@Model.StoredBottleID/edit" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
+                            <a href="/openings/@Model.StoredBottleID/delete" title="Delete"><i class="fa fa-fw fa-remove"></i></a>
+                        </div>
+                    }
+                    
+                    Opened a bottle of
 
-                @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
-                    <blockquote>@Model.Notes</blockquote>
-                }
+                    @Html.Partial("Wines/_Header", Model.StoredBottle.Purchase.Bottle.Wine)
+                </div>
+                <div class="panel-body">
+                    @if ((Model.ImageID.HasValue)) {
+                        <img class="img-responsive" src="https://winerack.blob.core.windows.net/openings/@{@Model.ImageID.Value}_lg.jpg" />
+                    }
 
-                @if (Model.OpenedOn.HasValue) {
-                    <hr />
-                    <div class="text-muted">@Model.OpenedOn.Value.ToLongDateString()</div>
-                }
+                    @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
+                        <blockquote>@Model.Notes</blockquote>
+                    }
+
+                    @if (Model.OpenedOn.HasValue) {
+                        <hr />
+                        <div class="text-right text-muted">@Model.OpenedOn.Value.ToLongDateString()</div>
+                    }
+                </div>
             </div>
         </div>
     </div>

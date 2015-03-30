@@ -20,32 +20,34 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        @Html.Partial("_UserHeader", Model.Bottle.Owner)
+        <div class="purchase-details">
+            @Html.Partial("_UserHeader", Model.Bottle.Owner)
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                @if (Model.Bottle.OwnerID == User.Identity.GetUserId()) {
-                    <div class="pull-right">
-                        <a href="/Purchases/Edit/@Model.ID" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
-                        <a href="/Purchases/Delete/@Model.ID" title="Delete"><i class="fa fa-fw fa-remove"></i></a>
-                    </div>
-                }
-                
-                Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of
-                
-                @Html.Partial("Wines/_Header", Model.Bottle.Wine)
-            </div>
-            <div class="panel-body">
-                @if ((Model.ImageID.HasValue)) {
-                    <img class="img-responsive" src="https://winerack.blob.core.windows.net/purchases/@{@Model.ImageID.Value}_md.jpg" />
-                }
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @if (Model.Bottle.OwnerID == User.Identity.GetUserId()) {
+                        <div class="pull-right">
+                            <a href="/Purchases/Edit/@Model.ID" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
+                            <a href="/Purchases/Delete/@Model.ID" title="Delete"><i class="fa fa-fw fa-remove"></i></a>
+                        </div>
+                    }
 
-                @Model.Notes
+                    Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of
 
-                @if (Model.PurchasedOn.HasValue) {
-                    <hr />
-                    <div class="text-muted">@Model.PurchasedOn.Value.ToLongDateString()</div>
-                }
+                    @Html.Partial("Wines/_Header", Model.Bottle.Wine)
+                </div>
+                <div class="panel-body">
+                    @if ((Model.ImageID.HasValue)) {
+                        <img class="img-responsive" src="https://winerack.blob.core.windows.net/purchases/@{@Model.ImageID.Value}_lg.jpg" />
+                    }
+
+                    @Model.Notes
+
+                    @if (Model.PurchasedOn.HasValue) {
+                        <hr />
+                        <div class="text-right text-muted">@Model.PurchasedOn.Value.ToLongDateString()</div>
+                    }
+                </div>
             </div>
         </div>
     </div>
