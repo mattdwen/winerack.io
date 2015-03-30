@@ -9,7 +9,10 @@
 @section Head {
     @{ Html.RenderPartial("Meta/Wine", Model.Bottle.Wine); }
     @if ((Model.ImageID.HasValue)) {
+        <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image:src" property="og:image" content="https://winerack.blob.core.windows.net/purchases/@{@Model.ImageID.Value}_lg.jpg">
+    } else {
+        <meta name="twitter:card" content="summary" />
     }
 }
 

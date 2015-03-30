@@ -30,7 +30,7 @@
 
             @if (!string.IsNullOrWhiteSpace(Model.Image)) {
                 <div class="text-center">
-                    <img class="img-responsive" src="@imageUrl"/>
+                    <a href="@Model.ViewUrl/@Model.ObjectID"><img class="img-responsive" src="@imageUrl" /></a>
                 </div>
             }
         </div>
