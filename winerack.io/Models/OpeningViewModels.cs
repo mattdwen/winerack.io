@@ -16,6 +16,8 @@ namespace winerack.Models.OpeningViewModels {
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}", NullDisplayText = "<em>Unknown</em>")]
 		public DateTime? OpenedOn { get; set; }
 
+        public int Rating { get; set; }
+
 		[Display(Name = "Tasting Notes")]
 		[DataType(DataType.MultilineText)]
 		public string Notes { get; set; }

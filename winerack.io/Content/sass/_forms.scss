@@ -80,6 +80,18 @@
   }
 }
 
+.rating-input {
+  padding-top: $padding-small-vertical;
+
+  .fa {
+    padding-right: 2px;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+  }
+}
+
 .validation-summary-errors {
   @extend .alert;
   @extend .alert-danger;

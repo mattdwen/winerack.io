@@ -110,6 +110,7 @@ namespace winerack.Controllers {
 				var opening = new Opening {
 					OpenedOn = model.OpenedOn,
 					Notes = model.Notes,
+                    Rating = model.Rating,
 					StoredBottleID = model.StoredBottleID
 				};
 

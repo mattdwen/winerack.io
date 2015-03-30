@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,6 +28,9 @@ namespace winerack.Models.ActivityEventViewModels {
 		#region Properties
 
 		public string Notes { get; set; }
+
+        [UIHint("Rating")]
+        public int? Rating { get; set; }
 
         public Wine Wine { get; set; }
 

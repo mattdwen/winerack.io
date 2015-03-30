@@ -28,6 +28,9 @@ namespace winerack.Models {
 		[DataType(DataType.MultilineText)]
 		public string Notes { get; set; }
 
+        [UIHint("Rating")]
+        public int? Rating { get; set; }
+
 		#endregion
 
 		#region Relationships

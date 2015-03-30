@@ -384,6 +384,10 @@
     <Compile Include="Migrations\201503300334349_add_purchase_isgift.Designer.cs">
       <DependentUpon>201503300334349_add_purchase_isgift.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503300447459_add_opening_rating.cs" />
+    <Compile Include="Migrations\201503300447459_add_opening_rating.Designer.cs">
+      <DependentUpon>201503300447459_add_opening_rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -520,6 +524,7 @@
     <Content Include="Views\Home\IndexLoggedIn.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Varietals.cshtml" />
     <Content Include="Views\Shared\Wines\_Header.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Rating.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -700,6 +705,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503300334349_add_purchase_isgift.resx">
       <DependentUpon>201503300334349_add_purchase_isgift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503300447459_add_opening_rating.resx">
+      <DependentUpon>201503300447459_add_opening_rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

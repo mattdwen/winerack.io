@@ -1,0 +1,9 @@
+﻿@model int?
+
+@if (Model.HasValue) {
+    <div class="rating-display" title="@Model.Value.ToString() stars">
+        @for (int i = 1; i <= Model.Value; i++ ) {
+            <i class="fa fa-star"></i>
+        }
+    </div>
+}

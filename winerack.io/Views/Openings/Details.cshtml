@@ -33,7 +33,7 @@
                             <a href="/openings/@Model.StoredBottleID/delete" title="Delete"><i class="fa fa-fw fa-remove"></i></a>
                         </div>
                     }
-                    
+
                     Opened a bottle of
 
                     @Html.Partial("Wines/_Header", Model.StoredBottle.Purchase.Bottle.Wine)
@@ -47,8 +47,11 @@
                         <blockquote>@Model.Notes</blockquote>
                     }
 
-                    @if (Model.OpenedOn.HasValue) {
+                    @if (Model.OpenedOn.HasValue || Model.Rating.HasValue) {
                         <hr />
+                        <div class="pull-left">
+                            @Html.DisplayFor(m => m.Rating)
+                        </div>
                         <div class="text-right text-muted">@Model.OpenedOn.Value.ToLongDateString()</div>
                     }
                 </div>

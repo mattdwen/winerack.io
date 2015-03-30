@@ -38,8 +38,16 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(m => m.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(m => m.Notes, new { htmlAttributes = new { @class = "form-control" }})
                     @Html.ValidationMessageFor(m => m.Notes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.Rating, new { htmlAttributes = new { @class = "rating", data_min = 1, data_max = 5, data_icon_lib = "fa", data_active_icon = "fa-star", data_inactive_icon = "fa-star-o", data_clearable = "remove", data_clearable_icon="fa-times" } })
+                    @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -98,7 +106,7 @@
 </div>
 
 <div>
-    
+
 </div>
 
 @section Scripts {

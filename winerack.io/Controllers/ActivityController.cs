@@ -59,7 +59,8 @@ namespace winerack.Controllers {
 				Image = storedBottle.Opening.ImageID.HasValue ? "openings/" + storedBottle.Opening.ImageID.Value : null,
 				Wine = storedBottle.Purchase.Bottle.Wine,
 				ViewUrl = "/openings",
-				ObjectID = storedBottle.ID
+				ObjectID = storedBottle.ID,
+                Rating = storedBottle.Opening.Rating
 			};
 			return PartialView(viewmodel);
 		}
