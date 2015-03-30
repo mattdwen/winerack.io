@@ -44,12 +44,12 @@ namespace winerack.Models
             {
                 string description = "";
 
-                if (Vintage.HasValue) {
-                    description += "'" + Vintage.ToString().Substring(2) + " ";
+                if (!string.IsNullOrWhiteSpace(Name)) {
+                    description += "'" + Name + "' ";
                 }
 
-                if (!string.IsNullOrWhiteSpace(Name)) {
-                    description += Name + " ";
+                if (Vintage.HasValue) {
+                    description += Vintage.ToString() + " ";
                 }
 
                 description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
@@ -90,15 +90,7 @@ namespace winerack.Models
                 description = Vineyard.Name + " ";
             }
 
-            if (!string.IsNullOrWhiteSpace(Name)) {
-                description = "'" + Name + "' ";
-            }
-
-            if (Vintage.HasValue) {
-                description += "'" + Vintage.ToString().Substring(2) + " ";
-            }
-
-            description += string.Join(" ", Varietals.Select(v => v.Name));
+            description += Description;
 
             return description;
         }
