@@ -1,6 +1,8 @@
 ﻿$(function () {
   var $stream = $('.activity-stream');
-  $stream.masonry({
-    itemSelector: '.activity-event'
+  $stream.imagesLoaded(function () {
+    $stream.masonry({
+      itemSelector: '.activity-event'
+    });
   });
 });
