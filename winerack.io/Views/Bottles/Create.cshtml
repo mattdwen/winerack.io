@@ -126,6 +126,17 @@
             <legend>Purchase</legend>
 
             <div class="form-group">
+                @Html.LabelFor(m => m.IsGift, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        <label>
+                            @Html.EditorFor(m => m.IsGift)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(m => m.PurchaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(m => m.PurchaseDate, new { htmlAttributes = new { @class = "form-control" } })

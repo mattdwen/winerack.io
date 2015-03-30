@@ -108,7 +108,13 @@
                             </a>
                         </td>
                         <td>@purchase.StoredBottles.Count</td>
-                        <td>@Html.DisplayFor(p => purchase.PurchasePrice)</td>
+                        <td>
+                            @Html.DisplayFor(p => purchase.PurchasePrice)
+                            @if (purchase.IsGift) {
+                                <i class="fa fa-gift"></i>
+                            }
+                        </td>
+
                         <td class="text-right">
                             <a href="/Purchases/@purchase.ID" title="View details"><i class="fa fa-fw fa-eye"></i></a>
                             <a href="/Purchases/Edit/@purchase.ID" title="Edit purchase"><i class="fa fa-fw fa-edit"></i></a>

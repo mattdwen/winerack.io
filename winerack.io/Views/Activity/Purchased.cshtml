@@ -2,10 +2,11 @@
 @using winerack.Helpers
 @{
     Layout = "~/Views/Shared/_Activity.cshtml";
+    var verb = (Model.IsGift) ? "Was gifted" : "Purchased";
 }
 
 @section Header {
-    Purchased @ExtensionMethods.BottleQuantity(Model.Quantity)
+    @verb @ExtensionMethods.BottleQuantity(Model.Quantity)
     of <a href="/wines/@Model.Wine.ID">@Html.Partial("Wines/_Description", Model.Wine)</a>
     by <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.
 }

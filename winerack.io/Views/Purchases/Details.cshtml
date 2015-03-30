@@ -3,7 +3,8 @@
 @using Microsoft.AspNet.Identity;
 
 @{
-    ViewBag.Title = Model.Bottle.Owner.Name + " purchased a " + Model.Bottle.Wine.Description;
+    var verb = (Model.IsGift) ? "Was gifted" : "Purchased";
+    ViewBag.Title = Model.Bottle.Owner.Name + " " + verb.ToLower() + " a " + Model.Bottle.Wine.Description;
 }
 
 @section Head {
@@ -32,7 +33,7 @@
                         </div>
                     }
 
-                    Purchased @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of
+                    @verb @ExtensionMethods.BottleQuantity(Model.StoredBottles.Count) of
 
                     @Html.Partial("Wines/_Header", Model.Bottle.Wine)
                 </div>

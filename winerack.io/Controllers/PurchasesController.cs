@@ -96,6 +96,7 @@ namespace winerack.Controllers {
 			if (ModelState.IsValid) {
 				var purchase = new Purchase {
 					BottleID = model.BottleID,
+                    IsGift = model.IsGift,
 					Notes = model.Notes,
 					PurchasedOn = model.PurchasedOn,
 					PurchasePrice = model.PurchasePrice,
@@ -133,13 +134,14 @@ namespace winerack.Controllers {
 					purchase = db.Purchases.Find(purchase.ID);
 					var twitter = new Logic.Social.Twitter(db);
 					var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
-					var tweet = "I've purchased " + quantity + " of " + purchase.Bottle.Wine.Description;
+                    var verb = (model.IsGift) ? "been gifted" : "purchase";
+					var tweet = "I've " + verb + " " + quantity + " of " + purchase.Bottle.Wine.Description;
 					var url = "http://www.winerack.io/purchases/" + purchase.ID.ToString();
 					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
 				}
 
 				// Redirect
-				return RedirectToAction("Index");
+                return RedirectToAction("Details", new { controller = "Bottles", id = purchase.ID });
 			}
 
 			model = GetCreateViewModel(model);
@@ -175,7 +177,18 @@ namespace winerack.Controllers {
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		[PurchaseAuthenticationAttribute]
-		public ActionResult Edit([Bind(Include = "ID,BottleID,PurchasedOn,PurchasePrice,Notes,Quantity")] Purchase purchase) {
+		public ActionResult Edit(int? id, [Bind(Include = "ID,BottleID,PurchasedOn,PurchasePrice,Notes,Quantity")] Purchase model) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Purchase purchase = db.Purchases.Find(id);
+            if (purchase == null) {
+                return HttpNotFound();
+            }
+
+            TryUpdateModel(purchase);
+
 			if (ModelState.IsValid) {
 				db.Entry(purchase).State = EntityState.Modified;
 				db.SaveChanges();

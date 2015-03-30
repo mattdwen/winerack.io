@@ -12,6 +12,9 @@ namespace winerack.Models.PurchaseViewModels {
 
 		public Bottle Bottle { get; set; }
 
+        [Display(Name = "Is a gift")]
+        public bool IsGift { get; set; }
+
 		[Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
 		public int Quantity { get; set; }
 

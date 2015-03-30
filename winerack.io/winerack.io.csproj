@@ -380,6 +380,10 @@
     <Compile Include="Migrations\201503022329303_wine_activities_cascade_delete.Designer.cs">
       <DependentUpon>201503022329303_wine_activities_cascade_delete.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503300334349_add_purchase_isgift.cs" />
+    <Compile Include="Migrations\201503300334349_add_purchase_isgift.Designer.cs">
+      <DependentUpon>201503300334349_add_purchase_isgift.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -693,6 +697,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503022329303_wine_activities_cascade_delete.resx">
       <DependentUpon>201503022329303_wine_activities_cascade_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503300334349_add_purchase_isgift.resx">
+      <DependentUpon>201503300334349_add_purchase_isgift.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

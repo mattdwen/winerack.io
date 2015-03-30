@@ -36,6 +36,8 @@ namespace winerack.Models.ActivityEventViewModels {
 
 	public class Purchased : Opened {
 
+        public bool IsGift { get; set; }
+
 		public int Quantity { get; set; }
 
 	}

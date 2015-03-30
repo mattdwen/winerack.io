@@ -43,6 +43,9 @@ namespace winerack.Models
         [Display(Name = "Name")]
         public string WineName { get; set; }
 
+        [Display(Name = "Is a gift")]
+        public bool IsGift { get; set; }
+
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]

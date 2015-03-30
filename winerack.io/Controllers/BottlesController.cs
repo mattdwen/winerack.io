@@ -208,6 +208,7 @@ namespace winerack.Controllers {
 				// Create the purchase
 				var purchase = new Purchase {
 					BottleID = bottle.ID,
+                    IsGift = model.IsGift,
 					PurchasedOn = model.PurchaseDate,
 					PurchasePrice = model.PurchaseValue,
 					Quantity = model.PurchaseQuantity,
@@ -240,7 +241,8 @@ namespace winerack.Controllers {
 						.FirstOrDefault();
 					var twitter = new Logic.Social.Twitter(db);
 					var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
-					var tweet = "I've purchased " + quantity + " of " + purchase.Bottle.Wine.Description;
+                    var verb = (purchase.IsGift) ? "been gifted" : "purchased";
+					var tweet = "I've " + verb + " " + quantity + " of " + purchase.Bottle.Wine.Description;
 					var url = "http://www.winerack.io/purchases/" + purchase.ID.ToString();
 					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
 				}

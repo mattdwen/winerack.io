@@ -71,6 +71,7 @@ namespace winerack.Controllers {
 				Actor = activity.Actor,
 				OccuredOn = activity.OccuredOn,
 				Notes = purchase.Notes,
+                IsGift = purchase.IsGift,
 				Quantity = purchase.StoredBottles.Count,
 				Image = purchase.ImageID.HasValue ? "purchases/" + purchase.ImageID.Value : null,
 				Wine = purchase.Bottle.Wine,
