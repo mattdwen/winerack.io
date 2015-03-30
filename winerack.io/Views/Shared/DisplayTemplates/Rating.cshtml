@@ -1,9 +1,15 @@
-﻿@model int?
+﻿@{
+    double? rating = (double?)Model;
+}
 
-@if (Model.HasValue) {
-    <div class="rating-display" title="@Model.Value.ToString() stars">
-        @for (int i = 1; i <= Model.Value; i++ ) {
+
+@if (rating.HasValue) {
+    var stars = Math.Round(rating.Value);
+    
+    <div class="rating-display" title="@stars.ToString() stars">
+        @for (int i = 1; i <= stars; i++) {
             <i class="fa fa-star"></i>
         }
+        <span class="text-muted">(@Math.Round(rating.Value, 2).ToString())</span>
     </div>
 }

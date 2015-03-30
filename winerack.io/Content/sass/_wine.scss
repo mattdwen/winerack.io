@@ -12,6 +12,13 @@
       position: relative;
       top: $padding-base-vertical;
     }
+
+    .rating-display {
+      position: relative;
+      top: 7px;
+
+      display: inline-block;
+    }
   }
 }
 

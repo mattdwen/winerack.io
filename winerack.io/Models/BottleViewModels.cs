@@ -8,12 +8,14 @@ namespace winerack.Models
     public class CreateBottleViewModel
     {
         #region Constructor
+
         public CreateBottleViewModel()
         {
             Styles = new List<int>();
             Varietals = new List<int>();
         }
-        #endregion
+
+        #endregion Constructor
 
         #region Properties
 
@@ -90,6 +92,19 @@ namespace winerack.Models
         public int Min { get; set; }
 
         public int Max { get; set; }
+    }
+
+    public class RackBottleViewModel
+    {
+
+        #region Properties
+
+        public Bottle Bottle { get; set; }
+
+        [UIHint("Rating")]
+        public double? Rating { get; set; }
+
+        #endregion
     }
 }
 

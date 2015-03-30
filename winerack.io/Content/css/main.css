@@ -5887,6 +5887,10 @@ th {
 .winerack .winerack-bottle .label {
   position: relative;
   top: 6px; }
+.winerack .winerack-bottle .rating-display {
+  position: relative;
+  top: 7px;
+  display: inline-block; }
 
 .wine_header h2 {
   margin-top: 6px; }

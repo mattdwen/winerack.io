@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -155,8 +156,7 @@ namespace winerack.Controllers {
 
 		// GET: Bottles
 		public ActionResult Index() {
-			var bottles = db.Bottles.Include(b => b.Owner).Include(b => b.Wine);
-			return View(bottles.ToList());
+			return View();
 		}
 
 		#endregion Index
@@ -351,14 +351,26 @@ namespace winerack.Controllers {
 		public PartialViewResult Rack() {
 			var userId = User.Identity.GetUserId();
 
-			var bottles = db.Bottles
-				.Where(b => b.OwnerID == userId);
+            var bottles = db.Bottles
+                .Where(b => b.OwnerID == userId)
+                .ToList();
 
-			var purchases = db.Purchases
-				.Include(p => p.Bottle)
-				.Where(p => p.Bottle.OwnerID == userId);
+            var result = new List<RackBottleViewModel>();
+            foreach (var bottle in bottles) {
+                var openingsWithRating = db.Openings
+                    .Where(o => o.StoredBottle.Purchase.BottleID == bottle.ID);
 
-			return PartialView(bottles.ToList());
+                double? rating = (openingsWithRating.Count() > 0)
+                    ? openingsWithRating.Select(o => o.Rating).Average()
+                    : (double?)null;
+
+                result.Add(new RackBottleViewModel {
+                    Bottle = bottle,
+                    Rating = rating
+                });
+            }
+
+            return PartialView(result);
 		}
 
 		#endregion Partial Views
