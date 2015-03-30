@@ -107,17 +107,25 @@
 });
 
 // Tasks
-// ========================================================================
+  // ========================================================================
 
-grunt.registerTask('serve', [
-  'clean:server',
-  'concurrent:server',
-  'concat',
-  'autoprefixer',
-  'watch'
-]);
+  grunt.registerTask('build', [
+    'clean:server',
+    'concurrent:server',
+    'concat',
+    'autoprefixer'
+  ]);
 
-grunt.registerTask('default', [
-  'serve'
-]);
+  grunt.registerTask('serve', [
+    'build',
+    'watch'
+  ]);
+
+  grunt.registerTask('dist' [
+    'build'
+  ]);
+
+  grunt.registerTask('default', [
+    'serve'
+  ]);
 };

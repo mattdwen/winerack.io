@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - winerack.io</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/modernizr")
     <meta name="twitter:domain" content="winerack.io">
     @RenderSection("head", required: false)
@@ -16,7 +16,7 @@
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/dist/vendor.js")
+    @Scripts.Render("~/bundles/vendor")
     @Scripts.Render("~/bundles/winerack")
     @RenderSection("scripts", required: false)
 </body>
