@@ -4,8 +4,8 @@
 }
 
 @section Header {
-    Tasted a <a href="/wines/@Model.WineID">@Model.Bottle</a>
-    by <a href="/vineyards/@Model.VineyardID">@Model.Winery</a>
+    Tasted a <a href="/wines/@Model.Wine.ID">@Html.Partial("Wines/_Description", Model.Wine)</a>
+    by <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.
 }
 
 @if (!string.IsNullOrWhiteSpace(Model.Notes)) {

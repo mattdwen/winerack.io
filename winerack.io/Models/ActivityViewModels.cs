@@ -26,15 +26,9 @@ namespace winerack.Models.ActivityEventViewModels {
 
 		#region Properties
 
-		public string Bottle { get; set; }
-
-		public string Winery { get; set; }
-
 		public string Notes { get; set; }
 
-		public int WineID { get; set; }
-
-		public int VineyardID { get; set; }
+        public Wine Wine { get; set; }
 
 		#endregion Properties
 

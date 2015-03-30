@@ -24,4 +24,16 @@
   .panel {
     margin-bottom: 0;
   }
+
+  .panel-body {
+    a {
+      color: $text-color;
+      font-weight: $font-weight-medium;
+      transition: all .2s;
+
+      &:hover {
+        color: $brand-primary;
+      }
+    }
+  }
 }

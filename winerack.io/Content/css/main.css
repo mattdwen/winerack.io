@@ -5611,6 +5611,12 @@ th {
       width: 33.33333%; } }
   .activity-event .panel {
     margin-bottom: 0; }
+  .activity-event .panel-body a {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    transition: all .2s; }
+    .activity-event .panel-body a:hover {
+      color: #00bcd4; }
 
 .footer {
   padding: 10rem 0 10rem;

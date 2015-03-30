@@ -56,11 +56,8 @@ namespace winerack.Controllers {
 				OccuredOn = activity.OccuredOn,
 				Actor = activity.Actor,
 				Notes = storedBottle.Opening.Notes,
-				Bottle = storedBottle.Purchase.Bottle.Wine.Description,
-				Winery = storedBottle.Purchase.Bottle.Wine.Vineyard.Name,
 				Image = storedBottle.Opening.ImageID.HasValue ? "openings/" + storedBottle.Opening.ImageID.Value : null,
-				WineID = storedBottle.Purchase.Bottle.WineID,
-				VineyardID = storedBottle.Purchase.Bottle.Wine.VineyardID,
+				Wine = storedBottle.Purchase.Bottle.Wine,
 				ViewUrl = "/openings",
 				ObjectID = storedBottle.ID
 			};
@@ -74,12 +71,9 @@ namespace winerack.Controllers {
 				Actor = activity.Actor,
 				OccuredOn = activity.OccuredOn,
 				Notes = purchase.Notes,
-				Bottle = purchase.Bottle.Wine.Description,
-				Winery = purchase.Bottle.Wine.Vineyard.Name,
 				Quantity = purchase.StoredBottles.Count,
 				Image = purchase.ImageID.HasValue ? "purchases/" + purchase.ImageID.Value : null,
-				WineID = purchase.Bottle.WineID,
-				VineyardID = purchase.Bottle.Wine.VineyardID,
+				Wine = purchase.Bottle.Wine,
 				ViewUrl = "/purchases",
 				ObjectID = purchase.ID
 			};
@@ -94,11 +88,8 @@ namespace winerack.Controllers {
 				Actor = activity.Actor,
 				OccuredOn = activity.OccuredOn,
 				Notes = tasting.Notes,
-				Bottle = tasting.Wine.Description,
-				Winery = tasting.Wine.Vineyard.Name,
 				Image = tasting.ImageID.HasValue ? "tastings/" + tasting.ImageID.Value : null,
-				WineID = tasting.WineID,
-				VineyardID = tasting.Wine.VineyardID,
+				Wine = tasting.Wine,
 				ViewUrl = "/tastings",
 				ObjectID = tasting.ID
 			};
