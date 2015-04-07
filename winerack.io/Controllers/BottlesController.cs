@@ -234,6 +234,11 @@ namespace winerack.Controllers {
 				activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID, bottle.WineID);
 				activityLogic.SaveChanges();
 
+                if (model.PostFacebook) {
+                    var facebook = new Logic.Social.Facebook(db);
+                    facebook.PurchaseWine(User.Identity.GetUserId(), purchase.ID);
+                }
+
 				if (model.PostTwitter) {
 					purchase = db.Purchases
 						.Where(p => p.ID == purchase.ID)

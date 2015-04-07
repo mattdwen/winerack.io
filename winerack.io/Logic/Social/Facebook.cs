@@ -1,6 +1,7 @@
 ﻿using Facebook;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using winerack.Models;
@@ -12,6 +13,9 @@ namespace winerack.Logic.Social {
 
 		public Facebook(ApplicationDbContext context) {
 			this.context = context;
+
+            this.appId = ConfigurationManager.AppSettings["facebook:appId"];
+            this.appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
 		}
 
 		#endregion Constructor
@@ -19,6 +23,9 @@ namespace winerack.Logic.Social {
 		#region Declarations
 
 		private ApplicationDbContext context;
+
+        private string appId;
+        private string appSecret;
 
 		#endregion Declarations
 
@@ -34,7 +41,11 @@ namespace winerack.Logic.Social {
 
 		private FacebookClient GetClient(string userId) {
 			var credentials = GetCredentials(userId);
-			return new FacebookClient(credentials.Secret);
+			var client = new FacebookClient(credentials.Secret);
+            client.AppId = appId;
+            client.AppSecret = appSecret;
+
+            return client;
 		}
 
 		#region Public Methods
@@ -48,7 +59,7 @@ namespace winerack.Logic.Social {
 		public void PurchaseWine(string userId, int purchaseId) {
 			var client = GetClient(userId);
 			var wineUrl = "http://www.winerack.io/purchases/" + purchaseId.ToString();
-			client.Post("me/winerackio:purchase", new { wine = wineUrl });
+			var result = client.Post("me/winerackio:purchase", new { wine = wineUrl });
 		}
 
 		public void TasteWine(string userId, int tastingId) {
