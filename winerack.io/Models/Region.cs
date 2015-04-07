@@ -52,6 +52,11 @@ namespace winerack.Models {
 				.OrderBy(r => r.Name);
 		}
 
+        public override string ToString()
+        {
+            return Name + ", " + CountryName;
+        }
+
 		#endregion Public Methods
 
 	}

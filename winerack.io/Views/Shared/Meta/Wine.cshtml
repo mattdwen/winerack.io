@@ -1,3 +1,7 @@
 ﻿@model winerack.Models.Wine
-<meta property="og:type" content="winerackio:wine">
-<meta name="twitter:title" property="og:title" content="@Model.ToString()">
+<meta property="og:type" content="winerackio:wine" />
+<meta property="winerackio:region" content="@Model.Region.ToString()" />
+<meta property="winerackio:vineyard" content="@Model.Vineyard.Name" />
+<meta property="winerackio:varietal" content="@string.Join(", ", Model.Varietals.Select(v => v.Name))" />
+<meta property="winerackio:vintage" content="@Model.Vintage.ToString()" /> 
+<meta name="twitter:title" property="og:title" content="@Model.ToString()" />
