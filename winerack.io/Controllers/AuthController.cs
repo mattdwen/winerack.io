@@ -14,11 +14,19 @@ using RestSharp.Authenticators;
 namespace winerack.Controllers {
 
 	[Authorize]
-    public class AuthController : Controller {
+    public class AuthController : Controller
+    {
 
-		#region Declarations
+        #region Constants
 
-		private ApplicationDbContext context = new ApplicationDbContext();
+        private const string BASE_URL = "http://localhost:3890";
+        //private const string BASE_URL = "http://www.winerack.io";
+
+        #endregion
+
+        #region Declarations
+
+        private ApplicationDbContext context = new ApplicationDbContext();
 
 		#endregion Delcarations
 
@@ -64,14 +72,47 @@ namespace winerack.Controllers {
 		public ActionResult Facebook() {
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
 			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
-			var redirectUrl = "http://www.winerack.io/auth/facebook_callback/";
+            var redirectUrl = Request.Url.AbsoluteUri;
 			var scope = "publish_actions";
 
-			var url = "https://www.facebook.com/dialog/oauth?" +
-				"client_id=" + appId +
-				"&redirect_uri=" + redirectUrl;
+            if (Request["code"] == null) {
+                return Redirect(string.Format("https://www.facebook.com/dialog/oauth?client_id={0}&redirect_uri={1}&scope={2}",
+                    appId, redirectUrl, scope));
+            } else {
+                var code = Request["code"];
+                var client = new Facebook.FacebookClient();
 
-			return Redirect(url);
+                dynamic result = client.Get("oauth/access_token", new {
+                    client_id = appId,
+                    redirect_uri = redirectUrl,
+                    client_secret = appSecret,
+                    code = code
+                });
+
+                // Search for an existing credential set
+                var userId = User.Identity.GetUserId();
+                var credentials = context.Credentials
+                    .Where(c => c.UserID == userId && c.CredentialType == CredentialTypes.Facebook)
+                    .FirstOrDefault();
+
+                if (credentials == null) {
+                    credentials = new Credentials {
+                        UserID = userId,
+                        CredentialType = CredentialTypes.Facebook
+                    };
+                }
+
+                credentials.Key = code;
+                credentials.Secret = result.access_token;
+
+                if (credentials.ID < 1) {
+                    context.Credentials.Add(credentials);
+                }
+
+                context.SaveChanges();
+
+                return RedirectToAction("Settings", "Account", new { AuthMessage = AuthControllerMessages.FacebookConnected });
+            }
 		}
 
 		public ActionResult Facebook_Callback(string code) {
@@ -79,7 +120,7 @@ namespace winerack.Controllers {
 			var client = new Facebook.FacebookClient();
 			var appId = ConfigurationManager.AppSettings["facebook:appId"];
 			var appSecret = ConfigurationManager.AppSettings["facebook:appSecret"];
-			var redirectUri = "http://www.winerack.io/auth/facebook_callback/";
+			var redirectUri = BASE_URL + "/auth/facebook_callback/";
 			dynamic result = client.Get("oauth/access_token", new {
 				client_id = appId,
 				redirect_uri = redirectUri,
