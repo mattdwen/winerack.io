@@ -1,59 +1,64 @@
 ﻿using System.Web.Optimization;
 
-namespace winerack {
-
-	public class BundleConfig {
-
-		// For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
-		public static void RegisterBundles(BundleCollection bundles) {
-
+namespace winerack
+{
+    public class BundleConfig
+    {
+        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        public static void RegisterBundles(BundleCollection bundles)
+        {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-				"~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Scripts/jquery.validate*"));
 
-			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-				"~/Scripts/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
                 "~/Scripts/dist/vendor.js"
                 ));
 
-			bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-				"~/Scripts/dist/angular.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/Scripts/dist/angular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/winerack").Include(
                 "~/Scripts/winerack.js"
                 ));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-				"~/Scripts/vendor/jQRangeSlider/css/classic.css",
+                "~/Scripts/vendor/jQRangeSlider/css/classic.css",
                 "~/Content/vendor/select2/select2.css",
-				"~/Content/css/main.css",
-				"~/Content/css/icomoon-wines.css"));
+                "~/Content/css/main.css",
+                "~/Content/css/icomoon-wines.css"));
 
-			bundles.Add(new ScriptBundle("~/bundles/bottlecreate").Include(
-				"~/Scripts/bloodhound/vineyards.js",
-				"~/Scripts/bloodhound/regions.js",
-				"~/Scripts/bloodhound/varietals.js",
-				"~/Scripts/jquery-ui-1.10.4.min.js",
-				"~/Scripts/bottles/create.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bottlecreate").Include(
+                "~/Scripts/bloodhound/vineyards.js",
+                "~/Scripts/bloodhound/regions.js",
+                "~/Scripts/bloodhound/varietals.js",
+                "~/Scripts/jquery-ui-1.10.4.min.js",
+                "~/Scripts/bottles/create.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/tastingscreate").Include(
-				"~/Scripts/bloodhound/vineyards.js",
-				"~/Scripts/bloodhound/regions.js",
-				"~/Scripts/bloodhound/varietals.js",
-				"~/Scripts/jquery-ui-1.10.4.min.js",
-				"~/Scripts/tastings/create.js"));
+            bundles.Add(new ScriptBundle("~/bundles/tastingscreate").Include(
+                "~/Scripts/bloodhound/vineyards.js",
+                "~/Scripts/bloodhound/regions.js",
+                "~/Scripts/bloodhound/varietals.js",
+                "~/Scripts/jquery-ui-1.10.4.min.js",
+                "~/Scripts/tastings/create.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/vineyard/edit").Include(
+                "~/Scripts/bloodhound/regions.js",
+                "~/Scripts/vineyard/edit.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/wine-editor").Include(
                 "~/Scripts/wine/editor.js"
                 ));
 
-			// Set EnableOptimizations to false for debugging. For more information,
-			// visit http://go.microsoft.com/fwlink/?LinkId=301862
-			BundleTable.EnableOptimizations = true;
-		}
-	}
+            // Set EnableOptimizations to false for debugging. For more information,
+            // visit http://go.microsoft.com/fwlink/?LinkId=301862
+            BundleTable.EnableOptimizations = true;
+        }
+    }
 }

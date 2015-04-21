@@ -1,139 +1,206 @@
-﻿using winerack.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using winerack.Models;
 
-namespace winerack.Controllers {
+namespace winerack.Controllers
+{
+    [Authorize(Roles = "Administrators")]
+    public class VineyardsController : Controller
+    {
+        #region Declarations
 
-	[Authorize(Roles = "Administrators")]
-	public class VineyardsController : Controller {
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-		#region Declarations
+        #endregion Declarations
 
-		private ApplicationDbContext db = new ApplicationDbContext();
+        #region Private Methods
 
-		#endregion Declarations
+        private Region GetRegion(string name, string country)
+        {
+            var region = db.Regions.Where(r => r.Name == name && r.Country == country).FirstOrDefault();
 
-		#region Actions
+            if (region == null) {
+                region = new Region {
+                    Name = name,
+                    Country = country
+                };
+                db.Regions.Add(region);
+            }
 
-		#region Index
+            return region;
+        }
 
-		// GET: Vineyards
-		public ActionResult Index() {
-			return View(db.Vineyards.ToList());
-		}
+        #region ViewBag
 
-		#endregion Index
+        private void PopulateViewBag()
+        {
+            ViewBag.Country = new SelectList(Country.GetCountries(), "ID", "Name");
+        }
 
-		#region Details
+        #endregion ViewBag
 
-		// GET: Vineyards/Details/5
-		[AllowAnonymous]
-		[Route("vineyards/{id:int}")]
-		public ActionResult Details(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
+        #endregion Private Methods
 
-			Vineyard vineyard = db.Vineyards.Find(id);
+        #region Actions
 
-			if (vineyard == null) {
-				return HttpNotFound();
-			}
+        #region Index
 
-			return View(vineyard);
-		}
+        // GET: Vineyards
+        public ActionResult Index()
+        {
+            return View(db.Vineyards.OrderBy(v => v.Name).ToList());
+        }
 
-		#endregion Details
+        #endregion Index
 
-		#region Create
+        #region Details
 
-		// GET: Vineyards/Create
-		public ActionResult Create() {
-			return View();
-		}
+        // GET: Vineyards/Details/5
+        [AllowAnonymous]
+        [Route("vineyards/{id:int}")]
+        public ActionResult Details(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-		// POST: Vineyards/Create
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "ID,Name")] Vineyard vineyard) {
-			if (ModelState.IsValid) {
-				db.Vineyards.Add(vineyard);
-				db.SaveChanges();
-				return RedirectToAction("Index");
-			}
+            Vineyard vineyard = db.Vineyards.Find(id);
 
-			return View(vineyard);
-		}
+            if (vineyard == null) {
+                return HttpNotFound();
+            }
 
-		#endregion Create
+            return View(vineyard);
+        }
 
-		#region Edit
+        #endregion Details
 
-		// GET: Vineyards/Edit/5
-		public ActionResult Edit(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Vineyard vineyard = db.Vineyards.Find(id);
-			if (vineyard == null) {
-				return HttpNotFound();
-			}
-			return View(vineyard);
-		}
+        #region Create
 
-		// POST: Vineyards/Edit/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit([Bind(Include = "ID,Name")] Vineyard vineyard) {
-			if (ModelState.IsValid) {
-				db.Entry(vineyard).State = EntityState.Modified;
-				db.SaveChanges();
-				return RedirectToAction("Index");
-			}
-			return View(vineyard);
-		}
+        // GET: Vineyards/Create
+        public ActionResult Create()
+        {
+            PopulateViewBag();
+            return View();
+        }
 
-		#endregion Edit
+        // POST: Vineyards/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Models.VineyardViewModels.VineyardEditVM model)
+        {
+            if (ModelState.IsValid) {
+                var vineyard = new Vineyard {
+                    Name = model.Name,
+                    Region = GetRegion(model.Region, model.Country)
+                };
 
-		#region Delete
 
-		// GET: Vineyards/Delete/5
-		public ActionResult Delete(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Vineyard vineyard = db.Vineyards.Find(id);
-			if (vineyard == null) {
-				return HttpNotFound();
-			}
-			return View(vineyard);
-		}
+                db.Vineyards.Add(vineyard);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-		// POST: Vineyards/Delete/5
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]
-		public ActionResult DeleteConfirmed(int id) {
-			Vineyard vineyard = db.Vineyards.Find(id);
-			db.Vineyards.Remove(vineyard);
-			db.SaveChanges();
-			return RedirectToAction("Index");
-		}
+            return View(model);
+        }
 
-		#endregion Delete
+        #endregion Create
 
-		#endregion Actions
+        #region Edit
 
-		#region Protected Methods
+        // GET: Vineyards/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-		protected override void Dispose(bool disposing) {
-			if (disposing) {
-				db.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+            Vineyard vineyard = db.Vineyards.Find(id);
+            if (vineyard == null) {
+                return HttpNotFound();
+            }
 
-		#endregion Protected Methods
-	}
+            var model = new Models.VineyardViewModels.VineyardEditVM {
+                ID = vineyard.ID,
+                Name = vineyard.Name
+            };
+
+            if (vineyard.Region != null) {
+                model.Region = vineyard.Region.Name;
+                model.Country = vineyard.Region.Country;
+            }
+
+            PopulateViewBag();
+            return View(model);
+        }
+
+        // POST: Vineyards/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Models.VineyardViewModels.VineyardEditVM model)
+        {
+            if (ModelState.IsValid) {
+                var vineyard = db.Vineyards.Find(model.ID);
+                if (vineyard == null) {
+                    return HttpNotFound();
+                }
+
+                vineyard.Name = model.Name;
+                vineyard.Region = GetRegion(model.Region, model.Country);
+
+                db.Entry(vineyard).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            PopulateViewBag();
+            return View(model);
+        }
+
+        #endregion Edit
+
+        #region Delete
+
+        // GET: Vineyards/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vineyard vineyard = db.Vineyards.Find(id);
+            if (vineyard == null) {
+                return HttpNotFound();
+            }
+            return View(vineyard);
+        }
+
+        // POST: Vineyards/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Vineyard vineyard = db.Vineyards.Find(id);
+            db.Vineyards.Remove(vineyard);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        #endregion Delete
+
+        #endregion Actions
+
+        #region Protected Methods
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #endregion Protected Methods
+    }
 }

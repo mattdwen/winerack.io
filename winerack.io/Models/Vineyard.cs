@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace winerack.Models {
+namespace winerack.Models
+{
+    public class Vineyard
+    {
+        #region Properties
 
-	public class Vineyard {
+        public int ID { get; set; }
 
-		#region Properties
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
 
-		public int ID { get; set; }
+        #endregion Properties
 
-		[Required(ErrorMessage="Name is required")]
-		public string Name { get; set; }
+        #region Relationships
 
-		#endregion Properties
+        public virtual Region Region { get; set; }
 
-		#region Relationships
+        [JsonIgnore]
+        public virtual ICollection<Wine> Wines { get; set; }
 
-		[JsonIgnore]
-		public virtual ICollection<Wine> Wines { get; set; }
+        #endregion Relationships
 
-		#endregion Relationships
+        #region Public Methods
 
-		#region Public Methods
+        public static IEnumerable<Vineyard> GetVineyards()
+        {
+            var context = new ApplicationDbContext();
+            return context.Vineyards
+                .OrderBy(m => m.Name);
+        }
 
-		public static IEnumerable<Vineyard> GetVineyards() {
-			var context = new ApplicationDbContext();
-			return context.Vineyards
-				.OrderBy(m => m.Name);
-		}
-
-		#endregion Public Methods
-	}
+        #endregion Public Methods
+    }
 }

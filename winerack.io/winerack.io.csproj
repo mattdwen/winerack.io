@@ -388,6 +388,10 @@
     <Compile Include="Migrations\201503300447459_add_opening_rating.Designer.cs">
       <DependentUpon>201503300447459_add_opening_rating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504212252275_add_vineyard_region.cs" />
+    <Compile Include="Migrations\201504212252275_add_vineyard_region.Designer.cs">
+      <DependentUpon>201504212252275_add_vineyard_region.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -414,6 +418,7 @@
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Models\Varietal.cs" />
     <Compile Include="Models\Vineyard.cs" />
+    <Compile Include="Models\VineyardViewModels.cs" />
     <Compile Include="Models\Wine.cs" />
     <Compile Include="Models\WineViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -513,6 +518,7 @@
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\openings\create.js" />
     <Content Include="Scripts\tastings\create.js" />
+    <Content Include="Scripts\vineyard\edit.js" />
     <Content Include="Scripts\winerack.js" />
     <Content Include="Scripts\wine\editor.js" />
     <Content Include="Scripts\_references.js" />
@@ -708,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503300447459_add_opening_rating.resx">
       <DependentUpon>201503300447459_add_opening_rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504212252275_add_vineyard_region.resx">
+      <DependentUpon>201504212252275_add_vineyard_region.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

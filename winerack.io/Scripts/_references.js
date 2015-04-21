@@ -24,3 +24,4 @@
 /// <reference path="../content/vendor/chosen.jquery.js" />
 /// <reference path="activity/stream.js" />
 /// <reference path="dist/angular.js" />
+/// <reference path="vineyard/edit.js" />

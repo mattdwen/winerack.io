@@ -6,10 +6,10 @@
 
 <div class="page-header">
     <div class="pull-right">
-        @Html.ActionLink("New", "Create", null, new { @class = "btn btn-primary" })
+        <a href="/vineyards/create" class="fa fa-2x fa-plus" title="Add Vineyard"></a>
     </div>
 
-    <h2>Vineyards</h2>
+    <h1>@ViewBag.Title</h1>
 </div>
 
 <div class="widget">
@@ -17,8 +17,9 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(m => m.Name)
                 </th>
+                <th>@Html.DisplayNameFor(m => m.Region)</th>
                 <th></th>
             </tr>
         </thead>
@@ -27,11 +28,12 @@
             @foreach (var item in Model) {
                 <tr>
                     <td>
-                        <a href="/vineyard/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                        <a href="/vineyards/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
                     </td>
+                    <td>@if (item.Region != null) { @item.Region.ToString() }</td>
                     <td class="text-right">
-                        <a href="/Vineyards/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
-                        <a href="/Vineyards/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>
+                        <a href="/vineyards/Edit/@item.ID" title="Edit"><i class="fa fa-edit"></i></a>
+                        <a href="/vineyards/Delete/@item.ID" title="Delete"><i class="fa fa-remove"></i></a>
                     </td>
                 </tr>
             }
