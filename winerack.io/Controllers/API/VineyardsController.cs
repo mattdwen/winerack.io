@@ -13,8 +13,12 @@ namespace winerack.Controllers.API {
 	public class VineyardsController : ApiController {
 		private ApplicationDbContext db = new ApplicationDbContext();
 
-		// GET: api/Vineyards
-		public IList<Vineyard> GetVineyards() {
+		// GET: api/vineyards
+		public IList<Vineyard> GetVineyards(string q) {
+            if (!string.IsNullOrWhiteSpace(q)) {
+                return db.Vineyards.Where(v => v.Name.Contains(q)).ToList();
+            }
+
 			return db.Vineyards.ToList();
 		}
 
