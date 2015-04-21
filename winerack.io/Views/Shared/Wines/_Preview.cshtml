@@ -1,21 +1,9 @@
 ﻿@model winerack.Models.Wine
 
-<div class="panel panel-default">
-	<div class="panel-body">
-		<div>
-			<strong>
-				<a href="/wines/@Model.ID">
-					@Html.Partial("Wines/_Description")
-				</a>
-			</strong>
-		</div>
-		<div>
-			<i class="fa fa-map-marker"></i>
-			<a href="/vineyards/@Model.VineyardID">@Model.Vineyard.Name</a>
-		</div>
-		<div>
-			<i class="fa fa-globe"></i>
-			<a href="/regions/@Model.RegionID">@Model.Region.Label</a>
-		</div>
-	</div>
+<div class="widget winerack-bottle">
+    <a href="/wine/@Model.ID">
+        <h3>@Html.Partial("Wines/_Description", Model)</h3>
+        <h5>@Model.Vineyard.Name</h5>
+        <h6>@Model.Region.ToString()</h6>
+    </a>
 </div>

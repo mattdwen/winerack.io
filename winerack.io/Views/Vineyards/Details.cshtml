@@ -8,19 +8,28 @@
     <h1>
         @Model.Name
 
-        @if(User.IsInRole("Administrators")) {
+        @if (User.IsInRole("Administrators")) {
             <small>
                 <a href="/Vineyards/Edit/@Model.ID"><i class="fa fa-edit"></i></a>
             </small>
         }
     </h1>
+
+    @if (Model.Region != null) {
+        <h4><a href="/regions/@Model.Region.ID">@Model.Region.ToString()</a></h4>
+    }
 </div>
 
 @if (Model.Wines.Count() > 0) {
     <section>
         <h3>Wines</h3>
-        @foreach (var wine in Model.Wines) {
-            @Html.Partial("Wines/_Preview", wine)
-        }
+
+        <div class="row winerack">
+            @foreach (var wine in Model.Wines) {
+                <div class="col-sm-6 col-md-4">
+                    @Html.Partial("Wines/_Preview", wine)
+                </div>
+            }
+        </div>
     </section>
 }
