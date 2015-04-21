@@ -5,7 +5,11 @@
 }).on('typeahead:autocompleted', function (obj, datum) {
   $('#VineyardID').val(datum.id);
 }).on('typeahead:selected', function (obj, datum) {
+  console.info(datum);
   $('#VineyardID').val(datum.id);
+  $('#RegionID').val(datum.regionId);
+  $('#Region').val(datum.region);
+  $("#Country").select2('val', datum.country);
 });
 
 $('#Region').typeahead(null, {

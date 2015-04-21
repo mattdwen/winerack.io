@@ -8,7 +8,10 @@
       return $.map(list, function (vineyard) {
         return {
           id: vineyard.ID,
-          name: vineyard.Name
+          name: vineyard.Name,
+          regionId: (vineyard.Region !== null) ? vineyard.Region.ID : null,
+          region: (vineyard.Region !== null) ? vineyard.Region.Name : null,
+          country: (vineyard.Region !== null) ? vineyard.Region.Country : null,
         };
       });
     }
