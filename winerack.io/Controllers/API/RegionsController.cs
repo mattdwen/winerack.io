@@ -1,24 +1,31 @@
-﻿using winerack.Models;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http;
+using winerack.Models;
 
-namespace winerack.Controllers.API {
+namespace winerack.Controllers.API
+{
+    public class RegionsController : ApiController
+    {
+        #region Declarations
 
-	public class RegionsController : ApiController {
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-		#region Declarations
+        #endregion Declarations
 
-		private ApplicationDbContext db = new ApplicationDbContext();
+        #region Endpoints
 
-		#endregion Declarations
+        // GET: api/regions
+        public IQueryable<Region> GetRegions(string q)
+        {
+            var regions = db.Regions.AsQueryable();
 
-		#region Endpoints
+            if (!string.IsNullOrWhiteSpace(q)) {
+                regions = regions.Where(r => r.Name.Contains(q));
+            }
 
-		// GET: api/regions
-		public IQueryable<Region> GetRegions() {
-			return db.Regions.OrderBy(r => r.Name);
-		}
+            return regions.OrderBy(r => r.Name);
+        }
 
-		#endregion Endpoints
-	}
+        #endregion Endpoints
+    }
 }
