@@ -10,82 +10,86 @@ using winerack.Helpers.Authentication;
 using winerack.Logic;
 using winerack.Models;
 
-namespace winerack.Controllers {
+namespace winerack.Controllers
+{
+    [Authorize]
+    public class BottlesController : Controller
+    {
+        #region Declarations
 
-	[Authorize]
-	public class BottlesController : Controller {
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-		#region Declarations
+        #endregion Declarations
 
-		private ApplicationDbContext db = new ApplicationDbContext();
+        #region Private Methods
 
-		#endregion Declarations
+        #region Create
 
-		#region Private Methods
+        private Bottle Create_Bottle(CreateBottleViewModel model)
+        {
+            var userId = User.Identity.GetUserId();
+            var wine = Create_Wine(model);
 
-		#region Create
+            var bottle = db.Bottles
+                .Where(b => b.OwnerID == userId && b.WineID == wine.ID)
+                .FirstOrDefault();
 
-		private Bottle Create_Bottle(CreateBottleViewModel model) {
-			var userId = User.Identity.GetUserId();
-			var wine = Create_Wine(model);
+            if (bottle == null) {
+                bottle = new Bottle {
+                    CreatedOn = DateTime.Now,
+                    OwnerID = userId,
+                    WineID = wine.ID,
+                    CellarMin = model.CellarMin,
+                    CellarMax = model.CellarMax
+                };
+                db.Bottles.Add(bottle);
+                db.SaveChanges();
+            }
 
-			var bottle = db.Bottles
-				.Where(b => b.OwnerID == userId && b.WineID == wine.ID)
-				.FirstOrDefault();
+            return bottle;
+        }
 
-			if (bottle == null) {
-				bottle = new Bottle {
-					CreatedOn = DateTime.Now,
-					OwnerID = userId,
-					WineID = wine.ID,
-					CellarMin = model.CellarMin,
-					CellarMax = model.CellarMax
-				};
-				db.Bottles.Add(bottle);
-				db.SaveChanges();
-			}
+        private Region Create_Region(CreateBottleViewModel model)
+        {
+            var region = db.Regions
+                .Where(r => r.Country == model.Country && r.Name == model.Region)
+                .FirstOrDefault();
 
-			return bottle;
-		}
+            if (region == null) {
+                region = new Region {
+                    Country = model.Country,
+                    Name = model.Region
+                };
 
-		private Region Create_Region(CreateBottleViewModel model) {
-			var region = db.Regions
-				.Where(r => r.Country == model.Country && r.Name == model.Region)
-				.FirstOrDefault();
+                db.Regions.Add(region);
+                db.SaveChanges();
+            }
 
-			if (region == null) {
-				region = new Region {
-					Country = model.Country,
-					Name = model.Region
-				};
+            return region;
+        }
 
-				db.Regions.Add(region);
-				db.SaveChanges();
-			}
+        private Vineyard Create_Vineyard(CreateBottleViewModel model)
+        {
+            var vineyard = db.Vineyards
+                .Where(v => v.Name == model.Vineyard)
+                .FirstOrDefault();
 
-			return region;
-		}
+            if (vineyard == null) {
+                vineyard = new Vineyard {
+                    Name = model.Vineyard
+                };
 
-		private Vineyard Create_Vineyard(CreateBottleViewModel model) {
-			var vineyard = db.Vineyards
-				.Where(v => v.Name == model.Vineyard)
-				.FirstOrDefault();
+                db.Vineyards.Add(vineyard);
+                db.SaveChanges();
+            }
 
-			if (vineyard == null) {
-				vineyard = new Vineyard {
-					Name = model.Vineyard
-				};
+            return vineyard;
+        }
 
-				db.Vineyards.Add(vineyard);
-				db.SaveChanges();
-			}
-
-			return vineyard;
-		}
-
-		private Wine Create_Wine(CreateBottleViewModel model) {
-			var region = Create_Region(model);
-			var vineyard = Create_Vineyard(model);
+        private Wine Create_Wine(CreateBottleViewModel model)
+        {
+            var region = Create_Region(model);
+            var vineyard = Create_Vineyard(model);
 
             var wine = db.Wines
                 .Where(w => w.Name == model.WineName
@@ -119,9 +123,9 @@ namespace winerack.Controllers {
             }
 
             return wine;
-		}
+        }
 
-		#endregion Create
+        #endregion Create
 
         #region ViewBag
 
@@ -141,220 +145,231 @@ namespace winerack.Controllers {
 
         #region Protected Methods
 
-        protected override void Dispose(bool disposing) {
-			if (disposing) {
-				db.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		#endregion Protected Methods
+        #endregion Protected Methods
 
-		#region Actions
+        #region Actions
 
-		#region Index
+        #region Index
 
-		// GET: Bottles
-		public ActionResult Index() {
-			return View();
-		}
+        // GET: Bottles
+        public ActionResult Index()
+        {
+            return View();
+        }
 
-		#endregion Index
+        #endregion Index
 
-		#region Details
+        #region Details
 
-		// GET: Bottles/Details/5
-		[BottleAuthenticationAttribute]
-		public ActionResult Details(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Bottle bottle = db.Bottles.Find(id);
-			if (bottle == null) {
-				return HttpNotFound();
-			}
-			return View(bottle);
-		}
+        // GET: Bottles/Details/5
+        [BottleAuthenticationAttribute]
+        public ActionResult Details(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bottle bottle = db.Bottles.Find(id);
+            if (bottle == null) {
+                return HttpNotFound();
+            }
+            return View(bottle);
+        }
 
-		#endregion Details
+        #endregion Details
 
-		#region Create
+        #region Create
 
-		// GET: Bottles/Create
-		public ActionResult Create() {
-			var user = db.Users.Find(User.Identity.GetUserId());
+        // GET: Bottles/Create
+        public ActionResult Create()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
 
-			var model = new CreateBottleViewModel {
-				PurchaseDate = DateTime.Now,
-				PurchaseQuantity = 1,
-				HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null),
-				HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null),
-				HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null)
-			};
+            var model = new CreateBottleViewModel {
+                PurchaseDate = DateTime.Now,
+                PurchaseQuantity = 1,
+                HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null),
+                HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null),
+                HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null)
+            };
 
             PopulateViewBag();
 
-			return View(model);
-		}
+            return View(model);
+        }
 
-		// POST: Bottles/Create
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create(CreateBottleViewModel model, HttpPostedFileBase photo) {
-			if (ModelState.IsValid) {
-				// Get the bottle
-				var bottle = Create_Bottle(model);
+        // POST: Bottles/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CreateBottleViewModel model, HttpPostedFileBase photo)
+        {
+            if (ModelState.IsValid) {
+                // Get the bottle
+                var bottle = Create_Bottle(model);
 
-				// Create the purchase
-				var purchase = new Purchase {
-					BottleID = bottle.ID,
+                // Create the purchase
+                var purchase = new Purchase {
+                    BottleID = bottle.ID,
                     IsGift = model.IsGift,
-					PurchasedOn = model.PurchaseDate,
-					PurchasePrice = model.PurchaseValue,
-					Quantity = model.PurchaseQuantity,
-					Notes = model.PurchaseNotes
-				};
+                    PurchasedOn = model.PurchaseDate,
+                    PurchasePrice = model.PurchaseValue,
+                    Quantity = model.PurchaseQuantity,
+                    Notes = model.PurchaseNotes
+                };
 
-				// Save the photo
-				if (photo != null && photo.ContentLength > 0) {
-					var blobHandler = new Logic.BlobHandler("purchases");
-					purchase.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Standard));
-				}
+                // Save the photo
+                if (photo != null && photo.ContentLength > 0) {
+                    var blobHandler = new Logic.BlobHandler("purchases");
+                    purchase.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Standard));
+                }
 
-				// Add a stored bottle per quantity
-				for (int i = 0; i < purchase.Quantity; i++) {
-					purchase.StoredBottles.Add(new StoredBottle());
-				}
+                // Add a stored bottle per quantity
+                for (int i = 0; i < purchase.Quantity; i++) {
+                    purchase.StoredBottles.Add(new StoredBottle());
+                }
 
-				db.Purchases.Add(purchase);
-				db.SaveChanges();
+                db.Purchases.Add(purchase);
+                db.SaveChanges();
 
-				// Push to activity log
-				var activityLogic = new Logic.Activities(db);
-				activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID, bottle.WineID);
-				activityLogic.SaveChanges();
+                // Push to activity log
+                var activityLogic = new Logic.Activities(db);
+                activityLogic.Publish(User.Identity.GetUserId(), ActivityVerbs.Purchased, purchase.ID, bottle.WineID);
+                activityLogic.SaveChanges();
 
                 if (model.PostFacebook) {
                     var facebook = new Logic.Social.Facebook(db);
                     facebook.PurchaseWine(User.Identity.GetUserId(), purchase.ID);
                 }
 
-				if (model.PostTwitter) {
-					purchase = db.Purchases
-						.Where(p => p.ID == purchase.ID)
-						.Include("Bottle.Wine.Varietal")
-						.FirstOrDefault();
-					var twitter = new Logic.Social.Twitter(db);
-					var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
+                if (model.PostTwitter) {
+                    purchase = db.Purchases
+                        .Where(p => p.ID == purchase.ID)
+                        .Include("Bottle.Wine.Varietal")
+                        .FirstOrDefault();
+                    var twitter = new Logic.Social.Twitter(db);
+                    var quantity = Helpers.ExtensionMethods.BottleQuantity(purchase.Quantity);
                     var verb = (purchase.IsGift) ? "been gifted" : "purchased";
-					var tweet = "I've " + verb + " " + quantity + " of " + purchase.Bottle.Wine.Description;
-					var url = "http://www.winerack.io/purchases/" + purchase.ID.ToString();
-					twitter.Tweet(User.Identity.GetUserId(), tweet, url);
-				}
+                    var tweet = "I've " + verb + " " + quantity + " of " + purchase.Bottle.Wine.Description;
+                    var url = "http://www.winerack.io/purchases/" + purchase.ID.ToString();
+                    twitter.Tweet(User.Identity.GetUserId(), tweet, url);
+                }
 
-				return RedirectToAction("Details", new { id = bottle.ID });
-			}
+                return RedirectToAction("Details", new { id = bottle.ID });
+            }
 
-			var user = db.Users.Find(User.Identity.GetUserId());
-			model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
-			model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
-			model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            model.HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null);
+            model.HasTumblr = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Tumblr).FirstOrDefault() != null);
+            model.HasTwitter = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Twitter).FirstOrDefault() != null);
 
             PopulateViewBag();
 
-			return View(model);
-		}
+            return View(model);
+        }
 
-		#endregion Create
+        #endregion Create
 
-		#region Edit
+        #region Edit
 
-		// GET: Bottles/Edit/5
-		[BottleAuthenticationAttribute]
-		public ActionResult Edit(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Bottle bottle = db.Bottles.Find(id);
-			if (bottle == null) {
-				return HttpNotFound();
-			}
-			ViewBag.OwnerID = new SelectList(db.Users, "Id", "Email", bottle.OwnerID);
-			ViewBag.WineID = new SelectList(db.Wines, "ID", "Name", bottle.WineID);
-			return View(bottle);
-		}
+        // GET: Bottles/Edit/5
+        [BottleAuthenticationAttribute]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bottle bottle = db.Bottles.Find(id);
+            if (bottle == null) {
+                return HttpNotFound();
+            }
+            ViewBag.OwnerID = new SelectList(db.Users, "Id", "Email", bottle.OwnerID);
+            ViewBag.WineID = new SelectList(db.Wines, "ID", "Name", bottle.WineID);
+            return View(bottle);
+        }
 
-		// POST: Bottles/Edit/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		[BottleAuthenticationAttribute]
-		public ActionResult Edit([Bind(Include = "ID,WineID,OwnerID,CreatedOn")] Bottle bottle) {
-			if (ModelState.IsValid) {
-				db.Entry(bottle).State = EntityState.Modified;
-				db.SaveChanges();
-				return RedirectToAction("Index");
-			}
-			ViewBag.OwnerID = new SelectList(db.Users, "Id", "Email", bottle.OwnerID);
-			ViewBag.WineID = new SelectList(db.Wines, "ID", "Name", bottle.WineID);
-			return View(bottle);
-		}
+        // POST: Bottles/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [BottleAuthenticationAttribute]
+        public ActionResult Edit([Bind(Include = "ID,WineID,OwnerID,CreatedOn")] Bottle bottle)
+        {
+            if (ModelState.IsValid) {
+                db.Entry(bottle).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.OwnerID = new SelectList(db.Users, "Id", "Email", bottle.OwnerID);
+            ViewBag.WineID = new SelectList(db.Wines, "ID", "Name", bottle.WineID);
+            return View(bottle);
+        }
 
-		#endregion Edit
+        #endregion Edit
 
-		#region Delete
+        #region Delete
 
-		// GET: Bottles/Delete/5
-		[BottleAuthenticationAttribute]
-		public ActionResult Delete(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Bottle bottle = db.Bottles.Find(id);
-			if (bottle == null) {
-				return HttpNotFound();
-			}
-			return View(bottle);
-		}
+        // GET: Bottles/Delete/5
+        [BottleAuthenticationAttribute]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bottle bottle = db.Bottles.Find(id);
+            if (bottle == null) {
+                return HttpNotFound();
+            }
+            return View(bottle);
+        }
 
-		// POST: Bottles/Delete/5
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]
-		[BottleAuthenticationAttribute]
-		public ActionResult DeleteConfirmed(int id) {
-			Bottle bottle = db.Bottles.Find(id);
-			db.Bottles.Remove(bottle);
-			db.SaveChanges();
-			return RedirectToAction("Index");
-		}
+        // POST: Bottles/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [BottleAuthenticationAttribute]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Bottle bottle = db.Bottles.Find(id);
+            db.Bottles.Remove(bottle);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-		#endregion Delete
+        #endregion Delete
 
-		#region Drink
+        #region Drink
 
-		// GET: Bottles/Drink/5
-		[BottleAuthentication]
-		public ActionResult Drink(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
+        // GET: Bottles/Drink/5
+        [BottleAuthentication]
+        public ActionResult Drink(int? id)
+        {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-			var bottle = db.Bottles.Find(id);
+            var bottle = db.Bottles.Find(id);
 
-			if (bottle == null) {
-				return HttpNotFound();
-			}
+            if (bottle == null) {
+                return HttpNotFound();
+            }
 
-			return View(bottle);
-		}
+            return View(bottle);
+        }
 
-		#endregion Drink
+        #endregion Drink
 
-		#endregion Actions
+        #endregion Actions
 
-		#region Partial Views
+        #region Partial Views
 
-		public PartialViewResult Rack() {
-			var userId = User.Identity.GetUserId();
+        public PartialViewResult Rack()
+        {
+            var userId = User.Identity.GetUserId();
 
             var bottles = db.Bottles
                 .Where(b => b.OwnerID == userId)
@@ -376,8 +391,8 @@ namespace winerack.Controllers {
             }
 
             return PartialView(result);
-		}
+        }
 
-		#endregion Partial Views
-	}
+        #endregion Partial Views
+    }
 }
