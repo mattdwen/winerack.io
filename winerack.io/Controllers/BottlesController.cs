@@ -68,15 +68,16 @@ namespace winerack.Controllers
             return region;
         }
 
-        private Vineyard Create_Vineyard(CreateBottleViewModel model)
+        private Vineyard Create_Vineyard(CreateBottleViewModel model, Region region)
         {
             var vineyard = db.Vineyards
-                .Where(v => v.Name == model.Vineyard)
+                .Where(v => v.Name == model.Vineyard && v.Region.ID == region.ID)
                 .FirstOrDefault();
 
             if (vineyard == null) {
                 vineyard = new Vineyard {
-                    Name = model.Vineyard
+                    Name = model.Vineyard,
+                    Region = region
                 };
 
                 db.Vineyards.Add(vineyard);
@@ -89,7 +90,7 @@ namespace winerack.Controllers
         private Wine Create_Wine(CreateBottleViewModel model)
         {
             var region = Create_Region(model);
-            var vineyard = Create_Vineyard(model);
+            var vineyard = Create_Vineyard(model, region);
 
             var wine = db.Wines
                 .Where(w => w.Name == model.WineName
