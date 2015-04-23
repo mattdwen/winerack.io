@@ -3,6 +3,9 @@
 
 @{
     ViewBag.Title = @Model.Wine.ToString();
+
+    var storedBottles = Model.Purchases.SelectMany(p => p.StoredBottles).Where(b => b.Opening == null);
+    var openedBottles = Model.Purchases.SelectMany(p => p.StoredBottles).Where(b => b.Opening != null);
 }
 
 <input id="Bottle_ID" type="hidden" value="@Model.ID"/>
@@ -34,53 +37,73 @@
     </div>
 </div>
 
-<h2>Bottles</h2>
-<div class="widget">
-    @using (Html.BeginForm("Update", "StoredBottles")) {
-        @Html.AntiForgeryToken()
-        <input type="hidden" name="BottleID" value="@Model.ID" />
+@if (storedBottles.Count() > 0) {
+    <h2>Stored Bottles</h2>
+    <div class="widget">
+        @using (Html.BeginForm("Update", "StoredBottles")) {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="BottleID" value="@Model.ID" />
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Stored</th>
+                        <th>Purchased</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var stored in storedBottles) {
+                        <tr>
+                            <td>
+                                <input class="form-control"
+                                        id="bottle_@stored.ID"
+                                        name="bottle_@stored.ID"
+                                        type="text"
+                                        value="@stored.Location"
+                                        placeholder="Location" />
+                            </td>
+                            <td valign="middle">@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
+                            <td class="text-right">
+                                <a href="/Openings/Create?storedBottleId=@stored.ID" title="Open"><i class="fa-fw fa-2x wine-corkscrew"></i></a>
+                                <a href="/StoredBottles/Delete/@stored.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <button class="btn btn-success" type="submit">Save storage details</button>
+
+        }
+    </div>
+}
+
+@if (openedBottles.Count() > 0) {
+    <h2>Opened Bottles</h2>
+    <div class="widget">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Stored</th>
+                    <th>Opened</th>
                     <th>Purchased</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var stored in Model.Purchases.SelectMany(p => p.StoredBottles)) {
+                @foreach (var stored in openedBottles) {
                     <tr>
-                        <td>
-                            @if (stored.Opening == null) {
-                                <input class="form-control"
-                                       id="bottle_@stored.ID"
-                                       name="bottle_@stored.ID"
-                                       type="text"
-                                       value="@stored.Location"
-                                       placeholder="Location" />
-                            } else {
-                                <span>Opened @Html.DisplayFor(s => stored.Opening.OpenedOn)</span>
-                            }
-                        </td>
+                        <td>@Html.DisplayFor(s => stored.Opening.OpenedOn)</td>
                         <td valign="middle">@Html.DisplayFor(s => stored.Purchase.PurchasedOn)</td>
                         <td class="text-right">
-                            @if (stored.Opening == null) {
-                                <a href="/Openings/Create?storedBottleId=@stored.ID" title="Open"><i class="fa-fw fa-2x wine-corkscrew"></i></a>
-                                <a href="/StoredBottles/Delete/@stored.ID" title="Delete"><i class="fa fa-fw fa-2x fa-remove"></i></a>
-                            } else {
-                                @Html.ActionLink("tasting notes", "Details", new { controller = "Openings", id = stored.ID })
-                            }
+                            @Html.ActionLink("tasting notes", "Details", new { controller = "Openings", id = stored.ID })
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-
-        <button class="btn btn-success" type="submit">Save storage details</button>
-
-    }
-</div>
+    </div>
+}
 
 <div>
     <div class="pull-right">
