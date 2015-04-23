@@ -12,12 +12,14 @@ openingsApp.controller('StartCtrl', function ($scope, Bottle) {
     var styles = [];
     var varietals = [];
     angular.forEach(bottles, function (bottle) {
-      styles = $.merge(styles, bottle.Styles);
-      varietals = $.merge(varietals, bottle.Varietals);
+      styles = _.union(styles, bottle.Styles);
+      varietals = _.union(varietals, bottle.Varietals);
     });
 
-    $scope.styles = styles;
-    $scope.varietals = varietals;
+    console.info(styles);
+
+    $scope.styles = styles.sort();
+    $scope.varietals = varietals.sort();
   });
 
   $scope.filter = {

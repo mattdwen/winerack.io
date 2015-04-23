@@ -81,6 +81,7 @@
           'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
           'bower_components/bootstrap-rating-input/src/bootstrap-rating-input.js',
           'bower_components/imagesloaded/imagesloaded.pkgd.js',
+          'bower_components/lodash/lodash.js',
           'bower_components/masonry/dist/masonry.pkgd.js',
           'bower_components/select2/select2.js',
           'bower_components/typeahead.js/dist/bloodhound.js',
