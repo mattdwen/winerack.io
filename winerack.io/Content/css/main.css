@@ -3691,7 +3691,7 @@ button.close {
   src: url("/Content/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("/Content/fonts/font-awesome/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("/Content/fonts/font-awesome/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("/Content/fonts/font-awesome/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("/Content/fonts/font-awesome/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.fa, .checkbox input[type=checkbox]:after, .select2-search-choice-close {
+.fa, .checkbox input[type=checkbox]:after, .select2-container .select2-choice abbr.select2-search-choice-close, .select2-container .select2-choice .select2-arrow b {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -3749,9 +3749,9 @@ button.close {
 .pull-left {
   float: left; }
 
-.fa.pull-left, .checkbox input.pull-left[type=checkbox]:after, .pull-left.select2-search-choice-close {
+.fa.pull-left, .checkbox input.pull-left[type=checkbox]:after, .select2-container .select2-choice abbr.pull-left.select2-search-choice-close, .select2-container .select2-choice .select2-arrow b.pull-left {
   margin-right: .3em; }
-.fa.pull-right, .checkbox input.pull-right[type=checkbox]:after, .pull-right.select2-search-choice-close {
+.fa.pull-right, .checkbox input.pull-right[type=checkbox]:after, .select2-container .select2-choice abbr.pull-right.select2-search-choice-close, .select2-container .select2-choice .select2-arrow b.pull-right {
   margin-left: .3em; }
 
 .fa-spin {
@@ -3879,7 +3879,7 @@ button.close {
 
 .fa-remove:before,
 .fa-close:before,
-.select2-search-choice-close:before,
+.select2-container .select2-choice abbr.select2-search-choice-close:before,
 .fa-times:before {
   content: ""; }
 
@@ -4188,7 +4188,7 @@ button.close {
 .fa-chevron-up:before {
   content: ""; }
 
-.fa-chevron-down:before {
+.fa-chevron-down:before, .select2-container .select2-choice .select2-arrow b:before {
   content: ""; }
 
 .fa-retweet:before {
@@ -5511,14 +5511,20 @@ th {
       .table > tbody > tr > td a .fa,
       .table > tbody > tr > td a .checkbox input[type=checkbox]:after,
       .checkbox .table > tbody > tr > td a input[type=checkbox]:after,
-      .table > tbody > tr > td a .select2-search-choice-close,
+      .table > tbody > tr > td a .select2-container .select2-choice abbr.select2-search-choice-close,
+      .select2-container .select2-choice .table > tbody > tr > td a abbr.select2-search-choice-close,
+      .table > tbody > tr > td a .select2-container .select2-choice .select2-arrow b,
+      .select2-container .select2-choice .select2-arrow .table > tbody > tr > td a b,
       .table > tbody > tr > td a [class*="wine-"] {
         color: rgba(255, 255, 255, 0.7); }
         .table > tbody > tr > td a.btn:hover,
         .table > tbody > tr > td a .fa:hover,
         .table > tbody > tr > td a .checkbox input[type=checkbox]:hover:after,
         .checkbox .table > tbody > tr > td a input[type=checkbox]:hover:after,
-        .table > tbody > tr > td a .select2-search-choice-close:hover,
+        .table > tbody > tr > td a .select2-container .select2-choice abbr.select2-search-choice-close:hover,
+        .select2-container .select2-choice .table > tbody > tr > td a abbr.select2-search-choice-close:hover,
+        .table > tbody > tr > td a .select2-container .select2-choice .select2-arrow b:hover,
+        .select2-container .select2-choice .select2-arrow .table > tbody > tr > td a b:hover,
         .table > tbody > tr > td a [class*="wine-"]:hover {
           color: rgba(255, 255, 255, 0.9); }
 
@@ -5578,7 +5584,7 @@ th {
 
 .rating-input {
   padding-top: 5px; }
-  .rating-input .fa, .rating-input .checkbox input[type=checkbox]:after, .checkbox .rating-input input[type=checkbox]:after, .rating-input .select2-search-choice-close {
+  .rating-input .fa, .rating-input .checkbox input[type=checkbox]:after, .checkbox .rating-input input[type=checkbox]:after, .rating-input .select2-container .select2-choice abbr.select2-search-choice-close, .select2-container .select2-choice .rating-input abbr.select2-search-choice-close, .rating-input .select2-container .select2-choice .select2-arrow b, .select2-container .select2-choice .select2-arrow .rating-input b {
     padding-right: 2px;
     font-size: 2rem;
     cursor: pointer; }
@@ -5634,7 +5640,7 @@ th {
     transition: color 0.2s; }
     .footer a:hover {
       color: rgba(255, 255, 255, 0.9); }
-  .footer .fa, .footer .checkbox input[type=checkbox]:after, .checkbox .footer input[type=checkbox]:after, .footer .select2-search-choice-close {
+  .footer .fa, .footer .checkbox input[type=checkbox]:after, .checkbox .footer input[type=checkbox]:after, .footer .select2-container .select2-choice abbr.select2-search-choice-close, .select2-container .select2-choice .footer abbr.select2-search-choice-close, .footer .select2-container .select2-choice .select2-arrow b, .select2-container .select2-choice .select2-arrow .footer b {
     font-size: 3rem; }
 
 .jumbotron {
@@ -5736,7 +5742,7 @@ th {
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       transition: color 0.2s; }
-      .navbar-nav > li > a .fa, .navbar-nav > li > a .checkbox input[type=checkbox]:after, .checkbox .navbar-nav > li > a input[type=checkbox]:after, .navbar-nav > li > a .select2-search-choice-close {
+      .navbar-nav > li > a .fa, .navbar-nav > li > a .checkbox input[type=checkbox]:after, .checkbox .navbar-nav > li > a input[type=checkbox]:after, .navbar-nav > li > a .select2-container .select2-choice abbr.select2-search-choice-close, .select2-container .select2-choice .navbar-nav > li > a abbr.select2-search-choice-close, .navbar-nav > li > a .select2-container .select2-choice .select2-arrow b, .select2-container .select2-choice .select2-arrow .navbar-nav > li > a b {
         font-size: 2rem; }
       .navbar-nav > li > a:hover {
         color: rgba(255, 255, 255, 0.9); }
@@ -6376,6 +6382,16 @@ th {
   width: 1px !important;
   height: 1px !important;
   position: absolute !important; }
+
+.select2-container .select2-choice abbr {
+  background: none; }
+  .select2-container .select2-choice abbr.select2-search-choice-close {
+    display: none; }
+.select2-container .select2-choice .select2-arrow b {
+  position: relative;
+  top: 6px; }
+.select2-container.select2-allowclear .select2-choice abbr.select2-search-choice-close {
+  display: inline-block; }
 
 .select2-container-multi .select2-choices .select2-search-choice {
   color: rgba(255, 255, 255, 0.9);

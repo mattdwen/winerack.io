@@ -4,6 +4,41 @@
 
 @import 'select2-bootstrap3-css/lib/select2-bootstrap.scss';
 
+.select2-container {
+  .select2-choice {
+    abbr {
+      background: none;
+
+      &.select2-search-choice-close {
+        @extend .fa;
+        @extend .fa-close;
+
+        display: none;
+      }
+    }
+
+    .select2-arrow {
+      b {
+        @extend .fa;
+        @extend .fa-chevron-down;
+
+        position: relative;
+        top: 6px;
+      }
+    }
+  }
+
+  &.select2-allowclear {
+    .select2-choice {
+      abbr {
+        &.select2-search-choice-close {
+          display: inline-block;
+        }
+       }
+    }
+  }
+}
+
 .select2-container-multi {
   .select2-choices {
     .select2-search-choice {
@@ -36,9 +71,4 @@
     background: none;
     background-color: $white-secondary;
   }
-}
-
-.select2-search-choice-close {
-  @extend .fa;
-  @extend .fa-close;
 }
