@@ -41,6 +41,7 @@ namespace winerack.Models {
 		[Display(Name = "Purchased")]
 		public int NumberOfBottles {
 			get {
+                if (Purchases == null) return 0;
 				return Purchases.Sum(p => p.StoredBottles.Count);
 			}
 		}
@@ -49,6 +50,7 @@ namespace winerack.Models {
 		[Display(Name = "Opened")]
 		public int NumberDrunk {
 			get {
+                if (Purchases == null) return 0;
 				return Purchases.SelectMany(p => p.StoredBottles).Where(s => s.Opening != null).Count();
 			}
 		}
@@ -57,6 +59,7 @@ namespace winerack.Models {
 		[Display(Name = "Remaining")]
 		public int NumberRemaining {
 			get {
+                if (Purchases == null) return 0;
 				return NumberOfBottles - NumberDrunk;
 			}
 		}

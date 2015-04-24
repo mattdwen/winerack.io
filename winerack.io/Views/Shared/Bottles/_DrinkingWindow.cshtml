@@ -1,0 +1,41 @@
+﻿@model winerack.Models.Bottle
+
+@{
+    string window = "Not specified";
+
+    if (Model.CellarMax.HasValue && Model.CellarMin.HasValue) {
+        window = Model.CellarMin.Value + " to " + Model.CellarMax.Value;
+    } else if (Model.CellarMin.HasValue) {
+        window = Model.CellarMin.Value + " onwards";
+    } else if (Model.CellarMax.HasValue) {
+        window = "before " + Model.CellarMax.Value;
+    }
+}
+
+<div>
+    <form class="form-inline" method="post" action="/bottles/window">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ID)
+
+        Drinking window:
+
+        <span id="drinkingWindow_display">
+            @window <a href="#" class="btn btn-link" id="drinkingWindowEdit"><i class="fa fa-edit"></i></a>
+        </span>
+
+        <span id="drinkingWindow_edit" style="display: none;">
+            @Html.TextBoxFor(m => m.CellarMin, new { @class = "form-control", @type = "number" })
+
+            to
+
+            @Html.TextBoxFor(m => m.CellarMax, new { @class = "form-control", @type = "number" })
+
+            <button type="submit" class="btn btn-link"><i class="fa fa-save"></i></button>
+            <button type="button" class="btn btn-link" id="drinkingWindowCancel"><i class="fa fa-times"></i></button>
+        </span>
+    </form>
+
+    <div class="modal">
+
+    </div>
+</div>

@@ -364,6 +364,32 @@ namespace winerack.Controllers
 
         #endregion Drink
 
+        #region Window
+
+        [HttpPost]
+        [BottleAuthenticationAttribute]
+        [ValidateAntiForgeryToken]
+        public ActionResult Window([Bind(Include = "ID,CellarMin,CellarMax")] Bottle model)
+        {
+            if (model.ID < 1) {
+                return HttpNotFound();
+            }
+
+            var bottle = db.Bottles.Find(model.ID);
+            if (bottle == null) {
+                return HttpNotFound();
+            }
+
+            bottle.CellarMin = model.CellarMin;
+            bottle.CellarMax = model.CellarMax;
+            db.Entry(bottle).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = model.ID });
+        }
+
+        #endregion
+
         #endregion Actions
 
         #region Partial Views

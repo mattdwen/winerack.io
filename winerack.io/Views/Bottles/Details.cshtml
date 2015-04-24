@@ -13,9 +13,13 @@
 <div class="row">
     <div class="col-md-9">
         @Html.Partial("Wines/_Header", Model.Wine)
+
+        @Html.Partial("Bottles/_DrinkingWindow", Model)
+
         @if (Model.NumberRemaining > 0) {
             <a href="/Openings/CreateFromBottle?BottleId=@Model.ID" class="btn btn-link"><i class="wine-corkscrew"></i> Open a bottle</a>
         }
+        
         <a href="/Purchases/Create?BottleId=@Model.ID" class="btn btn-link"><i class="fa fa-plus"></i> Purchase more</a>
     </div>
     <div class="col-md-3">
@@ -157,3 +161,7 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/bottles/drinking-window.js")
+}

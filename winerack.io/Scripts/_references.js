@@ -25,3 +25,4 @@
 /// <reference path="activity/stream.js" />
 /// <reference path="dist/angular.js" />
 /// <reference path="vineyard/edit.js" />
+/// <reference path="bottles/drinking-window.js" />

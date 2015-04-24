@@ -502,6 +502,7 @@
     <Content Include="Content\sass\_purchases.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
+    <Content Include="Scripts\bottles\drinking-window.js" />
     <Content Include="Scripts\dist\angular.js" />
     <Content Include="Scripts\dist\vendor.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -531,6 +532,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Varietals.cshtml" />
     <Content Include="Views\Shared\Wines\_Header.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Rating.cshtml" />
+    <Content Include="Views\Shared\Bottles\_DrinkingWindow.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
