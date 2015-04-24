@@ -68,6 +68,10 @@ namespace winerack.Controllers {
 		public PartialViewResult Purchased(Activity activity) {
 			var purchase = db.Purchases.Find(activity.ObjectID);
 
+            if (purchase == null) {
+                return null;
+            }
+
 			var viewmodel = new Models.ActivityEventViewModels.Purchased {
 				Actor = activity.Actor,
 				OccuredOn = activity.OccuredOn,
