@@ -37,6 +37,9 @@ namespace winerack.Models
         [ForeignKey("Vineyard")]
         public int VineyardID { get; set; }
 
+        /// <summary>
+        /// Wine name, varietals, and vintage
+        /// </summary>
         [NotMapped]
         public string Description
         {
@@ -55,6 +58,16 @@ namespace winerack.Models
                 description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
 
                 return description;
+            }
+        }
+
+        // Vineyard, wine name, varietals, and vintage
+        [NotMapped]
+        public string FullDescription
+        {
+            get
+            {
+                return Vineyard.Name + " " + Description;
             }
         }
 

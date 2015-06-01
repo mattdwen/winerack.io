@@ -4,10 +4,8 @@
     @if (!string.IsNullOrWhiteSpace(Model.Name)) {
         <span class="name"><em>@Model.Name</em></span>
     }
-
-    @if (Model.Vintage.HasValue) {
-        <span class="vintage">@Model.Vintage.ToString()</span>
-    }
     
     <span class="varietal">@Html.DisplayFor(m => m.Varietals)</span>
+
+    <span class="vintage">@Model.Vintage.ToString()</span>
 </span>

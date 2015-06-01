@@ -101,14 +101,14 @@ namespace winerack.Controllers {
 
                 if (model.PostTumblr && tasting.ImageID.HasValue) {
                     var tumblr = new Logic.Social.Tumblr(db);
-                    var caption = wine.Description;
+                    var caption = wine.FullDescription;
                     var imageUrl = "https://winerack.blob.core.windows.net/tastings/" + tasting.ImageID.Value.ToString() + "_lg.jpg";
                     tumblr.PostPhoto(User.Identity.GetUserId(), imageUrl, caption);
                 }
 
                 if (model.PostTwitter) {
                     var twitter = new Logic.Social.Twitter(db);
-                    var tweet = "I'm tasting a " + wine.Description;
+                    var tweet = "I'm tasting a " + wine.FullDescription;
                     var url = "http://www.winerack.io/tastings/" + tasting.ID.ToString();
                     twitter.Tweet(User.Identity.GetUserId(), tweet, url);
                 }
