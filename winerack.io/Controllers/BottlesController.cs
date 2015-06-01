@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using winerack.Helpers.Authentication;
 using winerack.Logic;
 using winerack.Models;
+using winerack.ViewModels;
 
 namespace winerack.Controllers
 {
@@ -25,10 +26,11 @@ namespace winerack.Controllers
 
         #region Create
 
-        private Bottle Create_Bottle(CreateBottleViewModel model)
+        private Bottle Create_Bottle(BottleEditViewModel model)
         {
+            var wineLogic = new WineLogic(db);
             var userId = User.Identity.GetUserId();
-            var wine = Create_Wine(model);
+            var wine = wineLogic.Create_Wine(model);
 
             var bottle = db.Bottles
                 .Where(b => b.OwnerID == userId && b.WineID == wine.ID)
@@ -47,83 +49,6 @@ namespace winerack.Controllers
             }
 
             return bottle;
-        }
-
-        private Region Create_Region(CreateBottleViewModel model)
-        {
-            var region = db.Regions
-                .Where(r => r.Country == model.Country && r.Name == model.Region)
-                .FirstOrDefault();
-
-            if (region == null) {
-                region = new Region {
-                    Country = model.Country,
-                    Name = model.Region
-                };
-
-                db.Regions.Add(region);
-                db.SaveChanges();
-            }
-
-            return region;
-        }
-
-        private Vineyard Create_Vineyard(CreateBottleViewModel model, Region region)
-        {
-            var vineyard = db.Vineyards
-                .Where(v => v.Name == model.Vineyard && v.Region.ID == region.ID)
-                .FirstOrDefault();
-
-            if (vineyard == null) {
-                vineyard = new Vineyard {
-                    Name = model.Vineyard,
-                    Region = region
-                };
-
-                db.Vineyards.Add(vineyard);
-                db.SaveChanges();
-            }
-
-            return vineyard;
-        }
-
-        private Wine Create_Wine(CreateBottleViewModel model)
-        {
-            var region = Create_Region(model);
-            var vineyard = Create_Vineyard(model, region);
-
-            var wine = db.Wines
-                .Where(w => w.Name == model.WineName
-                    && w.RegionID == region.ID
-                    && w.Styles.All(s => model.Styles.Contains(s.ID))
-                    && w.Varietals.All(v => model.Varietals.Contains(v.ID))
-                    && w.VineyardID == vineyard.ID
-                    && w.Vintage == model.Vintage)
-                .FirstOrDefault();
-
-            if (wine == null) {
-                wine = new Wine {
-                    Name = model.WineName,
-                    RegionID = region.ID,
-                    VineyardID = vineyard.ID,
-                    Vintage = model.Vintage
-                };
-
-                foreach (var styleId in model.Styles) {
-                    var style = db.Styles.Find(styleId);
-                    wine.Styles.Add(style);
-                }
-
-                foreach (var varietalId in model.Varietals) {
-                    var varietal = db.Varietals.Find(varietalId);
-                    wine.Varietals.Add(varietal);
-                }
-
-                db.Wines.Add(wine);
-                db.SaveChanges();
-            }
-
-            return wine;
         }
 
         #endregion Create
@@ -193,7 +118,7 @@ namespace winerack.Controllers
         {
             var user = db.Users.Find(User.Identity.GetUserId());
 
-            var model = new CreateBottleViewModel {
+            var model = new BottleEditViewModel {
                 PurchaseDate = DateTime.Now,
                 PurchaseQuantity = 1,
                 HasFacebook = (user.Credentials.Where(c => c.CredentialType == CredentialTypes.Facebook).FirstOrDefault() != null),
@@ -209,7 +134,7 @@ namespace winerack.Controllers
         // POST: Bottles/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateBottleViewModel model, HttpPostedFileBase photo)
+        public ActionResult Create(BottleEditViewModel model, HttpPostedFileBase photo)
         {
             if (ModelState.IsValid) {
                 // Get the bottle

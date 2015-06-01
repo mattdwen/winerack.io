@@ -6412,6 +6412,9 @@ th {
     background: none;
     background-color: rgba(255, 255, 255, 0.7); }
 
+.twitter-typeahead {
+  width: 100%; }
+
 .tt-hint {
   color: rgba(255, 255, 255, 0.3); }
 

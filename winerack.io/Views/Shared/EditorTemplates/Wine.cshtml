@@ -1,0 +1,77 @@
+﻿@model winerack.ViewModels.WineEditViewModel
+
+@Html.HiddenFor(m => m.VineyardID)
+@Html.HiddenFor(m => m.RegionID)
+
+<fieldset>
+    <legend>Vineyard &amp; Region</legend>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Vineyard, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Vineyard, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.Vineyard)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Region, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Region, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.Region)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Country, null, "", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Country)
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Wine</legend>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.WineName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.WineName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.WineName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Styles, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @foreach (var style in ViewBag.Styles) {
+                string isChecked = Model.Styles.Contains(style.ID) ? "checked" : "";
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="Styles" value="@style.ID" @isChecked />
+                        @style.Name
+                    </label>
+                </div>
+            }
+
+            @Html.ValidationMessageFor(m => m.Styles)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Varietals, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Varietals, null, "", htmlAttributes: new { @class = "form-control", multiple = "multiple" })
+            @Html.ValidationMessageFor(m => m.Varietals)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Vintage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.Vintage, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+            @Html.ValidationMessageFor(m => m.Vintage)
+        </div>
+    </div>
+</fieldset>
