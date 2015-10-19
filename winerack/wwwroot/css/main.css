@@ -263,7 +263,7 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   color: #373a3c;
-  background-color: #fff; }
+  background-color: #f9f9f9; }
 
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
@@ -523,7 +523,7 @@ mark,
 .img-thumbnail {
   padding: 0.25rem;
   line-height: 1.5;
-  background-color: #fff;
+  background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
   transition: all .2s ease-in-out;
@@ -1421,7 +1421,7 @@ pre {
   .table tbody + tbody {
     border-top: 2px solid #eceeef; }
   .table .table {
-    background-color: #fff; }
+    background-color: #f9f9f9; }
 
 .table-sm th,
 .table-sm td {
@@ -2657,7 +2657,7 @@ input[type="button"].btn-block {
   .nav-tabs .nav-item.open .nav-link:focus,
   .nav-tabs .nav-item.open .nav-link:hover {
     color: #55595c;
-    background-color: #fff;
+    background-color: #f9f9f9;
     border-color: #ddd #ddd transparent; }
 
 .nav-pills .nav-item {
@@ -3187,15 +3187,16 @@ a.label:focus, a.label:hover {
   padding-left: 0;
   border-radius: 0; }
 
-.alert {
+.alert, .validation-summary-errors {
   padding: 15px;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem; }
-  .alert > p,
-  .alert > ul {
+  .alert > p, .validation-summary-errors > p,
+  .alert > ul,
+  .validation-summary-errors > ul {
     margin-bottom: 0; }
-  .alert > p + p {
+  .alert > p + p, .validation-summary-errors > p + p {
     margin-top: 5px; }
 
 .alert-heading {
@@ -3240,13 +3241,13 @@ a.label:focus, a.label:hover {
   .alert-warning .alert-link {
     color: #66512c; }
 
-.alert-danger {
+.alert-danger, .validation-summary-errors {
   background-color: #f2dede;
   border-color: #ebcccc;
   color: #a94442; }
-  .alert-danger hr {
+  .alert-danger hr, .validation-summary-errors hr {
     border-top-color: #e4b9b9; }
-  .alert-danger .alert-link {
+  .alert-danger .alert-link, .validation-summary-errors .alert-link {
     color: #843534; }
 
 @keyframes progress-bar-stripes {
@@ -6528,11 +6529,17 @@ a.bg-danger:focus, a.bg-danger:hover {
 body {
   padding-top: 70px; }
 
+.input-validation-error {
+  border-color: #d9534f !important; }
+
 .footer {
   margin-top: 4rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
   background-color: #373a3c;
   color: #818a91; }
+
+.card {
+  background-color: #fff; }
 
 /*# sourceMappingURL=main.css.map */

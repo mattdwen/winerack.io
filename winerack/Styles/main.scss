@@ -7,6 +7,7 @@
 // Variables
 // ----------------------------------------------------------------------------
 
+$body-bg: #f9f9f9;
 $brand-primary: #b71c1c;
 $fa-font-path: '/lib/font-awesome';
 $font-family-sans-serif: 'Open Sans', sans-serif;
@@ -25,6 +26,7 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 // ----------------------------------------------------------------------------
 
 @import 'scaffolding';
+@import 'forms';
 
 
 
@@ -32,3 +34,7 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 // ----------------------------------------------------------------------------
 
 @import 'footer';
+
+.card {
+  background-color: #fff;
+}

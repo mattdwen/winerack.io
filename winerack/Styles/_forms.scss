@@ -1,0 +1,17 @@
+﻿//
+// Core CSS - Forms
+// ============================================================================
+
+
+
+// Validation
+// ----------------------------------------------------------------------------
+
+.input-validation-error {
+  border-color: $brand-danger !important;
+}
+
+.validation-summary-errors {
+  @extend .alert;
+  @extend .alert-danger;
+}
