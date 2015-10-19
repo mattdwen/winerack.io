@@ -1,0 +1,34 @@
+﻿//
+// Winerack - Main Stylesheet
+// ============================================================================
+
+
+
+// Variables
+// ----------------------------------------------------------------------------
+
+$brand-primary: #b71c1c;
+$fa-font-path: '/lib/font-awesome';
+$font-family-sans-serif: 'Open Sans', sans-serif;
+
+
+
+// Frameworks
+// ----------------------------------------------------------------------------
+
+@import 'bootstrap/scss/bootstrap';
+@import 'font-awesome/scss/font-awesome';
+
+
+
+// Core CSS
+// ----------------------------------------------------------------------------
+
+@import 'scaffolding';
+
+
+
+// Components
+// ----------------------------------------------------------------------------
+
+@import 'footer';

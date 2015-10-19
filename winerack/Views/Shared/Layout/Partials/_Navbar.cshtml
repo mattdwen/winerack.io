@@ -1,0 +1,13 @@
+﻿<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" asp-controller="Home" asp-action="Index">winerack</a>
+
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNav">
+      &#9776;
+    </button>
+
+    <div class="collapse navbar-toggleable-xs" id="mainNav">
+      @await Html.PartialAsync("Layout/Partials/_LoginPartial")
+    </div>
+  </div>
+</nav>

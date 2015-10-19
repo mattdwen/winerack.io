@@ -1,0 +1,15 @@
+﻿@{
+  Layout = "Layout/_Structure";
+}
+
+@await Html.PartialAsync("Layout/Partials/_Navbar")
+
+<div class="container body-content">
+  @RenderBody()
+</div>
+
+@await Html.PartialAsync("Layout/Partials/_Footer")
+
+@section scripts {
+  @RenderSection("scripts", false)
+}

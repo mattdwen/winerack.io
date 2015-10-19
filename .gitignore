@@ -1,3 +1,4 @@
+.sass-cache/
 .vs/
+bower_components/
 node_modules/
-winerack/wwwroot/lib/
