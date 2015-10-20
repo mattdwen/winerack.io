@@ -1,35 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
 namespace winerack.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    #region Actions
+
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+      if (HttpContext.User.IsSignedIn())
+      {
+        return RedirectToAction("Home");
+      }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View("~/Views/Shared/Error.cshtml");
-        }
+      return View();
     }
+
+    [Authorize]
+    public IActionResult Home()
+    {
+      return View();
+    }
+
+    public IActionResult Error()
+    {
+      return View("~/Views/Shared/Error.cshtml");
+    }
+
+    #endregion Actions
+  }
 }
