@@ -60,6 +60,9 @@ namespace winerack
 
       // Configuration
       services.AddSingleton(_ => Configuration);
+
+      // Everything else
+      services.AddScoped<AzureService>();
     }
 
     // Configure is called after ConfigureServices is called.

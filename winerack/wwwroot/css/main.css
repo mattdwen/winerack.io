@@ -6539,6 +6539,9 @@ body {
   background-color: #373a3c;
   color: #818a91; }
 
+.navbar .profile-image {
+  width: 2.375rem; }
+
 .card {
   background-color: #fff; }
 

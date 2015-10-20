@@ -4,10 +4,17 @@
   <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
     <ul class="nav navbar-nav pull-right">
       <li class="nav-item">
-        <a class="nav-link" asp-controller="Manage" asp-action="Index" title="Manage">Hello @User.GetUserName()!</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        <div class="dropdown">
+          <a href="#userMenu" data-target="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img user-profile-id="@User.GetUserId()" class="profile-image img-circle" />
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" id="userMenu">
+            <a class="dropdown-item" asp-controller="Profile" asp-action="Index" title="Profile">Profile</a>
+            <a class="dropdown-item" asp-controller="Manage" asp-action="Index" title="Manage">Account</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Sign out</a>
+          </div>
+        </div>
       </li>
     </ul>
   </form>

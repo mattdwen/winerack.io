@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
 namespace winerack.Controllers
@@ -12,15 +11,9 @@ namespace winerack.Controllers
     {
       if (HttpContext.User.IsSignedIn())
       {
-        return RedirectToAction("Home");
+        return View("Home");
       }
 
-      return View();
-    }
-
-    [Authorize]
-    public IActionResult Home()
-    {
       return View();
     }
 
