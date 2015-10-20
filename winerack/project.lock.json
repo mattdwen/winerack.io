@@ -7722,9 +7722,9 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "EntityFramework.Commands >= 7.0.0-beta8",
-      "EntityFramework.SqlServer >= 7.0.0-beta8",
-      "Mandrill.net >= 1.1.0-beta1-150916",
+      "EntityFramework.Commands >= 7.0.0-*",
+      "EntityFramework.SqlServer >= 7.0.0-*",
+      "Mandrill.net >= 1.1.0-*",
       "Microsoft.AspNet.Authentication.Cookies >= 1.0.0-beta8",
       "Microsoft.AspNet.Authentication.Facebook >= 1.0.0-beta8",
       "Microsoft.AspNet.Authentication.Google >= 1.0.0-beta8",

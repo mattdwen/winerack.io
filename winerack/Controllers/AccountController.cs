@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -46,6 +47,84 @@ namespace winerack.Controllers
 
     #region Actions
 
+    #region Confirm email
+
+    // GET: /Account/ConfirmEmail
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<IActionResult> ConfirmEmail(string userId, string code)
+    {
+      if (userId == null || code == null)
+      {
+        return View("Error");
+      }
+      var user = await _userManager.FindByIdAsync(userId);
+      if (user == null)
+      {
+        return View("Error");
+      }
+      var result = await _userManager.ConfirmEmailAsync(user, code);
+      return View(result.Succeeded ? "ConfirmEmail" : "Error");
+    }
+
+    #endregion Confirm email
+
+    #region Register
+
+    // GET: /Account/Register
+    [HttpGet]
+    [AllowAnonymous]
+    public IActionResult Register()
+    {
+      var model = new RegisterViewModel
+      {
+        Country = "NZ"
+      };
+
+      return View(model);
+    }
+
+    // POST: /Account/Register
+    [HttpPost]
+    [AllowAnonymous]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Register(RegisterViewModel model)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View(model);
+      }
+
+      var user = new ApplicationUser
+      {
+        UserName = model.Username,
+        Email = model.Email,
+        FirstName = model.FirstName,
+        LastName = model.LastName,
+        Location = model.Location,
+        Country = model.Country,
+        CreatedOn = DateTime.UtcNow
+      };
+
+      var result = await _userManager.CreateAsync(user, model.Password);
+      if (result.Succeeded)
+      {
+        var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+        await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+            "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+
+        return View("RegisterConfirm");
+      }
+
+      AddErrors(result);
+
+      // If we got this far, something failed, redisplay form
+      return View(model);
+    }
+
+    #endregion Register
+
     #region Signin
 
     // GET: /Account/Signin
@@ -63,7 +142,6 @@ namespace winerack.Controllers
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Signin(SignViewModel model, string returnUrl = null)
     {
-      EnsureDatabaseCreated(_applicationDbContext);
       ViewData["ReturnUrl"] = returnUrl;
 
       if (!ModelState.IsValid)
@@ -111,45 +189,6 @@ namespace winerack.Controllers
     #endregion Actions
 
     //
-    // GET: /Account/Register
-    [HttpGet]
-    [AllowAnonymous]
-    public IActionResult Register()
-    {
-      return View();
-    }
-
-    //
-    // POST: /Account/Register
-    [HttpPost]
-    [AllowAnonymous]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(RegisterViewModel model)
-    {
-      EnsureDatabaseCreated(_applicationDbContext);
-      if (ModelState.IsValid)
-      {
-        var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
-        var result = await _userManager.CreateAsync(user, model.Password);
-        if (result.Succeeded)
-        {
-          // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-          // Send an email with this link
-          //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-          //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-          //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-          //    "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-          await _signInManager.SignInAsync(user, false);
-          return RedirectToAction(nameof(HomeController.Index), "Home");
-        }
-        AddErrors(result);
-      }
-
-      // If we got this far, something failed, redisplay form
-      return View(model);
-    }
-
-    //
     // POST: /Account/LogOff
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -166,7 +205,6 @@ namespace winerack.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult ExternalLogin(string provider, string returnUrl = null)
     {
-      EnsureDatabaseCreated(_applicationDbContext);
       // Request a redirect to the external login provider.
       var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl});
       var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
@@ -243,24 +281,6 @@ namespace winerack.Controllers
 
       ViewData["ReturnUrl"] = returnUrl;
       return View(model);
-    }
-
-    // GET: /Account/ConfirmEmail
-    [HttpGet]
-    [AllowAnonymous]
-    public async Task<IActionResult> ConfirmEmail(string userId, string code)
-    {
-      if (userId == null || code == null)
-      {
-        return View("Error");
-      }
-      var user = await _userManager.FindByIdAsync(userId);
-      if (user == null)
-      {
-        return View("Error");
-      }
-      var result = await _userManager.ConfirmEmailAsync(user, code);
-      return View(result.Succeeded ? "ConfirmEmail" : "Error");
     }
 
     //
@@ -455,20 +475,6 @@ namespace winerack.Controllers
     }
 
     #region Helpers
-
-    // The following code creates the database and schema if they don't exist.
-    // This is a temporary workaround since deploying database through EF migrations is
-    // not yet supported in this release.
-    // Please see this http://go.microsoft.com/fwlink/?LinkID=615859 for more information on how to do deploy the database
-    // when publishing your application.
-    private static void EnsureDatabaseCreated(ApplicationDbContext context)
-    {
-      if (!_databaseChecked)
-      {
-        _databaseChecked = true;
-        context.Database.Migrate();
-      }
-    }
 
     private void AddErrors(IdentityResult result)
     {

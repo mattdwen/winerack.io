@@ -1,10 +1,22 @@
 @{
-    ViewData["Title"] = "Confirm Email";
+  ViewData["Title"] = "Confirm email";
 }
 
-<h2>@ViewData["Title"].</h2>
-<div>
-    <p>
-        Thank you for confirming your email. Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
-    </p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <div class="card card-block text-center">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          <h2 class="card-title">Confirm email</h2>
+
+          <p>Thank you for confirming your email.</p>
+
+          <p>Please <a asp-controller="Account" asp-action="Signin">click here to sign in</a>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
