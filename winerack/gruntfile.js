@@ -40,14 +40,22 @@
         loadPath: 'bower_components'
       },
       main: {
-        files: [
-        {
+        files: [{
           expand: true,
           cwd: './Styles',
           src: '*.{scss,sass}',
           dest: './wwwroot/css',
           ext: '.css'
         }]
+      }
+    },
+
+    // Watch for changes
+    //
+    watch: {
+      sass: {
+        files: './Styles/**/*.{scss,sass}',
+        tasks: ['sass']
       }
     }
     
@@ -56,9 +64,7 @@
   // Load tasks
   // --------------------------------------------------------------------------
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  require('load-grunt-tasks')(grunt);
 
 
 
@@ -69,5 +75,10 @@
     'clean',
     'copy',
     'sass'
+  ]);
+
+  grunt.registerTask('dev', [
+    'build',
+    'watch'
   ]);
 };

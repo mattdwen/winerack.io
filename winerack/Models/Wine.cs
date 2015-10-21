@@ -46,7 +46,10 @@ namespace winerack.Models
           description += Vintage + " ";
         }
 
-        description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
+        if (Varietals != null)
+        {
+          description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
+        }
 
         return description;
       }

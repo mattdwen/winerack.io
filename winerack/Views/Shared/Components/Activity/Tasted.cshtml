@@ -1,0 +1,8 @@
+﻿@model Activity
+
+Tasted a
+<a asp-controller="Wine" asp-action="View" asp-route-id="@Model.Wine.ID">
+  <wine-description wine="@Model.Wine"/>
+</a>
+by
+<a asp-controller="Vineyard" asp-action="View" asp-route-id="@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.

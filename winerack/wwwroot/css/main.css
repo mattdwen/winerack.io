@@ -6532,6 +6532,18 @@ body {
 .input-validation-error {
   border-color: #d9534f !important; }
 
+.panel {
+  background-color: #fff;
+  border: 1px solid #eceeef;
+  border-radius: 0.25rem; }
+
+.panel-body {
+  padding: 1rem; }
+
+.panel-title {
+  font-size: 1rem;
+  font-weight: 600; }
+
 .footer {
   margin-top: 4rem;
   padding-top: 4rem;

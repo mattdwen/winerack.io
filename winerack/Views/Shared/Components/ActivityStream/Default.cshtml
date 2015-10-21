@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Activity>
+
+<ul class="media-list media-list-stream">
+  @foreach (var activity in Model)
+  {
+    <li class="media">
+      <a class="media-object img-circle">
+        <img user-profile-id="@activity.ActorID"/>
+      </a>
+      <div class="media-body">
+        <small class="pull-right">@activity.OccuredOn</small>
+        <h5>@activity.Actor.Name</h5>
+
+        @await Component.InvokeAsync("Activity", activity)
+      </div>
+    </li>
+  }
+</ul>
