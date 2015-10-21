@@ -1,0 +1,23 @@
+﻿@model winerack.ViewModels.Profile.UserProfileViewModel
+
+@{
+  Layout = "Layout/_FullWidth";
+  ViewBag.Title = Model.Username;
+}
+
+<div class="profile-header" style="background-image: url(@Model.BannerImageUrl)">
+  <div class="container-fluid">
+    <div class="container-inner">
+      <img class="img-circle media-object" src="@Model.ProfileImageUrl" alt="@Model.Username"/>
+      <h3 class="profile-header-user">@Model.Username</h3>
+      <p class="profile-header-bio">About yourself</p>
+    </div>
+  </div>
+
+  <nav class="profile-header-nav">
+    <ul class="nav nav-tabs">
+      <li class="nav-item active"><a class="nav-link" href="#">Thing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Thing 2</a></li>
+    </ul>
+  </nav>
+</div>
