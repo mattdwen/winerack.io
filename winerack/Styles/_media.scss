@@ -1,0 +1,40 @@
+﻿//
+// Components - Media
+// ============================================================================
+
+
+
+// Media List
+// ----------------------------------------------------------------------------
+
+.media-list {
+  background-color: #fff;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.media {
+  padding: $spacer;
+
+  + .media {
+    margin-top: 0;
+
+    border-top: 1px solid $border-color;
+  }
+}
+
+.media-title {
+  margin-bottom: $spacer;
+}
+
+
+
+// Media List Stream
+// ----------------------------------------------------------------------------
+
+.media-list-stream {
+  .media-object {
+    width: 60px;
+    margin-right: $spacer;
+  }
+}

@@ -1,0 +1,40 @@
+﻿//
+// Components - Wine
+// ============================================================================
+
+.wine-info {
+  a {
+    color: $body-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+
+  .vineyard {
+    display: block;
+
+    font-size: $font-size-sm;
+  }
+
+  .wine {
+    display: block;
+    margin-top: ($spacer / 2);
+
+    font-size: $font-size-lg;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vintage {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .region {
+    font-size: $font-size-xs;
+    line-height: 2;
+  }
+}

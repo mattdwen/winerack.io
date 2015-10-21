@@ -132,6 +132,131 @@
           "lib/net45/EntityFramework.SqlServer.dll": {}
         }
       },
+      "Humanizer/1.37.7": {
+        "type": "package",
+        "compile": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll": {}
+        },
+        "resource": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/af/Humanizer.resources.dll": {
+            "locale": "af"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ar/Humanizer.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bg/Humanizer.resources.dll": {
+            "locale": "bg"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bn-BD/Humanizer.resources.dll": {
+            "locale": "bn-BD"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/cs/Humanizer.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/da/Humanizer.resources.dll": {
+            "locale": "da"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/de/Humanizer.resources.dll": {
+            "locale": "de"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/el/Humanizer.resources.dll": {
+            "locale": "el"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/es/Humanizer.resources.dll": {
+            "locale": "es"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fa/Humanizer.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fi-FI/Humanizer.resources.dll": {
+            "locale": "fi-FI"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr/Humanizer.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr-BE/Humanizer.resources.dll": {
+            "locale": "fr-BE"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/he/Humanizer.resources.dll": {
+            "locale": "he"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/hu/Humanizer.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/id/Humanizer.resources.dll": {
+            "locale": "id"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/it/Humanizer.resources.dll": {
+            "locale": "it"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ja/Humanizer.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb/Humanizer.resources.dll": {
+            "locale": "nb"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb-NO/Humanizer.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nl/Humanizer.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pl/Humanizer.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pt/Humanizer.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ro/Humanizer.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ru/Humanizer.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sk/Humanizer.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sl/Humanizer.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr/Humanizer.resources.dll": {
+            "locale": "sr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr-Latn/Humanizer.resources.dll": {
+            "locale": "sr-Latn"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sv/Humanizer.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/tr/Humanizer.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uk/Humanizer.resources.dll": {
+            "locale": "uk"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Cyrl-UZ/Humanizer.resources.dll": {
+            "locale": "uz-Cyrl-UZ"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Latn-UZ/Humanizer.resources.dll": {
+            "locale": "uz-Latn-UZ"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/vi/Humanizer.resources.dll": {
+            "locale": "vi"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-CN/Humanizer.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hans/Humanizer.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hant/Humanizer.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
       "Ix-Async/1.2.5": {
         "type": "package",
         "frameworkAssemblies": [
@@ -2290,6 +2415,131 @@
         },
         "runtime": {
           "lib/net45/EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Humanizer/1.37.7": {
+        "type": "package",
+        "compile": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll": {}
+        },
+        "resource": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/af/Humanizer.resources.dll": {
+            "locale": "af"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ar/Humanizer.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bg/Humanizer.resources.dll": {
+            "locale": "bg"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bn-BD/Humanizer.resources.dll": {
+            "locale": "bn-BD"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/cs/Humanizer.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/da/Humanizer.resources.dll": {
+            "locale": "da"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/de/Humanizer.resources.dll": {
+            "locale": "de"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/el/Humanizer.resources.dll": {
+            "locale": "el"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/es/Humanizer.resources.dll": {
+            "locale": "es"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fa/Humanizer.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fi-FI/Humanizer.resources.dll": {
+            "locale": "fi-FI"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr/Humanizer.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr-BE/Humanizer.resources.dll": {
+            "locale": "fr-BE"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/he/Humanizer.resources.dll": {
+            "locale": "he"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/hu/Humanizer.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/id/Humanizer.resources.dll": {
+            "locale": "id"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/it/Humanizer.resources.dll": {
+            "locale": "it"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ja/Humanizer.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb/Humanizer.resources.dll": {
+            "locale": "nb"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb-NO/Humanizer.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nl/Humanizer.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pl/Humanizer.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pt/Humanizer.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ro/Humanizer.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ru/Humanizer.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sk/Humanizer.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sl/Humanizer.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr/Humanizer.resources.dll": {
+            "locale": "sr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr-Latn/Humanizer.resources.dll": {
+            "locale": "sr-Latn"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sv/Humanizer.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/tr/Humanizer.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uk/Humanizer.resources.dll": {
+            "locale": "uk"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Cyrl-UZ/Humanizer.resources.dll": {
+            "locale": "uz-Cyrl-UZ"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Latn-UZ/Humanizer.resources.dll": {
+            "locale": "uz-Latn-UZ"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/vi/Humanizer.resources.dll": {
+            "locale": "vi"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-CN/Humanizer.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hans/Humanizer.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hant/Humanizer.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
       "Ix-Async/1.2.5": {
@@ -4455,6 +4705,131 @@
           "lib/net45/EntityFramework.SqlServer.dll": {}
         }
       },
+      "Humanizer/1.37.7": {
+        "type": "package",
+        "compile": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll": {}
+        },
+        "resource": {
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/af/Humanizer.resources.dll": {
+            "locale": "af"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ar/Humanizer.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bg/Humanizer.resources.dll": {
+            "locale": "bg"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bn-BD/Humanizer.resources.dll": {
+            "locale": "bn-BD"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/cs/Humanizer.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/da/Humanizer.resources.dll": {
+            "locale": "da"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/de/Humanizer.resources.dll": {
+            "locale": "de"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/el/Humanizer.resources.dll": {
+            "locale": "el"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/es/Humanizer.resources.dll": {
+            "locale": "es"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fa/Humanizer.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fi-FI/Humanizer.resources.dll": {
+            "locale": "fi-FI"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr/Humanizer.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr-BE/Humanizer.resources.dll": {
+            "locale": "fr-BE"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/he/Humanizer.resources.dll": {
+            "locale": "he"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/hu/Humanizer.resources.dll": {
+            "locale": "hu"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/id/Humanizer.resources.dll": {
+            "locale": "id"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/it/Humanizer.resources.dll": {
+            "locale": "it"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ja/Humanizer.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb/Humanizer.resources.dll": {
+            "locale": "nb"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb-NO/Humanizer.resources.dll": {
+            "locale": "nb-NO"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nl/Humanizer.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pl/Humanizer.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pt/Humanizer.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ro/Humanizer.resources.dll": {
+            "locale": "ro"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ru/Humanizer.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sk/Humanizer.resources.dll": {
+            "locale": "sk"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sl/Humanizer.resources.dll": {
+            "locale": "sl"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr/Humanizer.resources.dll": {
+            "locale": "sr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr-Latn/Humanizer.resources.dll": {
+            "locale": "sr-Latn"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sv/Humanizer.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/tr/Humanizer.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uk/Humanizer.resources.dll": {
+            "locale": "uk"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Cyrl-UZ/Humanizer.resources.dll": {
+            "locale": "uz-Cyrl-UZ"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Latn-UZ/Humanizer.resources.dll": {
+            "locale": "uz-Latn-UZ"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/vi/Humanizer.resources.dll": {
+            "locale": "vi"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-CN/Humanizer.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hans/Humanizer.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hant/Humanizer.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
       "Ix-Async/1.2.5": {
         "type": "package",
         "frameworkAssemblies": [
@@ -6583,6 +6958,56 @@
         "lib/net45/EntityFramework.SqlServer.xml"
       ]
     },
+    "Humanizer/1.37.7": {
+      "type": "package",
+      "sha512": "6Pim4thF/d0TEJbon3yuY65LoVTMvZNjbgSBA54NWb0i7sE/GQLWNkYoIuuoWOXi1ELmHrZ/OQeb5KDI3bl4wQ==",
+      "files": [
+        "Humanizer.1.37.7.nupkg",
+        "Humanizer.1.37.7.nupkg.sha512",
+        "Humanizer.nuspec",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/af/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ar/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bg/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/bn-BD/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/cs/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/da/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/de/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/el/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/es/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fa/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fi-FI/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/fr-BE/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/he/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/hu/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.pdb",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Humanizer.xml",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/id/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/it/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ja/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nb-NO/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/nl/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pl/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/pt/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ro/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/ru/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sk/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sl/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sr-Latn/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/sv/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/tr/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uk/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Cyrl-UZ/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/uz-Latn-UZ/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/vi/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-CN/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hans/Humanizer.resources.dll",
+        "lib/portable-win+net40+sl50+wp8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/zh-Hant/Humanizer.resources.dll"
+      ]
+    },
     "Ix-Async/1.2.5": {
       "type": "package",
       "sha512": "8EXO8q7cpDUH9G2q+UOPOO/6uZ9aN7mx/4xjFIfkp+qLWVJiYuglkRhjY8Ggs2CucXzHR8GHnovJKB5yQoYaJg==",
@@ -8480,6 +8905,7 @@
     "": [
       "EntityFramework.Commands >= 7.0.0-*",
       "EntityFramework.SqlServer >= 7.0.0-*",
+      "Humanizer >= 1.37.7",
       "Mandrill.net >= 1.1.0-*",
       "Microsoft.AspNet.Authentication.Cookies >= 1.0.0-beta8",
       "Microsoft.AspNet.Authentication.Facebook >= 1.0.0-beta8",

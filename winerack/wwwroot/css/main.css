@@ -255,7 +255,7 @@ html {
 @viewport {
   width: device-width; }
 html {
-  font-size: 16px;
+  font-size: 14px;
   -webkit-tap-highlight-color: transparent; }
 
 body {
@@ -6551,8 +6551,48 @@ body {
   background-color: #373a3c;
   color: #818a91; }
 
+.media-list {
+  background-color: #fff;
+  border: 1px solid #eceeef;
+  border-radius: 0.25rem; }
+
+.media {
+  padding: 1rem; }
+  .media + .media {
+    margin-top: 0;
+    border-top: 1px solid #eceeef; }
+
+.media-title {
+  margin-bottom: 1rem; }
+
+.media-list-stream .media-object {
+  width: 60px;
+  margin-right: 1rem; }
+
 .navbar .profile-image {
   width: 2.375rem; }
+
+.wine-info a {
+  color: #373a3c;
+  text-decoration: none; }
+  .wine-info a:hover {
+    color: #b71c1c; }
+.wine-info .vineyard {
+  display: block;
+  font-size: 0.85rem; }
+.wine-info .wine {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1; }
+.wine-info .vintage {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.5; }
+.wine-info .region {
+  font-size: 0.75rem;
+  line-height: 2; }
 
 .card {
   background-color: #fff; }

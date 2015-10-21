@@ -1,0 +1,17 @@
+﻿@model Wine
+
+<div class="wine-info">
+  <a class="vineyard" asp-controller="Vineyard" asp-action="Wines" asp-route-id="@Model.VineyardID">@Model.Vineyard.Name</a>
+
+  <a class="wine" asp-controller="Wine" asp-action="View" asp-route-id="@Model.ID">
+    @Model.Name
+    @string.Join(" ", Model.Varietals.Select(v => v.Varietal.Name).ToList())
+  </a>
+
+  <div class="vintage">@Model.Vintage</div>
+
+  <div class="region">
+    <a class="name" asp-controller="Region" asp-action="Wines" asp-route-id="@Model.RegionID">@Model.Region.Name</a>,
+    <a class="country" asp-controller="Country" asp-action="Wines" asp-route-id="@Model.Region.Country">@Model.Region.CountryName</a>
+  </div>
+</div>

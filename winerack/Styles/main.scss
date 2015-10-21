@@ -8,8 +8,10 @@
 // ----------------------------------------------------------------------------
 
 $body-bg: #f9f9f9;
+$border-color: #eceeef;
 $brand-primary: #b71c1c;
 $fa-font-path: '/lib/font-awesome';
+$font-size-root: 14px;
 $font-family-sans-serif: 'Open Sans', sans-serif;
 
 
@@ -35,7 +37,9 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 // ----------------------------------------------------------------------------
 
 @import 'footer';
+@import 'media';
 @import 'navbar';
+@import 'wine';
 
 .card {
   background-color: #fff;

@@ -48,7 +48,7 @@ namespace winerack.Models
 
         if (Varietals != null)
         {
-          description += string.Join(" ", Varietals.Select(v => v.Name).ToList());
+          description += string.Join(" ", Varietals.Select(v => v.Varietal.Name).ToList());
         }
 
         return description;
@@ -71,9 +71,8 @@ namespace winerack.Models
     [Required]
     public virtual ICollection<Style> Styles { get; set; }
 
-    [UIHint("Varietals")]
     [Required]
-    public virtual ICollection<Varietal> Varietals { get; set; }
+    public virtual ICollection<WineVarietals> Varietals { get; set; }
 
     public virtual Region Region { get; set; }
 

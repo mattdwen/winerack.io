@@ -1,17 +1,22 @@
-﻿@model IEnumerable<Activity>
+﻿@using Humanizer
+
+@model IEnumerable<Activity>
 
 <ul class="media-list media-list-stream">
   @foreach (var activity in Model)
   {
     <li class="media">
-      <a class="media-object img-circle">
-        <img user-profile-id="@activity.ActorID"/>
+      <a class="media-left">
+        <img class="media-object img-circle" user-profile-id="@activity.ActorID"/>
       </a>
       <div class="media-body">
-        <small class="pull-right">@activity.OccuredOn</small>
-        <h5>@activity.Actor.Name</h5>
+        <small class="pull-right">@DateTime.UtcNow.Subtract(activity.OccuredOn).Humanize() ago</small>
+        <div class="media-title">
+          <strong>@activity.Actor.Name</strong> @activity.Verb.ToString().ToLower() a
+        </div>
 
-        @await Component.InvokeAsync("Activity", activity)
+        @await Component.InvokeAsync("WineInfo", activity.WineID)
+        @await Component.InvokeAsync("ActivityImage", activity)
       </div>
     </li>
   }

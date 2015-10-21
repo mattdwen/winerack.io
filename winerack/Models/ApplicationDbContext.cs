@@ -45,6 +45,7 @@ namespace winerack.Models
       base.OnModelCreating(builder);
 
       builder.Entity<ActivityNotification>().HasKey(t => new {t.ActivityID, t.UserID});
+      builder.Entity<WineVarietals>().HasKey(x => new {x.WineId, x.VarietalId});
     }
 
     #endregion Overrides

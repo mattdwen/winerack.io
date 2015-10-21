@@ -1,0 +1,7 @@
+﻿@using Microsoft.AspNet.Razor.Chunks.Generators
+@model string
+
+@if (!string.IsNullOrWhiteSpace(Model))
+{
+  <img class="img-responsive" src="@Model"/>
+}

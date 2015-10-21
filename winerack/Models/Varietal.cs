@@ -17,7 +17,7 @@ namespace winerack.Models
 
     #region Relationships
 
-    public virtual ICollection<Wine> Wines { get; set; }
+    public virtual ICollection<WineVarietals> Wines { get; set; }
 
     #endregion Relationships
 
