@@ -1,5 +1,6 @@
-*.suo
 *.log
+*.secret.config
+*.suo
 
 .sass-cache/
 .vs/
