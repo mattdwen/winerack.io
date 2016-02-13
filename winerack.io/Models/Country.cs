@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace winerack.Models {
 	public class Country {
@@ -10,14 +7,12 @@ namespace winerack.Models {
 		public string Name { get; set; }
 
 		public static IEnumerable<Country> GetCountries() {
-			return CultureInfo.GetCultures(CultureTypes.SpecificCultures)
-				.Select(x => new Country {
-					ID = new RegionInfo(x.LCID).Name,
-					Name = new RegionInfo(x.LCID).EnglishName
-				})
-				.GroupBy(c => c.ID)
-				.Select(c => c.First())
-				.OrderBy(x => x.Name);
+      return ISO3166.Country.List
+        .OrderBy(x => x.Name)
+        .Select(x => new Country {
+          ID = x.TwoLetterCode,
+          Name = x.Name
+        });
 		}
 	}
 }
