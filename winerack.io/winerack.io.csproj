@@ -640,7 +640,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405280844439_init.resx">
