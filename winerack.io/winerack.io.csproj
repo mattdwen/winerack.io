@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>winerack</RootNamespace>
     <AssemblyName>winerack</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -23,6 +23,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -469,7 +470,9 @@
     <Content Include="Content\fonts\wines\icomoon-wines.woff" />
     <Content Include="package.json" />
     <Content Include="bower.json" />
-    <Content Include="AppSettings.template.config" />
+    <Content Include="AppSettings.template.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="AppSettings.config" />
     <Content Include="Content\sass\main.scss" />
     <Content Include="Content\sass\_bootstrap.scss" />
