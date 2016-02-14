@@ -27,3 +27,46 @@
     margin-top: $padding-base-vertical;
   }
 }
+
+//
+// Drinking Window Graph
+// ----------------------------------------------------------------------------
+
+.drinking-window {
+  float: right;
+
+  position: relative;
+  width: 75%;
+  height: 10px;
+
+  background-color: $black-divider;
+
+  .window {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    &.current {
+      background-color: $green-500;
+    }
+    
+
+    &.past {
+      background-color: $red-500;
+    }
+
+    &.future {
+      background-color: $amber-500;
+    }
+  }
+
+  .marker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background-color: $white-secondary;
+  }
+}
