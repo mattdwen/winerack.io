@@ -26,11 +26,11 @@ namespace winerack {
         protected void Application_Start() {
             var raygunKey = ConfigurationManager.AppSettings["raygun:apiKey"];
             if (!string.IsNullOrWhiteSpace(raygunKey)) {
-                //client = new RaygunClient(raygunKey);
+                client = new RaygunClient(raygunKey);
             }
 
 			if (bool.Parse(ConfigurationManager.AppSettings["MigrateDatabaseToLatestVersion"])) {
-				var configuration = new winerack.Migrations.Configuration();
+				var configuration = new Migrations.Configuration();
 				var migrator = new DbMigrator(configuration);
 				migrator.Update();
 			}
