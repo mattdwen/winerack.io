@@ -465,6 +465,7 @@
     <Content Include="Scripts\account\settings.js" />
     <Content Include="Scripts\activity\stream.js" />
     <Content Include="Scripts\angular\controllers\openings.js" />
+    <Content Include="Scripts\angular\directives\drinking-window.js" />
     <Content Include="Scripts\angular\services\bottleService.js" />
     <Content Include="Scripts\bloodhound\regions.js" />
     <Content Include="Scripts\bloodhound\varietals.js" />

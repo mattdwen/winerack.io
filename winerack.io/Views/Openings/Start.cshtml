@@ -82,6 +82,12 @@
                             <span ng-show="bottle.CellarMin < 1 && bottle.CellarMax > 0">
                                 Less than {{ bottle.CellarMax }} years
                             </span>
+
+                          <span ng-show="bottle.CellarMin < 1 && bottle.CellarMax < 1">
+                            No window
+                          </span>
+
+                          <drinking-window bottle="bottle"></drinking-window>
                         </div>
                     </div>                    
                 </div>
@@ -91,7 +97,8 @@
 </section>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/Scripts/angular/services/bottleService.js")
-    @Scripts.Render("~/Scripts/angular/controllers/openings.js")
+  @Scripts.Render("~/bundles/angular")
+  @Scripts.Render("~/Scripts/angular/services/bottleService.js")
+  @Scripts.Render("~/Scripts/angular/directives/drinking-window.js")
+  @Scripts.Render("~/Scripts/angular/controllers/openings.js")
 }

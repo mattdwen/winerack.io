@@ -1,5 +1,7 @@
 ﻿var openingsApp = angular.module('openingsApp', ['bottleService', 'ui.utils', 'ui.select2']);
 
+openingsApp.directive('drinkingWindow', Winerack.Directives.DrinkingWindow);
+
 openingsApp.controller('StartCtrl', function ($scope, Bottle) {
   $scope.select2Options = {
     allowClear: true
