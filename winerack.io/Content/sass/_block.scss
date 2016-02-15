@@ -1,0 +1,39 @@
+﻿//
+// Components - Blocks
+// ============================================================================
+
+.block {
+  position: relative;
+
+  width: 100%;
+  padding: 60px 30px;
+  
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include media-breakpoint-up(md) {
+    padding: 120px 0;
+  }
+
+  h4 {
+    font-weight: 200;
+  }
+}
+
+.block-bordered {
+  border-top: 1px solid $gray-lighter;
+}
+
+.block-title {
+  font-size: 56px;
+  font-weight: 200;
+
+  strong {
+    font-weight: 400;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 72px;
+  }
+}

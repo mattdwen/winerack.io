@@ -1,36 +1,95 @@
-﻿@using Microsoft.AspNet.Identity;
-
-@{
-    ViewBag.Title = "Welcome";
-    Layout = "~/Views/Shared/_Structure.cshtml";
+﻿@{
+  ViewBag.Title = "Welcome";
+  Layout = "~/Views/Shared/Layout/_Structure.cshtml";
 }
 
-<section id="welcome-page">
-    <div class="jumbotron">
-        <div class="container">
-            <h1><span class="text-thin">wine</span><strong>rack</strong></h1>
-            <p>Catalog and share your wine collection</p>
-        </div>
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="/">wine<strong>rack</strong></a>
+
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <a class="nav-link" href="/Accounts/SignIn">Sign In</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Title -->
+  <div class="block text-xs-center">
+    <h1 class="block-title">
+      wine<strong>rack</strong>
+    </h1>
+    <h4 class="text-muted">Catalog and share your wine collection.</h4>
+  </div>
+
+  <!-- Features -->
+  <div class="block block-bordered">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <p class="lead">Track your wine purchases, where you've stored it, and with whom you drink it.</p>
+      </div>
     </div>
 
-    <div class="marketing">
-        <div class="container">
-            <h2>Track your wine purchases, where you've stored it, and with whom you drink it</h2>
-            <p class="lead">
-                Use our catalog to keep track of all your wine purchases, and record where you've stored it.<br>
-                Set cellaring ages to make it easier to find what to drink now.<br>
-                Make tasting notes and detail who you enjoyed your wine with.
-            </p>
-        </div>
-    </div>
-
-    <div class="container">
-        <h2 class="text-center">Get notified when <span class="text-thin">wine</span><strong>rack</strong> is ready</h2>
-
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                @{ Html.RenderPartial("_MailchimpSignup"); }
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="featured-list">
+          <li>
+            <div class="featured-list-icon">
+              <i class="fa fa-plane"></i>
             </div>
-        </div>
+            <h3>Tracking your wine</h3>
+            <p>Track your wine purchases, where you've stored it, and with whom you drink it.</p>
+          </li>
+          <li>
+            <div class="featured-list-icon">
+              <i class="fa fa-plane"></i>
+            </div>
+            <h3>Drinking Windows</h3>
+            <p>Set cellaring ages to make it easier to find what to drink now.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-6">
+        <ul class="featured-list">
+          <li>
+            <div class="featured-list-icon">
+              <i class="fa fa-plane"></i>
+            </div>
+            <h3>Tasting Notes</h3>
+            <p>Make tasting notes and detail who you enjoyed your wine with.</p>
+          </li>
+        </ul>
+        <ul class="featured-list">
+          <li>
+            <div class="featured-list-icon">
+              <i class="fa fa-plane"></i>
+            </div>
+            <h3>Share</h3>
+            <p>Share your love of wine with your friends with Facebook, Twitter, and other social networks.</p>
+          </li>
+        </ul>
+      </div>
     </div>
-</section>
+  </div>
+
+  <!-- Form -->
+  <div class="block block-bordered text-xs-center">
+    <p class="lead">Get notified when wine<strong>rack</strong> is ready
+    </p>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        @{ Html.RenderPartial("Forms/_MailchimpSignup"); }
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="block footer bg-inverse text-xs-center">
+  <div class="container">
+    <p class="text-muted">Copyright &copy; @DateTime.Now.Year Matt Dwen</p>
+  </div>
+</footer>

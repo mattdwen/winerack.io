@@ -1,10 +1,12 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Structure.cshtml";
+    Layout = "~/Views/Shared/Layout/_Structure.cshtml";
 }
 
 @section Head {
     @RenderSection("head", required: false)
 }
+
+@Html.Partial("Layout/Partials/_Navbar")
 
 
 @if (Request.IsAuthenticated) {

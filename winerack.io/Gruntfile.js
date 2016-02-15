@@ -78,14 +78,17 @@
     concat: {
       vendor: {
         src: [
-          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-          'bower_components/bootstrap-rating-input/src/bootstrap-rating-input.js',
-          'bower_components/imagesloaded/imagesloaded.pkgd.js',
-          'bower_components/lodash/lodash.js',
-          'bower_components/masonry/dist/masonry.pkgd.js',
-          'bower_components/select2/select2.js',
-          'bower_components/typeahead.js/dist/bloodhound.js',
-          'bower_components/typeahead.js/dist/typeahead.jquery.js'
+          'bower_components/jquery/dist/jquery.js',
+          'bower_components/jquery-validation/dist/jquery.validate.js',
+          'bower_components/tether/dist/js/tether.js',
+          'bower_components/bootstrap/dist/js/bootstrap.js'
+          //'bower_components/bootstrap-rating-input/src/bootstrap-rating-input.js',
+          //'bower_components/imagesloaded/imagesloaded.pkgd.js',
+          //'bower_components/lodash/lodash.js',
+          //'bower_components/masonry/dist/masonry.pkgd.js',
+          //'bower_components/select2/select2.js',
+          //'bower_components/typeahead.js/dist/bloodhound.js',
+          //'bower_components/typeahead.js/dist/typeahead.jquery.js'
         ],
         dest: 'Scripts/dist/vendor.js'
       },
