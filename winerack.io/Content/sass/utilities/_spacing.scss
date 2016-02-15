@@ -1,0 +1,17 @@
+﻿//
+// Utilities - Spacing
+// ============================================================================
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $multiplier in (md: 1.5, lg: 3) {
+    .#{$abbrev}-a-#{$size} { #{$prop}: ($spacer-y * $multiplier) !important; }
+
+    .#{$abbrev}-t-#{$size} { #{$prop}-top: ($spacer-y * $multiplier) !important; }
+    .#{$abbrev}-b-#{$size} { #{$prop}-bottom: ($spacer-y * $multiplier) !important; }
+    .#{$abbrev}-y-#{$size} { #{$prop}-top: ($spacer-y * $multiplier) !important; #{$prop}-bottom: ($spacer-y * $multiplier) !important; }
+
+    .#{$abbrev}-l-#{$size} { #{$prop}-left: ($spacer-x * $multiplier) !important; }
+    .#{$abbrev}-r-#{$size} { #{$prop}-right: ($spacer-x * $multiplier) !important; }
+    .#{$abbrev}-x-#{$size} { #{$prop}-left: ($spacer-x * $multiplier) !important; #{$prop}-right: ($spacer-x * $multiplier) !important; }
+  }
+}

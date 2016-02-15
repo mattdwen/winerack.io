@@ -1,0 +1,33 @@
+﻿//
+// Components - Featured List
+// ============================================================================
+
+
+.featured-list {
+  padding: 0;
+
+  list-style: none;
+
+  h3, .fa {
+    color: $brand-primary;
+  }
+
+  li {
+    position: relative;
+
+    padding-left: 80rem/$root-rem; // 80px
+  }
+}
+
+.featured-list-icon {
+  position: absolute;
+  top: 0;
+  left: 10rem/$root-rem; // 10px
+
+  display: inline-block;
+  width: 60rem/$root-rem; // 60px
+
+  font-size: 36rem/$root-rem; // 36px
+  line-height: 0;
+  text-align: center;
+}

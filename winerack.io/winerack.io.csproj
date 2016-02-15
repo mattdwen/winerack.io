@@ -488,6 +488,11 @@
     <Content Include="Scripts\dist\angular.js" />
     <Content Include="Scripts\dist\vendor.js" />
     <Content Include="Content\sass\_variables.scss" />
+    <Content Include="Content\sass\_block.scss" />
+    <Content Include="Content\sass\_featured-list.scss" />
+    <Content Include="Content\sass\utilities\_spacing.scss" />
+    <Content Include="Content\sass\_utilities.scss" />
+    <Content Include="Content\sass\_footer.scss" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -529,7 +534,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Layout\_Default.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -540,7 +545,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
@@ -593,8 +598,8 @@
     <Content Include="Views\Tastings\Create.cshtml" />
     <Content Include="Views\Tastings\Details.cshtml" />
     <Content Include="Views\User\StatBar.cshtml" />
-    <Content Include="Views\Shared\_MailchimpSignup.cshtml" />
-    <Content Include="Views\Shared\_Structure.cshtml" />
+    <Content Include="Views\Shared\Forms\_MailchimpSignup.cshtml" />
+    <Content Include="Views\Shared\Layout\_Structure.cshtml" />
     <Content Include="Views\Varietals\Create.cshtml" />
     <Content Include="Views\Varietals\Delete.cshtml" />
     <Content Include="Views\Varietals\Details.cshtml" />
@@ -603,7 +608,7 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Shared\_Sidenav.cshtml" />
-    <Content Include="Views\Shared\Layout\_Navbar.cshtml" />
+    <Content Include="Views\Shared\Layout\Partials\_Navbar.cshtml" />
     <Content Include="Views\Styles\Create.cshtml" />
     <Content Include="Views\Styles\Delete.cshtml" />
     <Content Include="Views\Styles\Details.cshtml" />

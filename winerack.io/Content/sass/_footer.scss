@@ -1,0 +1,9 @@
+﻿.footer {
+  a {
+    color: $text-muted;
+
+    &:hover {
+      color: darken($text-muted, 15%);
+    }
+  }
+}

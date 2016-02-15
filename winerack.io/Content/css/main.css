@@ -345,7 +345,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 200;
   line-height: 1.1;
   color: inherit; }
 
@@ -5125,5 +5125,121 @@ a.bg-danger:focus, a.bg-danger:hover {
   @media (min-width: 768px) {
     .block-title {
       font-size: 72px; } }
+
+.featured-list {
+  padding: 0;
+  list-style: none; }
+  .featured-list h3, .featured-list .fa {
+    color: #B71C1C; }
+  .featured-list li {
+    position: relative;
+    padding-left: 5rem; }
+
+.featured-list-icon {
+  position: absolute;
+  top: 0;
+  left: 0.625rem;
+  display: inline-block;
+  width: 3.75rem;
+  font-size: 2.25rem;
+  line-height: 0;
+  text-align: center; }
+
+.footer a {
+  color: #818a91; }
+  .footer a:hover {
+    color: #5c6469; }
+
+.m-a-md {
+  margin: 1.5rem !important; }
+
+.m-t-md {
+  margin-top: 1.5rem !important; }
+
+.m-b-md {
+  margin-bottom: 1.5rem !important; }
+
+.m-y-md {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important; }
+
+.m-l-md {
+  margin-left: 1.5rem !important; }
+
+.m-r-md {
+  margin-right: 1.5rem !important; }
+
+.m-x-md {
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important; }
+
+.m-a-lg {
+  margin: 3rem !important; }
+
+.m-t-lg {
+  margin-top: 3rem !important; }
+
+.m-b-lg {
+  margin-bottom: 3rem !important; }
+
+.m-y-lg {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important; }
+
+.m-l-lg {
+  margin-left: 3rem !important; }
+
+.m-r-lg {
+  margin-right: 3rem !important; }
+
+.m-x-lg {
+  margin-left: 3rem !important;
+  margin-right: 3rem !important; }
+
+.p-a-md {
+  padding: 1.5rem !important; }
+
+.p-t-md {
+  padding-top: 1.5rem !important; }
+
+.p-b-md {
+  padding-bottom: 1.5rem !important; }
+
+.p-y-md {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important; }
+
+.p-l-md {
+  padding-left: 1.5rem !important; }
+
+.p-r-md {
+  padding-right: 1.5rem !important; }
+
+.p-x-md {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important; }
+
+.p-a-lg {
+  padding: 3rem !important; }
+
+.p-t-lg {
+  padding-top: 3rem !important; }
+
+.p-b-lg {
+  padding-bottom: 3rem !important; }
+
+.p-y-lg {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important; }
+
+.p-l-lg {
+  padding-left: 3rem !important; }
+
+.p-r-lg {
+  padding-right: 3rem !important; }
+
+.p-x-lg {
+  padding-left: 3rem !important;
+  padding-right: 3rem !important; }
 
 /*# sourceMappingURL=main.css.map */
