@@ -80,6 +80,7 @@
         src: [
           'bower_components/jquery/dist/jquery.js',
           'bower_components/jquery-validation/dist/jquery.validate.js',
+          'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js',
           'bower_components/tether/dist/js/tether.js',
           'bower_components/bootstrap/dist/js/bootstrap.js'
           //'bower_components/bootstrap-rating-input/src/bootstrap-rating-input.js',

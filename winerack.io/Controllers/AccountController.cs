@@ -8,10 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Net;
 using winerack.Logic;
-using System.Configuration;
 using System;
-using RestSharp;
-using RestSharp.Authenticators;
 
 namespace winerack.Controllers {
 
@@ -98,7 +95,7 @@ namespace winerack.Controllers {
 					await SignInAsync(user, model.RememberMe);
 					return RedirectToLocal(returnUrl);
 				} else {
-					ModelState.AddModelError("", "Invalid username or password.");
+					ModelState.AddModelError("", "Sorry, you entered an incorrect email address or password.");
 				}
 			}
 
@@ -106,12 +103,26 @@ namespace winerack.Controllers {
 			return View(model);
 		}
 
-		#endregion Login
+    #endregion Sign In
 
-		#region Register
+    #region Sign Out
 
-		// GET: /Account/Register
-		[AllowAnonymous]
+    //
+    // POST: /Account/SignOut
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult SignOut()
+    {
+      AuthenticationManager.SignOut();
+      return RedirectToAction("Index", "Home");
+    }
+
+    #endregion Sign Out
+
+    #region Register
+
+    // GET: /Account/Register
+    [AllowAnonymous]
 		public ActionResult Register() {
 			return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -477,15 +488,6 @@ namespace winerack.Controllers {
 
 			ViewBag.ReturnUrl = returnUrl;
 			return View(model);
-		}
-
-		//
-		// POST: /Account/LogOff
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult LogOff() {
-			AuthenticationManager.SignOut();
-			return RedirectToAction("Index", "Home");
 		}
 
 		//

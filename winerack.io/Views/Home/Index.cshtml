@@ -1,102 +1,74 @@
 ﻿@{
   ViewBag.Title = "Welcome";
-  Layout = "~/Views/Shared/Layout/_Structure.cshtml";
+  Layout = "~/Views/Shared/Layout/_Unauthorised.cshtml";
 }
 
-<nav class="navbar" role="navigation">
-  <div class="container">
-    <a class="navbar-brand" href="/">wine<strong>rack</strong></a>
+<!-- Title -->
+<div class="block text-xs-center">
+  <h1 class="block-title">
+    wine<strong>rack</strong>
+  </h1>
+  <h4 class="text-muted">Catalog and share your wine collection.</h4>
+</div>
 
-    <ul class="nav navbar-nav pull-xs-right">
-      <li class="nav-item">
-        <a class="nav-link" href="/Accounts/SignIn">Sign In</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-
-  <!-- Title -->
-  <div class="block text-xs-center">
-    <h1 class="block-title">
-      wine<strong>rack</strong>
-    </h1>
-    <h4 class="text-muted">Catalog and share your wine collection.</h4>
-  </div>
-
-  <!-- Features -->
-  <div class="block block-bordered">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 m-b-lg text-xs-center">
-        <p class="lead">Track your wine purchases, where you've stored it, and with whom you drink it.</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <ul class="featured-list">
-          <li class="m-b-md">
-            <div class="featured-list-icon">
-              <i class="fa fa-binoculars"></i>
-            </div>
-            <h3>Track your wine</h3>
-            <p>Track your wine purchases, where you've stored it, and with whom you drink it.</p>
-          </li>
-          <li class="m-b-md">
-            <div class="featured-list-icon">
-              <i class="fa fa-clock-o"></i>
-            </div>
-            <h3>Cellaring</h3>
-            <p>Set cellaring ages to make it easier to find what to drink now.</p>
-          </li>
-        </ul>
-      </div>
-      <div class="col-sm-6">
-        <ul class="featured-list">
-          <li class="m-b-md">
-            <div class="featured-list-icon">
-              <i class="fa fa-sticky-note-o"></i>
-            </div>
-            <h3>Tasting Notes</h3>
-            <p>Make tasting notes and detail who you enjoyed your wine with.</p>
-          </li>
-        </ul>
-        <ul class="featured-list">
-          <li class="m-b-md">
-            <div class="featured-list-icon">
-              <i class="fa fa-share-alt"></i>
-            </div>
-            <h3>Share</h3>
-            <p>Share your love of wine with your friends with Facebook, Twitter, and other social networks.</p>
-          </li>
-        </ul>
-      </div>
+<!-- Features -->
+<div class="block block-bordered">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 m-b-lg text-xs-center">
+      <p class="lead">Track your wine purchases, where you've stored it, and with whom you drink it.</p>
     </div>
   </div>
 
-  <!-- Form -->
-  <div class="block block-bordered text-xs-center">
-    <p class="lead">Get notified when wine<strong>rack</strong> is ready
-    </p>
-
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        @{ Html.RenderPartial("Forms/_MailchimpSignup"); }
-      </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <ul class="featured-list">
+        <li class="m-b-md">
+          <div class="featured-list-icon">
+            <i class="fa fa-binoculars"></i>
+          </div>
+          <h3>Track your wine</h3>
+          <p>Track your wine purchases, where you've stored it, and with whom you drink it.</p>
+        </li>
+        <li class="m-b-md">
+          <div class="featured-list-icon">
+            <i class="fa fa-clock-o"></i>
+          </div>
+          <h3>Cellaring</h3>
+          <p>Set cellaring ages to make it easier to find what to drink now.</p>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul class="featured-list">
+        <li class="m-b-md">
+          <div class="featured-list-icon">
+            <i class="fa fa-sticky-note-o"></i>
+          </div>
+          <h3>Tasting Notes</h3>
+          <p>Make tasting notes and detail who you enjoyed your wine with.</p>
+        </li>
+      </ul>
+      <ul class="featured-list">
+        <li class="m-b-md">
+          <div class="featured-list-icon">
+            <i class="fa fa-share-alt"></i>
+          </div>
+          <h3>Share</h3>
+          <p>Share your love of wine with your friends with Facebook, Twitter, and other social networks.</p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
 
-<footer class="block footer bg-inverse text-xs-center">
-  <div class="container text-muted">
-    <p>
-      <a href="https://twitter.com/winerack_io" target="_blank"><i class="fa fa-2x fa-fw fa-twitter"></i></a>
-      <a href="https://www.facebook.com/winerack.io" target="_blank"><i class="fa fa-2x fa-fw fa-facebook"></i></a>
-      <a href="https://github.com/mattdwen/winerack.io" target="_blank"><i class="fa fa-2x fa-fw fa-github"></i></a>
-    </p>
-    <p>Copyright &copy; @DateTime.Now.Year Matt Dwen</p>
-    <p>Made with <i class="fa fa-heart"></i> in New Zealand
-    </p>
+<!-- Form -->
+<div class="block block-bordered text-xs-center">
+  <p class="lead">Get notified when wine<strong>rack</strong> is ready
+  </p>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      @{ Html.RenderPartial("Forms/_MailchimpSignup"); }
+    </div>
   </div>
-</footer>
+</div>

@@ -3,50 +3,57 @@
 
 @{
     ViewBag.Title = "Sign in";
-    Layout = "~/Views/Shared/_Structure.cshtml";
+    Layout = "~/Views/Shared/Layout/_Unauthorised.cshtml";
 }
 
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "login-form" })) {
-    @Html.AntiForgeryToken()
-    
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4 widget">
-            <h1>Sign in to your account</h1>
+<div class="block">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      @Html.ValidationSummary()
 
-            @Html.ValidationSummary()
-
-            <div class="form-group">
-                @Html.LabelFor(m => m.Username, new { @class = "sr-only" })
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
-                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Username" })
-                </div>
+      <div class="card">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-xs-center">
+              <h1>Sign in to wine<strong>rack</strong></h1>
+              <p>Enter your <strong>email address</strong> and <strong>password</strong>.</p>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form", @class = "login-form" }))
+              {
+                @Html.AntiForgeryToken()
 
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                <div class="form-group">
+                  @Html.LabelFor(m => m.Username, new { @class = "sr-only" })
+                  @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "you@domain.com" })
                 </div>
-            </div>
 
-            <div class="checkbox">
-                <label>
+                <div class="form-group">
+                  @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+                  @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "password" })
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                </div>
+
+                <div class="checkbox text-xs-center">
+                  <label>
                     @Html.CheckBoxFor(m => m.RememberMe)
-                    Remember me?
-                </label>
-            </div>
+                    Keep me signed in
+                  </label>
+                </div>
 
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                <a class="btn btn-link btn-block" href="/Account/ForgotPassword">Forgotten your password?</a>
-                <a class="btn btn-link btn-block" href="/Account/ForgotUsername">Forgotten your username?</a>
+                <div class="form-group">
+                  <a class="btn btn-link btn-block" href="/Account/ForgotPassword">I forgot my password</a>
+                </div>
+              }
             </div>
+          </div>
         </div>
+      </div>
     </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+  </div>
+</div>

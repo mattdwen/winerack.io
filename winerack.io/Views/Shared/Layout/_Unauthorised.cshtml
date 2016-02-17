@@ -1,0 +1,37 @@
+﻿@{
+  Layout = "~/Views/Shared/Layout/_Structure.cshtml";
+}
+
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="/">wine<strong>rack</strong></a>
+
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <a class="nav-link" href="/Account/SignIn">Sign In</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  @RenderBody()
+</div>
+
+<footer class="block footer bg-inverse text-xs-center">
+  <div class="container text-muted">
+    <p>
+      <a href="https://twitter.com/winerack_io" target="_blank"><i class="fa fa-2x fa-fw fa-twitter"></i></a>
+      <a href="https://www.facebook.com/winerack.io" target="_blank"><i class="fa fa-2x fa-fw fa-facebook"></i></a>
+      <a href="https://github.com/mattdwen/winerack.io" target="_blank"><i class="fa fa-2x fa-fw fa-github"></i></a>
+    </p>
+    <p>Copyright &copy; @DateTime.Now.Year Matt Dwen</p>
+    <p>
+      Made with <i class="fa fa-heart"></i> in New Zealand
+    </p>
+  </div>
+</footer>
+
+@section scripts {
+  @RenderSection("scripts", false)
+}

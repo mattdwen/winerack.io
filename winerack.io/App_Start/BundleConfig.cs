@@ -10,10 +10,8 @@ namespace winerack
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/dist/angular.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/winerack").Include(
+              "~/Scripts/vendor/jquery-validation.js",
                 "~/Scripts/winerack.js"
                 ));
 

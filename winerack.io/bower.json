@@ -25,6 +25,7 @@
     "lodash": "^3.7.0",
     "jquery": "^2.2.0",
     "jquery-validation": "jquery.validation#^1.14.0",
-    "tether": "^1.1.1"
+    "tether": "^1.1.1",
+    "jquery-validation-unobtrusive": "^3.2.5"
   }
 }

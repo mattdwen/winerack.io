@@ -493,19 +493,11 @@
     <Content Include="Content\sass\utilities\_spacing.scss" />
     <Content Include="Content\sass\_utilities.scss" />
     <Content Include="Content\sass\_footer.scss" />
-    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
-    <Content Include="Scripts\jquery-2.2.0.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\openings\create.js" />
     <Content Include="Scripts\tastings\create.js" />
+    <Content Include="Scripts\vendor\jquery-validation.js" />
     <Content Include="Scripts\vineyard\edit.js" />
     <Content Include="Scripts\winerack.js" />
     <Content Include="Scripts\wine\editor.js" />
@@ -521,6 +513,8 @@
     <Content Include="Views\Shared\DisplayTemplates\Rating.cshtml" />
     <Content Include="Views\Shared\Bottles\_DrinkingWindow.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Wine.cshtml" />
+    <Content Include="Views\Shared\Layout\_Unauthorised.cshtml" />
+    <Content Include="Content\sass\_validation.scss" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
