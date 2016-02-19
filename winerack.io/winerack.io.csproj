@@ -515,6 +515,8 @@
     <Content Include="Views\Shared\EditorTemplates\Wine.cshtml" />
     <Content Include="Views\Shared\Layout\_Unauthorised.cshtml" />
     <Content Include="Content\sass\_validation.scss" />
+    <Content Include="Content\sass\_navbar.scss" />
+    <Content Include="Content\sass\_reboot.scss" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -608,7 +610,7 @@
     <Content Include="Views\Styles\Details.cshtml" />
     <Content Include="Views\Styles\Edit.cshtml" />
     <Content Include="Views\Styles\Index.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\Layout\Partials\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
