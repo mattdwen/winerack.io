@@ -5327,6 +5327,32 @@ a.bg-danger:focus, a.bg-danger:hover {
   .footer a:hover {
     color: #5c6469; }
 
+.app-navbar {
+  padding-top: 0;
+  padding-bottom: 0; }
+  .app-navbar .navbar-toggler,
+  .app-navbar .nav-link {
+    padding-top: 14px;
+    padding-bottom: 14px; }
+  .app-navbar .navbar-brand {
+    display: inline-block;
+    float: none;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    @media (min-width: 768px) {
+      .app-navbar .navbar-brand {
+        float: left; } }
+  .app-navbar .navbar-avatar {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    outline: none !important; }
+
+#navMobile .nav {
+  padding-bottom: 1rem; }
+#navMobile .nav-link {
+  padding-top: 7px;
+  padding-bottom: 7px; }
+
 .m-a-md {
   margin: 1.5rem !important; }
 

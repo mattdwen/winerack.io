@@ -1,0 +1,44 @@
+﻿//
+// Components - Navbar
+// ============================================================================
+
+.app-navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .navbar-toggler,
+  .nav-link {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .navbar-brand {
+    display: inline-block;
+    float: none;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @include media-breakpoint-up(md) {
+      float: left;
+    }
+  }
+
+  .navbar-avatar {
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    outline: none !important;
+  }
+}
+
+#navMobile {
+  .nav {
+    padding-bottom: $spacer;
+  }
+
+  .nav-link {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}

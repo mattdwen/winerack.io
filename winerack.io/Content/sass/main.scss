@@ -6,13 +6,13 @@
 
 // Mixins and variables
 //
-@import '_variables';
+@import 'variables';
 
 
 
 // Frameworks
 //
-@import '_bootstrap';
+@import 'bootstrap';
 @import 'font-awesome/scss/font-awesome.scss';
 
 
@@ -25,15 +25,16 @@
 // Components
 //
 
-@import '_block';
-@import '_featured-list';
-@import '_footer';
-@import '_validation';
+@import 'block';
+@import 'featured-list';
+@import 'footer';
+@import 'navbar';
+@import 'validation';
 
 
 
 // Utilities
-@import '_utilities';
+@import 'utilities';
 
 
 
