@@ -5278,6 +5278,9 @@ a.bg-danger:focus, a.bg-danger:hover {
 .fa-percent:before {
   content: ""; }
 
+body {
+  padding-top: 4rem; }
+
 .block {
   position: relative;
   width: 100%;
@@ -5322,12 +5325,18 @@ a.bg-danger:focus, a.bg-danger:hover {
   line-height: 0;
   text-align: center; }
 
-.footer a {
-  color: #818a91; }
-  .footer a:hover {
-    color: #5c6469; }
+.footer {
+  text-align: center; }
+  .footer .fa {
+    text-decoration: none; }
+    .footer .fa + .fa {
+      margin-left: 1rem; }
 
 .app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding-top: 0;
   padding-bottom: 0; }
   .app-navbar .navbar-toggler,

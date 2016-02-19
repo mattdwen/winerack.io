@@ -1,9 +1,11 @@
 ﻿.footer {
-  a {
-    color: $text-muted;
+  text-align: center;
 
-    &:hover {
-      color: darken($text-muted, 15%);
+  .fa {
+    text-decoration: none;
+
+    + .fa {
+      margin-left: $spacer;
     }
   }
 }
