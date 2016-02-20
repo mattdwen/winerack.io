@@ -591,19 +591,20 @@ namespace winerack.Controllers {
 		[ValidateAntiForgeryToken]
 		public ActionResult ProfilePicture(HttpPostedFileBase photo) {
 			// Save the photo
-			if (photo != null && photo.ContentLength > 0) {
-				var user = UserManager.FindById(User.Identity.GetUserId());
-				var blobHandler = new Logic.BlobHandler("profiles");
+		  if (photo == null || photo.ContentLength <= 0)
+		  {
+		    return RedirectToAction("Settings");
+		  }
 
-				user.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Profile));
+		  var user = UserManager.FindById(User.Identity.GetUserId());
+		  var blobHandler = new BlobHandler("profiles");
 
-				var result = UserManager.Update(user);
-				if (result.Succeeded) {
-					return RedirectToAction("Settings", new { Message = SettingsMessageId.UpdatePictureSuccess });
-				}
-			}
+		  user.ImageID = blobHandler.UploadImage(photo, Images.GetSizes(ImageSizeSets.Profile));
 
-			return RedirectToAction("Settings");
+		  var result = UserManager.Update(user);
+		  return result.Succeeded
+        ? RedirectToAction("Settings", new { Message = SettingsMessageId.UpdatePictureSuccess })
+        : RedirectToAction("Settings");
 		}
 
 		#endregion Profile Picture

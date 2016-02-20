@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -75,11 +76,14 @@ namespace winerack.Helpers {
 			var user = dbContext.Users.Find(userId);
 			var url = "/Content/images/profile-picture.png";
 
-			if (user != null && user.ImageID.HasValue) {
-				url = "//winerack.blob.core.windows.net/profiles/" + user.ImageID.Value + "_" + size + ".jpg";
-			}
+		  if (user?.ImageID == null)
+		  {
+		    return MvcHtmlString.Create(url);
+		  }
 
-			return MvcHtmlString.Create(url);
+		  var endPointUrl = ConfigurationManager.AppSettings["Azure:Storage:Endpoint"];
+		  url = $"{endPointUrl}/profiles/{user.ImageID.Value}_{size}.jpg";
+		  return MvcHtmlString.Create(url);
 		}
 	}
 }

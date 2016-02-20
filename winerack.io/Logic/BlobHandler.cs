@@ -17,13 +17,13 @@ namespace winerack.Logic {
 		#region Constructor
 
 		public BlobHandler(string imageDirectory) {
-			this.imageDirectory = imageDirectory;
+			_imageDirectory = imageDirectory;
 
 			var connectionString = ConfigurationManager.ConnectionStrings["AzureJobsStorage"].ConnectionString;
-			storageAccount = CloudStorageAccount.Parse(connectionString);
+			_storageAccount = CloudStorageAccount.Parse(connectionString);
 
-			CloudBlobClient client = storageAccount.CreateCloudBlobClient();
-			CloudBlobContainer container = client.GetContainerReference(imageDirectory);
+			var client = _storageAccount.CreateCloudBlobClient();
+			var container = client.GetContainerReference(imageDirectory);
 			container.CreateIfNotExists();
 			container.SetPermissions(new BlobContainerPermissions {
 				PublicAccess = BlobContainerPublicAccessType.Blob
@@ -34,47 +34,43 @@ namespace winerack.Logic {
 
 		#region Declarations
 
-		string imageDirectory;
+		private readonly string _imageDirectory;
 
-		CloudStorageAccount storageAccount;
+		private readonly CloudStorageAccount _storageAccount;
 
 		#endregion Declarations
 
 		#region Public Methods
 
-		public Guid? UploadImage(HttpPostedFileBase file, IList<Logic.ImageSize> sizes) {
-			CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-			CloudBlobContainer container = blobClient.GetContainerReference(imageDirectory);
+		public Guid? UploadImage(HttpPostedFileBase file, IEnumerable<ImageSize> sizes) {
+			var blobClient = _storageAccount.CreateCloudBlobClient();
+			var container = blobClient.GetContainerReference(_imageDirectory);
 
-			if (file != null) {
-				var name = Guid.NewGuid();
-				string filename;
-				CloudBlockBlob blockBlob;				
+		  if (file == null)
+		  {
+		    return null;
+		  }
 
-				// Save the original
-				filename = name.ToString() + "_o.jpg";
-				blockBlob = container.GetBlockBlobReference(filename);
-				blockBlob.UploadFromStream(file.InputStream);
+		  var name = Guid.NewGuid();
 
-				// Handle each size
-				foreach (var size in sizes) {
-					MemoryStream thumb;
-					if (size.Crop) {
-						thumb = Images.ResizeAndCrop(file.InputStream, size.MaxWidth, size.MaxHeight, true);
-					} else {
-						thumb = Images.Resize(file.InputStream, size.MaxWidth, size.MaxHeight, true, false);
-					}
+		  // Save the original
+		  string filename = $"{name}_o.jpg";
+		  var blockBlob = container.GetBlockBlobReference(filename);
+		  blockBlob.UploadFromStream(file.InputStream);
 
-					filename = name.ToString() + "_" + size.Suffix + ".jpg";
+		  // Handle each size
+		  foreach (var size in sizes) {
+		    var thumb = size.Crop
+		      ? Images.ResizeAndCrop(file.InputStream, size.MaxWidth, size.MaxHeight, true)
+		      : Images.Resize(file.InputStream, size.MaxWidth, size.MaxHeight, true, false);
 
-					blockBlob = container.GetBlockBlobReference(filename);
-					blockBlob.UploadFromStream(thumb);
-				}	
+		    filename = $"{name}_{size.Suffix}.jpg";
 
-				return name;
-			}
+		    blockBlob = container.GetBlockBlobReference(filename);
+		    blockBlob.UploadFromStream(thumb);
+		  }	
 
-			return null;
+		  return name;
 		}
 
 		#endregion Public Methods
