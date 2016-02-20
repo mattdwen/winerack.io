@@ -5278,7 +5278,7 @@ a.bg-danger:focus, a.bg-danger:hover {
 .fa-percent:before {
   content: ""; }
 
-body {
+body.fixed-nav {
   padding-top: 4rem; }
 
 .block {
