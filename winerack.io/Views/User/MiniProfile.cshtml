@@ -2,27 +2,21 @@
 
 @using winerack.Helpers
 
-<div class="user-profile">
-    <div class="media">
-        <div class="pull-left">
-            <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm")" width="75" />
-        </div>
-        <div class="media-body">
-            <h3 class="media-heading">@Model.Name</h3>
-            <div class="text-muted"><i class="fa fa-user"></i> @Model.Username</div>
-            <div class="text-muted"><i class="fa fa-globe"></i> @Model.Location</div>
-        </div>
-    </div>
-
-    <ul class="list-group">
-        <li class="list-group-item">
-            Bottles in collection <span class="badge pull-right">@Model.BottlesTotal</span> 
-        </li>
-        <li class="list-group-item">
-            Unique bottles <span class="badge pull-right">@Model.BottlesUnique</span>
-        </li>
-        <li class="list-group-item">
-            Bottles opened <span class="badge pull-right">@Model.BottlesDrunk</span>
-        </li>
+<div class="panel panel-default panel-profile">
+  <div class="panel-heading" style="background-image: url(/Content/images/corks-md.jpg)"></div>
+  <div class="panel-body text-xs-center">
+    <img class="panel-profile-img" src="@ExtensionMethods.ProfileImageUrl("sq_sm")"/>
+    <h5 class="panel-title">@Model.Name</h5>
+    <p class="m-b-2">@Model.Location</p>
+    <ul class="panel-profile-stats">
+      <li class="panel-profile-stat">
+        Tasted
+        <h5 class="panel-profile-stat-figure">@Model.Tasted</h5>
+      </li>
+      <li class="panel-profile-stat">
+        Bottles
+        <h5 class="panel-profile-stat-figure">@Model.BottlesTotal</h5>
+      </li>
     </ul>
+  </div>
 </div>

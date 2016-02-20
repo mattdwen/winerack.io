@@ -6,28 +6,35 @@
 
 // Font Awesome
 //
-
 $fa-font-path: '/Content/fonts/font-awesome';
 
 
 
 // Colours
 //
-
 $brand-primary: #B71C1C;
 
 
 
 // Body
 //
-
 $body-bg: #f5f8fa;
 
 
 
 // Typopgraphy
-
+//
 $root-rem: 16;
 $font-family-sans-serif: 'Roboto', sans-serif;
 
 $headings-font-weight: 200;
+
+
+// Panels
+//
+$panel-bg: #fff;
+$panel-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+$panel-default-color: #1e3948;
+$panel-default-border: #d3e0e9;
+$panel-default-heading-bg: #f5f5f5;

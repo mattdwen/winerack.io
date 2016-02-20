@@ -1,0 +1,103 @@
+﻿//
+// Components - Panels
+// ============================================================================
+
+
+// Panel
+//
+.panel {
+  margin-bottom: 22rem/$root-rem; // 10px
+
+  background-color: $panel-bg;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+}
+
+.panel-heading {
+  padding: $spacer ($spacer * 1.5);
+
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel-body {
+  padding: $spacer;
+}
+
+.panel-title {
+  margin-bottom: 0;
+  margin-top: 0;
+
+  color: inherit;
+  font-size: $font-size-base;
+  font-weight: 500;
+}
+
+
+// Default style
+//
+.panel-default {
+  border-color: $panel-default-border;
+
+  > .panel-heading {
+    color: $panel-default-color;
+
+    background-color: $panel-default-heading-bg;
+    border-color: $panel-default-border;
+  }
+
+  .panel-title {
+    margin-bottom: 5px;
+  }
+}
+
+
+
+
+
+
+// Profile
+//
+.panel-profile {
+  .panel-heading {
+    height: 150px;
+
+    background-size: cover;
+  }
+}
+
+.panel-profile-img {
+  max-width: 100px;
+  margin-top: -70px;
+  margin-bottom: 5px;
+
+  border: 3px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.panel-profile-stats {
+  padding: 0;
+
+  list-style: none;
+}
+
+.panel-profile-stat {
+  display: inline-block;
+  padding: 0 $spacer;
+
+  font-size: $font-size-sm;
+  font-weight: 300;
+
+  border-right: 1px solid $panel-default-border;
+
+  &:last-child {
+    border-right: 0;
+  }
+}
+
+.panel-profile-stat-figure {
+  font-size: $font-size-base;
+  font-weight: 600;
+}

@@ -517,6 +517,7 @@
     <Content Include="Content\sass\_validation.scss" />
     <Content Include="Content\sass\_navbar.scss" />
     <Content Include="Content\sass\_reboot.scss" />
+    <Content Include="Content\sass\_panel.scss" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
