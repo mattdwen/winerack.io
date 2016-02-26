@@ -1,0 +1,42 @@
+﻿//
+// Components - Media List
+// ============================================================================
+
+// .qo
+.media-list {
+}
+
+.media {
+  padding: $spacer;
+
+  + .media {
+    border-top: 1px solid $panel-default-border;
+  }
+}
+
+.media-heading {
+  h5 {
+    font-size: $font-size-base;
+    font-weight: 400;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.media-list-stream {
+  .media {
+    margin-top: 0;
+  }
+
+  .media-object {
+    width: 42rem / $root-rem;
+    margin-right: 5rem / $root-rem;
+
+    @include media-breakpoint-up(md) {
+      width: 60rem / $root-rem;
+    }
+  }
+}

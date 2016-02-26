@@ -519,6 +519,7 @@
     <Content Include="Content\sass\_reboot.scss" />
     <Content Include="Content\sass\_panel.scss" />
     <Content Include="Views\Shared\Layout\Partials\_Sidenav.cshtml" />
+    <Content Include="Content\sass\_media-list.scss" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

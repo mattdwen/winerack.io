@@ -29,19 +29,21 @@ namespace winerack.Helpers {
 
 			var val = "";
 
-			if (span.TotalMinutes < 1) {
-				val = "Less than a minute ago";
-			} else if (span.TotalHours < 1) {
-				val = Math.Floor(span.TotalMinutes).ToString() + " minutes ago";
-			} else if (span.TotalHours < 2) {
-				val = "An hour ago";
-			} else if (span.TotalDays < 1) {
-				val = Math.Floor(span.TotalHours).ToString() + " hours ago";
-			} else if (span.TotalDays < 2) {
-				val = "A day ago";
-			} else if (span.TotalDays < 7) {
-				val = Math.Floor(span.TotalDays).ToString() + " days ago";
-			} else {
+      if (span.TotalMinutes < 1) {
+        val = "Just now";
+      } else if (span.TotalHours < 1) {
+        val = Math.Floor(span.TotalMinutes).ToString() + " minutes ago";
+      } else if (span.TotalHours < 2) {
+        val = "An hour ago";
+      } else if (span.TotalDays < 1) {
+        val = Math.Floor(span.TotalHours).ToString() + " hours ago";
+      } else if (span.TotalDays < 2) {
+        val = "A day ago";
+      } else if (span.TotalDays < 7) {
+        val = Math.Floor(span.TotalDays).ToString() + " days ago";
+      } else if (when.Year == DateTime.Now.Year) {
+        val = when.ToString("MMM-d");
+      } else {
 				val = when.ToString("D");
 			}
 

@@ -5332,6 +5332,27 @@ body.fixed-nav {
     .footer .fa + .fa {
       margin-left: 1rem; }
 
+.media {
+  padding: 1rem; }
+  .media + .media {
+    border-top: 1px solid #d3e0e9; }
+
+.media-heading h5 {
+  font-size: 1rem;
+  font-weight: 400; }
+  .media-heading h5 a {
+    color: inherit;
+    text-decoration: none; }
+
+.media-list-stream .media {
+  margin-top: 0; }
+.media-list-stream .media-object {
+  width: 2.625rem;
+  margin-right: 0.3125rem; }
+  @media (min-width: 768px) {
+    .media-list-stream .media-object {
+      width: 3.75rem; } }
+
 .app-navbar {
   position: fixed;
   top: 0;

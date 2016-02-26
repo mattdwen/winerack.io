@@ -1,38 +1,27 @@
 ﻿@model winerack.Models.ActivityEventViewModels.Base
 @using winerack.Helpers
+
 @{
-    var imageUrl = "https://winerack.blob.core.windows.net/" + Model.Image + "_md.jpg";
+  var imageUrl = "https://winerack.blob.core.windows.net/" + Model.Image + "_md.jpg";
+  var actorName = (string.IsNullOrWhiteSpace(Model.Actor.Name)) ? Model.Actor.UserName : Model.Actor.Name;
+  var actorUrl = "/user/" + Model.Actor.UserName;
 }
 
-<div class="activity-event">
-    <div class="panel">
-        <div class="pull-right">
-            <a href="@Model.ViewUrl/@Model.ObjectID">Details</a>
-        </div>
-
-        <div class="panel-heading">
-            <a href="/user/@Model.Actor.UserName"><img class="panel-heading-image img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Actor.Id)" width="50" /></a>
-            <h4 class="panel-title">
-                <a href="/user/@Model.Actor.UserName">
-                    @if (string.IsNullOrWhiteSpace(Model.Actor.Name)) {
-                        @Model.Actor.UserName
-                    } else {
-                        @Model.Actor.Name
-                    }
-                </a>
-            </h4>
-            <p class="text-muted">@ExtensionMethods.TimeAgo(Model.OccuredOn)</p>
-        </div>
-        <div class="panel-body">
-            <p class="lead">@RenderSection("Header", true)</p>
-
-            @RenderBody()
-
-            @if (!string.IsNullOrWhiteSpace(Model.Image)) {
-                <div class="text-center">
-                    <a href="@Model.ViewUrl/@Model.ObjectID"><img class="img-responsive" src="@imageUrl" /></a>
-                </div>
-            }
-        </div>
+<li class="media">
+  <a class="media-left" href="@actorUrl">
+    <img class="media-object img-circle" src="@ExtensionMethods.ProfileImageUrl("sq_sm", Model.Actor.Id)" alt="@actorName"/>
+  </a>
+  <div class="media-body">
+    <div class="media-heading">
+      <small class="pull-xs-right">@ExtensionMethods.TimeAgo(Model.OccuredOn)</small>
+      <h5><a href="@actorUrl">@actorName</a></h5>
     </div>
-</div>
+
+    @RenderBody()
+
+    @if (!string.IsNullOrWhiteSpace(Model.Image))
+    {
+      <a href="@Model.ViewUrl/@Model.ObjectID"><img class="img-responsive" src="@imageUrl" /></a>
+    }
+  </div>
+</li>

@@ -5,12 +5,12 @@
     var verb = (Model.IsGift) ? "Was gifted" : "Purchased";
 }
 
-@section Header {
-    @verb @ExtensionMethods.BottleQuantity(Model.Quantity)
-    of <a href="/wines/@Model.Wine.ID">@Html.Partial("Wines/_Description", Model.Wine)</a>
-    by <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.
-}
+<p class="lead">
+  <a href="/Purchases/@Model.ObjectID">@verb @ExtensionMethods.BottleQuantity(Model.Quantity)</a>
+  of <a href="/wines/@Model.Wine.ID">@Html.Partial("Wines/_Description", Model.Wine)</a>
+  by <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.
+</p>
 
 @if (!string.IsNullOrWhiteSpace(Model.Notes)) {
-    <p>@Model.Notes</p>
+  <p>@Model.Notes</p>
 }
