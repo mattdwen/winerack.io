@@ -3,8 +3,9 @@
 @using Microsoft.AspNet.Identity;
 
 @{
-    var verb = (Model.IsGift) ? "Was gifted" : "Purchased";
-    ViewBag.Title = Model.Bottle.Owner.Name + " " + verb.ToLower() + " a " + Model.Bottle.Wine.Description;
+  Layout = "~/Views/Shared/Layout/_Authorised.cshtml";
+  var verb = (Model.IsGift) ? "Was gifted" : "Purchased";
+  ViewBag.Title = Model.Bottle.Owner.Name + " " + verb.ToLower() + " a " + Model.Bottle.Wine.Description;
 }
 
 @section Head {

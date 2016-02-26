@@ -1,0 +1,45 @@
+﻿@{
+  Layout = "~/Views/Shared/Layout/_Structure.cshtml";
+  ViewBag.BodyClass = "fixed-nav";
+}
+
+@section Head {
+  @RenderSection("head", false)
+}
+
+@Html.Partial("Layout/Partials/_Navbar")
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
+      {
+        <div class="alert alert-success alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
+          @ViewBag.SuccessMessage
+        </div>
+      }
+
+      @if (!string.IsNullOrWhiteSpace(ViewBag.DangerMessage))
+      {
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
+          @ViewBag.DangerMessage
+        </div>
+      }
+    </div>
+  </div>
+
+  @RenderBody()
+</div>
+
+@Html.Partial("Layout/Partials/_Footer")
+
+@section Scripts {
+  @RenderSection("scripts", false)
+}
