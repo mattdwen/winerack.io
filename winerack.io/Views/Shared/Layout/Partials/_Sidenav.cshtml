@@ -1,50 +1,32 @@
 ﻿<nav class="sidenav">
-    @{
-        Html.RenderAction("MiniProfile", "User");   
-    }
+  @{
+    Html.RenderAction("MiniProfile", "User");   
+  }
 
-    <ul class="nav nav-pills nav-stacked">
-        <li>
-            <a href="/Bottles" title="In the rack">
-                <i class="wine-bottles"></i>
-                <span class="nav-text">In the rack</span>
-            </a>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/Bottles">
+            <i class="fa fa-fw wine-bottles text-muted"></i> Bottles
+          </a>
         </li>
-        <li>
-            <a href="/Purchases" title="Purchases">
-                <i class="fa fa-dollar fa-fw"></i>
-                <span class="nav-text">Purchases</span>
-            </a>
+        <li class="nav-item">
+          <a class="nav-link" href="/Purchases">
+            <i class="fa fa-dollar fa-fw text-muted"></i> Purchases
+          </a>
         </li>
-        <li>
-            <a href="/Openings/Start" title="Open a bottle">
-                <i class="wine-corkscrew"></i>
-                <span class="nav-text">Open a bottle</span>
-            </a>
+        <li class="nav-item">
+          <a class="nav-link" href="/Friends">
+            <i class="fa fa-users fa-fw text-muted"></i> Friends
+          </a>
         </li>
-        <li>
-            <a href="/Tastings/Create" title="Taste a glass">
-                <i class="wine-taste"></i>
-                <span class="nav-text">Taste a glass</span>
-            </a>
+        <li class="nav-item">
+          <a class="nav-link" href="/Account/Settings">
+            <i class="fa fa-cog fa-fw text-muted"></i> Settings
+          </a>
         </li>
-        <li>
-            <a href="/Bottles/Create" title="Collect a bottle">
-                <i class="wine-bottle-glass"></i>
-                <span class="nav-text">Collect a bottle</span>
-            </a>
-        </li>
-        <li>
-            <a href="/Friends" title="Friends">
-                <i class="fa fa-users fa-fw"></i>
-                <span class="nav-text">Friends</span>
-            </a>
-        </li>
-        <li>
-            <a href="/Account/Settings" title="Settings">
-                <i class="fa fa-cog fa-fw"></i>
-                <span class="nav-text">Settings</span>
-            </a>
-        </li>
-    </ul>
+      </ul>
+    </div>
+  </div>
 </nav>

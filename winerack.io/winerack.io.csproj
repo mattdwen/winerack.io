@@ -518,6 +518,7 @@
     <Content Include="Content\sass\_navbar.scss" />
     <Content Include="Content\sass\_reboot.scss" />
     <Content Include="Content\sass\_panel.scss" />
+    <Content Include="Views\Shared\Layout\Partials\_Sidenav.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -604,7 +605,6 @@
     <Content Include="Views\Varietals\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Shared\_Sidenav.cshtml" />
     <Content Include="Views\Shared\Layout\Partials\_Navbar.cshtml" />
     <Content Include="Views\Styles\Create.cshtml" />
     <Content Include="Views\Styles\Delete.cshtml" />
