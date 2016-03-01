@@ -598,7 +598,7 @@
     <Content Include="Views\Tastings\Create.cshtml" />
     <Content Include="Views\Tastings\Details.cshtml" />
     <Content Include="Views\User\StatBar.cshtml" />
-    <Content Include="Views\Shared\Forms\_MailchimpSignup.cshtml" />
+    <Content Include="Views\Shared\Forms\_NewsletterSignup.cshtml" />
     <Content Include="Views\Shared\Layout\_Structure.cshtml" />
     <Content Include="Views\Varietals\Create.cshtml" />
     <Content Include="Views\Varietals\Delete.cshtml" />
