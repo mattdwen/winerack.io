@@ -507,7 +507,6 @@
     <Content Include="Content\sass\_page-header.scss" />
     <Content Include="Content\sass\_openings.scss" />
     <Content Include="Content\sass\_purchases.scss" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bottles\create.js" />
     <Content Include="Scripts\bottles\drinking-window.js" />
     <Content Include="Scripts\dist\angular.js" />
@@ -521,7 +520,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\purchases\create.js" />
     <Content Include="Scripts\openings\create.js" />
@@ -618,7 +616,6 @@
     <Content Include="Views\Tastings\Create.cshtml" />
     <Content Include="Views\Tastings\Details.cshtml" />
     <Content Include="Views\User\StatBar.cshtml" />
-    <Content Include="Views\Shared\_MailchimpSignup.cshtml" />
     <Content Include="Views\Shared\_Structure.cshtml" />
     <Content Include="Views\Varietals\Create.cshtml" />
     <Content Include="Views\Varietals\Delete.cshtml" />
@@ -635,6 +632,7 @@
     <Content Include="Views\Styles\Edit.cshtml" />
     <Content Include="Views\Styles\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_InterestSignup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -766,6 +764,5 @@
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="AppSettings.template.config" DestinationFiles="AppSettings.config" SkipUnchangedFiles="true" Condition="!Exists('AppSettings.config')" />
   </Target>
 </Project>
