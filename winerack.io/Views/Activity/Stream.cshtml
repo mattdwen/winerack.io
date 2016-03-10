@@ -1,36 +1,39 @@
 ﻿@model IEnumerable<winerack.Models.Activity>
 
-@if (Model.Count() < 1) {
+<ul class="media-list media-list-stream panel panel-default">
+  <li class="media">
+    <div class="media-body">
+      <div class="row">
+        <div class="col-md-4">
+          <a class="btn btn-primary btn-block" href="/Bottles/Create" title="Add a bottle">
+            <i class="fa fa-fw fa-plus"></i> Add a bottle
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-success btn-block" href="/Openings/Start" title="Open a bottle">
+            <i class="fa fa-fw wine-corkscrew"></i> Open a bottle
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-danger btn-block" href="/Tastings/Create" title="Taste a bottle">
+            <i class="fa fa-fw wine-taste"></i> Taste a glass
+          </a>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+@if (!Model.Any())
+{
   <div class="jumbotron">
     There is no recent activity!
   </div>
-} else {
-  <ul class="media-list media-list-stream panel panel-default">
-    <li class="media">
-      <div class="media-body">
-        <div class="row">
-          <div class="col-md-4">
-            <a class="btn btn-primary btn-block" href="/Bottles/Create" title="Add a bottle">
-              <i class="fa fa-fw fa-plus"></i> Add a bottle
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a class="btn btn-success btn-block" href="/Openings/Start" title="Open a bottle">
-              <i class="fa fa-fw wine-corkscrew"></i> Open a bottle
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a class="btn btn-danger btn-block" href="/Tastings/Create" title="Taste a bottle">
-              <i class="fa fa-fw wine-taste"></i> Taste a bottle
-            </a>
-          </div>
-        </div>
-      </div>
-    </li>
-    @foreach (var activity in Model)
-    {
-      Html.RenderAction(activity.Verb.ToString(), "Activity", new { activity = activity });
-    }
-  </ul>
 }
-
+else
+{
+  foreach (var activity in Model)
+   {
+     Html.RenderAction(activity.Verb.ToString(), "Activity", new {activity});
+   }
+}

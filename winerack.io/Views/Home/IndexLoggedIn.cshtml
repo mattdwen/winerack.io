@@ -1,11 +1,12 @@
-﻿@using Microsoft.AspNet.Identity;
+﻿@using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "Welcome";
+  Layout = "~/Views/Shared/Layout/_Default.cshtml";
+  ViewBag.Title = "Welcome";
 }
 
-@{ Html.RenderAction("VisibleToUser", "Activity", new { userId = User.Identity.GetUserId() }); }
+@{ Html.RenderAction("VisibleToUser", "Activity", new {userId = User.Identity.GetUserId()}); }
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/activity/stream.js")
+  @Scripts.Render("~/Scripts/activity/stream.js")
 }
