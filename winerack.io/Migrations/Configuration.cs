@@ -1,118 +1,127 @@
-namespace winerack.Migrations {
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
+using winerack.Models;
 
-	using Microsoft.AspNet.Identity.EntityFramework;
-	using winerack.Models;
-	using System.Data.Entity.Migrations;
-	using System.Linq;
-	using System.Threading.Tasks;
-	using System;
-	using System.Collections;
-	using System.Collections.Generic;
+namespace winerack.Migrations
+{
+  internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+  {
+    #region Properties
 
-	internal sealed class Configuration : DbMigrationsConfiguration<winerack.Models.ApplicationDbContext> {
+    public Configuration()
+    {
+      AutomaticMigrationsEnabled = false;
+    }
 
-		#region Properties
+    #endregion Properties
 
-		public Configuration() {
-			AutomaticMigrationsEnabled = false;
-		}
+    #region Implementation
 
-		#endregion Properties
+    protected override void Seed(ApplicationDbContext context)
+    {
+      // Identity
+      var identityTask = Seed_Identity(context);
+      var identityResult = identityTask.Result;
 
-		#region Private Methods
+      // Styles
+      Seed_Styles(context);
 
-		private async Task<bool> Seed_Identity(ApplicationDbContext context) {
-			if (!context.Roles.Any(r => r.Name == MvcApplication.ADMINISTRATOR_GROUP)) {
-				var store = new RoleStore<IdentityRole>(context);
-				var manager = new ApplicationRoleManager(store);
-				var role = new IdentityRole { Name = MvcApplication.ADMINISTRATOR_GROUP };
+      // Varietals
+      Seed_Varietals(context);
+    }
 
-				await manager.CreateAsync(role);
-			}
+    #endregion Implementation
 
-			if (!context.Users.Any(u => u.UserName == "winerack")) {
-				var manager = ApplicationUserManager.Create(context);
-				var user = new User {
-					CreatedOn = DateTime.Now,
-					Email = "admin@winerack.io",
-					UserName = "winerack",
-					FirstName = "Winerack",
-					LastName = "Admin",
-					Location = "Hawke's Bay",
-					Country = "NZ",
-					EmailConfirmed = true
-				};
+    #region Private Methods
 
-				var result = await manager.CreateAsync(user, "P@ssw0rd");
-				await manager.AddToRoleAsync(user.Id, MvcApplication.ADMINISTRATOR_GROUP);
-			}
+    private async Task<bool> Seed_Identity(ApplicationDbContext context)
+    {
+      if (!context.Roles.Any(r => r.Name == MvcApplication.ADMINISTRATOR_GROUP))
+      {
+        var store = new RoleStore<IdentityRole>(context);
+        var manager = new ApplicationRoleManager(store);
+        var role = new IdentityRole {Name = MvcApplication.ADMINISTRATOR_GROUP};
 
-			return true;
-		}
+        await manager.CreateAsync(role);
+      }
 
-        private void Seed_Styles(ApplicationDbContext context) {
-            IList<Style> styles = new List<Style>();
+      if (!context.Users.Any(u => u.UserName == "winerack"))
+      {
+        var manager = ApplicationUserManager.Create(context);
+        var user = new User
+        {
+          CreatedOn = DateTime.Now,
+          Email = "admin@winerack.io",
+          UserName = "winerack",
+          FirstName = "Winerack",
+          LastName = "Admin",
+          Location = "Hawke's Bay",
+          Country = "NZ",
+          EmailConfirmed = true
+        };
 
-            styles.Add(new Style { Name = "Red" });
-            styles.Add(new Style { Name = "White" });
-            styles.Add(new Style { Name = "Rosé" });
-            styles.Add(new Style { Name = "Dessert" });
-            styles.Add(new Style { Name = "Sparkling" });
+        var result = await manager.CreateAsync(user, "P@ssw0rd");
+        await manager.AddToRoleAsync(user.Id, MvcApplication.ADMINISTRATOR_GROUP);
+      }
 
-            foreach(var style in styles) {
-                context.Styles.AddOrUpdate(s => s.Name, style);
-            }
+      return true;
+    }
 
-            context.SaveChanges();
-        }
+    private void Seed_Styles(ApplicationDbContext context)
+    {
+      IList<Style> styles = new List<Style>();
 
-		private void Seed_Varietals(ApplicationDbContext context) {
-			IList<Varietal> varietals = new List<Varietal>();
+      styles.Add(new Style {Name = "Red"});
+      styles.Add(new Style {Name = "White"});
+      styles.Add(new Style {Name = "Rosé"});
+      styles.Add(new Style {Name = "Dessert"});
+      styles.Add(new Style {Name = "Sparkling"});
 
-			varietals.Add(new Varietal { Name = "Cabernet" });
-			varietals.Add(new Varietal { Name = "Cabernet Franc" });
-			varietals.Add(new Varietal { Name = "Cabernet Sauvignon" });
-			varietals.Add(new Varietal { Name = "Chardonnay" });
-			varietals.Add(new Varietal { Name = "Fiano" });
-			varietals.Add(new Varietal { Name = "Gewürztraminer" });
-			varietals.Add(new Varietal { Name = "Malbec" });
-			varietals.Add(new Varietal { Name = "Merlot" });
-			varietals.Add(new Varietal { Name = "Montepulciano" });
-			varietals.Add(new Varietal { Name = "Muscato" });
-			varietals.Add(new Varietal { Name = "Pinot Gris" });
-			varietals.Add(new Varietal { Name = "Pinot Noir" });
-			varietals.Add(new Varietal { Name = "Riesling" });
-			varietals.Add(new Varietal { Name = "Rosé" });
-			varietals.Add(new Varietal { Name = "Sangiovese" });
-			varietals.Add(new Varietal { Name = "Sauvignon Blanc" });
-			varietals.Add(new Varietal { Name = "Sémillon" });
-			varietals.Add(new Varietal { Name = "Shiraz" });
-			varietals.Add(new Varietal { Name = "Syrah" });
-			varietals.Add(new Varietal { Name = "Viognier" });
+      foreach (var style in styles)
+      {
+        context.Styles.AddOrUpdate(s => s.Name, style);
+      }
 
-			foreach (var varietal in varietals) {
-				context.Varietals.AddOrUpdate(v => v.Name, varietal);
-			}
+      context.SaveChanges();
+    }
 
-			context.SaveChanges();
-		}
+    private void Seed_Varietals(ApplicationDbContext context)
+    {
+      IList<Varietal> varietals = new List<Varietal>();
 
-		#endregion Private Methods
+      varietals.Add(new Varietal {Name = "Cabernet"});
+      varietals.Add(new Varietal {Name = "Cabernet Franc"});
+      varietals.Add(new Varietal {Name = "Cabernet Sauvignon"});
+      varietals.Add(new Varietal {Name = "Chardonnay"});
+      varietals.Add(new Varietal {Name = "Fiano"});
+      varietals.Add(new Varietal {Name = "Gewürztraminer"});
+      varietals.Add(new Varietal {Name = "Malbec"});
+      varietals.Add(new Varietal {Name = "Merlot"});
+      varietals.Add(new Varietal {Name = "Montepulciano"});
+      varietals.Add(new Varietal {Name = "Muscato"});
+      varietals.Add(new Varietal {Name = "Pinot Gris"});
+      varietals.Add(new Varietal {Name = "Pinot Noir"});
+      varietals.Add(new Varietal {Name = "Riesling"});
+      varietals.Add(new Varietal {Name = "Rosé"});
+      varietals.Add(new Varietal {Name = "Sangiovese"});
+      varietals.Add(new Varietal {Name = "Sauvignon Blanc"});
+      varietals.Add(new Varietal {Name = "Sémillon"});
+      varietals.Add(new Varietal {Name = "Shiraz"});
+      varietals.Add(new Varietal {Name = "Syrah"});
+      varietals.Add(new Varietal {Name = "Viognier"});
 
-		#region Implementation
+      foreach (var varietal in varietals)
+      {
+        context.Varietals.AddOrUpdate(v => v.Name, varietal);
+      }
 
-		protected override void Seed(ApplicationDbContext context) {
-			// Identity
-			var identityTask = Seed_Identity(context);
-			var identityResult = identityTask.Result;
+      context.SaveChanges();
+    }
 
-            // Styles
-            Seed_Styles(context);
-
-			// Varietals
-			Seed_Varietals(context);
-		}
-
-		#endregion Implementation
-	}
+    #endregion Private Methods
+  }
 }
