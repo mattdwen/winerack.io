@@ -3,75 +3,109 @@
 @Html.HiddenFor(m => m.VineyardID)
 @Html.HiddenFor(m => m.RegionID)
 
-<fieldset>
-    <legend>Vineyard &amp; Region</legend>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Vineyard &amp; Region</h3>
+  </div>
+  <div class="panel-body">
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Vineyard, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Vineyard, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(m => m.Vineyard)
-        </div>
+    <h4>Winery</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.Vineyard, "The name of the winery or vineyard", new {@class = "col-md-4 form-control-label"})
+      <div class="col-md-8">
+        @Html.EditorFor(m => m.Vineyard, new {htmlAttributes = new {@class = "form-control"}})
+        @Html.ValidationMessageFor(m => m.Vineyard)
+      </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Region, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Region, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(m => m.Region)
-        </div>
+    <hr/>
+
+    <h4>Region</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.Region, "The part of country where the grapes were grown", new {@class = "col-md-4 form-control-label"})
+      <div class="col-md-8">
+        @Html.EditorFor(m => m.Region, new {htmlAttributes = new {@class = "form-control"}})
+        @Html.ValidationMessageFor(m => m.Region)
+      </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Country, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Country, null, "", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Country)
-        </div>
-    </div>
-</fieldset>
+    <hr/>
 
-<fieldset>
-    <legend>Wine</legend>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.WineName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.WineName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(m => m.WineName)
-        </div>
+    <h4>Country</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.Country, "Where in the world the grapes were grown", new {@class = "form-control-label col-md-4"})
+      <div class="col-md-8">
+        @Html.DropDownListFor(m => m.Country, null, "", new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Country)
+      </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Styles, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @foreach (var style in ViewBag.Styles) {
-                string isChecked = Model.Styles.Contains(style.ID) ? "checked" : "";
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="Styles" value="@style.ID" @isChecked />
-                        @style.Name
-                    </label>
-                </div>
-            }
+  </div>
+</div>
 
-            @Html.ValidationMessageFor(m => m.Styles)
-        </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Wine</h3>
+  </div>
+
+  <div class="panel-body">
+
+    <h4>Name</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.WineName, "The name or label of the wine", new {@class = "form-control-label col-md-4"})
+      <div class="col-md-8">
+        @Html.EditorFor(m => m.WineName, new {htmlAttributes = new {@class = "form-control"}})
+        @Html.ValidationMessageFor(m => m.WineName)
+        <p class="text-muted">This isn't something boring like <em>merlot</em>, but more like if it has an awesome name or title like <em>Dreadnaught</em>.
+        </p>
+      </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Varietals, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.Varietals, null, "", htmlAttributes: new { @class = "form-control", multiple = "multiple" })
-            @Html.ValidationMessageFor(m => m.Varietals)
-        </div>
+    <hr/>
+
+    <h4>Style</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.Styles, "The colour or style of the wine", new {@class = "form-control-label col-md-4"})
+      <div class="col-md-8">
+        @foreach (var style in ViewBag.Styles)
+        {
+          var isChecked = Model.Styles.Contains(style.ID) ? "checked" : "";
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="Styles" value="@style.ID" @isChecked/>
+              @style.Name
+            </label>
+          </div>
+        }
+
+        @Html.ValidationMessageFor(m => m.Styles)
+
+        <p class="text-muted">You can pick more than one.</p>
+      </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Vintage, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.Vintage, new { htmlAttributes = new { @class = "form-control", type = "number" } })
-            @Html.ValidationMessageFor(m => m.Vintage)
-        </div>
+    <hr/>
+
+    <h4>Varietals</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.Varietals, "The type(s) of grapes", new {@class = "form-control-label col-md-4"})
+      <div class="col-md-8">
+        @Html.DropDownListFor(m => m.Varietals, null, "", new {@class = "form-control", multiple = "multiple"})
+        @Html.ValidationMessageFor(m => m.Varietals)
+      </div>
     </div>
-</fieldset>
+
+    <hr/>
+
+    <h4>Vintage</h4>
+    <div class="form-group row">
+      @Html.LabelFor(m => m.Vintage, "The year the grapes were harvested", new {@class = "form-control-label col-md-4"})
+      <div class="col-md-8">
+        @Html.EditorFor(m => m.Vintage, new {htmlAttributes = new {@class = "form-control", type = "number"}})
+        @Html.ValidationMessageFor(m => m.Vintage)
+        <p class="text-muted">If you don't enter a year, the wine will be marked as <em>NV</em>, or <em>non-vintage</em>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>

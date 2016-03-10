@@ -46,7 +46,7 @@
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: {
-        loadPath: 'bower_components'
+        includePaths: ['bower_components']
       },
       serve: {
         files: [{

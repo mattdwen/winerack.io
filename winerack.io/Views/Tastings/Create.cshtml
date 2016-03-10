@@ -1,96 +1,141 @@
 ﻿@model winerack.ViewModels.TastingEditViewModel
 
 @{
-    ViewBag.Title = "Taste a glass";
+  ViewBag.Title = "Taste a glass";
 }
 
 <div class="page-header">
-    <h2>@ViewBag.Title</h2>
+  <h1>Taste a Glass</h1>
 </div>
 
-@using (Html.BeginForm("Create", "Tastings", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" })) {
-    @Html.AntiForgeryToken()
+@using (Html.BeginForm("Create", "Tastings", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+  @Html.AntiForgeryToken()
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    @Html.EditorForModel("Wine")
+  @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
-    <fieldset>
-        <legend>Tasting</legend>
+  @Html.EditorForModel("Wine")
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.TastingDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.TastingDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.TastingDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.TastingNotes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.TastingNotes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(m => m.TastingNotes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Share</legend>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Photo</label>
-            <div class="col-md-10">
-                <a id="photoSelect" href="#">
-                    <img id="photoPreview" src="//placehold.it/300x200&text=Photo" width="300" />
-                </a>
-                <input class="hidden" id="Photo" name="Photo" type="file" accept="image/*" />
-            </div>
-        </div>
-
-        @if (Model.HasFacebook || Model.HasTumblr || Model.HasTwitter) {
-            <div class="form-group">
-                <label class="control-label col-md-2">Share</label>
-                <div class="col-md-10">
-                    @if (Model.HasFacebook) {
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.PostFacebook)
-                                Facebook
-                            </label>
-                        </div>
-                    }
-
-                    @if (Model.HasTumblr) {
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.PostTumblr)
-                                Tumblr
-                            </label>
-                        </div>
-                    }
-
-                    @if (Model.HasTwitter) {
-                        <div class="checkbox">
-                            <label>
-                                @Html.CheckBoxFor(m => m.PostTwitter)
-                                Twitter
-                            </label>
-                        </div>
-                    }
-                </div>
-            </div>
-        }
-    </fieldset>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Taste" class="btn btn-success" />
-        </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tasting</h3>
     </div>
+
+    <div class="panel-body">
+
+      <h4>When</h4>
+      <div class="form-group row">
+        @Html.LabelFor(m => m.TastingDate, "The date you tasted this wine", new {@class = "form-control-label col-md-4"})
+        <div class="col-md-8">
+          @Html.EditorFor(m => m.TastingDate, new {htmlAttributes = new {@class = "form-control"}})
+          @Html.ValidationMessageFor(m => m.TastingDate, "", new {@class = "text-danger"})
+        </div>
+      </div>
+
+      <hr/>
+
+      <h4>Tasting notes</h4>
+      <div class="form-group row">
+        @Html.LabelFor(m => m.TastingNotes, "Anything special you want to remember about this wine", new {@class = "form-control-label col-md-4"})
+        <div class="col-md-8">
+          @Html.EditorFor(m => m.TastingNotes, new {htmlAttributes = new {@class = "form-control"}})
+          @Html.ValidationMessageFor(m => m.TastingNotes, "", new {@class = "text-danger"})
+        </div>
+      </div>
+
+      <hr/>
+
+      <h4>Photo</h4>
+
+      <div class="form-group row">
+        <label class="form-control-label col-md-4">Add a photo of the bottle, glass, or anything else awesome from this tasting</label>
+        <div class="col-md-8">
+          <a id="photoSelect" href="#">
+            <img id="photoPreview" src="//placehold.it/300x200&text=Photo" width="300"/>
+          </a>
+          <input class="hidden-xs-up" id="Photo" name="Photo" type="file" accept="image/*"/>
+        </div>
+      </div>
+
+      <hr/>
+
+      <h4>Share</h4>
+      <div class="form-group row">
+        <label class="form-control-label col-md-4">Share your tasting around the world</label>
+        <div class="col-md-8">
+          <div class="row">
+
+            @if (Model.HasFacebook)
+            {
+              <div class="col-md-2 btn-group" data-toggle="buttons">
+                <label class="btn btn-block btn-secondary btn-lg">
+                  @Html.CheckBoxFor(m => m.PostFacebook, new {autocomplete = "off", @class = "hidden-xs-up"})
+                  <i class="fa fa-facebook"></i>
+                </label>
+              </div>
+            }
+            else
+            {
+              <div class="col-md-2">
+                <button class="btn btn-block btn-secondary btn-lg" disabled="">
+                  <i class="fa fa-facebook"></i>
+                </button>
+              </div>
+            }
+
+            @if (Model.HasTwitter)
+            {
+              <div class="col-md-2 btn-group" data-toggle="buttons">
+                <label class="btn btn-block btn-secondary btn-lg">
+                  @Html.CheckBoxFor(m => m.PostTwitter, new {autocomplete = "off", @class = "hidden-xs-up"})
+                  <i class="fa fa-twitter"></i>
+                </label>
+              </div>
+            }
+            else
+            {
+              <div class="col-md-2">
+                <button class="btn btn-block btn-secondary btn-lg" disabled="">
+                  <i class="fa fa-twitter"></i>
+                </button>
+              </div>
+            }
+
+            @if (Model.HasTumblr)
+            {
+              <div class="col-md-2 btn-group" data-toggle="buttons">
+                <label class="btn btn-block btn-secondary btn-lg">
+                  @Html.CheckBoxFor(m => m.PostTumblr, new {autocomplete = "off", @class = "hidden-xs-up"})
+                  <i class="fa fa-tumblr"></i>
+                </label>
+              </div>
+            }
+            else
+            {
+              <div class="col-md-2">
+                <button class="btn btn-block btn-secondary btn-lg" disabled="">
+                  <i class="fa fa-tumblr"></i>
+                </button>
+              </div>
+            }
+
+          </div>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="form-group row">
+        <div class="col-md-8 col-md-offset-4">
+          <button class="btn btn-success btn-lg" type="submit">Save tasting</button>
+        </div>
+      </div>
+    </div>
+  </div>
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/wine/editor")
-    @Scripts.Render("~/bundles/tastings/create")
+  @Scripts.Render("~/bundles/wine/editor")
+  @Scripts.Render("~/bundles/tastings/create")
 }

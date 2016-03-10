@@ -6,3 +6,7 @@
   @extend .alert;
   @extend .alert-danger;
 }
+
+.field-validation-error {
+  color: $brand-danger;
+}

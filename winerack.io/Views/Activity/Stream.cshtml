@@ -22,18 +22,20 @@
       </div>
     </div>
   </li>
-</ul>
 
-@if (!Model.Any())
-{
-  <div class="jumbotron">
-    There is no recent activity!
-  </div>
-}
-else
-{
-  foreach (var activity in Model)
-   {
-     Html.RenderAction(activity.Verb.ToString(), "Activity", new {activity});
-   }
-}
+  @if (!Model.Any())
+  {
+    <li class="media">
+      <div class="media-body text-xs-center">
+        There is no recent activity!
+      </div>
+    </li>
+  }
+  else
+  {
+    foreach (var activity in Model)
+    {
+      Html.RenderAction(activity.Verb.ToString(), "Activity", new { activity });
+    }
+  }
+</ul>
