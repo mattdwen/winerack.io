@@ -521,6 +521,7 @@
     <Content Include="Views\Shared\Layout\Partials\_Sidenav.cshtml" />
     <Content Include="Content\sass\_media-list.scss" />
     <Content Include="Views\Shared\Layout\_Authorised.cshtml" />
+    <Content Include="Views\Shared\Wines\Panel.cshtml" />
     <None Include="Views\Shared\Wines\_Preview.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -206,13 +206,13 @@ namespace winerack.Controllers {
 			return RedirectToAction("Index");
 		}
 
-		#endregion Delete
+    #endregion Delete
 
-		#endregion Actions
+    #endregion Actions
 
-		#region Public Methods
+    #region Public Methods
 
-		protected override void Dispose(bool disposing) {
+    protected override void Dispose(bool disposing) {
 			if (disposing) {
 				db.Dispose();
 			}
