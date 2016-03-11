@@ -1,14 +1,14 @@
 ﻿@model winerack.Models.ActivityEventViewModels.Opened
 @{
-    Layout = "~/Views/Shared/_Activity.cshtml";
+  Layout = "~/Views/Shared/_Activity.cshtml";
 }
 
-@section Header {
-    Tasted a <a href="/wines/@Model.Wine.ID">@Html.Partial("Wines/_Description", Model.Wine)</a>
-    by <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.
-}
+<p class="lead">
+  Tasted a <a href="/wines/@Model.Wine.ID">@Html.Partial("Wines/_Description", Model.Wine)</a>
+  by <a href="/vineyards/@Model.Wine.VineyardID">@Model.Wine.Vineyard.Name</a>.
+</p>
 
-@if (!string.IsNullOrWhiteSpace(Model.Notes)) {
-    <blockquote>@Model.Notes</blockquote>
+@if (!string.IsNullOrWhiteSpace(Model.Notes))
+{
+  <p>@Model.Notes</p>
 }
-
